@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "MachineIntell"
+  site-url: "https://vanhp.github.io/MachineIntell"
+  description: "Try to understand machine intelligent"
+  repo-branch: main
+  repo-url: "https://github.com/vanhp/MachineIntell"
