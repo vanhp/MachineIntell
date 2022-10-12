@@ -3,7 +3,7 @@ project:
 
 format:
   html:
-    theme: vapor
+    theme: quartz
     css: styles.css
     toc: true
 

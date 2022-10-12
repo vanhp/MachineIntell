@@ -12,10 +12,10 @@
 <generator>quarto-1.1.251</generator>
 <lastBuildDate>Thu, 28 Jul 2022 07:00:00 GMT</lastBuildDate>
 <item>
-  <title>nbdev+Quarto: A new secret weapon for productivity</title>
+  <title>nbdev+Quarto: A new secret weapon for coding productivity</title>
   <dc:creator>Hamel Husain</dc:creator>
   <dc:creator>Jeremy Howard</dc:creator>
-  <link>https://vanhp.github.io/MachineIntell/blog/posts/index.html</link>
+  <link>https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/index.html</link>
   <description><![CDATA[ 
 
 
@@ -23,7 +23,7 @@
 <p><em><a href="https://www.fast.ai/2022/07/28/nbdev-v2/">Originally posted</a> on the fast.ai blog</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/images/card.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/cube1.jpg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">A single notebook can create a python module, tests, CI, pypi/conda packages, and more.</figcaption><p></p>
 </figure>
 </div>
@@ -56,7 +56,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/logo_netflix.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/logo_netflix.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -70,7 +70,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/logo_lyft.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/logo_lyft.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -84,7 +84,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/logo_ob.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/logo_ob.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -96,7 +96,7 @@
 <p><strong><a href="https://www.linkedin.com/in/roxanna-pourzand-445a3035/">Roxanna Pourzand</a>, on using nbdev for <a href="https://docs.transform.co/">Transform</a>:</strong> “We’re so excited about using nbdev. Our product is technical so our resulting documentation includes a lot of code-based examples. Before nbdev, we had no way of maintaining our code examples and ensuring that it was up-to-date for both command inputs and outputs. It was all manual. With nbdev, we now have this under control in a sustainable way. Since we’ve deployed these docs, we also had a situation where we were able to identify a bug in one of our interfaces, which we found by seeing the error that was output in the documentation.”</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/logo_transform.png" class="img-fluid" width="200"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/logo_transform.png" class="img-fluid" width="200"></p>
 </div>
 </div>
 </div>
@@ -110,7 +110,7 @@
 <p>In short, nbdev embraces ideas from <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> and <a href="https://en.wikipedia.org/wiki/Exploratory_programming">exploratory programming</a>. These paradigms have been revisited in platforms like XCode <a href="https://en.wikipedia.org/wiki/Swift_Playgrounds">Playgrounds</a> and languages like Smalltalk, LISP, and Mathematica. With nbdev, we sought to push these paradigms even further by enabling it for one of the most popular dynamic programming languages in the world: Python.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/lang_rank.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/lang_rank.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">State of the Octoverse 2021, GitHub</figcaption><p></p>
 </figure>
 </div>
@@ -138,7 +138,7 @@
 <div class="column-page-inset">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/nb_quarto.png" class="img-fluid figure-img"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/nb_quarto.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Quarto rendering a Jupyter notebook written with nbdev</figcaption><p></p>
 </figure>
 </div>
@@ -156,7 +156,7 @@
 <p>Our efforts to support REPL-driven development and literate programming are not limited to nbdev. We maintain a number of libraries that extend python to bolster this programming experience. The most notable of these libraries is <a href="https://github.com/fastai/fastcore">fastcore</a>, which extends Python in terms of <a href="https://fastcore.fast.ai/test.html">testing</a>, <a href="https://fastcore.fast.ai/docments.html">documenting code</a>, <a href="https://fastcore.fast.ai/meta.html#Metaprogramming">metaprogramming</a>, <a href="https://fastcore.fast.ai/basics.html#Attribute-Helpers">attribute helpers</a>, <a href="https://fastcore.fast.ai/basics.html#basic_repr">enhanced representations of objects</a>, and notebook-friendly <a href="https://fastcore.fast.ai/basics.html#Patching">patching</a>. This <a href="https://fastpages.fast.ai/fastcore/">blog post</a> offers a gentle introduction to fastcore. In addition to literate programming, fastcore encourages conventions such as brevity and efficient use of vertical space so you can accomplish more with significantly less code. For example, below is a simple decorator that enables notebook-friendly <a href="https://fastcore.fast.ai/basics.html#Patching">patching</a>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/patch.png" class="img-fluid figure-img" width="600"></p>
+<p><img src="https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/image/patch.png" class="img-fluid figure-img" width="600"></p>
 <p></p><figcaption class="figure-caption"><code>@patch</code> decorator from fastcore</figcaption><p></p>
 </figure>
 </div>
@@ -201,9 +201,9 @@
 </section>
 
  ]]></description>
-  <guid>https://vanhp.github.io/MachineIntell/blog/posts/index.html</guid>
+  <guid>https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/index.html</guid>
   <pubDate>Thu, 28 Jul 2022 07:00:00 GMT</pubDate>
-  <media:content url="https://vanhp.github.io/MachineIntell/images/card.png" medium="image" type="image/png"/>
+  <media:content url="https://vanhp.github.io/MachineIntell/images/code1.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

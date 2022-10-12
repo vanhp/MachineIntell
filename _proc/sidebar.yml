@@ -8,4 +8,6 @@ website:
           - blog/index.qmd
           - section: posts
             contents:
-              - blog/posts/index.qmd
+              - section: 2022-07-28-nbdev2
+                contents:
+                  - blog/posts/2022-07-28-nbdev2/index.qmd

@@ -1,0 +1,26 @@
+---
+title: "Vanh Phomsavanh"
+about:
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+I've been working as software engineer for two decades.
+
+## Education
+
+San Jose state University Computer Engineering 1989
+
+
+## Experience
+
+Wengo Analytics | Head Data Scientist | April 2018 - present
+
+GeoScynce | Chief Analyst | Spet 2012 - April 2018

@@ -1,6 +1,6 @@
 ---
-title: nbdev Blog
-subtitle: News, tips, and commentary about all things nbdev
+title: Machine intelligent
+subtitle: News, tips, tutoring, and commentary about all things Machine Intelligent
 listing:
   sort: "date desc"
   contents: "posts"
