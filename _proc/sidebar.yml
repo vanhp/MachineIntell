@@ -2,10 +2,11 @@ website:
   sidebar:
     contents:
       - index.ipynb
+      - index.qmd
       - 00_core.ipynb
+      - about.qmd
       - section: blog
         contents:
-          - blog/index.qmd
           - section: posts
             contents:
               - section: 2022-07-28-nbdev2

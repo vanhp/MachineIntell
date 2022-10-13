@@ -1,0 +1,12 @@
+---
+title: Machine intelligent
+subtitle: News, tips, tutoring, and commentary about all things Machine Intelligent
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+page-layout: full
+---

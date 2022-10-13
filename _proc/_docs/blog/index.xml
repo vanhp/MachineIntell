@@ -205,5 +205,25 @@
   <pubDate>Thu, 28 Jul 2022 07:00:00 GMT</pubDate>
   <media:content url="https://vanhp.github.io/MachineIntell/images/code1.jpg" medium="image" type="image/jpeg"/>
 </item>
+<item>
+  <title>Vanh Phomsavanh</title>
+  <link>https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/about.html</link>
+  <description><![CDATA[ 
+<p>I’ve been working as software engineer for two decades.</p>
+<section id="education" class="level2">
+<h2 data-anchor-id="education">Education</h2>
+<p>San Jose state University Computer Engineering 1989</p>
+</section>
+<section id="experience" class="level2">
+<h2 data-anchor-id="experience">Experience</h2>
+<p>Wengo Analytics | Head Data Scientist | April 2018 - present</p>
+<p>GeoScynce | Chief Analyst | Spet 2012 - April 2018</p>
+
+
+</section>
+ ]]></description>
+  <guid>https://vanhp.github.io/MachineIntell/blog/posts/2022-07-28-nbdev2/about.html</guid>
+  <pubDate>Thu, 13 Oct 2022 09:37:06 GMT</pubDate>
+</item>
 </channel>
 </rss>

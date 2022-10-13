@@ -2,7 +2,7 @@
 title: "Vanh Phomsavanh"
 about:
   template: jolla
-  image: profile.jpg
+  image: /images/brain.jpg
   links:
     - icon: twitter
       text: twitter
