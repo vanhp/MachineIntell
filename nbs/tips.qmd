@@ -1,0 +1,12 @@
+---
+title: Tips and Tricks
+subtitle: Tips on how to get best result from Machine Intelligent
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+page-layout: full
+---

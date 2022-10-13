@@ -5,5 +5,17 @@
       "/blog/posts/2022-07-28-nbdev2/about.html",
       "/blog/posts/2022-07-28-nbdev2/index.html"
     ]
+  },
+  {
+    "listing": "/news.html",
+    "items": []
+  },
+  {
+    "listing": "/tips.html",
+    "items": []
+  },
+  {
+    "listing": "/tutoring.html",
+    "items": []
   }
 ]

@@ -264,5 +264,33 @@
     "title": "Vanh Phomsavanh",
     "section": "Experience",
     "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Spet 2012 - April 2018"
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "Latest News",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "tips.html",
+    "href": "tips.html",
+    "title": "Tips and Tricks",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "tutoring.html",
+    "href": "tutoring.html",
+    "title": "Tutoring",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "getting_started.html",
+    "href": "getting_started.html",
+    "title": "MachineIntell",
+    "section": "",
+    "text": "import numpy"
   }
 ]

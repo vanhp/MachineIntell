@@ -5,6 +5,10 @@ website:
       - index.qmd
       - 00_core.ipynb
       - about.qmd
+      - getting_started.ipynb
+      - news.qmd
+      - tips.qmd
+      - tutoring.qmd
       - section: blog
         contents:
           - section: posts
