@@ -291,6 +291,6 @@
     "href": "getting_started.html",
     "title": "MachineIntell",
     "section": "",
-    "text": "import numpy"
+    "text": "import nbdev"
   }
 ]

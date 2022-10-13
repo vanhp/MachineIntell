@@ -11,8 +11,4 @@ website:
       - tutoring.qmd
       - section: blog
         contents:
-          - section: posts
-            contents:
-              - section: 2022-07-28-nbdev2
-                contents:
-                  - blog/posts/2022-07-28-nbdev2/index.qmd
+          - blog/index.qmd
