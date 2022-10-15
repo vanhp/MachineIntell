@@ -39,26 +39,26 @@ We have piloted nbdev at several companies. We were delighted to receive the fol
 **[David Berg](https://www.linkedin.com/in/david-j-berg/), on using nbdev for internal documentation at Netflix:** 
 "Prior to using nbdev, documentation was the most cumbersome aspect of our software development process… Using nbdev allows us to spend more time creating rich prose around the many code snippets guaranteeing the whole experience is robust. nbdev has turned what was once a chore into a natural extension of the notebook-based testing we were already doing." 
 
-![](./image/logo_netflix.png){fig-width="200" fig-align="center" fig-pos="center"}
+![](./posts/2022-07-28-nbdev2/image/logo_netflix.png){fig-width="200" fig-align="center" fig-pos="center"}
 :::
 
 
 ::: {layout="[70,30]"}
 **[Erik Gaasedelen](https://news.ycombinator.com/item?id=25165306), on using nbdev in production at Lyft:** "I use this in production at my company. It’s an awesome tool… nbdev streamlines everything so I can write docs, tests, and code all in one place… The packaging is also really well thought out. From my point of view it is close to a Pareto improvement over traditional Python library development."
 
-![](./image/logo_lyft.png){fig-width="200" fig-align="center"}
+![](./posts/2022-07-28-nbdev2/image/logo_lyft.png){fig-width="200" fig-align="center"}
 :::
 
 ::: {layout="[70,30]"}
 **[Hugo Bowne-Anderson](https://twitter.com/hugobowne), on using nbdev for [Outerbounds](https://outerbounds.com/docs):** "nbdev has transformed the way we write documentation. Gone are the days of worrying about broken code examples when our API changes or [due to] human errors associated with copying & pasting code into markdown files. The authoring experience of nbdev… [allows] us to write prose and live code in a unified interface, which allows more experimentation… On top of this,  nbdev allows us to include unit tests in our documentation which mitigates the burden of maintaining the docs over time."  
 
-![](./image/logo_ob.png){fig-width="200" fig-align="center"}
+![](./posts/2022-07-28-nbdev2/image/logo_ob.png){fig-width="200" fig-align="center"}
 :::
 
 ::: {layout="[70,30]"}
 **[Roxanna Pourzand](https://www.linkedin.com/in/roxanna-pourzand-445a3035/), on using nbdev for [Transform](https://docs.transform.co/):** "We’re so excited about using nbdev. Our product is technical so our resulting documentation includes a lot of code-based examples. Before nbdev, we had no way of maintaining our code examples and ensuring that it was up-to-date for both command inputs and outputs. It was all manual. With nbdev, we now have this under control in a sustainable way. Since we’ve deployed these docs, we also had a situation where we were able to identify a bug in one of our interfaces, which we found by seeing the error that was output in the documentation."
 
-![](./image/logo_transform.png){width="200"}
+![](./posts/2022-07-28-nbdev2/image/logo_transform.png){width="200"}
 
 :::
 
@@ -71,7 +71,7 @@ Nbdev embraces the dynamic nature of python and REPL-driven development in ways 
 
 In short, nbdev embraces ideas from [literate programming](https://en.wikipedia.org/wiki/Literate_programming) and [exploratory programming](https://en.wikipedia.org/wiki/Exploratory_programming). These paradigms have been revisited in platforms like XCode [Playgrounds](https://en.wikipedia.org/wiki/Swift_Playgrounds) and languages like Smalltalk, LISP, and Mathematica. With nbdev, we sought to push these paradigms even further by enabling it for one of the most popular dynamic programming languages in the world: Python. 
 
-![State of the Octoverse 2021, GitHub](./image/lang_rank.png)
+![State of the Octoverse 2021, GitHub](./posts/2022-07-28-nbdev2/image/lang_rank.png)
 
 Even though nbdev is most widely used in scientific computing communities due to its integration with Jupyter Notebooks, we’ve found that nbdev is well suited for a much wider range of software. We have used nbdev to write [deep learning libraries,](https://github.com/fastai/fastai) [API clients](https://github.com/fastai/ghapi), [python language extensions](https://github.com/fastai/fastcore),[terminal user interfaces](https://github.com/nat/ghtop), and more!
 
@@ -103,7 +103,7 @@ We also find Quarto compelling because user interfaces such as [comment directiv
 
 ::: {.column-page-inset}
 
-![Quarto rendering a Jupyter notebook written with nbdev](./image/nb_quarto.png)
+![Quarto rendering a Jupyter notebook written with nbdev](./posts/2022-07-28-nbdev2/image/nb_quarto.png)
 
 :::
 
@@ -122,7 +122,7 @@ One way to understand nbdev is part of an ecosystem that is designed to embrace 
 Our efforts to support REPL-driven development and literate programming are not limited to nbdev. We maintain a number of libraries that extend python to bolster this programming experience. The most notable of these libraries is [fastcore](https://github.com/fastai/fastcore), which extends Python in terms of [testing](https://fastcore.fast.ai/test.html), [documenting code](https://fastcore.fast.ai/docments.html), [metaprogramming](https://fastcore.fast.ai/meta.html#Metaprogramming), [attribute helpers](https://fastcore.fast.ai/basics.html#Attribute-Helpers), [enhanced representations of objects](https://fastcore.fast.ai/basics.html#basic_repr), and notebook-friendly [patching](https://fastcore.fast.ai/basics.html#Patching). This [blog post](https://fastpages.fast.ai/fastcore/) offers a gentle introduction to fastcore. In addition to literate programming, fastcore encourages conventions such as brevity and efficient use of vertical space so you can accomplish more with significantly less code. For example, below is a simple decorator that enables notebook-friendly [patching](https://fastcore.fast.ai/basics.html#Patching):
 
 
-![`@patch` decorator from fastcore](./image/patch.png){fig-align="center" width="600"}
+![`@patch` decorator from fastcore](./posts/2022-07-28-nbdev2/image/patch.png){fig-align="center" width="600"}
 
 
 We believe that this combination of a new developer workflow (nbdev), Python extensions (fastcore), and associated norms form a new dialect of Python that is centered on leveraging its dynamic nature–in contrast to an ever-growing trend toward [static analysis](https://mypy.readthedocs.io/en/stable/).  We suspect that this dialect of Python will be more productive for programmers in many scenarios. We are framing this ecosystem as a “dialect” as it is still very much Python and is approachable by anyone who is familiar with the language. Furthermore, despite nbdev’s notebook workflow, our tools generate plaintext modules that can be navigated and edited with text-based IDEs, allowing programmers to experience the best of both worlds, if they desire. 
