@@ -9,7 +9,12 @@
 <link>https://vanhp.github.io/MachineIntell/tips.html</link>
 <atom:link href="https://vanhp.github.io/MachineIntell/tips.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
+<image>
+<url>https://vanhp.github.io/MachineIntell/images/lion1.jpg</url>
+<title>MachineIntell</title>
+<link>https://vanhp.github.io/MachineIntell/tips.html</link>
+</image>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Sat, 15 Oct 2022 09:52:49 GMT</lastBuildDate>
+<lastBuildDate>Sat, 15 Oct 2022 11:45:46 GMT</lastBuildDate>
 </channel>
 </rss>

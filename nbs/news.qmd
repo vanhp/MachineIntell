@@ -8,5 +8,7 @@ listing:
   filter-ui: false
   categories: true
   feed: true
+news:
+  image: /images/light1.jpg
 page-layout: full
 ---

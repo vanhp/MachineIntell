@@ -1,6 +1,7 @@
 ---
 title: Tutoring
 subtitle:  Learn how to work with  Machine Intelligent
+
 listing:
   sort: "date desc"
   contents: "posts"
@@ -8,5 +9,7 @@ listing:
   filter-ui: false
   categories: true
   feed: true
+ 
 page-layout: full
+image: /images/karma1.jpg
 ---

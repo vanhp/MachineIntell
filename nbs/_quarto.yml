@@ -18,6 +18,7 @@ website:
     left:
       - text: "Home"
         href: index.qmd
+       
       - text: "News"
         href: news.qmd
       - text: "Tips & tricks"
