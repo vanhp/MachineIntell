@@ -8,13 +8,13 @@
 <title>MachineIntell</title>
 <link>https://vanhp.github.io/MachineIntell/tips.html</link>
 <atom:link href="https://vanhp.github.io/MachineIntell/tips.xml" rel="self" type="application/rss+xml"/>
-<description>Try to understand machine intelligent</description>
+<description>Our favorite tool for software engineering productivity--nbdev, now re-written with Quarto</description>
 <image>
 <url>https://vanhp.github.io/MachineIntell/images/lion1.jpg</url>
 <title>MachineIntell</title>
 <link>https://vanhp.github.io/MachineIntell/tips.html</link>
 </image>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Sat, 15 Oct 2022 11:45:46 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Oct 2022 10:44:19 GMT</lastBuildDate>
 </channel>
 </rss>

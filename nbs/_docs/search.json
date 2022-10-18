@@ -126,11 +126,25 @@
     "text": "No matching items"
   },
   {
+    "objectID": "news.html#education",
+    "href": "news.html#education",
+    "title": "Latest News",
+    "section": "Education",
+    "text": "Education\nSan Jose state University Computer Engineering 1989"
+  },
+  {
+    "objectID": "news.html#experience",
+    "href": "news.html#experience",
+    "title": "Latest News",
+    "section": "Experience",
+    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Spet 2012 - April 2018"
+  },
+  {
     "objectID": "tips.html",
     "href": "tips.html",
-    "title": "Tips and Tricks",
+    "title": "Latest tip on Deep Learning training",
     "section": "",
-    "text": "No matching items"
+    "text": "Originally posted on the fast.ai blog"
   },
   {
     "objectID": "tutoring.html",
@@ -145,5 +159,61 @@
     "title": "MachineIntell",
     "section": "",
     "text": "import nbdev"
+  },
+  {
+    "objectID": "news.html#deep-learning-from-fastai-library",
+    "href": "news.html#deep-learning-from-fastai-library",
+    "title": "MachineIntell",
+    "section": "Deep learning from fastai library",
+    "text": "Deep learning from fastai library"
+  },
+  {
+    "objectID": "news.html#natural",
+    "href": "news.html#natural",
+    "title": "Latest News",
+    "section": "Natural",
+    "text": "Natural"
+  },
+  {
+    "objectID": "news.html#natural-language-pro",
+    "href": "news.html#natural-language-pro",
+    "title": "Latest News",
+    "section": "Natural Language Pro",
+    "text": "Natural Language Pro"
+  },
+  {
+    "objectID": "news.html#natural-language-processing-us",
+    "href": "news.html#natural-language-processing-us",
+    "title": "Latest News",
+    "section": "Natural Language Processing us",
+    "text": "Natural Language Processing us"
+  },
+  {
+    "objectID": "news.html#natural-language-processing-using",
+    "href": "news.html#natural-language-processing-using",
+    "title": "Latest News",
+    "section": "Natural Language Processing using",
+    "text": "Natural Language Processing using"
+  },
+  {
+    "objectID": "news.html#natural-language-processing-using-attention",
+    "href": "news.html#natural-language-processing-using-attention",
+    "title": "Latest News",
+    "section": "Natural Language Processing using Attention",
+    "text": "Natural Language Processing using Attention"
+  },
+  {
+    "objectID": "news.html#natural-language-processing",
+    "href": "news.html#natural-language-processing",
+    "title": "Latest News",
+    "section": "Natural Language Processing",
+    "text": "Natural Language Processing"
+  },
+  {
+    "objectID": "tips.html#our-new-secret-weapon-for-productivity",
+    "href": "tips.html#our-new-secret-weapon-for-productivity",
+    "title": "Latest tip on Deep Learning training",
+    "section": "Our new secret weapon for productivity",
+    "text": "Our new secret weapon for productivity\nToday we’re excited to announce that we’ve teamed up with Quarto to give nbdev superpowers. nbdev offers Python programmers a common set of tools for using Jupyter notebooks to:\n\nWrite & distribute software packages\nTest code, and\nAuthor documentation and technical articles\n\nAlthough notebooks are already widely used for once-off exploratory work, it’s less well-known that they are perfectly capable of writing quality software. In fact, we’ve used nbdev for a wide range of software projects over the last three years, including deep learning libraries, API clients, Python language extensions, terminal user interfaces, and more. We discovered that it is not only capable of writing great software but that it has also increased our productivity by 300% or more. With nbdev, developers simply write notebooks with lightweight markup and get high-quality documentation, tests, continuous integration, and packaging for free! Nbdev has allowed us to maintain and scale manyopen source projects. Pull requests are often accompanied by detailed documentation and tests–contributors simply write notebooks.\nThis is why we’re excited to share nbdev v2. It’s rewritten from the ground up, with much-anticipated features including:"
   }
 ]

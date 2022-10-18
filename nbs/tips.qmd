@@ -1,4 +1,33 @@
 ---
+author: [vanh Phom]
+date: 2022-10-18
+image:  /images/code1.jpg
+description: Tip and trick to get Deep learning work as optimum efficiency
+tags: [technical]
+title: Latest tip on Deep Learning training
+---
+
+_[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_
+
+![A single notebook can create a python module, tests, CI, pypi/conda packages, and more.](/images/code1.jpg)
+
+
+## Our new secret weapon for productivity
+
+Today we’re excited to announce that we’ve teamed up with Quarto to give [nbdev](https://nbdev.fast.ai) superpowers. nbdev offers Python programmers a common set of tools for using Jupyter notebooks to:
+
+* Write & distribute software packages
+* Test code, and
+* Author documentation and technical articles
+
+Although notebooks are already widely used for once-off exploratory work, it’s less well-known that they are perfectly capable of writing quality software. In fact, we’ve used nbdev for a wide range of software projects over the last three years, including [deep learning libraries,](https://github.com/fastai/fastai) [API clients](https://github.com/fastai/ghapi), [Python language extensions](https://github.com/fastai/fastcore), [terminal user interfaces](https://github.com/nat/ghtop), and more. We discovered that it is not only capable of writing great software but that it **has also increased our productivity by 300% or more**. With nbdev, developers simply write notebooks with lightweight markup and get high-quality documentation, tests, continuous integration, and packaging for free!  Nbdev has allowed us to maintain and scale many[ open source projects](https://github.com/fastai). Pull requests are often accompanied by detailed documentation and tests–contributors simply write notebooks.
+
+This is why we’re excited to share nbdev v2. It’s rewritten from the ground up, with much-anticipated features including:
+
+
+
+<!-- 
+---
 title: Tips and Tricks
 subtitle: Tips on how to get best result from Machine Intelligent
 image: /images/lion1.jpg
@@ -10,4 +39,4 @@ listing:
   categories: true
   feed: true
 page-layout: full
----
+--- -->
