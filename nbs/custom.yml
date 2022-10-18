@@ -1,0 +1,9 @@
+project:
+  type: website
+  output-dir: _docs
+
+website:
+  title: "Machine Intelligent"
+  site-url: "https://vanhp.github.io/"
+  description: "Understanding Machine Intelligent"
+  repo-url: "https://github.com/machineintell"
