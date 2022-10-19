@@ -1,0 +1,29 @@
+---
+title: News 2
+subtitle: News about Machine Intelligent
+about:
+  template: jolla
+  image: /images/lion1.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+
+
+## Deep learning from fastai library
+
+## Natural Language Processing 

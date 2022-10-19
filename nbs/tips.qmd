@@ -4,7 +4,7 @@ date: 2022-10-18
 image:  /images/code1.jpg
 description: Tip and trick to get Deep learning work as optimum efficiency
 tags: [technical]
-title: Latest tip on Deep Learning training
+title: Tip on training model
 ---
 
 _[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_

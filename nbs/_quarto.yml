@@ -20,12 +20,18 @@ website:
       - text: "Home"
         href: index.qmd
        
-      - text: "News"
-        href: news.qmd
-      - text: "Tips & tricks"
-        href: tips.qmd
-      - text: "Tutoring"  
-        href: tutoring.qmd
+      # - text: "News"
+      #   href: news.qmd
+      # - text: "Tips & tricks"
+      #   href: tips.qmd
+      # - text: "Tutorials"  
+      #   href: tutoring.qmd
+      
+      - sidebar:news
+      - sidebar:tip
+      - sidebar:tutorial
+
+    right:
       - text: "Help"
         menu:
           - text: "Report an Issue"
@@ -38,8 +44,6 @@ website:
             icon: question-circle
             href: getting_started.ipynb#faq
 
-
-    right:
       - text: Blog
         menu:
           - text: "Posts"
@@ -53,20 +57,48 @@ website:
         href: https://twitter.com/fastdotai
         aria-label: Fast.ai Twitter
 
-
-
   sidebar:
-    style: docked
-    search: true
-    type: "dark"
-    background: "#742787"
-    foreground: "#b7e087"
-    pinned: false
-    # contents: 
-    #   - news
-    #   - tip & trick
-    #   - tutoring
-    #   - help
+    - id: news
+
+      style: "docked"      
+      type: "dark"
+      background: "#742787"
+      foreground: "#b7e087"
+
+      title: "News"
+      contents:
+        - news.qmd
+        - news1.qmd
+        - news2.qmd
+
+    - id: tip
+      title: "Tip & Trick"
+      contents:
+        - tips.qmd
+        # navigation items
+
+    - id: tutorial
+      title: "Tutorials"
+      contents:
+        - tutoring.qmd
+        - tutoring1.qmd
+        - tutoring2.qmd
+      # navigation items
+
+
+
+  # sidebar:
+  #   style: docked
+  #   search: true
+  #   type: "dark"
+  #   background: "#742787"
+  #   foreground: "#b7e087"
+  #   pinned: false
+  #   # contents: 
+  #   #   - news
+  #   #   - tip & trick
+  #   #   - tutoring
+  #   #   - help
    
 
 metadata-files: [nbdev.yml, sidebar.yml]

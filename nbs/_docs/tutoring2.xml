@@ -6,10 +6,15 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/news.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/news.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutoring2.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutoring2.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
+<image>
+<url>https://vanhp.github.io/MachineIntell/images/karma1.jpg</url>
+<title>MachineIntell</title>
+<link>https://vanhp.github.io/MachineIntell/tutoring2.html</link>
+</image>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Wed, 19 Oct 2022 09:22:19 GMT</lastBuildDate>
+<lastBuildDate>Wed, 19 Oct 2022 09:22:57 GMT</lastBuildDate>
 </channel>
 </rss>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vanhp.github.io/MachineIntell/blog/index.html</loc>
-    <lastmod>2022-10-18T11:31:24.753Z</lastmod>
+    <lastmod>2022-10-19T09:25:46.334Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/about.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2022-10-19T03:47:52.298Z</lastmod>
+    <lastmod>2022-10-19T09:25:29.970Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
@@ -18,18 +18,34 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/news.html</loc>
-    <lastmod>2022-10-19T03:49:20.313Z</lastmod>
+    <lastmod>2022-10-19T09:22:19.546Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tips.html</loc>
-    <lastmod>2022-10-19T03:49:37.757Z</lastmod>
+    <lastmod>2022-10-19T09:25:09.208Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutoring.html</loc>
-    <lastmod>2022-10-19T04:26:42.614Z</lastmod>
+    <lastmod>2022-10-19T09:22:47.379Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/getting_started.html</loc>
     <lastmod>2022-10-18T10:56:05.090Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutoring1.html</loc>
+    <lastmod>2022-10-19T09:22:53.540Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutoring2.html</loc>
+    <lastmod>2022-10-19T09:22:57.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/news1.html</loc>
+    <lastmod>2022-10-19T09:22:25.971Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/news2.html</loc>
+    <lastmod>2022-10-19T09:22:36.107Z</lastmod>
   </url>
 </urlset>

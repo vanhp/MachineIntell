@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: Tutoring 1
 subtitle:  Learn the tools (Math) to use for Machine Intelligent
 
 listing:
@@ -11,9 +11,9 @@ listing:
   feed: true
  
 page-layout: full
-image: /images/karma1.jpg
+image: /images/gradient-descent3.jpg
 ---
-![](/images/karma1.jpg)
+![](/images/jujy1.jpg)
 
 ## Linear Algebra for Maching Learning
 Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.
