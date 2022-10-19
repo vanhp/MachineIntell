@@ -2,7 +2,7 @@ project:
   output-dir: _docs
 
 website:
-  title: "MachineIntell"
+  title: MachineIntell
   site-url: "https://vanhp.github.io/MachineIntell"
   description: "Try to understand machine intelligent"
   repo-branch: main

@@ -15,6 +15,7 @@ website:
     background: primary
     search: true
     collapse-below: lg
+    logo: /images/gradientv1scale2.jpg
     left:
       - text: "Home"
         href: index.qmd
@@ -55,13 +56,17 @@ website:
 
 
   sidebar:
-    style: floating
-    # contents:
-    #   - auto: "/*.ipynb"
-    #   - section: Tutorials
-    #     contents: tutorials
-    #   - section: Explanations
-    #     contents: explanations
-    
+    style: docked
+    search: true
+    type: "dark"
+    background: "#742787"
+    foreground: "#b7e087"
+    pinned: false
+    # contents: 
+    #   - news
+    #   - tip & trick
+    #   - tutoring
+    #   - help
+   
 
 metadata-files: [nbdev.yml, sidebar.yml]

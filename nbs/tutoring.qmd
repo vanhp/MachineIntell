@@ -1,6 +1,6 @@
 ---
 title: Tutoring
-subtitle:  Learn how to work with  Machine Intelligent
+subtitle:  Learn the tools (Math) to use for Machine Intelligent
 
 listing:
   sort: "date desc"
@@ -13,3 +13,29 @@ listing:
 page-layout: full
 image: /images/karma1.jpg
 ---
+![](/images/karma1.jpg)
+
+## Linear Algebra for Maching Learning
+Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.
+
+Since input data must be convert to matrices form for the machine to operate on using Matix operation rules.
+One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this "@" e.g.
+$$ A@B $$
+
+::: {.callout-tip}
+
+matrix multiplication $AxB$
+:::
+
+- Vector
+- Matrix
+
+
+
+## Differential Equation In Machine Learning
+
+On the other hand, Diffential Equation is used in calculate **back propragation**. It's used inconjunction with *chain-rule* to adjust the input in order to getting closer to actual value
+
+- Differential Equation
+
+   $$\frac{du}{dt} = pu  $$

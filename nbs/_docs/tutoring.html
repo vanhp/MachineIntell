@@ -94,22 +94,25 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="MachineIntell" href="tutoring.xml"><meta property="og:title" content="MachineIntell - Tutoring">
-<meta property="og:description" content="Learn how to work with Machine Intelligent">
+<meta property="og:description" content="Learn the tools (Math) to use for Machine Intelligent">
 <meta property="og:image" content="https://vanhp.github.io/MachineIntell/images/karma1.jpg">
 <meta property="og:site-name" content="MachineIntell">
 <meta name="twitter:title" content="MachineIntell - Tutoring">
-<meta name="twitter:description" content="Learn how to work with Machine Intelligent">
+<meta name="twitter:description" content="Learn the tools (Math) to use for Machine Intelligent">
 <meta name="twitter:image" content="https://vanhp.github.io/MachineIntell/images/karma1.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/gradientv1scale2.jpg" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MachineIntell</span>
     </a>
@@ -192,7 +195,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -253,7 +261,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linear-algebra-for-maching-learning" id="toc-linear-algebra-for-maching-learning" class="nav-link active" data-scroll-target="#linear-algebra-for-maching-learning">Linear Algebra for Maching Learning</a></li>
+  <li><a href="#differential-equation-in-machine-learning" id="toc-differential-equation-in-machine-learning" class="nav-link" data-scroll-target="#differential-equation-in-machine-learning">Differential Equation In Machine Learning</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -261,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Tutoring</h1>
-<p class="subtitle lead">Learn how to work with Machine Intelligent</p>
+<p class="subtitle lead">Learn the tools (Math) to use for Machine Intelligent</p>
 </div>
 
 
@@ -275,9 +290,40 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p><img src="./images/karma1.jpg" class="img-fluid"></p>
+<section id="linear-algebra-for-maching-learning" class="level2">
+<h2 class="anchored" data-anchor-id="linear-algebra-for-maching-learning">Linear Algebra for Maching Learning</h2>
+<p>Understanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.</p>
+<p>Since input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. <span class="math display">\[ A@B \]</span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>matrix multiplication <span class="math inline">\(AxB\)</span></p>
+</div>
+</div>
+<ul>
+<li>Vector</li>
+<li>Matrix</li>
+</ul>
+</section>
+<section id="differential-equation-in-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="differential-equation-in-machine-learning">Differential Equation In Machine Learning</h2>
+<p>On the other hand, Diffential Equation is used in calculate <strong>back propragation</strong>. It’s used inconjunction with <em>chain-rule</em> to adjust the input in order to getting closer to actual value</p>
+<ul>
+<li><p>Differential Equation</p>
+<p><span class="math display">\[\frac{du}{dt} = pu  \]</span></p></li>
+</ul>
 
 
 
+</section>
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">

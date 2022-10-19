@@ -11,3 +11,7 @@ listing:
 page-layout: full
 image: /images/jujy1.jpg
 ---
+
+Machine Intelligent and machine learning Technology
+
+![](/images/lion2.jpg)
