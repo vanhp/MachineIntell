@@ -1,9 +1,9 @@
 ---
-title: News 1
+title: Latest News
 subtitle: News about Machine Intelligent
 about:
   template: marquee
-  image: ./images/light1.jpg
+  image: ./images/lotus1.jpg
   links:
     - icon: twitter
       text: twitter
@@ -22,8 +22,6 @@ listing:
 page-layout: full
 ---
 
+## Help from expert
 
-
-## Deep learning from fastai library
-
-## Natural Language Processing 
+Here you can find helping hand when you need it

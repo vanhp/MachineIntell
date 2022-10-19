@@ -142,7 +142,7 @@
   {
     "objectID": "tips.html",
     "href": "tips.html",
-    "title": "Tip on training model",
+    "title": "Tips and Tricks",
     "section": "",
     "text": "Originally posted on the fast.ai blog"
   },
@@ -212,7 +212,7 @@
   {
     "objectID": "tips.html#our-new-secret-weapon-for-productivity",
     "href": "tips.html#our-new-secret-weapon-for-productivity",
-    "title": "Tip on training model",
+    "title": "Tips and Tricks",
     "section": "Our new secret weapon for productivity",
     "text": "Our new secret weapon for productivity\nToday we’re excited to announce that we’ve teamed up with Quarto to give nbdev superpowers. nbdev offers Python programmers a common set of tools for using Jupyter notebooks to:\n\nWrite & distribute software packages\nTest code, and\nAuthor documentation and technical articles\n\nAlthough notebooks are already widely used for once-off exploratory work, it’s less well-known that they are perfectly capable of writing quality software. In fact, we’ve used nbdev for a wide range of software projects over the last three years, including deep learning libraries, API clients, Python language extensions, terminal user interfaces, and more. We discovered that it is not only capable of writing great software but that it has also increased our productivity by 300% or more. With nbdev, developers simply write notebooks with lightweight markup and get high-quality documentation, tests, continuous integration, and packaging for free! Nbdev has allowed us to maintain and scale manyopen source projects. Pull requests are often accompanied by detailed documentation and tests–contributors simply write notebooks.\nThis is why we’re excited to share nbdev v2. It’s rewritten from the ground up, with much-anticipated features including:"
   },
@@ -278,5 +278,19 @@
     "title": "News 2",
     "section": "",
     "text": "Using fastai library is the fastest way to get your Machine Learning working with less head ache"
+  },
+  {
+    "objectID": "tutoring1.html",
+    "href": "tutoring1.html",
+    "title": "Tutoring 1",
+    "section": "",
+    "text": "Learn the tools (Math) to use for Machine Intelligent"
+  },
+  {
+    "objectID": "help.html",
+    "href": "help.html",
+    "title": "Latest News",
+    "section": "",
+    "text": "No matching items"
   }
 ]

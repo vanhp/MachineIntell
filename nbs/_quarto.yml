@@ -31,9 +31,11 @@ website:
       - sidebar:tip
       - sidebar:tutorial
 
-    right:
-      - text: "Help"
-        menu:
+    right:  
+      - text: "Help"   
+        menu:   
+          - text: "Helping hand"     
+            href: help.qmd
           - text: "Report an Issue"
             icon: bug
             href: https://github.com/fastai/nbdev/issues
@@ -43,6 +45,7 @@ website:
           - text: "FAQ"
             icon: question-circle
             href: getting_started.ipynb#faq
+          
 
       - text: Blog
         menu:
@@ -84,6 +87,7 @@ website:
         - tutoring1.qmd
         - tutoring2.qmd
       # navigation items
+
 
 
 

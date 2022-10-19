@@ -1,7 +1,16 @@
 ---
 title: Tutoring 2
-subtitle:  Learn the tools (Math) to use for Machine Intelligent
-
+subtitle: Natural Language Process 
+about:
+  template: marquee
+  image: ./images/ai-pic7cp.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
 listing:
   sort: "date desc"
   contents: "posts"
@@ -9,10 +18,10 @@ listing:
   filter-ui: false
   categories: true
   feed: true
- 
+
 page-layout: full
-image: /images/karma1.jpg
 ---
+
 ![](/images/gradientv12.jpg)
 
 ## Linear Algebra for Maching Learning

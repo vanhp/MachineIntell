@@ -1,7 +1,16 @@
 ---
 title: Tutorials
-subtitle:  Learn the tools (Math) to use for Machine Intelligent
-
+subtitle: Learn the tools (Math) to use for Machine Intelligent
+about:
+  template: marquee
+  image: ./images/ai-pic7cp.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
 listing:
   sort: "date desc"
   contents: "posts"
@@ -9,10 +18,12 @@ listing:
   filter-ui: false
   categories: true
   feed: true
- 
+
 page-layout: full
-image: /images/karma1.jpg
 ---
+
+
+
 ![](/images/karma1.jpg)
 
 ## Linear Algebra for Maching Learning

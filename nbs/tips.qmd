@@ -1,11 +1,40 @@
 ---
+title: Tips and Tricks
+subtitle: Learn the tips and tricks from veterans in Machine Learning
+about:
+  template: marquee
+  image: ./images/lion1.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+
+
+
+
+<!-- 
+---
 author: [vanh Phom]
 date: 2022-10-18
 image:  /images/code1.jpg
 description: Tip and trick to get Deep learning work as optimum efficiency
 tags: [technical]
 title: Tip on training model
----
+--- -->
 
 _[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_
 
