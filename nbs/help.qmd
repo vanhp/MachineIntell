@@ -3,7 +3,7 @@ title: Latest News
 subtitle: News about Machine Intelligent
 about:
   template: marquee
-  image: ./images/lotus1.jpg
+  image: ./images/lotus3.jpg
   links:
     - icon: twitter
       text: twitter

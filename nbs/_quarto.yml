@@ -20,13 +20,6 @@ website:
       - text: "Home"
         href: index.qmd
        
-      # - text: "News"
-      #   href: news.qmd
-      # - text: "Tips & tricks"
-      #   href: tips.qmd
-      # - text: "Tutorials"  
-      #   href: tutoring.qmd
-      
       - sidebar:news
       - sidebar:tip
       - sidebar:tutorial
@@ -89,20 +82,6 @@ website:
       # navigation items
 
 
-
-
-  # sidebar:
-  #   style: docked
-  #   search: true
-  #   type: "dark"
-  #   background: "#742787"
-  #   foreground: "#b7e087"
-  #   pinned: false
-  #   # contents: 
-  #   #   - news
-  #   #   - tip & trick
-  #   #   - tutoring
-  #   #   - help
    
 
 metadata-files: [nbdev.yml, sidebar.yml]
