@@ -2,8 +2,8 @@
 title: News 1
 subtitle: News about Machine Intelligent
 about:
-  template: jolla
-  image: /images/lotus1.jpg
+  template: marquee
+  image: ./images/lotus1.jpg
   links:
     - icon: twitter
       text: twitter

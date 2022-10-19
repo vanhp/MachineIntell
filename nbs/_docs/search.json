@@ -271,5 +271,12 @@
     "title": "News 2",
     "section": "Natural Language Processing",
     "text": "Natural Language Processing"
+  },
+  {
+    "objectID": "news2.html",
+    "href": "news2.html",
+    "title": "News 2",
+    "section": "",
+    "text": "Using fastai library is the fastest way to get your Machine Learning working with less head ache"
   }
 ]

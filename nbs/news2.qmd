@@ -2,7 +2,7 @@
 title: News 2
 subtitle: News about Machine Intelligent
 about:
-  template: jolla
+  template: marquee
   image: /images/lion1.jpg
   links:
     - icon: twitter
@@ -25,5 +25,7 @@ page-layout: full
 
 
 ## Deep learning from fastai library
+
+Using fastai library is the fastest way to get your Machine Learning working with less head ache
 
 ## Natural Language Processing 
