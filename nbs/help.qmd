@@ -1,6 +1,6 @@
 ---
-title: Latest News
-subtitle: News about Machine Intelligent
+title: Helping Hand
+subtitle: Advice from the expert in the field
 about:
   template: marquee
   image: ./images/lotus3.jpg
