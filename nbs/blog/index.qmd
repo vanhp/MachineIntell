@@ -36,6 +36,7 @@ We have piloted nbdev at several companies. We were delighted to receive the fol
 
 
 ::: {layout="[70,30]"}
+
 **[David Berg](https://www.linkedin.com/in/david-j-berg/), on using nbdev for internal documentation at Netflix:** 
 "Prior to using nbdev, documentation was the most cumbersome aspect of our software development process… Using nbdev allows us to spend more time creating rich prose around the many code snippets guaranteeing the whole experience is robust. nbdev has turned what was once a chore into a natural extension of the notebook-based testing we were already doing." 
 

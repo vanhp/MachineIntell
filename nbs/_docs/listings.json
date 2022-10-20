@@ -34,5 +34,45 @@
   {
     "listing": "/help.html",
     "items": []
+  },
+  {
+    "listing": "/visions.html",
+    "items": []
+  },
+  {
+    "listing": "/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/tutoring.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/visions.html",
+    "items": []
+  },
+  {
+    "listing": "/tip/tips.html",
+    "items": []
+  },
+  {
+    "listing": "/help/helps.html",
+    "items": []
+  },
+  {
+    "listing": "/news/newsall.html",
+    "items": []
+  },
+  {
+    "listing": "/news/news1.html",
+    "items": []
+  },
+  {
+    "listing": "/news/news2.html",
+    "items": []
   }
 ]

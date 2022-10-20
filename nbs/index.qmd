@@ -1,6 +1,18 @@
 ---
 title: Machine intelligent
 subtitle: News, tips, tutoring, and commentary about all things Machine Intelligent
+about:
+  template: marquee
+  image: ./images/ai2.jpg
+ 
+  image-shape: rounded
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
 listing:
   sort: "date desc"
   contents: "posts"
@@ -8,9 +20,12 @@ listing:
   filter-ui: false
   categories: true
   feed: true
+
 page-layout: full
-image: /images/jujy1.jpg
 ---
+
+
+
 
 Machine Intelligent and machine learning Technology
 

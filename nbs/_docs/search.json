@@ -292,5 +292,124 @@
     "title": "Helping Hand",
     "section": "",
     "text": "No matching items"
+  },
+  {
+    "objectID": "visions.html#linear-algebra-for-maching-learning",
+    "href": "visions.html#linear-algebra-for-maching-learning",
+    "title": "Machine Vision",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "visions.html#differential-equation-in-machine-learning",
+    "href": "visions.html#differential-equation-in-machine-learning",
+    "title": "Machine Vision",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "nlp.html#linear-algebra-for-maching-learning",
+    "href": "nlp.html#linear-algebra-for-maching-learning",
+    "title": "NLP",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "nlp.html#differential-equation-in-machine-learning",
+    "href": "nlp.html#differential-equation-in-machine-learning",
+    "title": "NLP",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
+    "title": "Tutorials",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/tutoring.html#differential-equation-in-machine-learning",
+    "href": "tutorial/tutoring.html#differential-equation-in-machine-learning",
+    "title": "Tutorials",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/nlp.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/nlp.html#linear-algebra-for-maching-learning",
+    "title": "NLP",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/nlp.html#differential-equation-in-machine-learning",
+    "href": "tutorial/nlp.html#differential-equation-in-machine-learning",
+    "title": "NLP",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/visions.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/visions.html#linear-algebra-for-maching-learning",
+    "title": "Machine Vision",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/visions.html#differential-equation-in-machine-learning",
+    "href": "tutorial/visions.html#differential-equation-in-machine-learning",
+    "title": "Machine Vision",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tip/tips.html",
+    "href": "tip/tips.html",
+    "title": "Tips and Tricks",
+    "section": "",
+    "text": "Originally posted on the fast.ai blog"
+  },
+  {
+    "objectID": "tip/tips.html#our-new-secret-weapon-for-productivity",
+    "href": "tip/tips.html#our-new-secret-weapon-for-productivity",
+    "title": "Tips and Tricks",
+    "section": "Our new secret weapon for productivity",
+    "text": "Our new secret weapon for productivity\nToday we’re excited to announce that we’ve teamed up with Quarto to give nbdev superpowers. nbdev offers Python programmers a common set of tools for using Jupyter notebooks to:\n\nWrite & distribute software packages\nTest code, and\nAuthor documentation and technical articles\n\nAlthough notebooks are already widely used for once-off exploratory work, it’s less well-known that they are perfectly capable of writing quality software. In fact, we’ve used nbdev for a wide range of software projects over the last three years, including deep learning libraries, API clients, Python language extensions, terminal user interfaces, and more. We discovered that it is not only capable of writing great software but that it has also increased our productivity by 300% or more. With nbdev, developers simply write notebooks with lightweight markup and get high-quality documentation, tests, continuous integration, and packaging for free! Nbdev has allowed us to maintain and scale manyopen source projects. Pull requests are often accompanied by detailed documentation and tests–contributors simply write notebooks.\nThis is why we’re excited to share nbdev v2. It’s rewritten from the ground up, with much-anticipated features including:"
+  },
+  {
+    "objectID": "help/helps.html",
+    "href": "help/helps.html",
+    "title": "Helping Hand",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "news/newsall.html#natural-language-processing",
+    "href": "news/newsall.html#natural-language-processing",
+    "title": "Latest News",
+    "section": "Natural Language Processing",
+    "text": "Natural Language Processing"
+  },
+  {
+    "objectID": "news/news1.html#natural-language-processing",
+    "href": "news/news1.html#natural-language-processing",
+    "title": "News 1",
+    "section": "Natural Language Processing",
+    "text": "Natural Language Processing"
+  },
+  {
+    "objectID": "news/news2.html",
+    "href": "news/news2.html",
+    "title": "News 2",
+    "section": "",
+    "text": "Using fastai library is the fastest way to get your Machine Learning working with less head ache"
+  },
+  {
+    "objectID": "news/news2.html#natural-language-processing",
+    "href": "news/news2.html#natural-language-processing",
+    "title": "News 2",
+    "section": "Natural Language Processing",
+    "text": "Natural Language Processing"
   }
 ]

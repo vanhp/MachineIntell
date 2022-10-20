@@ -3,7 +3,7 @@ title: Helping Hand
 subtitle: Advice from the expert in the field
 about:
   template: marquee
-  image: ./images/lotus3.jpg
+  image: ../images/lotus3.jpg
   image-width: 37em
   image-shape: rectangle
   links:

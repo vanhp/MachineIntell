@@ -3,7 +3,9 @@ title: Tips and Tricks
 subtitle: Learn the tips and tricks from veterans in Machine Learning
 about:
   template: marquee
-  image: ./images/lion1.jpg
+  image: ../images/lion1.jpg
+ 
+  image-shape: rounded
   links:
     - icon: twitter
       text: twitter

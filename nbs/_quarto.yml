@@ -24,11 +24,26 @@ website:
       - sidebar:tip
       - sidebar:tutorial
 
-    right:  
       - text: "Help"   
         menu:   
           - text: "Helping hand"     
-            href: help.qmd
+            href: ./help/helps.qmd
+          - text: "Report an Issue"
+            icon: bug
+            href: https://github.com/fastai/nbdev/issues
+          - text: "Fast.ai Forum"
+            icon: chat-right-text
+            href: https://forums.fast.ai/
+          - text: "FAQ"
+            icon: question-circle
+            href: getting_started.ipynb#faq
+
+
+    right:                  
+      - text: "Resources"
+        menu:   
+          - text: "Helping hand"     
+            href: ./help/helps.qmd
           - text: "Report an Issue"
             icon: bug
             href: https://github.com/fastai/nbdev/issues
@@ -39,7 +54,6 @@ website:
             icon: question-circle
             href: getting_started.ipynb#faq
           
-
       - text: Blog
         menu:
           - text: "Posts"
@@ -63,22 +77,22 @@ website:
 
       title: "News"
       contents:
-        - news.qmd
-        - news1.qmd
-        - news2.qmd
+        - ./news/newsall.qmd
+        - ./news/news1.qmd
+        - ./news/news2.qmd
 
     - id: tip
       title: "Tip & Trick"
       contents:
-        - tips.qmd
+        - ./tip/tips.qmd
         # navigation items
 
     - id: tutorial
       title: "Tutorials"
       contents:
-        - tutoring.qmd
-        - tutoring1.qmd
-        - tutoring2.qmd
+        - ./tutorial/tutoring.qmd
+        - ./tutorial/visions.qmd
+        - ./tutorial/nlp.qmd
       # navigation items
 
 

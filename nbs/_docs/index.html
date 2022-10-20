@@ -35,7 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -95,12 +94,10 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="MachineIntell" href="index.xml"><meta property="og:title" content="MachineIntell - Machine intelligent">
 <meta property="og:description" content="News, tips, tutoring, and commentary about all things Machine Intelligent">
-<meta property="og:image" content="https://vanhp.github.io/MachineIntell/images/jujy1.jpg">
 <meta property="og:site-name" content="MachineIntell">
 <meta name="twitter:title" content="MachineIntell - Machine intelligent">
 <meta name="twitter:description" content="News, tips, tutoring, and commentary about all things Machine Intelligent">
-<meta name="twitter:image" content="https://vanhp.github.io/MachineIntell/images/jujy1.jpg">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -129,15 +126,15 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
         <li>
-    <a class="dropdown-item" href="./news.html">
+    <a class="dropdown-item" href="./news/newsall.html">
  <span class="dropdown-text">Latest News</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./news1.html">
+    <a class="dropdown-item" href="./news/news1.html">
  <span class="dropdown-text">News 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./news2.html">
+    <a class="dropdown-item" href="./news/news2.html">
  <span class="dropdown-text">News 2</span></a>
   </li>  
     </ul>
@@ -146,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tip--trick" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tip &amp; Trick</a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
         <li>
-    <a class="dropdown-item" href="./tips.html">
+    <a class="dropdown-item" href="./tip/tips.html">
  <span class="dropdown-text">Tips and Tricks</span></a>
   </li>  
     </ul>
@@ -155,16 +152,16 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tutorials</a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="./tutoring.html">
+    <a class="dropdown-item" href="./tutorial/tutoring.html">
  <span class="dropdown-text">Tutorials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutoring1.html">
- <span class="dropdown-text">Tutoring 1</span></a>
+    <a class="dropdown-item" href="./tutorial/visions.html">
+ <span class="dropdown-text">Machine Vision</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutoring2.html">
- <span class="dropdown-text">Tutoring 2</span></a>
+    <a class="dropdown-item" href="./tutorial/nlp.html">
+ <span class="dropdown-text">NLP</span></a>
   </li>  
     </ul>
   </li>
@@ -174,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">Help</a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-help">    
         <li>
-    <a class="dropdown-item" href="./help.html">
+    <a class="dropdown-item" href="./help/helps.html">
  <span class="dropdown-text">Helping hand</span></a>
   </li>  
         <li>
@@ -260,20 +257,14 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./news.html" class="sidebar-item-text sidebar-link">Latest News</a>
-  </div>
-</li>
+  news.qmd
+  </li>
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tips.html" class="sidebar-item-text sidebar-link">Tips and Tricks</a>
-  </div>
-</li>
+  tips.qmd
+  </li>
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tutoring.html" class="sidebar-item-text sidebar-link">Tutorials</a>
-  </div>
-</li>
+  tutoring.qmd
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">blog</a>
@@ -297,39 +288,45 @@ ul.task-list li input[type="checkbox"] {
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-about-marquee column-body">
+  <div class="about-image-container">
+    <img src="./images/ai2.jpg" class="about-image
+  rounded " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Machine intelligent</h1>
 <p class="subtitle lead">News, tips, tutoring, and commentary about all things Machine Intelligent</p>
 </div>
-
-
-
 <div class="quarto-title-meta">
-
-    
-    
   </div>
-  
-
-</header>
-
+</header> <main class="content column-body" id="quarto-document-content">
 <p>Machine Intelligent and machine learning Technology</p>
 <p><img src="./images/lion2.jpg" class="img-fluid"></p>
 
 
-
-
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div></main> 
+    <div class="about-footer"><div class="about-links">
+  <a href="https://twitter.com" class="about-link">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">twitter</span>
+  </a>
+  <a href="https://github.com" class="about-link">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+</div>
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -350,13 +347,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
