@@ -411,5 +411,82 @@
     "title": "News 2",
     "section": "Natural Language Processing",
     "text": "Natural Language Processing"
+  },
+  {
+    "objectID": "tutorial/nlps/nlp.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/nlps/nlp.html#linear-algebra-for-maching-learning",
+    "title": "NLP",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/nlps/nlp.html#differential-equation-in-machine-learning",
+    "href": "tutorial/nlps/nlp.html#differential-equation-in-machine-learning",
+    "title": "NLP",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/visions/vision.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/visions/vision.html#linear-algebra-for-maching-learning",
+    "title": "Machine Vision",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/visions/vision.html#differential-equation-in-machine-learning",
+    "href": "tutorial/visions/vision.html#differential-equation-in-machine-learning",
+    "title": "Machine Vision",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/math/linearalgebra/lna1.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/math/linearalgebra/lna1.html#linear-algebra-for-maching-learning",
+    "title": "Linear Algebra",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/math/linearalgebra/lna1.html#differential-equation-in-machine-learning",
+    "href": "tutorial/math/linearalgebra/lna1.html#differential-equation-in-machine-learning",
+    "title": "Linear Algebra",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/math/diffEq/diffeq1.html#linear-algebra-for-maching-learning",
+    "title": "Differential Equation",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning",
+    "href": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning",
+    "title": "Differential Equation",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/math/maths.html#linear-algebra-for-maching-learning",
+    "href": "tutorial/math/maths.html#linear-algebra-for-maching-learning",
+    "title": "Mathematic",
+    "section": "Linear Algebra for Maching Learning",
+    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
+  },
+  {
+    "objectID": "tutorial/math/maths.html#differential-equation-in-machine-learning",
+    "href": "tutorial/math/maths.html#differential-equation-in-machine-learning",
+    "title": "Mathematic",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "resources/resource.html",
+    "href": "resources/resource.html",
+    "title": "Resources",
+    "section": "",
+    "text": "No matching items"
   }
 ]

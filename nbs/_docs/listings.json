@@ -74,5 +74,29 @@
   {
     "listing": "/news/news2.html",
     "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/visions/vision.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/linearalgebra/lna1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/diffeq1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/maths.html",
+    "items": []
+  },
+  {
+    "listing": "/resources/resource.html",
+    "items": []
   }
 ]

@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/news/newsall.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/news/newsall.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Thu, 20 Oct 2022 10:59:10 GMT</lastBuildDate>
+<lastBuildDate>Thu, 20 Oct 2022 11:04:56 GMT</lastBuildDate>
 </channel>
 </rss>

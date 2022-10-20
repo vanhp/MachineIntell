@@ -1,9 +1,9 @@
 ---
-title: Helping Hand
-subtitle: Advice from the expert in the field
+title: Resources
+subtitle: Where to find more info
 about:
   template: marquee
-  image: ../images/karma1.jpg
+  image: ../images/lotus3.jpg
   image-width: 37em
   image-shape: rectangle
   links:

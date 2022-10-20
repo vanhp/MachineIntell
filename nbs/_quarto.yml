@@ -42,8 +42,8 @@ website:
     right:                  
       - text: "Resources"
         menu:   
-          - text: "Helping hand"     
-            href: ./help/helps.qmd
+          - text: "More info"     
+            href: ./resources/resource.qmd
           - text: "Report an Issue"
             icon: bug
             href: https://github.com/fastai/nbdev/issues
@@ -91,9 +91,13 @@ website:
       title: "Tutorials"
       contents:
         - ./tutorial/tutoring.qmd
-        - ./tutorial/visions.qmd
-        - ./tutorial/nlp.qmd
-      # navigation items
+        - ./tutorial/visions/vision.qmd
+        - ./tutorial/nlps/nlp.qmd
+        - text: "Math"
+          contents:
+            - ./tutorial/math/linearalgebra/lna1.qmd
+            - ./tutorial/math/diffEq/diffeq1.qmd
+            # navigation items
 
 
    

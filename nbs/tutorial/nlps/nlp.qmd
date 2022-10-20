@@ -1,9 +1,9 @@
 ---
-title: Machine Vision
-subtitle: Machine Vision Technique
+title: NLP
+subtitle: Natural Language Process 
 about:
   template: marquee
-  image: ../images/ai-pic7cp.jpg
+  image: /../images/ai-pic7cp.jpg
   links:
     - icon: twitter
       text: twitter
@@ -22,8 +22,7 @@ listing:
 page-layout: full
 ---
 
-
-![](/images/jujy1.jpg)
+![](/images/gradientv12.jpg)
 
 ## Linear Algebra for Maching Learning
 Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.
