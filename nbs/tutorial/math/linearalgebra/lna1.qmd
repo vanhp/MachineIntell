@@ -3,7 +3,7 @@ title: Linear Algebra
 subtitle: Linear Algebra in Machine Learning
 about:
   template: marquee
-  image: /../images/ai-pic7cp.jpg
+  image: /../../images/ai-pic7cp.jpg
   links:
     - icon: twitter
       text: twitter

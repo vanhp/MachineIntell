@@ -3,7 +3,7 @@ title: Machine Vision
 subtitle: Machine Vision Technique
 about:
   template: marquee
-  image: /../images/ai-pic7cp.jpg
+  image: ../../images/ai-pic7cp.jpg
   links:
     - icon: twitter
       text: twitter

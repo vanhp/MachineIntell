@@ -3,7 +3,7 @@ title: Differential Equation
 subtitle: Differential Equation in Machine Learning
 about:
   template: marquee
-  image: /../images/ai-pic7cp.jpg
+  image: /../../images/ai-pic7cp.jpg
   links:
     - icon: twitter
       text: twitter
