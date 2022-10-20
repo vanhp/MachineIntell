@@ -3,7 +3,7 @@ title: News 1
 subtitle: News about Machine Intelligent
 about:
   template: marquee
-  image: ./images/light1.jpg
+  image: ../images/light1.jpg
   links:
     - icon: twitter
       text: twitter
