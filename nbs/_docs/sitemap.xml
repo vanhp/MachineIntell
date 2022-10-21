@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2022-10-21T07:39:08.271Z</lastmod>
+    <lastmod>2022-10-21T08:04:06.536Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/tutoring.html</loc>
-    <lastmod>2022-10-20T11:18:29.814Z</lastmod>
+    <lastmod>2022-10-21T08:06:32.224Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlp.html</loc>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/nlp.html</loc>
-    <lastmod>2022-10-21T07:39:21.717Z</lastmod>
+    <lastmod>2022-10-21T08:08:44.055Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/visions/vision.html</loc>
@@ -115,5 +115,9 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/resources/resource.html</loc>
     <lastmod>2022-10-20T11:05:47.791Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.html</loc>
+    <lastmod>2022-10-21T08:20:50.165Z</lastmod>
   </url>
 </urlset>

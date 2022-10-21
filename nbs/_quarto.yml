@@ -93,6 +93,10 @@ website:
         - ./tutorial/tutoring.qmd
         - ./tutorial/visions/vision.qmd
         - ./tutorial/nlps/nlp.qmd
+        - text: "NLP"
+          contents:
+            - ./tutorial/nlps/rnn.qmd
+            
         - text: "Math"
           contents:
             - ./tutorial/math/linearalgebra/lna1.qmd

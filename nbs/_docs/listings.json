@@ -98,5 +98,9 @@
   {
     "listing": "/resources/resource.html",
     "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/rnn.html",
+    "items": []
   }
 ]
