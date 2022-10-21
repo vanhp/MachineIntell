@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MachineIntell - Recurrent Neural Network (RNN)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="rnn.xml"><meta property="og:title" content="MachineIntell - Recurrent Neural Network (RNN)">
+<meta property="og:description" content="Looking under the hood of RNN">
+<meta property="og:site-name" content="MachineIntell">
+<meta name="twitter:title" content="MachineIntell - Recurrent Neural Network (RNN)">
+<meta name="twitter:description" content="Looking under the hood of RNN">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/gradientv1scale2.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">MachineIntell</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
+        <li>
+    <a class="dropdown-item" href="../../news/newsall.html">
+ <span class="dropdown-text">Latest News</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../news/news1.html">
+ <span class="dropdown-text">News 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../news/news2.html">
+ <span class="dropdown-text">News 2</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tip--trick" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tip &amp; Trick</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
+        <li>
+    <a class="dropdown-item" href="../../tip/tips.html">
+ <span class="dropdown-text">Tips and Tricks</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tutorials</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../tutorial/tutoring.html">
+ <span class="dropdown-text">Tutorials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorial/visions/vision.html">
+ <span class="dropdown-text">Machine Vision</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorial/nlps/nlp.html">
+ <span class="dropdown-text">NLP</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">NLP</li>
+        <li>
+    <a class="dropdown-item" href="../../tutorial/nlps/rnn.html">
+ <span class="dropdown-text">Recurrent Neural Network (RNN)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Math</li>
+        <li>
+    <a class="dropdown-item" href="../../tutorial/math/linearalgebra/lna1.html">
+ <span class="dropdown-text">Linear Algebra</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../tutorial/math/diffEq/diffeq1.html">
+ <span class="dropdown-text">Differential Equation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">Help</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="../../help/helps.html">
+ <span class="dropdown-text">Helping hand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/fastai/nbdev/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forums.fast.ai/"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Fast.ai Forum</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../getting_started.html#faq"><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../resources/resource.html">
+ <span class="dropdown-text">More info</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/fastai/nbdev/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forums.fast.ai/"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Fast.ai Forum</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../getting_started.html#faq"><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-blog" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Posts</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/fastai/nbdev"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/fastdotai"><i class="bi bi-twitter" role="img" aria-label="Fast.ai Twitter">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Recurrent Neural Network (RNN)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/tutoring.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/visions/vision.html" class="sidebar-item-text sidebar-link">Machine Vision</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/nlps/nlp.html" class="sidebar-item-text sidebar-link">NLP</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">NLP</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/nlps/rnn.html" class="sidebar-item-text sidebar-link active">Recurrent Neural Network (RNN)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">Math</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link">Linear Algebra</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">Differential Equation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+<!-- main -->
+<div class="quarto-about-marquee column-body">
+  <div class="about-image-container">
+    <img src="../../images/ai-pic7cp.jpg" class="about-image " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Recurrent Neural Network (RNN)</h1>
+<p class="subtitle lead">Looking under the hood of RNN</p>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header> <main class="content column-body" id="quarto-document-content">
+<p><img src="./image/rnn.jpg" class="img-fluid"></p>
+<p>The Markov model weakness is that it’s limit to context window(scope) that was choosen. Using the info that was stored to predict prior data then feed that info to model while it was considering current tag.</p>
+<section id="bidirectional-rnn" class="level2">
+<h2 data-anchor-id="bidirectional-rnn">Bidirectional RNN</h2>
+<p>A technique to train two independent RNN where one process from start to end the other process from end to start then combine the output from both into single one</p>
+<p><img src="./image/birnn.jpg" class="img-fluid"></p>
+</section>
+<section id="long-short-term-memory-lstm" class="level2">
+<h2 data-anchor-id="long-short-term-memory-lstm">Long short term memory (LSTM)</h2>
+<p><img src="./image/rnn-lstm.jpg" class="img-fluid"></p>
+<p>An RNN that has the capability to forget the info that is not relevant to the current task.</p>
+<p><img src="./image/lstm.jpg" class="img-fluid"></p>
+<section id="lstm-has" class="level3">
+<h3 data-anchor-id="lstm-has">LSTM has</h3>
+<ul>
+<li>forget gate to delete info of non relevant from current context</li>
+<li>add gate to select new info into current context with tanh activation that indicate the direction of info(should care about) and a sigmoid to indicate the scaling(how much should be care about) factor of the info to be add to forget gate to produce state context</li>
+<li>out gate with sigmoid combine with state context to output result</li>
+</ul>
+</section>
+</section>
+<section id="creating-a-language-model-from-scratch" class="level2">
+<h2 data-anchor-id="creating-a-language-model-from-scratch">Creating a Language Model from Scratch</h2>
+<p>A language model is a model that predict the next word in the sentence.</p>
+<section id="first-language-model" class="level3">
+<h3 data-anchor-id="first-language-model">First Language Model</h3>
+<p>Build a model to predict each word based on the previous three words by create a list of every sequence of three words as independent variables, and the next word after each sequence as the dependent variable.</p>
+<p>The model takes three words as input, and returns a prediction of the probability of each possible next word in the vocab. It use the standard three linear layers, but with two tweaks.</p>
+<ol type="1">
+<li>The first linear layer will use only the first word’s embedding as activations,
+<ul>
+<li>The second layer will use the second word’s embedding plus the first layer’s output activations, and</li>
+<li>The third layer will use the third word’s embedding plus the second layer’s output activations.</li>
+<li>The key effect of this is that every word is interpreted in the information context of any words preceding it.</li>
+</ul></li>
+<li>Each of these three layers will use the same weight matrix
+<ul>
+<li>The way that one word impacts the activations from previous words should not change depending on the position of a word.</li>
+<li>Activation values will change as data moves through the layers, but the layer’s weights themselves will not change from layer to layer.</li>
+<li>So, a layer does not learn one sequence position; it must learn to handle all positions.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="the-architect-of-the-first-model" class="level2">
+<h2 data-anchor-id="the-architect-of-the-first-model">The architect of the first model</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/simpleLinear1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">simple linear LM</figcaption><p></p>
+</figure>
+</div>
+<p>Here the figure the model. Where word is the input, FC is fully connected layer and triangular is output prediction</p>
+<section id="layers-model-code" class="level3">
+<h3 data-anchor-id="layers-model-code">3 layers model code</h3>
+<p>The first cut of the code for 3 layers model use:</p>
+<ol type="1">
+<li>The embedding layer (input2_hidden, for input to hidden)</li>
+<li>The linear layer to create the activations for the next word (hidden2_hidden, for hidden to hidden)</li>
+<li>A final linear layer to predict the fourth word (hidden2_output, for hidden to output)</li>
+</ol>
+<p>They all use the same embedding since they come from same data</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel1(Module):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input2_hidden <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_hidden <span class="op">=</span> nn.Linear(n_hidden, n_hidden)     </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_output <span class="op">=</span> nn.Linear(n_hidden,vocab_sz)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input2_hidden is embedding layer</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># hidden2_hidden is linear layer</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># hidden2_output is linear layer   </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(<span class="va">self</span>.input2_hidden(x[:,<span class="dv">0</span>])))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,<span class="dv">1</span>])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,<span class="dv">2</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.hidden2_output(h)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>L((tokens[i:i<span class="op">+</span><span class="dv">3</span>], tokens[i<span class="op">+</span><span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(tokens)<span class="op">-</span><span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor of numericalized value for model</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>seqs <span class="op">=</span> L((tensor(nums[i:i<span class="op">+</span><span class="dv">3</span>]), nums[i<span class="op">+</span><span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(nums)<span class="op">-</span><span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>seqs</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>cut <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(seqs) <span class="op">*</span> <span class="fl">0.8</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># create batch</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> DataLoaders.from_dsets(seqs[:cut], seqs[cut:], bs<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel1(<span class="bu">len</span>(vocab), <span class="dv">64</span>), loss_func<span class="op">=</span>F.cross_entropy, metrics<span class="op">=</span>accuracy)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">4</span>, <span class="fl">1e-3</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>compare to the simplest model which always predict the next word which is ‘thousand’ to see how it performs:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a simplest model that always predict 'thousand' on each input sentence</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Counter(tokens[cut:])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> c.most_common(<span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mc</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mc[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="bu">len</span>(tokens[cut:])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>n,counts <span class="op">=</span> <span class="dv">0</span>,torch.zeros(<span class="bu">len</span>(vocab))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x,y <span class="kw">in</span> dls.valid:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> y.shape[<span class="dv">0</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> range_of(vocab): counts[i] <span class="op">+=</span> (y<span class="op">==</span>i).<span class="bu">long</span>().<span class="bu">sum</span>()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#index of the most common words ('thousand')</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> torch.argmax(counts)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>idx, vocab[idx.item()], counts[idx].item()<span class="op">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="refactor-to-use-loop-the-rnn" class="level4">
+<h4 data-anchor-id="refactor-to-use-loop-the-rnn">Refactor to use loop: the RNN</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/refac_rnn.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">refactor2RNN</figcaption><p></p>
+</figure>
+</div>
+<p>Rewrite the code to use loop this is look closer to RNN</p>
+<pre><code>class LMModel2(Module):
+    def __init__(self, vocab_sz, n_hidden):
+        self.input2_hidden = nn.Embedding(vocab_sz, n_hidden)  
+        self.hidden2_hidden = nn.Linear(n_hidden, n_hidden)     
+        self.hidden2_output = nn.Linear(n_hidden,vocab_sz)
+    # refactor to use for loop the RNN!
+    def forward(self, x):
+        h = 0.               # using broascast
+        for i in range(3):
+            h = h + self.input2_hidden(x[:,i])
+            h = F.relu(self.hidden2_hidden(h))
+        return self.hidden2_output(h)
+learn = Learner(dls, LMModel2(len(vocab), 64), loss_func=F.cross_entropy, 
+                metrics=accuracy)
+learn.fit_one_cycle(4, 1e-3)
+</code></pre>
+</section>
+</section>
+<section id="refactor-to-add-memory-to-rnn" class="level3">
+<h3 data-anchor-id="refactor-to-add-memory-to-rnn">Refactor to add memory to RNN</h3>
+<p>Add the ability to retain previous word instead of start up new every time <img src="./image/stacklayer_rnn.png" class="img-fluid" alt="stack-layer"></p>
+<pre><code>class LMModel3(Module):
+    def __init__(self, vocab_sz, n_hidden):
+        self.input2_hidden = nn.Embedding(vocab_sz, n_hidden)  
+        self.hidden2_hidden = nn.Linear(n_hidden, n_hidden)     
+        self.hidden2_output = nn.Linear(n_hidden,vocab_sz)
+        self.h = 0.  # using broascast
+    # refactor to use for loop the RNN!
+    def forward(self, x):
+        for i in range(3):
+            self.h = self.h + self.input2_hidden(x[:,i])
+            self.h = F.relu(self.hidden2_hidden(h))
+        out = self.hidden2_output(self.h)
+        self.h = self.h.detach() # do bptt
+        return out
+    def reset(self): self.h = 0.
+</code></pre>
+</section>
+<section id="bptt-backpropagation-through-time" class="level3">
+<h3 data-anchor-id="bptt-backpropagation-through-time">BPTT Backpropagation through time</h3>
+<p>This model hidden state now can remember previous activation from previous batch and the gradient will be calculate on sequence length token of the past not instead of recalculate with each new stream this is call BPTT</p>
+<pre><code># rearrange data so model see in particular sequence
+m = len(seqs)//bs
+m,bs,len(seqs)
+# reindex model see as contiguous batch with each epoch
+def group_chunks(ds, bs):
+    m = len(ds) // bs
+    new_ds = L()
+    for i in range(m): new_ds += L(ds[i + m*j] for j in range(bs))
+    return new_ds
+cut = int(len(seqs) * 0.8)
+dls = DataLoaders.from_dsets(
+    group_chunks(seqs[:cut], bs), 
+    group_chunks(seqs[cut:], bs), 
+    bs=bs, drop_last=True, # drop last batch that have diff shape
+    shuffle=False) # maintain sequence
+learn = Learner(dls, LMModel3(len(vocab), 64), loss_func=F.cross_entropy,
+                metrics=accuracy, 
+                cbs=ModelResetter) # callback to reset each epoch
+learn.fit_one_cycle(10, 3e-3)</code></pre>
+<p>Add More signal: keep the output</p>
+<p>The model no longer throw away the output from previous run but add them as input to current run</p>
+<pre><code>sl = 16
+seqs = L((tensor(nums[i:i+sl]), tensor(nums[i+1:i+sl+1]))
+         for i in range(0,len(nums)-sl-1,sl))
+cut = int(len(seqs) * 0.8)
+dls = DataLoaders.from_dsets(group_chunks(seqs[:cut], bs),
+                             group_chunks(seqs[cut:], bs),
+                             bs=bs, drop_last=True, shuffle=False)
+# check if it still offset by 1
+[L(vocab[o] for o in s) for s in seqs[0]]</code></pre>
+<p>Rewrite the model to now output every word instead of every 3 words in order to feed this into next run</p>
+<pre><code>class LMModel4(Module):
+    def __init__(self, vocab_sz, n_hidden):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)  
+        self.h_h = nn.Linear(n_hidden, n_hidden)     
+        self.h_o = nn.Linear(n_hidden,vocab_sz)
+        self.h = 0
+    def forward(self, x):
+        outs = []
+        for i in range(sl):
+            self.h = self.h + self.i_h(x[:,i])
+            self.h = F.relu(self.h_h(self.h))
+            outs.append(self.h_o(self.h))
+        self.h = self.h.detach()
+        return torch.stack(outs, dim=1)
+    def reset(self): self.h = 0
+    def loss_func(inp, targ):
+        return F.cross_entropy(inp.view(-1, len(vocab)), # flatten out to match bs x sl x vocab_sz from model
+        targ.view(-1)) # flatten out to match bs x sl x vocab_sz from model
+learn = Learner(dls, LMModel4(len(vocab), 64), loss_func=loss_func,
+                metrics=accuracy, cbs=ModelResetter)
+learn.fit_one_cycle(15, 3e-3)       </code></pre>
+</section>
+<section id="recurrent-neural-network-rnn" class="level3">
+<h3 data-anchor-id="recurrent-neural-network-rnn">Recurrent Neural Network: RNN</h3>
+<p><img src="./image/rnn-pic1.jpeg" class="img-fluid" alt="RNN"> RNN feed the output activation value back into hidden layer to help the hidden layers retain info about previous run therefore have some <em>memory</em> of the past.</p>
+</section>
+<section id="multi-layer-rnn" class="level3">
+<h3 data-anchor-id="multi-layer-rnn">Multi-Layer RNN</h3>
+<p>since the current model use the same weight matrix for each hidden layer which mean there no new info to be learn from. One way to To improve the model further is to stack more layers by feed the output from one layer into the next layer so on.</p>
+<p>Look at it in unrolling way <img src="./image/stacklayer_rnn2.png" class="img-fluid" alt="stack-layer"></p>
+<p>Refactoring to use PyTorch</p>
+<p>The model now has too deep layers this could lead to problem of <em>vanishing</em> or <em>exploding</em> gradient</p>
+<pre><code>class LMModel5(Module):
+    def __init__(self, vocab_sz, n_hidden, n_layers):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)
+        self.rnn = nn.RNN(n_hidden, n_hidden, n_layers, batch_first=True)
+        self.h_o = nn.Linear(n_hidden, vocab_sz)
+        self.h = torch.zeros(n_layers, bs, n_hidden)
+    def forward(self, x):
+        res,h = self.rnn(self.i_h(x), self.h)
+        self.h = h.detach()
+        return self.h_o(res)
+    def reset(self): self.h.zero_()
+learn = Learner(dls, LMModel5(len(vocab), 64, 2), 
+                loss_func=CrossEntropyLossFlat(), 
+                metrics=accuracy, cbs=ModelResetter)
+learn.fit_one_cycle(15, 3e-3)</code></pre>
+</section>
+<section id="exploding-or-disappearing-activations" class="level3">
+<h3 data-anchor-id="exploding-or-disappearing-activations">Exploding or Disappearing Activations</h3>
+<p>The problem stem from the gradient value calcutated from the output layer won’t propagated back to the earlier layer. This is because the network is too deep.</p>
+<p>Vanishing Gradient:</p>
+<p>As the gradient value travel backward the especially the small value is diminishing as the floating point value get computed and recomputed many time each time it get round off closer and closer to 0 and finally become 0.</p>
+<p>Exploding Gradient:</p>
+<p>This the opposite of vanishing gradient. This phenomena happen espcially when the large value get larger with each computation it get exponentially large until it get large closer to infinity and become useless. <img src="./image/vanish1.jpg" class="img-fluid" alt="vanish"></p>
+</section>
+<section id="the-floating-point-problem" class="level3">
+<h3 data-anchor-id="the-floating-point-problem">The floating point problem</h3>
+<p>One problem with doing floating point math with computer is that computer has limit amount of storage and floating point number is imprecise e.g.&nbsp;1.0000012 or 1.00000000000000000000000012 is these two numbers are the same value? The answer is it’s depend on what do you want to do with it. On some task the first one is good enough but on other the second is what require. To store the second number require more storage.</p>
+<p>The impreciseness is rather harder to understand. Float number get denser and denser when value get closer and closer to 0. In practice how do you represent this to the computer so it do some useful work. The IEEE organization come up with a standard which require how much storage should be devoted to certain type of floating point value e.g.&nbsp;8-bit folating point,16-bit, 32-bit which mean the storage depend on the precision the user requirement not the actual value it may case the value get round-off read more from <a href="http://www.volkerschatz.com/science/float.html">here</a>. This mean do more calculation may lead less precision. This is what happen when doing lot and lot of gradient calculations the value may end up at 0 which is call vanishing gradient or the value get larger and larger exponentially or explode to infinite.</p>
+<p>These problems are the main reason why RNN model is hard to train than CNN model,however research is very active to try new way to reduce or avoid these problems.</p>
+</section>
+<section id="neural-network-that-have-memory" class="level3">
+<h3 data-anchor-id="neural-network-that-have-memory">Neural Network that have Memory</h3>
+<p>In Machine Learning two approach to handle Explode and Vanishing gradient is to use Neural network that can retain previous activation and also can figure out what value should be retain and which should be removed. The two popular approch are LSTM and GRU. GRU is a simplify version of LSTM</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/rnn_lstm_gru.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lstm-gru</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="comparison-lstm-and-gru" class="level3">
+<h3 data-anchor-id="comparison-lstm-and-gru">Comparison LSTM and GRU</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/lstm-gru1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gru</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="lstm-architecture" class="level3">
+<h3 data-anchor-id="lstm-architecture">LSTM architecture</h3>
+<p>Internally LSTM comprise with little neural net that decise how much gradient is needed and which one to update or delete. <img src="./image/lstm1.png" class="img-fluid" alt="lstm-gru"></p>
+<p><em>sigmoid equation:</em></p>
+<p><span class="math inline">\(f(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{e^x + 1} = \frac12 + \frac12 \tanh\left(\frac{x}{2}\right)\)</span></p>
+<p>Sigmoid only let positive value between 0 and 1 pass through</p>
+<p><em>tanh equation:</em></p>
+<p><span class="math inline">\(f(x) = \tanh x = \frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></p>
+<p>Tanh only let value between -1 and 1 pass through</p>
+</section>
+<section id="another-look-at-lstm-internal" class="level3">
+<h3 data-anchor-id="another-look-at-lstm-internal">Another look at LSTM internal:</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/lstm_eq.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">lstm-gru</figcaption><p></p>
+</figure>
+</div>
+<p>The little NN is compose of gates call forget gate,input gate, cell gate, output gate. These gates work together to provide LSTM the capability to remember activation value that is important and forget the unneccessary activation value</p>
+<section id="the-forget-f_t-gate" class="level4">
+<h4 data-anchor-id="the-forget-f_t-gate">The forget <span class="math inline">\(f_{t}\)</span> gate:</h4>
+<p>Take input <span class="math inline">\(x\)</span>, hidden state <span class="math inline">\(h_{t-1}\)</span> then gated them via the sigmoid <span class="math inline">\(\sigma\)</span> activation to get only positive value then multiply them with previous cell state(memory) <span class="math inline">\(C_{t-1}\)</span>. It decides should the value be kept or discarded. If result from <span class="math inline">\(\sigma\)</span> value closer to 1 the value is kept else the value is discarded.</p>
+</section>
+<section id="the-input-i_tgate" class="level4">
+<h4 data-anchor-id="the-input-i_tgate">The input <span class="math inline">\(i_{t}\)</span>gate:</h4>
+<p>Together with cell gate to update the cell state this gate also decide should the value be kept or discard depend on the value of the sigmoid</p>
+</section>
+<section id="the-cell-tildec_t-gate" class="level4">
+<h4 data-anchor-id="the-cell-tildec_t-gate">The cell <span class="math inline">\(\tilde{C_{t}}\)</span> gate:</h4>
+<p>Decide what value to update from the range of -1 to 1 output from tanh function the value then add with previou cell state <span class="math inline">\(C_{t-1}\)</span> value to get <span class="math inline">\(C_{t}\)</span> the new value in memeory</p>
+</section>
+<section id="the-output-o_t-gate" class="level4">
+<h4 data-anchor-id="the-output-o_t-gate">The Output <span class="math inline">\(o_{t}\)</span> gate:</h4>
+<p>Decide which value to output to be multiply with the cell state value that was filter with tanh before output as new hidden state for the next layer.</p>
+<p>The code for LSTM cell:</p>
+<pre><code>class LSTMCell(Module):
+    def __init__(self, ni, nh):
+        self.forget_gate = nn.Linear(ni + nh, nh)
+        self.input_gate  = nn.Linear(ni + nh, nh)
+        self.cell_gate   = nn.Linear(ni + nh, nh)
+        self.output_gate = nn.Linear(ni + nh, nh)
+    def forward(self, input, state):
+        h,c = state
+        h = torch.stack([h, input], dim=1)
+        forget = torch.sigmoid(self.forget_gate(h))
+        c = c * forget
+        inp = torch.sigmoid(self.input_gate(h))
+        cell = torch.tanh(self.cell_gate(h))
+        c = c + inp * cell
+        out = torch.sigmoid(self.output_gate(h))
+        h = outgate * torch.tanh(c)
+        return h, (h,c)</code></pre>
+<p>Refactor to take advantage of the GPU by combine all small matrix into one big one to avoid moving too frequence data in and out of GPU and allow GPU to parallelize the task.</p>
+<pre><code>class LSTMCell(Module):
+    def __init__(self, ni, nh):
+        self.ih = nn.Linear(ni,4*nh)
+        self.hh = nn.Linear(nh,4*nh)
+    def forward(self, input, state):
+        h,c = state
+        # One big multiplication for all the gates is better than 4 smaller ones
+        gates = (self.ih(input) + self.hh(h)).chunk(4, 1) #split tensor into 4 then combine with input
+        ingate,forgetgate,outgate = map(torch.sigmoid, gates[:3])
+        cellgate = gates[3].tanh()
+        c = (forgetgate*c) + (ingate*cellgate)
+        h = outgate * c.tanh()
+        return h, (h,c)
+</code></pre>
+</section>
+</section>
+<section id="train-the-lstm" class="level3">
+<h3 data-anchor-id="train-the-lstm">Train the LSTM</h3>
+<pre><code>class LMModel6(Module):
+    def __init__(self, vocab_sz, n_hidden, n_layers):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)
+        self.rnn = nn.LSTM(n_hidden, n_hidden, n_layers, batch_first=True)
+        self.h_o = nn.Linear(n_hidden, vocab_sz)
+        self.h = [torch.zeros(n_layers, bs, n_hidden) for _ in range(2)]
+    def forward(self, x):
+        res,h = self.rnn(self.i_h(x), self.h)
+        self.h = [h_.detach() for h_ in h]
+        return self.h_o(res)
+    def reset(self): 
+        for h in self.h: h.zero_()
+learn = Learner(dls, LMModel6(len(vocab), 64, 2), 
+                loss_func=CrossEntropyLossFlat(), 
+                metrics=accuracy, cbs=ModelResetter)
+learn.fit_one_cycle(15, 1e-2)
+</code></pre>
+</section>
+<section id="regularizing-an-lstm" class="level3">
+<h3 data-anchor-id="regularizing-an-lstm">Regularizing an LSTM</h3>
+<p>Although hard to train and prone to overfitting, there some trick such as using data augmentation by translate the same text into different language then retranslate back to generate more variance. And using various regularization method to alleviate the overfitting problem some of the techniques describe here:</p>
+</section>
+<section id="dropout" class="level3">
+<h3 data-anchor-id="dropout">Dropout</h3>
+<p><img src="./image/dropout2.png" class="img-fluid" alt="dropout"> Dropout is one of the regularization technique use to combat overfitting tendency of the model. The method usually apply at training time. This method is to randomly change some activations value to zero which temporary remove the neural nodes from the network.</p>
+<p>It makes the neural less relie on the input from the source that the neural regularly receive the input from since these sources may not be there. It makes sure all neurons actively work toward the general concept rather than try to fit specify pattern in the current data.</p>
+<p>Dropout has different behavior in training and validation mode which is why the flag training must set to True when traing and False when evaluating.</p>
+<pre><code>class Dropout(Module):
+    def __init__(self, p): self.p = p
+    def forward(self, x):
+        if not self.training: return x
+        mask = x.new(*x.shape).bernoulli_(1-p) # create probability of random value 
+        return x * mask.div_(1-p)</code></pre>
+</section>
+<section id="activation-regularization-ar-and-temporal-activation-regularization-tar" class="level3">
+<h3 data-anchor-id="activation-regularization-ar-and-temporal-activation-regularization-tar">Activation Regularization (AR) and Temporal Activation Regularization (TAR)</h3>
+<p>two regularization methods very similar to weight decay.</p>
+<section id="ar" class="level4">
+<h4 data-anchor-id="ar">AR</h4>
+<p>This approach is apply at the final activation from LSTM to reduce its size. AR is often applied on the dropped-out activations. The code is</p>
+<p><code>loss += alpha * activations.pow(2).mean()</code></p>
+</section>
+<section id="tar" class="level4">
+<h4 data-anchor-id="tar">TAR</h4>
+<p>This approach is to encourage the model to output sensible value by adding a penalty to the loss to make the difference between two consecutive activations as small as possible. TAR is applied on the non-dropped-out activations (because those zeros create big differences between two consecutive time steps) with activations tensor has a shape <code>bs x sl x n_hid</code> the code is:</p>
+<p><code>loss += beta * (activations[:,1:] - activations[:,:-1]).pow(2).mean()</code></p>
+<p>To use these is required:</p>
+<ol type="1">
+<li>the proper output,</li>
+<li>the activations of the LSTM pre-dropout, and</li>
+<li>the activations of the LSTM post-dropout</li>
+</ol>
+<p>In practive it’s often used a callback <code>RNNRegularizer</code> to apply the regularization.</p>
+</section>
+</section>
+<section id="training-awd-lstm-a-weight-tied-regularized-lstm" class="level3">
+<h3 data-anchor-id="training-awd-lstm-a-weight-tied-regularized-lstm">Training AWD-LSTM: a Weight-Tied Regularized LSTM</h3>
+<p>Apply regularization can be combined together dropout, AR, TAR This method uses: - Embedding dropout (just after the embedding layer) - Input dropout (after the embedding layer) - Weight dropout (applied to the weights of the LSTM at each training step) - Hidden dropout (applied to the hidden state between two layers)</p>
+<pre><code>class LMModel7(Module):
+    def __init__(self, vocab_sz, n_hidden, n_layers, p):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)
+        self.rnn = nn.LSTM(n_hidden, n_hidden, n_layers, batch_first=True)
+        self.drop = nn.Dropout(p)
+        self.h_o = nn.Linear(n_hidden, vocab_sz)
+        self.h_o.weight = self.i_h.weight
+        self.h = [torch.zeros(n_layers, bs, n_hidden) for _ in range(2)]
+    def forward(self, x):
+        raw,h = self.rnn(self.i_h(x), self.h)
+        out = self.drop(raw)
+        self.h = [h_.detach() for h_ in h]
+        return self.h_o(out),raw,out
+    def reset(self): 
+        for h in self.h: h.zero_()
+</code></pre>
+<p>Another trick is <em>weight-tying</em> <a href="https://arxiv.org/abs/1708.02182">the AWD LSTM paper</a> by realize that input embedding is a mapping from English words to activation value. And output from hidden layer is a mapping from activations value to English words are the same thing. And assign the same weight matrix to these layers</p>
+<p><code>self.h_o.weight  self.i_h.weight</code></p>
+<p>The final code tweak become:</p>
+<pre><code>class LMModel7(Module):
+    def __init__(self, vocab_sz, n_hidden, n_layers, p):
+        self.i_h = nn.Embedding(vocab_sz, n_hidden)
+        self.rnn = nn.LSTM(n_hidden, n_hidden, n_layers, batch_first=True)
+        self.drop = nn.Dropout(p)
+        self.h_o = nn.Linear(n_hidden, vocab_sz)
+        self.h_o.weight = self.i_h.weight
+        self.h = [torch.zeros(n_layers, bs, n_hidden) for _ in range(2)]
+    def forward(self, x):
+        raw,h = self.rnn(self.i_h(x), self.h)
+        out = self.drop(raw)
+        self.h = [h_.detach() for h_ in h]
+        return self.h_o(out),raw,out
+    def reset(self): 
+        for h in self.h: h.zero_()
+learn = Learner(dls, LMModel7(len(vocab), 64, 2, 0.5),
+                loss_func=CrossEntropyLossFlat(), metrics=accuracy,
+                cbs=[ModelResetter,  # add callback
+                RNNRegularizer(alpha=2, beta=1)]) # add callback to learner
+# or use the TextLearner that will call add the callback
+learn = TextLearner(dls, LMModel7(len(vocab), 64, 2, 0.4),
+                    loss_func=CrossEntropyLossFlat(), metrics=accuracy)                       
+learn.fit_one_cycle(15, 1e-2, wd=0.1)</code></pre>
+</section>
+<section id="gru-gate-recurrent-units-architecture" class="level3">
+<h3 data-anchor-id="gru-gate-recurrent-units-architecture">GRU: Gate Recurrent Units architecture</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./image/gru1.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">gru</figcaption><p></p>
+</figure>
+</div>
+<p>GRU is a simplify version of LSTM and work them same way.</p>
+</section>
+</section>
+<section id="rnn-application" class="level2">
+<h2 data-anchor-id="rnn-application">RNN application</h2>
+<ul>
+<li>POS</li>
+<li>NER</li>
+<li>Deidentification</li>
+<li>Translation</li>
+<li>sequence-to-sequence</li>
+<li>chatbot</li>
+<li>question-answer</li>
+<li>sequence classification</li>
+<li>sentiment</li>
+</ul>
+<section id="jargons" class="level3">
+<h3 data-anchor-id="jargons">Jargons:</h3>
+<ul>
+<li>hidden state: The activations that are updated at each step of a recurrent neural network.</li>
+<li>A neural network that is defined using a loop like this is called a recurrent neural network (RNN)</li>
+<li>Back propagation through time (BPTT): Treating a neural net with effectively one layer per time step (usually refactored using a loop) as one big model, and calculating gradients on it in the usual way. To avoid running out of memory and time, we usually use truncated BPTT, which “detaches” the history of computation steps in the hidden state every few time steps. In essence calculate the gradient and propagate backward as usual but don’t store them.</li>
+<li>The bernoulli_ method is creating a tensor of random zeros (with probability p) and ones (with probability 1-p)</li>
+<li>alpha and beta are two hyperparameters to tune</li>
+</ul>
+
+
+</section>
+</section>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> 
+    <div class="about-footer"><div class="about-links">
+  <a href="https://twitter.com" class="about-link">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">twitter</span>
+  </a>
+  <a href="https://github.com" class="about-link">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+</div>
+  </div>
+</div>
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
