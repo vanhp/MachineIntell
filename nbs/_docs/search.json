@@ -488,5 +488,19 @@
     "title": "Resources",
     "section": "",
     "text": "No matching items"
+  },
+  {
+    "objectID": "news/newsall.html",
+    "href": "news/newsall.html",
+    "title": "Latest News",
+    "section": "",
+    "text": "Stable Diffusion creator Stability AI accelerates open-source AI, raises $101M ￼VentureBeat|2 days ago Stability AI has raised $101M for its open-source Stable Diffusion model, an AI art generator that enables people to instantly create art.\nAI Knows How Much You’re Willing to Pay for Flights Before You Do ￼Bloomberg on MSN.com|2 hours ago Armed with mountains of data, artificial intelligence is emerging as an important tool for airlines to find the ideal fares to charge passengers, helping them squeeze out as much revenue as possible as the industry emerges from its biggest crisis.\nUS court rules, once again, that AI software can’t hold a patent ￼Ars Technica|1 hour ago The legal challenge came from Dr. Stephen Thaler, who filed two patent applications naming an AI program called “DABUS” as the inventor in 2019. The US Patent and Trademark Office (USPTO) denied the patents,\nHow AI Can Improve Pharmaceutical Commercial Operations ￼Forbes|10 hours ago While AI can uncover precious insights, for companies that have not worked with AI previously, this can mean a complete reorganization of their data foundation.\nAI-controlled robotic laser can target and kill cockroaches ￼New Scientist|13 hours ago A laser controlled by two cameras and a small computer running an AI model can be trained to target certain types of insect\nU.S. scientist hits another dead end in patent case over AI ‘inventor’ ￼Reuters|4 hours ago A U.S. computer scientist on Thursday lost his latest bid to have an artificial intelligence program he created be named “inventor” on a pair of patents he is seeking to obtain.\n￼ Generally Intelligent secures cash from OpenAI vets to build capable AI systems ￼TechCrunch|6 hours ago Generally Intelligent, a research startup with backing from OpenAI vets, is aiming to develop general-purpose AI systems."
+  },
+  {
+    "objectID": "news/newsall.html#deep-learning-from-fastai-library",
+    "href": "news/newsall.html#deep-learning-from-fastai-library",
+    "title": "Latest News",
+    "section": "Deep learning from fastai library",
+    "text": "Deep learning from fastai library\nnbdev version was release"
   }
 ]
