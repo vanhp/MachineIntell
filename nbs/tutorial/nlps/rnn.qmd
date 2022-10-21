@@ -81,20 +81,20 @@ The first cut of the code for 3 layers model use:
 
 They all use the same embedding since they come from same data
 
-```{python}
+```python
 
 !python3 -m pip install jupyter
 
 ```
 
-```{python}
+```python
 
 !python3 -m pip install numpy
 !python3 -m pip install matplotlib
 
 ```
 
-```{python}
+```python
 #| label: fig-polar
 #| fig-cap: "A line plot on a polar axis"
 
