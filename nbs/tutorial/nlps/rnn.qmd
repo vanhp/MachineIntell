@@ -1,6 +1,6 @@
 ---
 title: Recurrent Neural Network (RNN)
-subtitle: The old engine of NLP
+subtitle: Looking under the hood of RNN
 about:
   template: marquee
   image: ../../images/ai-pic7cp.jpg
@@ -22,40 +22,88 @@ listing:
 page-layout: full
 ---
 
-![](./image/neuralNet1.jpg)
+![](./image/rnn.jpg)
 
-## Create a Language Model from Scratch
+The Markov model weakness is that it's limit to context window(scope) that was choosen.
+Using the info that was stored to predict prior data then feed that info to model while it was considering current tag.
+
+## Bidirectional RNN
+A technique to train two independent RNN where one process from start to end the other process from end to start then combine the output from both into single one
+
+![](./image/birnn.jpg)
+
+
+## Long short term memory (LSTM)
+![](./image/rnn-lstm.jpg)
+
+An RNN that has the capability to forget the info that is not relevant to the current task.
+
+![](./image/lstm.jpg)
+
+### LSTM has 
+- forget gate to delete info of non relevant from current context
+- add gate to select new info into current context with tanh activation that indicate the direction of info(should care about) and a sigmoid to indicate the scaling(how much should be care about) factor of the info to be add to forget gate to produce state context
+- out gate with sigmoid combine with state context to output result
+
+
+## Creating a Language Model from Scratch
 
 A language model is a model that predict the next word in the sentence.
 
 ### First Language Model 
 
 Build a model to predict each word based on the previous three words
-by create a list of every sequence of three words as independent variables, and the next word after each sequence as the dependent variable
-The model takes three words as input, and returns a prediction of the probability of each possible next word in the vocab
-use three standard linear layers, but with two tweaks.
-1. the first linear layer will use only the first word's embedding as activations, 
-    - the second layer will use the second word's embedding plus the first layer's output activations, and 
-    - the third layer will use the third word's embedding plus the second layer's output activations. 
+by create a list of every sequence of three words as independent variables, and the next word after each sequence as the dependent variable.
+
+The model takes three words as input, and returns a prediction of the probability of each possible next word in the vocab. It  use the standard three linear layers, but with two tweaks.
+
+1. The first linear layer will use only the first word's embedding as activations, 
+    - The second layer will use the second word's embedding plus the first layer's output activations, and 
+    - The third layer will use the third word's embedding plus the second layer's output activations. 
     - The key effect of this is that every word is interpreted in the information context of any words preceding it.
-2. each of these three layers will use the same weight matrix
-    - The way that one word impacts the activations from previous words should not change depending on the position of a word. eventhough, 
-    - activation values will change as data moves through the layers, but the layer weights themselves will not change from layer to layer. 
+2. Each of these three layers will use the same weight matrix
+    - The way that one word impacts the activations from previous words should not change depending on the position of a word. 
+    - Activation values will change as data moves through the layers, but the layer's weights themselves will not change from layer to layer. 
     - So, a layer does not learn one sequence position; it must learn to handle all positions.
 
-The architect of the first model
+## The architect of the first model
 ![simple linear LM](./image/simpleLinear1.png)
 
-### 3 layers model
+Here the figure the model. Where word is the input, FC is fully connected layer and triangular is output prediction
+
+### 3 layers model code
 
 The first cut of the code for 3 layers model use:
+
 1. The embedding layer (input2_hidden, for input to hidden) 
 2. The linear layer to create the activations for the next word (hidden2_hidden, for hidden to hidden)
 3. A final linear layer to predict the fourth word (hidden2_output, for hidden to output)
 
 They all use the same embedding since they come from same data
 
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
 ```
+
+
+
+
+```python
 class LMModel1(Module):
     def __init__(self, vocab_sz, n_hidden):
         self.input2_hidden = nn.Embedding(vocab_sz, n_hidden)  
@@ -81,13 +129,12 @@ cut = int(len(seqs) * 0.8)
 # create batch
 dls = DataLoaders.from_dsets(seqs[:cut], seqs[cut:], bs=64, shuffle=False)
 
-learn = Learner(dls, LMModel1(len(vocab), 64), loss_func=F.cross_entropy, 
-                metrics=accuracy)
+learn = Learner(dls, LMModel1(len(vocab), 64), loss_func=F.cross_entropy, metrics=accuracy)
 learn.fit_one_cycle(4, 1e-3)   
 ```
-compare to the simplest model which always prdict the next word which is 'thousand' to see how it performs:
+compare to the simplest model which always predict the next word which is 'thousand' to see how it performs:
 
-```
+```python
 # a simplest model that always predict 'thousand' on each input sentence
 c = Counter(tokens[cut:])
 mc = c.most_common(5)
@@ -527,6 +574,16 @@ learn.fit_one_cycle(15, 1e-2, wd=0.1)
 
 GRU is a simplify version of LSTM and work them same way.
 
+## RNN application
+- POS
+- NER
+- Deidentification
+- Translation
+- sequence-to-sequence
+- chatbot
+- question-answer
+- sequence classification
+- sentiment
 
 
 ### Jargons:
