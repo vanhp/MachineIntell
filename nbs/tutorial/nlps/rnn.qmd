@@ -83,6 +83,12 @@ They all use the same embedding since they come from same data
 
 ```{python}
 
+!python3 -m pip install jupyter
+
+```
+
+```{python}
+
 !python3 -m pip install numpy
 !python3 -m pip install matplotlib
 
