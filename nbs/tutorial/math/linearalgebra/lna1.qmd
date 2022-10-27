@@ -33,18 +33,103 @@ $$ A@B $$
 
 ::: {.callout-tip}
 
-matrix multiplication $AxB$
+matrix multiplication  $C = A \times B$
 :::
 
 - Vector
 - Matrix
 
 
+---
+### Softmax (softargmax)
+Softmax is one of the useful function in Neural Network computation. It's allowed the data that output from the Neural Network which may not relate to one another be grouped into a single group and relate to each other as a posibility.
 
-## Differential Equation In Machine Learning
+In mathematically term it's a function that take the vector as input value and convert them to vector of output value and organized them as a probability value that sum to 1.
+The input value may be zero, negative, positive.
 
-On the other hand, Diffential Equation is used in calculate **back propragation**. It's used inconjunction with *chain-rule* to adjust the input in order to getting closer to actual value
+Sometime it is called multi-class logistic regression function. Since it's used as final output for them.
+Many Neural Network output value that are not suitable for output so they must be convert using softmax.
 
-- Differential Equation
 
-   $$\frac{du}{dt} = pu  $$
+
+Softmax equation is defined by:
+
+$\color{chocolate}{ \sigma : \R^K\to (0,1)^K}$ is defined when $\color{chocolate}{ K \ge 1 }$ by the formula
+
+$$\color{chocolate}{ \hbox{softmax(x)}_{i} = \sigma(x)_i   = \frac{e^{x_{i}}}{e^{x_{0}} + e^{x_{1}} + \cdots + e^{x_{n-1}}} }\ \text{ for } i = 1, \dotsc , K \text{ and } \mathbf x=(x_1,\dotsc,x_K) \in\R^K  $$
+
+or more concisely:
+
+$$\color{chocolate}{\hbox{softmax(x)}_{i} = \frac{e^{x_{i}}}{\sum_{0 \leq j \leq n-1} e^{x_{j}}} }$$ 
+The input vector $\color{chocolate}{x}$ values are normalized by dividing each value in the vector by the sum of all values; this normalization ensures that the sum of all the components of the output vector $\color{chocolate}{ \sigma(x)}$ is  $\color{chocolate}{= 1}$. 
+
+#### Softmax and Sigmoid
+
+Softmax is the generalize version of sigmoid function since softmax take vector as input and output a vector while sigmoid takes a scalar value and output a scalar.
+$$\color{chocolate}{\hbox{sigmoid S(x)} = \frac{1}{1 + e^{-x}} }$$ 
+Sigmoid can have two possibility that must sum to $\color{chocolate}{1}$. When softmax has only two possibility then it is equal to sigmoid function.
+
+#### Argmax function
+The argmax function convert all the value in the input vector to zero except the max value in the vector. Which it's convert to one with the result of vector of all zero except one value that is one. 
+
+The arg max function can be considered as *one-hot* or *look-up table* representation of the output (assuming there is a unique maximum arg):
+$$\color{chocolate}{\operatorname{arg\,max}(x_1, \dots, x_n) = (y_1, \dots, y_n) = (0, \dots, 0, 1, 0, \dots, 0),}$$
+
+#### Softmax vs Argmax
+The softmax can be considered as a *smoother* version of the arg max where the value in the output vector are either $\color{chocolate}{0}$ or $\color{chocolate}{1}$.
+
+code in Python
+
+```python
+import numpy as np
+a = [1.0,2.0,3.0,4.0,1.0,3.0]
+np.exp(a) / np.sum(np.exp(a))
+```
+code in Julia
+```julia
+A = [1.0,2.0,3.0,4.0,1.0,3.0]
+exp.(A) ./ sum(exp.(A))
+
+```
+Note that the formula 
+
+$$\color{chocolate}{ \log \left ( \frac{a}{b} \right ) = \log(a) - \log(b)}$$ 
+
+gives a simplification when we compute the log softmax, which was previously defined as $\color{chocolate}{ (x.exp()/(x.exp().sum(-1,keepdim=True))).log()}$
+```
+def log_softmax(x): return (x.exp()/(x.exp().sum(-1,keepdim=True))).log()
+
+def log_softmax(x): return x - x.exp().sum(-1,keepdim=True).log()
+```
+
+
+Then, there is a way to compute the log of the sum of exponentials in a more stable way, called the [LogSumExp trick](https://en.wikipedia.org/wiki/LogSumExp). The idea is to use the following formula:
+
+$$\color{chocolate}{ \log \left ( \sum_{j=1}^{n} e^{x_{j}} \right ) = \log \left ( e^{a} \sum_{j=1}^{n} e^{x_{j}-a} \right ) = a + \log \left ( \sum_{j=1}^{n} e^{x_{j}-a} \right )}$$
+
+where $\color{chocolate}{ a }$ is the maximum of the $\color{chocolate}{ x_{j}}$.
+```
+def logsumexp(x):
+    m = x.max(-1)[0]
+    return m + (x-m[:,None]).exp().sum(-1).log()
+    
+def log_softmax(x): return x - x.logsumexp(-1,keepdim=True)
+```
+
+### Cross Entropy Loss
+
+The cross entropy loss for some target $\color{chocolate}{ x}$ and some prediction $\color{chocolate}{ p(x)}$ is given by:
+
+$$ \color{chocolate}{ H(x) = -\sum x\, \log p(x) }$$
+
+But since our $x$s are 1-hot encoded, this can be rewritten as $\color{chocolate}{ -\log(p_{i})}$ where i is the index of the desired target.
+
+This can be done using numpy-style [integer array indexing](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing). Note that PyTorch supports all the tricks in the advanced indexing methods discussed in that link.
+
+#### Negative Log Likelihood (NLL)
+When using logarithm to compute value that less than 1 (probability) is result in negative value. 
+
+- log 1 = 0 
+- log .5 = -0.301
+- log .9 = -0.045
+- log .1 = -1
