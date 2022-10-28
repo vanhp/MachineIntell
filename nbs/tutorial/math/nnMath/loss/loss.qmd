@@ -1,9 +1,9 @@
 ---
-title: Loss functions
+title: Loss or Cost functions
 subtitle: Using loss function in Machine Learning
 about:
   template: marquee
-  image: /images/gradientv12.jpg 
+  image: ../../../../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
@@ -41,6 +41,13 @@ Loss function refer a single value calculation, while cost function refers to wh
 
 There are many loss functions that work well for particular problem. So choosing the appropriate one is critical to get the machine the work and archieve your goal.
 
+### Cost functions
+
+The cost function refer to the sum of all loss functions
+
+### Type of Loss function
+
+There are many type of Loss functions. Each one is approriate for certain tasks understand how each of them work is essential to reach your result.
 
 ### Cross Entropy Loss
 
