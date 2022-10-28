@@ -426,6 +426,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
 <p><img src="../../../../images/ai-pic7cp.jpg" class="img-fluid"></p>
+<section id="loss-functions" class="level2">
+<h2 data-anchor-id="loss-functions">Loss Functions</h2>
+<p>Loss functions are important in Neural Network. It’s at the heart of how the machine can learn by trial and error. The value calculate by this function is used to adjust the weight of the input data to nudge the NN to lean toward output the correct answer.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -436,12 +439,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>softmax is a smoother verion of argmax</p>
+<p>Loss function refer a single value calculation, while cost function refers to whole or group of value combine together</p>
 </div>
 </div>
-<section id="loss-functions" class="level2">
-<h2 data-anchor-id="loss-functions">Loss Functions</h2>
-<p>Loss functions are important in Neural Network. It’s at the heart of how the machine can learn by trial and error. The value calculate by this function is used to adjust the weight of the input data to nudge the NN to lean toward output the correct answer.</p>
 <p><img src="./image/crent_loss.jpg" class="img-fluid"></p>
 <p>There are many loss functions that work well for particular problem. So choosing the appropriate one is critical to get the machine the work and archieve your goal.</p>
 <section id="cross-entropy-loss" class="level3">
@@ -450,18 +450,6 @@ Tip
 <p><span class="math display">\[ \color{chocolate}{ H(x) = -\sum x\, \log p(x) }\]</span></p>
 <p>But since our <span class="math inline">\(\color{chocolate}{x}\)</span> are <em>1-hot</em> encoded, this can be rewritten as <span class="math inline">\(\color{chocolate}{ -\log(p_{i})}\)</span> where <span class="math inline">\(\color{chocolate}{i}\)</span> is the index of the desired target.</p>
 <p>This can be done using numpy-style <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing">integer array indexing</a>. Note that PyTorch supports all the tricks in the advanced indexing methods discussed in that link.</p>
-<section id="negative-log-likelihood-nll" class="level4">
-<h4 data-anchor-id="negative-log-likelihood-nll">Negative Log Likelihood (NLL)</h4>
-<p>When using logarithm to compute value that less than <span class="math inline">\(\color{chocolate}{1}\)</span> (probability) the result is negative value.</p>
-<ul>
-<li>log 1 = 0</li>
-<li>log .5 = -0.301</li>
-<li>log .9 = -0.045</li>
-<li>log .1 = -1</li>
-</ul>
-<p><span class="math display">\[\color{chocolate}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }\]</span></p>
-<p>Therefore the minus sign is used to convert it to positive value</p>
-</section>
 </section>
 <section id="logarithm" class="level3">
 <h3 data-anchor-id="logarithm">Logarithm</h3>
@@ -481,8 +469,20 @@ Tip
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> m <span class="op">+</span> (x<span class="op">-</span>m[:,<span class="va">None</span>]).exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>).log()</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_softmax(x): <span class="cf">return</span> x <span class="op">-</span> x.logsumexp(<span class="op">-</span><span class="dv">1</span>,keepdim<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="negative-log-likelihood-nll" class="level4">
+<h4 data-anchor-id="negative-log-likelihood-nll">Negative Log Likelihood (NLL)</h4>
+<p>When using logarithm to compute value that less than <span class="math inline">\(\color{chocolate}{1}\)</span> (probability) the result is negative value.</p>
+<ul>
+<li>log 1 = 0</li>
+<li>log .5 = -0.301</li>
+<li>log .9 = -0.045</li>
+<li>log .1 = -1</li>
+</ul>
+<p><span class="math display">\[\color{chocolate}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }\]</span></p>
+<p>Therefore the minus sign is used to convert it to positive value</p>
 
 
+</section>
 </section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">

@@ -25,15 +25,16 @@ page-layout: full
 ![]( ../../../../images/ai-pic7cp.jpg)
 
 
-::: {.callout-tip}
-
-softmax is a smoother verion of argmax
-:::
-
 ## Loss Functions
 
 Loss functions are important in Neural Network. It's at the heart of how the machine can learn by trial and error.
 The value calculate by this function is used to adjust the weight of the input data to nudge the NN to lean toward output the correct answer.
+
+
+::: {.callout-tip}
+
+Loss function refer a single value calculation, while cost function refers to whole or group of value combine together
+:::
 
 
 ![](./image/crent_loss.jpg)
@@ -50,18 +51,6 @@ $$ \color{chocolate}{ H(x) = -\sum x\, \log p(x) }$$
 But since our  $\color{chocolate}{x}$  are *1-hot* encoded, this can be rewritten as $\color{chocolate}{ -\log(p_{i})}$ where  $\color{chocolate}{i}$ is the index of the desired target.
 
 This can be done using numpy-style [integer array indexing](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing). Note that PyTorch supports all the tricks in the advanced indexing methods discussed in that link.
-
-#### Negative Log Likelihood (NLL)
-When using logarithm to compute value that less than $\color{chocolate}{1}$ (probability) the result is negative value. 
-
-- log 1 = 0 
-- log .5 = -0.301
-- log .9 = -0.045
-- log .1 = -1
-
- $$\color{chocolate}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }$$
-
-Therefore the minus sign is used to convert it to positive value
 
 ### Logarithm
 
@@ -95,3 +84,16 @@ def logsumexp(x):
     
 def log_softmax(x): return x - x.logsumexp(-1,keepdim=True)
 ```
+
+#### Negative Log Likelihood (NLL)
+When using logarithm to compute value that less than $\color{chocolate}{1}$ (probability) the result is negative value. 
+
+- log 1 = 0 
+- log .5 = -0.301
+- log .9 = -0.045
+- log .1 = -1
+
+ $$\color{chocolate}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }$$
+
+Therefore the minus sign is used to convert it to positive value
+
