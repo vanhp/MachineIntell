@@ -58,5 +58,13 @@
   {
     "listing": "/tutorial/math/nnMath/nnmath.html",
     "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/loss.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/loss/loss.html",
+    "items": []
   }
 ]

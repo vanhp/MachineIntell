@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MachineIntell - Neural Network Math</title>
+<title>MachineIntell - Loss functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,10 +155,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
-<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="nnmath.xml"><meta property="og:title" content="MachineIntell - Neural Network Math">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="loss.xml"><meta property="og:title" content="MachineIntell - Loss functions">
 <meta property="og:description" content="Linear Algebra in Machine Learning">
 <meta property="og:site-name" content="MachineIntell">
-<meta name="twitter:title" content="MachineIntell - Neural Network Math">
+<meta name="twitter:title" content="MachineIntell - Loss functions">
 <meta name="twitter:description" content="Linear Algebra in Machine Learning">
 <meta name="twitter:card" content="summary">
 </head>
@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Neural Network Math</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../tutorial/math/nnMath/loss/loss.html">
+    <a class="dropdown-item" href="../../../tutorial/math/nnMath/loss.html">
  <span class="dropdown-text">Loss functions</span></a>
   </li>  
         <li>
@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Neural Network Math</h1>
+      <h1 class="quarto-secondary-nav-title">Loss functions</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -389,12 +389,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link active">Neural Network Math</a>
+  <a href="../../../tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link">Neural Network Math</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/nnMath/loss/loss.html" class="sidebar-item-text sidebar-link">Loss functions</a>
+  <a href="../../../tutorial/math/nnMath/loss.html" class="sidebar-item-text sidebar-link active">Loss functions</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -419,80 +419,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Neural Network Math</h1>
+<h1 class="title d-none d-lg-block">Loss functions</h1>
 <p class="subtitle lead">Linear Algebra in Machine Learning</p>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
 <p><img src="../../../images/gradientv12.jpg" class="img-fluid"></p>
-<section id="math-use-in-maching-learning" class="level2">
-<h2 data-anchor-id="math-use-in-maching-learning">Math use in Maching Learning</h2>
-<p>Here are some essential math use in Machine Learning. It’s important to understand them in order to get insight into the inner working of the Neural Network. And how it come about the result.</p>
-<section id="here-is-a-list-of-math-that-is-used-in-neural-network" class="level5">
-<h5 data-anchor-id="here-is-a-list-of-math-that-is-used-in-neural-network">Here is a list of Math that is used in Neural Network:</h5>
-<ul>
-<li>Vector</li>
-<li>Matrix</li>
-<li>Loss functions</li>
-<li>Cross-entropy loss</li>
-<li>sigmoid function</li>
-<li>softmax</li>
-<li>argmax function</li>
-<li>Partial derivative</li>
-<li>differential equation</li>
-</ul>
-<hr>
-</section>
-<section id="softmax-softargmax" class="level3">
-<h3 data-anchor-id="softmax-softargmax">Softmax (softargmax)</h3>
-<p><img src="./image/softmax_g.png" class="img-fluid"></p>
-<p>Softmax is one of the useful function in Neural Network computation. It’s allowed the data that output from the Neural Network which may not relate to one another be grouped into a single group and relate to each other as a posibility.</p>
-<p><img src="./image/softexp.jpeg" class="img-fluid"></p>
-<p>In mathematically term it’s a function that take the vector as input value and convert them to vector of output value and organized them as a probability value that sum to 1. The input value may be zero, negative, positive.</p>
-<p><img src="./image/softmax2.png" class="img-fluid"></p>
-<p><img src="./image/softmax3.png" class="img-fluid"></p>
-<p>Sometime it is called multi-class logistic regression function. Since it’s used as final output for them. Many Neural Network output value that are not suitable for output so they must be convert using softmax.</p>
-<p><img src="./image/softmax_nn.jpeg" class="img-fluid"></p>
-<p>Softmax equation is defined by:</p>
-<p><span class="math inline">\(\color{brown}{ \sigma : \mathbb{R}^K\to (0,1)^K}\)</span> is defined when <span class="math inline">\(\color{chocolate}{ K \ge 1 }\)</span> by the formula</p>
-<p><span class="math display">\[\color{chocolate}{ \hbox{softmax(x)}_{i} = \sigma(x)_i   = \frac{e^{x_{i}}}{e^{x_{0}} + e^{x_{1}} + \cdots + e^{x_{n-1}}} }\ \text{ for } i = 1, \dotsc , K \text{ and } \mathbf x=(x_1,\dotsc,x_K) \in\R^K  \]</span></p>
-<p>or more concisely:</p>
-<p><span class="math display">\[\color{chocolate}{\hbox{softmax(x)}_{i} = \frac{e^{x_{i}}}{\sum_{0 \leq j \leq n-1} e^{x_{j}}} }\]</span> The input vector <span class="math inline">\(\color{chocolate}{x}\)</span> values are normalized by dividing each value in the vector by the sum of all values; this normalization ensures that the sum of all the components of the output vector <span class="math inline">\(\color{chocolate}{ \sigma(x)}\)</span> is <span class="math inline">\(\color{chocolate}{= 1}\)</span>.</p>
-<p><img src="./image/softmax4.png" class="img-fluid"></p>
-<section id="softmax-and-sigmoid" class="level4">
-<h4 data-anchor-id="softmax-and-sigmoid">Softmax and Sigmoid</h4>
-<p><img src="./image/sigmoid1.png" class="img-fluid"></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>softmax is a generalization version of Sigmoid function and the graph is identical</p>
-</div>
-</div>
-<p>Softmax is the generalize version of sigmoid function since softmax take vector as input and output a vector while sigmoid takes a scalar value and output a scalar. <span class="math display">\[\color{chocolate}{\hbox{sigmoid S(x)} = \frac{1}{1 + e^{-x}} }\]</span> Sigmoid can have two possibility that must sum to <span class="math inline">\(\color{chocolate}{1}\)</span>. When softmax has only two possibility then it is equal to sigmoid function.</p>
-<p><img src="./image/soft_sig.png" class="img-fluid"></p>
-</section>
-<section id="argmax-function" class="level4">
-<h4 data-anchor-id="argmax-function">Argmax function</h4>
-<p><img src="./image/Sinc-function.png" class="img-fluid"></p>
-<p>The argmax function convert all the value in the input vector to zero except the maximum value in that vector which it’s convert to one. The resulting vector contain mostly 0 except the max value that is one.</p>
-<p><img src="./image/argmax1.jpg" class="img-fluid"></p>
-<p>The argmax function can be considered as <em>one-hot</em> or <em>look-up table</em> representation of the output (assuming there is a unique maximum arg):</p>
-<p><img src="./image/argonehot.jpg" class="img-fluid"></p>
-<p><span class="math display">\[\color{chocolate}{\operatorname{arg\,max}(x_1, \dots, x_n) = (y_1, \dots, y_n) = (0, \dots, 0, 1, 0, \dots, 0),}\]</span></p>
-<p><img src="./image/argmax2.jpg" class="img-fluid"></p>
-</section>
-<section id="softmax-vs-argmax" class="level4">
-<h4 data-anchor-id="softmax-vs-argmax">Softmax vs Argmax</h4>
-<p>The softmax can be considered as a <em>smoother</em> version of the arg max where the value in the output vector are either <span class="math inline">\(\color{chocolate}{0}\)</span> or <span class="math inline">\(\color{chocolate}{1}\)</span>.</p>
-<p><img src="./image/argmax3.jpg" class="img-fluid"></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -506,20 +439,36 @@ Tip
 <p>softmax is a smoother verion of argmax</p>
 </div>
 </div>
-<p>Here is both softmax and argmax in one picture. The vector <span class="math inline">\(\color{chocolate}{v}\)</span> is softmax and vector <span class="math inline">\(\color{chocolate}{y}\)</span> is argmax</p>
-<section id="code" class="level5">
-<h5 data-anchor-id="code">code</h5>
-<p>code in Python</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="fl">1.0</span>,<span class="fl">2.0</span>,<span class="fl">3.0</span>,<span class="fl">4.0</span>,<span class="fl">1.0</span>,<span class="fl">3.0</span>]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>np.exp(a) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>code in Julia</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fl">1.0</span>,<span class="fl">2.0</span>,<span class="fl">3.0</span>,<span class="fl">4.0</span>,<span class="fl">1.0</span>,<span class="fl">3.0</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>.(A) <span class="op">./</span> <span class="fu">sum</span>(<span class="fu">exp</span>.(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that the formula</p>
+<p><span class="math display">\[\color{chocolate}{ \log \left ( \frac{a}{b} \right ) = \log(a) - \log(b)}\]</span></p>
+<p>gives a simplification when we compute the log softmax, which was previously defined as <span class="math inline">\(\color{chocolate}{ (x.exp()/(x.exp().sum(-1,keepdim=True))).log()}\)</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_softmax(x): <span class="cf">return</span> (x.exp()<span class="op">/</span>(x.exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>,keepdim<span class="op">=</span><span class="va">True</span>))).log()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_softmax(x): <span class="cf">return</span> x <span class="op">-</span> x.exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>,keepdim<span class="op">=</span><span class="va">True</span>).log()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, there is a way to compute the log of the sum of exponentials in a more stable way, called the <a href="https://en.wikipedia.org/wiki/LogSumExp">LogSumExp trick</a>. The idea is to use the following formula:</p>
+<p><span class="math display">\[\color{chocolate}{ \log \left ( \sum_{j=1}^{n} e^{x_{j}} \right ) = \log \left ( e^{a} \sum_{j=1}^{n} e^{x_{j}-a} \right ) = a + \log \left ( \sum_{j=1}^{n} e^{x_{j}-a} \right )}\]</span></p>
+<p>where <span class="math inline">\(\color{chocolate}{ a }\)</span> is the maximum of the <span class="math inline">\(\color{chocolate}{ x_{j}}\)</span>.</p>
+<pre><code>def logsumexp(x):
+    m = x.max(-1)[0]
+    return m + (x-m[:,None]).exp().sum(-1).log()
+def log_softmax(x): return x - x.logsumexp(-1,keepdim=True)</code></pre>
+<section id="cross-entropy-loss" class="level3">
+<h3 data-anchor-id="cross-entropy-loss">Cross Entropy Loss</h3>
+<p>The cross entropy loss for some target <span class="math inline">\(\color{chocolate}{ x}\)</span> and some prediction <span class="math inline">\(\color{chocolate}{ p(x)}\)</span> is given by:</p>
+<p><span class="math display">\[ \color{chocolate}{ H(x) = -\sum x\, \log p(x) }\]</span></p>
+<p>But since our <span class="math inline">\(x\)</span>s are 1-hot encoded, this can be rewritten as <span class="math inline">\(\color{chocolate}{ -\log(p_{i})}\)</span> where i is the index of the desired target.</p>
+<p>This can be done using numpy-style <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing">integer array indexing</a>. Note that PyTorch supports all the tricks in the advanced indexing methods discussed in that link.</p>
+<section id="negative-log-likelihood-nll" class="level4">
+<h4 data-anchor-id="negative-log-likelihood-nll">Negative Log Likelihood (NLL)</h4>
+<p>When using logarithm to compute value that less than 1 (probability) is result in negative value.</p>
+<ul>
+<li>log 1 = 0</li>
+<li>log .5 = -0.301</li>
+<li>log .9 = -0.045</li>
+<li>log .1 = -1</li>
+</ul>
 
 
-</section>
-</section>
 </section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
