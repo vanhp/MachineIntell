@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MachineIntell - Linear Algebra</title>
+<title>MachineIntell - Neural Network Math</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,10 +155,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
-<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="lna1.xml"><meta property="og:title" content="MachineIntell - Linear Algebra">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="nnmath.xml"><meta property="og:title" content="MachineIntell - Neural Network Math">
 <meta property="og:description" content="Linear Algebra in Machine Learning">
 <meta property="og:site-name" content="MachineIntell">
-<meta name="twitter:title" content="MachineIntell - Linear Algebra">
+<meta name="twitter:title" content="MachineIntell - Neural Network Math">
 <meta name="twitter:description" content="Linear Algebra in Machine Learning">
 <meta name="twitter:card" content="summary">
 </head>
@@ -240,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
         <li>
     <a class="dropdown-item" href="../../../tutorial/math/nnMath/nnmath.html">
- <span class="dropdown-text">Linear Algebra</span></a>
+ <span class="dropdown-text">Neural Network Math</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../tutorial/math/diffEq/diffeq1.html">
@@ -327,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Linear Algebra</h1>
+      <h1 class="quarto-secondary-nav-title">Neural Network Math</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -380,12 +380,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link active">Linear Algebra</a>
+  <a href="../../../tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link">Linear Algebra</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link">Linear Algebra</a>
+  <a href="../../../tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link active">Neural Network Math</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -410,17 +410,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Linear Algebra</h1>
+<h1 class="title d-none d-lg-block">Neural Network Math</h1>
 <p class="subtitle lead">Linear Algebra in Machine Learning</p>
 </div>
 <div class="quarto-title-meta">
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
 <p><img src="../../../images/gradientv12.jpg" class="img-fluid"></p>
-<section id="linear-algebra-for-maching-learning" class="level2">
-<h2 data-anchor-id="linear-algebra-for-maching-learning">Linear Algebra for Maching Learning</h2>
-<p>Understanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.</p>
-<p>Since input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. <span class="math display">\[ A@B \]</span></p>
+<section id="math-use-in-maching-learning" class="level2">
+<h2 data-anchor-id="math-use-in-maching-learning">Math use in Maching Learning</h2>
+<p>Here are some essential math use in Machine Learning. It’s important to understand them in order to get insight into the inner working of the Neural Network. And how it come about the result.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -434,11 +433,21 @@ Tip
 <p>matrix multiplication <span class="math inline">\(C = A \times B\)</span></p>
 </div>
 </div>
+<section id="here-is-a-list-of-math-that-is-used-in-neural-network" class="level5">
+<h5 data-anchor-id="here-is-a-list-of-math-that-is-used-in-neural-network">Here is a list of Math that is used in Neural Network:</h5>
 <ul>
 <li>Vector</li>
 <li>Matrix</li>
+<li>Loss functions</li>
+<li>Cross-entropy loss</li>
+<li>sigmoid function</li>
+<li>softmax</li>
+<li>argmax function</li>
+<li>Partial derivative</li>
+<li>differential equation</li>
 </ul>
 <hr>
+</section>
 <section id="softmax-softargmax" class="level3">
 <h3 data-anchor-id="softmax-softargmax">Softmax (softargmax)</h3>
 <p>Softmax is one of the useful function in Neural Network computation. It’s allowed the data that output from the Neural Network which may not relate to one another be grouped into a single group and relate to each other as a posibility.</p>

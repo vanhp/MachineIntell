@@ -18,11 +18,11 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/tutoring.html</loc>
-    <lastmod>2022-10-22T11:07:57.580Z</lastmod>
+    <lastmod>2022-10-28T00:41:52.108Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.html</loc>
-    <lastmod>2022-10-27T11:23:01.233Z</lastmod>
+    <lastmod>2022-10-28T00:43:22.298Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
@@ -71,5 +71,9 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
     <lastmod>2022-10-22T11:08:04.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.html</loc>
+    <lastmod>2022-10-28T01:01:56.685Z</lastmod>
   </url>
 </urlset>

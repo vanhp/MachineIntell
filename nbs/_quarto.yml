@@ -100,6 +100,7 @@ website:
         - text: "Math"
           contents:
             - ./tutorial/math/linearalgebra/lna1.qmd
+            - ./tutorial/math/nnMath/nnmath.qmd
             - ./tutorial/math/diffEq/diffeq1.qmd
             # navigation items
 

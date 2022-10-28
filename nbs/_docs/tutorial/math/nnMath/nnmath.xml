@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/tutorial/tutoring.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/tutoring.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Fri, 28 Oct 2022 00:41:52 GMT</lastBuildDate>
+<lastBuildDate>Fri, 28 Oct 2022 01:01:56 GMT</lastBuildDate>
 </channel>
 </rss>
