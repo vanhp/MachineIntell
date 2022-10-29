@@ -24,11 +24,35 @@ listing:
 page-layout: full
 ---
 
-_[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_
-
-
 ![](/images/code1.jpg)
 
+##  quarto execute Julia code
 
-## Sample of code block that execute by quarto
+---
+title: "Julia Plots"
+author: "Norah Jones"
+date: "5/22/2021"
+format:
+  html:
+    code-fold: true
 
+---
+
+## Parametric Plots
+
+Plot function pair (x(u), y(u)). 
+See @fig-parametric for an example.
+
+```{julia}
+#| label: fig-parametric
+#| fig-cap: "Parametric Plots"
+
+using Plots
+
+plot(sin, 
+     x->sin(2x), 
+     0, 
+     2π, 
+     leg=false, 
+     fill=(0,:lavender))
+```

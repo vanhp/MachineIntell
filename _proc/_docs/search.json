@@ -291,7 +291,7 @@
     "href": "getting_started.html",
     "title": "MachineIntell",
     "section": "",
-    "text": "import nbdev"
+    "text": "import nbdev\n\n\n## Parametric Plots\n\nPlot function pair (x(u), y(u)). \nSee @fig-parametric for an example.\n\n\n\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender)\n\nErrorException: syntax: extra token \"function\" after end of expression"
   },
   {
     "objectID": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
@@ -429,14 +429,14 @@
   {
     "objectID": "tip/tips.html",
     "href": "tip/tips.html",
-    "title": "Tips and Tricks",
+    "title": "Plots Demo",
     "section": "",
     "text": "Originally posted on the fast.ai blog"
   },
   {
     "objectID": "tip/tips.html#sample-of-code-block-that-execute-by-quarto",
     "href": "tip/tips.html#sample-of-code-block-that-execute-by-quarto",
-    "title": "Tips and Tricks",
+    "title": "Plots Demo",
     "section": "Sample of code block that execute by quarto",
     "text": "Sample of code block that execute by quarto"
   },
@@ -495,5 +495,33 @@
     "title": "MachineIntell",
     "section": "",
     "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "tip/tips.html#parametric-plots",
+    "href": "tip/tips.html#parametric-plots",
+    "title": "Julia Plots",
+    "section": "Parametric Plots",
+    "text": "Parametric Plots\nPlot function pair (x(u), y(u)). See Figure 1 for an example.\n\n\nCode\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))\n\n\n\n\n\nFigure 1: Parametric Plots"
+  },
+  {
+    "objectID": "tip/tips.html#code-block-that-execute-by-quarto",
+    "href": "tip/tips.html#code-block-that-execute-by-quarto",
+    "title": "Plots Demo",
+    "section": "code block that execute by quarto",
+    "text": "code block that execute by quarto"
+  },
+  {
+    "objectID": "tip/tips.html#quarto",
+    "href": "tip/tips.html#quarto",
+    "title": "Plots Demo",
+    "section": "quarto",
+    "text": "quarto"
+  },
+  {
+    "objectID": "tip/tips.html#quarto-execute-julia-code",
+    "href": "tip/tips.html#quarto-execute-julia-code",
+    "title": "Julia Plots",
+    "section": "quarto execute Julia code",
+    "text": "quarto execute Julia code"
   }
 ]
