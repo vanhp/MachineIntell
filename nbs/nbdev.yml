@@ -4,6 +4,6 @@ project:
 website:
   title: MachineIntell
   site-url: "https://vanhp.github.io/MachineIntell"
-  description: "Try to understand machine intelligent"
+  description: "Try to understand machine intelligence"
   repo-branch: main
   repo-url: "https://github.com/vanhp/MachineIntell"

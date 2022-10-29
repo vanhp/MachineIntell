@@ -1,9 +1,9 @@
 ---
-title: Machine intelligent
+title: Machine intelligence
 subtitle: News, tips, tutoring, and commentary about all things Machine Intelligent
 about:
   template: marquee
-  image: ./images/ai2.jpg
+  image: ./images/gradientv12.jpg
  
   image-shape: rounded
   links:
@@ -27,6 +27,6 @@ page-layout: full
 
 
 
-Machine Intelligent and machine learning Technology
+Machine Intelligence and machine learning Technology
 
-![](/images/lion2.jpg)
+![](/images/ai2.jpg)
