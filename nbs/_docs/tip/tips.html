@@ -379,23 +379,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> python3 <span class="op">-</span>m pip install jupyter</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: jupyter in /home/vanh/anaconda3/lib/python3.9/site-packages (1.0.0)
+Requirement already satisfied: notebook in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (6.4.12)
+Requirement already satisfied: ipywidgets in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (7.6.5)
+Requirement already satisfied: nbconvert in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (6.4.4)
+Requirement already satisfied: qtconsole in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (5.3.2)
+Requirement already satisfied: jupyter-console in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (6.4.3)
+Requirement already satisfied: ipykernel in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter) (6.15.2)
+Requirement already satisfied: ipython&gt;=7.23.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (7.31.1)
+Requirement already satisfied: tornado&gt;=6.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (6.2)
+Requirement already satisfied: packaging in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (21.3)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (7.3.5)
+Requirement already satisfied: nest-asyncio in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (1.5.5)
+Requirement already satisfied: psutil in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (5.9.0)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (0.1.6)
+Requirement already satisfied: pyzmq&gt;=17 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (23.2.0)
+Requirement already satisfied: traitlets&gt;=5.1.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (5.1.1)
+Requirement already satisfied: debugpy&gt;=1.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipykernel-&gt;jupyter) (1.5.1)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipywidgets-&gt;jupyter) (3.5.2)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipywidgets-&gt;jupyter) (0.2.0)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: nbformat&gt;=4.2.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipywidgets-&gt;jupyter) (5.5.0)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipywidgets-&gt;jupyter) (1.0.0)
+Requirement already satisfied: pygments in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter-console-&gt;jupyter) (2.11.2)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter-console-&gt;jupyter) (3.0.20)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.5.13)
+Requirement already satisfied: jupyter-core in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (4.11.1)
+Requirement already satisfied: beautifulsoup4 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (4.11.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.8.4)
+Requirement already satisfied: testpath in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.6.0)
+Requirement already satisfied: defusedxml in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.7.1)
+Requirement already satisfied: bleach in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (4.1.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (1.5.0)
+Requirement already satisfied: jupyterlab-pygments in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.1.2)
+Requirement already satisfied: jinja2&gt;=2.4 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (2.11.3)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbconvert-&gt;jupyter) (0.4)
+Requirement already satisfied: argon2-cffi in /home/vanh/anaconda3/lib/python3.9/site-packages (from notebook-&gt;jupyter) (21.3.0)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from notebook-&gt;jupyter) (1.8.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /home/vanh/anaconda3/lib/python3.9/site-packages (from notebook-&gt;jupyter) (0.13.1)
+Requirement already satisfied: prometheus-client in /home/vanh/anaconda3/lib/python3.9/site-packages (from notebook-&gt;jupyter) (0.14.1)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: qtpy&gt;=2.0.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from qtconsole-&gt;jupyter) (2.2.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (63.4.1)
+Requirement already satisfied: backcall in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (0.2.0)
+Requirement already satisfied: jedi&gt;=0.16 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (0.18.1)
+Requirement already satisfied: pexpect&gt;4.3 in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (4.8.0)
+Requirement already satisfied: decorator in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (5.1.1)
+Requirement already satisfied: pickleshare in /home/vanh/anaconda3/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (0.7.5)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jinja2&gt;=2.4-&gt;nbconvert-&gt;jupyter) (2.0.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;jupyter) (2.8.2)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: jsonschema&gt;=2.6 in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets-&gt;jupyter) (4.16.0)
+Requirement already satisfied: fastjsonschema in /home/vanh/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets-&gt;jupyter) (2.16.2)
+Requirement already satisfied: wcwidth in /home/vanh/anaconda3/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;jupyter-console-&gt;jupyter) (0.2.5)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: ptyprocess in /home/vanh/anaconda3/lib/python3.9/site-packages (from terminado&gt;=0.8.3-&gt;notebook-&gt;jupyter) (0.7.0)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: argon2-cffi-bindings in /home/vanh/anaconda3/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook-&gt;jupyter) (21.2.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /home/vanh/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;nbconvert-&gt;jupyter) (2.3.1)
+Requirement already satisfied: webencodings in /home/vanh/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;jupyter) (0.5.1)
+Requirement already satisfied: six&gt;=1.9.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;jupyter) (1.16.0)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /home/vanh/anaconda3/lib/python3.9/site-packages (from packaging-&gt;ipykernel-&gt;jupyter) (3.0.9)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;jupyter) (0.8.3)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets-&gt;jupyter) (0.18.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /home/vanh/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets-&gt;jupyter) (21.4.0)
+Requirement already satisfied: cffi&gt;=1.0.1 in /home/vanh/anaconda3/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook-&gt;jupyter) (1.15.1)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: pycparser in /home/vanh/anaconda3/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook-&gt;jupyter) (2.21)</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div id="fig-polar" class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="tips_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img"></p>
+<p><img src="tips_files/figure-html/fig-polar-output-9.png" width="450" height="439" class="figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption><p></p>
 </figure>
 </div>
