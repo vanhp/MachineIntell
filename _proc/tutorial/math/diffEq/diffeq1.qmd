@@ -1,0 +1,50 @@
+---
+title: Differential Equation
+subtitle: Differential Equation in Machine Learning
+about:
+  template: marquee
+  image: ../../../images/ai-pic7cp.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+![](/images/gradientv12.jpg)
+
+## Linear Algebra for Maching Learning
+Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.
+
+Since input data must be convert to matrices form for the machine to operate on using Matix operation rules.
+One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this "@" e.g.
+$$ A@B $$
+
+::: {.callout-tip}
+
+matrix multiplication $AxB$
+:::
+
+- Vector
+- Matrix
+
+
+
+## Differential Equation In Machine Learning
+
+On the other hand, Diffential Equation is used in calculate **back propragation**. It's used inconjunction with *chain-rule* to adjust the input in order to getting closer to actual value
+
+- Differential Equation
+
+   $$\frac{du}{dt} = pu  $$

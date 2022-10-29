@@ -1,14 +1,75 @@
 website:
   sidebar:
     contents:
-      - index.ipynb
       - index.qmd
       - 00_core.ipynb
       - about.qmd
       - getting_started.ipynb
-      - news.qmd
-      - tips.qmd
-      - tutoring.qmd
       - section: blog
         contents:
           - blog/index.qmd
+      - section: help
+        contents:
+          - help/helps.qmd
+      - section: news
+        contents:
+          - news/news1.qmd
+          - news/news2.qmd
+          - news/newsall.qmd
+      - section: resources
+        contents:
+          - resources/resource.qmd
+      - section: tip
+        contents:
+          - tip/tips.qmd
+      - section: tutorial
+        contents:
+          - tutorial/tutoring.qmd
+          - section: math
+            contents:
+              - tutorial/math/maths.qmd
+      - section: tutorial
+        contents:
+          - section: math
+            contents:
+              - section: diffEq
+                contents:
+                  - tutorial/math/diffEq/diffeq1.qmd
+      - section: tutorial
+        contents:
+          - section: math
+            contents:
+              - section: linearalgebra
+                contents:
+                  - tutorial/math/linearalgebra/lna1.qmd
+      - section: tutorial
+        contents:
+          - section: math
+            contents:
+              - section: nnMath
+                contents:
+                  - tutorial/math/nnMath/nnmath.qmd
+      - section: tutorial
+        contents:
+          - section: math
+            contents:
+              - section: nnMath
+                contents:
+                  - section: loss
+                    contents:
+                      - tutorial/math/nnMath/loss/loss.qmd
+      - section: tutorial
+        contents:
+          - section: nlps
+            contents:
+              - tutorial/nlps/nlp.qmd
+      - section: tutorial
+        contents:
+          - section: nlps
+            contents:
+              - tutorial/nlps/rnn.qmd
+      - section: tutorial
+        contents:
+          - section: visions
+            contents:
+              - tutorial/visions/vision.qmd

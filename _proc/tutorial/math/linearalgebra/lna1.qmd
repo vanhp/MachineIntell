@@ -1,0 +1,52 @@
+---
+title: Linear Algebra
+subtitle: Linear Algebra in Machine Learning
+about:
+  template: marquee
+  image: ../../../images/ai-pic7cp.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+![](/images/gradientv12.jpg)
+
+## Linear Algebra for Maching Learning
+Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.
+
+To ask NN to analyze whetherthe picture is a dog or a cat these pictures must be digitized and feed to the NN.
+Machine Learning deal with large amount of data for example a picture of a dog taken with smart phone consist of thousand up to many million pixels. To feed this image to NN for analysis is must be transform into array of data that NN can use.
+
+In Math the branch that work with array of data is called [Linear Algebra](https://en.wikipedia.org/wiki/Linear_algebra) and the field is most appropriate is matrices.  
+Array of data may have multidimension. Name of array with different dimension:
+
+- Vector an array with one dimension or rank
+- Matrix an array with two dimension or rank
+- Tensor an array with three or more dimension or rank
+
+One of the most frequent uses operation in NN is matrix [multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication) or MatMul for short and Python event have it own symbol for this "@" e.g.
+$$ A@B $$
+
+::: {.callout-tip}
+
+matrix multiplication  $C = A \times B$
+:::
+
+
+### Framework Provide tools
+
+AI framework such as Pytorch, TensorFlow, Flux  have many of the math tools build in. Also many programming languages e.g. Python, Julia, R have support for Matrix operations build in to the language.
+

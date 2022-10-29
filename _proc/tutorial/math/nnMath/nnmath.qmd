@@ -1,0 +1,135 @@
+---
+title: Neural Network Math
+subtitle: Linear Algebra in Machine Learning
+about:
+  template: marquee
+  image: ../../../images/ai-pic7cp.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+![](/images/gradientv12.jpg)
+
+## Math use in Maching Learning
+Here are some  essential math use in Machine Learning. It's important to understand them in order to get insight into the inner working of the Neural Network. And how it come about the result.
+
+##### Here is a list of Math that is used in Neural Network:
+
+- Vector
+- Matrix
+- Loss functions 
+- Cross-entropy loss
+- sigmoid function
+- softmax 
+- argmax function
+- Partial derivative
+- differential equation
+
+---
+### Softmax (softargmax)
+![](./image/softmax_g.png)
+
+Softmax is one of the useful function in Neural Network computation. It's allowed the data that output from the Neural Network which may not relate to one another be grouped into a single group and relate to each other as a posibility.
+
+![](./image/softexp.jpeg)
+
+In mathematically term it's a function that take the vector as input value and convert them to vector of output value and organized them as a probability value that sum to 1. The input value may be zero, negative, positive.
+
+![](./image/softmax2.png)
+
+![](./image/softmax3.png)
+
+Sometime it is called multi-class logistic regression function. Since it's used as final output for them.
+Many Neural Network output value that are not suitable for output so they must be convert using softmax.
+
+![](./image/softmax_nn.jpeg)
+
+Softmax equation is defined by:
+
+$\color{brown}{ \sigma : \mathbb{R}^K\to (0,1)^K}$ is defined when $\color{chocolate}{ K \ge 1 }$ by the formula
+
+$$\color{chocolate}{ \hbox{softmax(x)}_{i} = \sigma(x)_i   = \frac{e^{x_{i}}}{e^{x_{0}} + e^{x_{1}} + \cdots + e^{x_{n-1}}} }\ \text{ for } i = 1, \dotsc , K \text{ and } \mathbf x=(x_1,\dotsc,x_K) \in\R^K  $$
+
+or more concisely:
+
+$$\color{chocolate}{\hbox{softmax(x)}_{i} = \frac{e^{x_{i}}}{\sum_{0 \leq j \leq n-1} e^{x_{j}}} }$$ 
+The input vector $\color{chocolate}{x}$ values are normalized by dividing each value in the vector by the sum of all values; this normalization ensures that the sum of all the components of the output vector $\color{chocolate}{ \sigma(x)}$ is  $\color{chocolate}{= 1}$. 
+
+![](./image/softmax4.png)
+
+
+#### Softmax and Sigmoid
+
+![](./image/sigmoid1.png)
+
+::: {.callout-tip}
+
+softmax is a generalization version of Sigmoid function and the graph is identical
+:::
+
+Softmax is the generalize version of sigmoid function since softmax take vector as input and output a vector while sigmoid takes a scalar value and output a scalar.
+$$\color{chocolate}{\hbox{sigmoid S(x)} = \frac{1}{1 + e^{-x}} }$$ 
+Sigmoid can have two possibility that must sum to $\color{chocolate}{1}$. When softmax has only two possibility then it is equal to sigmoid function.
+
+![](./image/soft_sig.png)
+
+#### Argmax function
+![](./image/Sinc-function.png)
+
+The argmax function convert all the value in the input vector to zero except the maximum value in that vector which it's convert to one. The resulting vector contain mostly 0 except the max value that is one. 
+
+![](./image/argmax1.jpg)
+
+The argmax function can be considered as *one-hot* or *look-up table* representation of the output (assuming there is a unique maximum arg):
+
+
+![](./image/argonehot.jpg)
+
+$$\color{chocolate}{\operatorname{arg\,max}(x_1, \dots, x_n) = (y_1, \dots, y_n) = (0, \dots, 0, 1, 0, \dots, 0),}$$
+
+![](./image/argmax2.jpg)
+
+#### Softmax vs Argmax
+The softmax can be considered as a *smoother* version of the arg max where the value in the output vector are either $\color{chocolate}{0}$ or $\color{chocolate}{1}$.
+
+![](./image/argmax3.jpg)
+
+::: {.callout-tip}
+
+softmax is a smoother verion of argmax
+:::
+
+
+Here is both softmax and argmax in one picture. The vector $\color{chocolate}{v}$ is softmax and vector $\color{chocolate}{y}$ is argmax
+
+
+
+##### code 
+
+code in Python
+
+```python
+import numpy as np
+a = [1.0,2.0,3.0,4.0,1.0,3.0]
+np.exp(a) / np.sum(np.exp(a))
+```
+code in Julia
+```julia
+A = [1.0,2.0,3.0,4.0,1.0,3.0]
+exp.(A) ./ sum(exp.(A))
+
+```

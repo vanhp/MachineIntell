@@ -15,17 +15,19 @@ website:
     background: primary
     search: true
     collapse-below: lg
+    logo: /images/gradientv1scale2.jpg
     left:
       - text: "Home"
         href: index.qmd
-      - text: "News"
-        href: news.qmd
-      - text: "Tips & tricks"
-        href: tips.qmd
-      - text: "Tutoring"  
-        href: tutoring.qmd
-      - text: "Help"
-        menu:
+       
+      - sidebar:news
+      - sidebar:tip
+      - sidebar:tutorial
+
+      - text: "Help"   
+        menu:   
+          - text: "Helping hand"     
+            href: ./help/helps.qmd
           - text: "Report an Issue"
             icon: bug
             href: https://github.com/fastai/nbdev/issues
@@ -37,7 +39,21 @@ website:
             href: getting_started.ipynb#faq
 
 
-    right:
+    right:                  
+      - text: "Resources"
+        menu:   
+          - text: "More info"     
+            href: ./resources/resource.qmd
+          - text: "Report an Issue"
+            icon: bug
+            href: https://github.com/fastai/nbdev/issues
+          - text: "Fast.ai Forum"
+            icon: chat-right-text
+            href: https://forums.fast.ai/
+          - text: "FAQ"
+            icon: question-circle
+            href: getting_started.ipynb#faq
+          
       - text: Blog
         menu:
           - text: "Posts"
@@ -51,16 +67,45 @@ website:
         href: https://twitter.com/fastdotai
         aria-label: Fast.ai Twitter
 
-
-
   sidebar:
-    style: floating
-    # contents:
-    #   - auto: "/*.ipynb"
-    #   - section: Tutorials
-    #     contents: tutorials
-    #   - section: Explanations
-    #     contents: explanations
-    
+    - id: news
+
+      style: "docked"      
+      type: "dark"
+      background: "#742787"
+      foreground: "#b7e087"
+
+      title: "News"
+      contents:
+        - ./news/newsall.qmd
+        - ./news/news1.qmd
+        - ./news/news2.qmd
+
+    - id: tip
+      title: "Tip & Trick"
+      contents:
+        - ./tip/tips.qmd
+        # navigation items
+
+    - id: tutorial
+      title: "Tutorials"
+      contents:
+        - ./tutorial/tutoring.qmd
+        - ./tutorial/visions/vision.qmd
+        - ./tutorial/nlps/nlp.qmd
+        - text: "NLP"
+          contents:
+            - ./tutorial/nlps/rnn.qmd
+            
+        - text: "Math"
+          contents:
+            - ./tutorial/math/linearalgebra/lna1.qmd
+            - ./tutorial/math/nnMath/nnmath.qmd
+            - ./tutorial/math/nnMath/loss/loss.qmd
+            - ./tutorial/math/diffEq/diffeq1.qmd
+            # navigation items
+
+
+   
 
 metadata-files: [nbdev.yml, sidebar.yml]

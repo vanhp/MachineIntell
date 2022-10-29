@@ -1,0 +1,62 @@
+---
+title: Tips and Tricks
+subtitle: Learn the tips and tricks from veterans in Machine Learning
+about:
+  template: marquee
+  image: ../images/gradientv12.jpg 
+ 
+  image-shape: rounded
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+_[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_
+
+
+![](/images/code1.jpg)
+
+
+## Sample of code block that execute by quarto
+
+---
+title: "matplotlib demo"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+! python3 -m pip install jupyter
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+``` 

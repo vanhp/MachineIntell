@@ -17,5 +17,69 @@
   {
     "listing": "/tutoring.html",
     "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/tutoring.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/maths.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/linearalgebra/lna1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/diffeq1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/nnmath.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/loss/loss.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/rnn.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/visions/vision.html",
+    "items": []
+  },
+  {
+    "listing": "/tip/tips.html",
+    "items": []
+  },
+  {
+    "listing": "/news/newsall.html",
+    "items": []
+  },
+  {
+    "listing": "/news/news1.html",
+    "items": []
+  },
+  {
+    "listing": "/news/news2.html",
+    "items": []
+  },
+  {
+    "listing": "/help/helps.html",
+    "items": []
+  },
+  {
+    "listing": "/resources/resource.html",
+    "items": []
   }
 ]

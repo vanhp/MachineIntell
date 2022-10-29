@@ -1,0 +1,29 @@
+---
+title: Resources
+subtitle: Where to find more info
+about:
+  template: marquee
+  image: ../images/lotus3.jpg
+  image-width: 37em
+  image-shape: rectangle
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+## Help from expert
+
+Here you can find helping hand when you need it
