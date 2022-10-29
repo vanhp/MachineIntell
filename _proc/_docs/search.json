@@ -488,5 +488,12 @@
     "title": "Resources",
     "section": "",
     "text": "No matching items"
+  },
+  {
+    "objectID": "tip/sample.html",
+    "href": "tip/sample.html",
+    "title": "MachineIntell",
+    "section": "",
+    "text": "import numpy as np\nimport matplotlib.pyplot as plt\n\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   }
 ]

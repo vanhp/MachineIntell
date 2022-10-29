@@ -2,7 +2,6 @@ website:
   sidebar:
     contents:
       - index.qmd
-      - index.ipynb
       - 00_core.ipynb
       - about.qmd
       - getting_started.ipynb
@@ -22,6 +21,7 @@ website:
           - resources/resource.qmd
       - section: tip
         contents:
+          - tip/sample.ipynb
           - tip/tips.qmd
       - section: tutorial
         contents:
