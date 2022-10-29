@@ -3,7 +3,7 @@ title: Tips and Tricks
 subtitle: Learn the tips and tricks from veterans in Machine Learning
 about:
   template: marquee
-  image: ../images/lion1.jpg
+  image: ../images/gradientv12.jpg 
  
   image-shape: rounded
   links:
@@ -25,6 +25,7 @@ page-layout: full
 ---
 
 _[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai blog_
+
 
 ![](/images/code1.jpg)
 
