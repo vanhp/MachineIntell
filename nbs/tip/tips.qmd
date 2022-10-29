@@ -45,7 +45,7 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 ```{python}
 #| label: fig-polar
 #| fig-cap: "A line plot on a polar axis"
-# ! python3 -m pip install jupyter
+ ! python3 -m pip install jupyter
 
 import numpy as np
 import matplotlib.pyplot as plt
