@@ -32,7 +32,7 @@ _[Originally posted](https://www.fast.ai/2022/07/28/nbdev-v2/) on the fast.ai bl
 
 ## Sample of code block that execute by quarto
 
----
+<!-- ---
 title: "matplotlib demo"
 format:
   html:
@@ -59,4 +59,4 @@ ax.plot(theta, r)
 ax.set_rticks([0.5, 1, 1.5, 2])
 ax.grid(True)
 plt.show()
-``` 
+```  -->
