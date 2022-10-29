@@ -291,7 +291,7 @@
     "href": "getting_started.html",
     "title": "MachineIntell",
     "section": "",
-    "text": "import nbdev\n\n\n## Parametric Plots\n\nPlot function pair (x(u), y(u)). \nSee @fig-parametric for an example.\n\n\n\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender)\n\nErrorException: syntax: extra token \"function\" after end of expression"
+    "text": "import nbdev"
   },
   {
     "objectID": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
@@ -523,5 +523,12 @@
     "title": "Julia Plots",
     "section": "quarto execute Julia code",
     "text": "quarto execute Julia code"
+  },
+  {
+    "objectID": "tip/sample.html#live-python-code",
+    "href": "tip/sample.html#live-python-code",
+    "title": "MachineIntell",
+    "section": "Live Python code",
+    "text": "Live Python code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   }
 ]
