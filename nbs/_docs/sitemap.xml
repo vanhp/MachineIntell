@@ -2,86 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vanhp.github.io/MachineIntell/blog/index.html</loc>
-    <lastmod>2022-10-28T23:35:45.133Z</lastmod>
+    <lastmod>2022-10-29T10:47:53.682Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/about.html</loc>
-    <lastmod>2022-10-22T11:07:56.100Z</lastmod>
+    <lastmod>2022-10-29T10:47:54.097Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2022-10-29T08:20:24.737Z</lastmod>
+    <lastmod>2022-10-29T10:47:54.524Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/getting_started.html</loc>
-    <lastmod>2022-10-22T11:07:57.079Z</lastmod>
+    <lastmod>2022-10-29T10:47:54.980Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/tutoring.html</loc>
-    <lastmod>2022-10-28T23:36:02.736Z</lastmod>
+    <lastmod>2022-10-29T10:47:55.333Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.html</loc>
-    <lastmod>2022-10-28T23:36:06.785Z</lastmod>
+    <lastmod>2022-10-29T10:47:55.789Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
-    <lastmod>2022-10-27T10:42:56.791Z</lastmod>
+    <lastmod>2022-10-29T10:47:56.154Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/maths.html</loc>
-    <lastmod>2022-10-22T11:07:59.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/nlp.html</loc>
-    <lastmod>2022-10-27T10:37:55.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.html</loc>
-    <lastmod>2022-10-27T10:37:58.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/tutorial/visions/vision.html</loc>
-    <lastmod>2022-10-22T11:08:00.641Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/tip/tips.html</loc>
-    <lastmod>2022-10-29T08:28:13.628Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/news/newsall.html</loc>
-    <lastmod>2022-10-22T11:08:01.636Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/news/news1.html</loc>
-    <lastmod>2022-10-22T11:08:02.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/news/news2.html</loc>
-    <lastmod>2022-10-22T11:08:02.687Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/help/helps.html</loc>
-    <lastmod>2022-10-22T11:08:03.240Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/resources/resource.html</loc>
-    <lastmod>2022-10-22T11:08:03.770Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
-    <lastmod>2022-10-22T11:08:04.364Z</lastmod>
+    <lastmod>2022-10-29T10:47:56.506Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.html</loc>
-    <lastmod>2022-10-28T23:36:17.286Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/loss.html</loc>
-    <lastmod>2022-10-28T04:11:47.806Z</lastmod>
+    <lastmod>2022-10-29T10:47:56.944Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/loss/loss.html</loc>
-    <lastmod>2022-10-28T11:12:15.992Z</lastmod>
+    <lastmod>2022-10-29T10:47:57.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/nlp.html</loc>
+    <lastmod>2022-10-29T10:47:57.660Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.html</loc>
+    <lastmod>2022-10-29T10:47:58.196Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/visions/vision.html</loc>
+    <lastmod>2022-10-29T10:47:58.535Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tip/tips.html</loc>
+    <lastmod>2022-10-29T10:48:19.740Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tip/sample.html</loc>
+    <lastmod>2022-10-29T10:48:20.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/news/newsall.html</loc>
+    <lastmod>2022-10-29T10:48:20.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/news/news1.html</loc>
+    <lastmod>2022-10-29T10:48:20.782Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/news/news2.html</loc>
+    <lastmod>2022-10-29T10:48:21.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/help/helps.html</loc>
+    <lastmod>2022-10-29T10:48:21.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/resources/resource.html</loc>
+    <lastmod>2022-10-29T10:48:21.841Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
+    <lastmod>2022-10-29T10:48:22.195Z</lastmod>
   </url>
 </urlset>

@@ -20,6 +20,14 @@
     "items": []
   },
   {
+    "listing": "/tutorial/math/nnMath/nnmath.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/loss/loss.html",
+    "items": []
+  },
+  {
     "listing": "/tutorial/nlps/nlp.html",
     "items": []
   },
@@ -53,18 +61,6 @@
   },
   {
     "listing": "/resources/resource.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/nnmath.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/loss.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/loss/loss.html",
     "items": []
   }
 ]
