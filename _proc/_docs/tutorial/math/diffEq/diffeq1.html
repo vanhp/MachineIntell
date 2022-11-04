@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Vanh Phom">
+<meta name="dcterms.date" content="2022-11-01">
 
-<title>MachineIntell - Differential Equation</title>
+<title>MachineIntell - diffEqs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,10 +94,10 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
-<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="diffeq1.xml"><meta property="og:title" content="MachineIntell - Differential Equation">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="diffeq1.xml"><meta property="og:title" content="MachineIntell - diffEqs">
 <meta property="og:description" content="Differential Equation in Machine Learning">
 <meta property="og:site-name" content="MachineIntell">
-<meta name="twitter:title" content="MachineIntell - Differential Equation">
+<meta name="twitter:title" content="MachineIntell - diffEqs">
 <meta name="twitter:description" content="Differential Equation in Machine Learning">
 <meta name="twitter:card" content="summary">
 </head>
@@ -144,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
         <li>
     <a class="dropdown-item" href="../../../tip/tips.html">
- <span class="dropdown-text">matplotlib demo</span></a>
+ <span class="dropdown-text">Julia Plots</span></a>
   </li>  
     </ul>
   </li>
@@ -185,7 +187,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../../../tutorial/math/diffEq/diffeq1.html">
- <span class="dropdown-text">Differential Equation</span></a>
+ <span class="dropdown-text">diffEqs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../tutorial/math/diffEq/compint.html">
+ <span class="dropdown-text">Compoun Interest of Bank</span></a>
   </li>  
     </ul>
   </li>
@@ -268,7 +274,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Differential Equation</h1>
+      <h1 class="quarto-secondary-nav-title">diffEqs</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -336,7 +342,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link active">Differential Equation</a>
+  <a href="../../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link active">diffEqs</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../tutorial/math/diffEq/compint.html" class="sidebar-item-text sidebar-link">Compoun Interest of Bank</a>
   </div>
 </li>
       </ul>
@@ -351,22 +362,36 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <div class="quarto-about-marquee column-body">
   <div class="about-image-container">
-    <img src="../../../images/ai-pic7cp.jpg" class="about-image " style="width: 100%;">
+    <img src="../../../images/gradientv12.jpg" class="about-image " style="width: 100%;">
   </div>
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Differential Equation</h1>
+<h1 class="title d-none d-lg-block">diffEqs</h1>
 <p class="subtitle lead">Differential Equation in Machine Learning</p>
 </div>
 <div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vanh Phom </p>
+          </div>
+  </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">11/01/2022</p>
+    </div>
+  </div>
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
-<p><img src="../../../images/gradientv12.jpg" class="img-fluid"></p>
-<section id="linear-algebra-for-maching-learning" class="level2">
-<h2 data-anchor-id="linear-algebra-for-maching-learning">Linear Algebra for Maching Learning</h2>
-<p>Understanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.</p>
-<p>Since input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. <span class="math display">\[ A@B \]</span></p>
+<p><img src="../../../images/ai-pic7cp.jpg" class="img-fluid"></p>
+<section id="differential-equation" class="level2">
+<h2 data-anchor-id="differential-equation">Differential Equation</h2>
+<p>It is a Mathematical branch that use to work with problem involving one item change in relation to another item.</p>
+<section id="ordinary-differential-equation-ode" class="level3">
+<h3 data-anchor-id="ordinary-differential-equation-ode">Ordinary Differential Equation (ODE)</h3>
+<p>ODE dealing with a single dependent variable(function) changed with respect to an independent variable changed. Here an example of ODE problem figure out the compound interest.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -377,23 +402,40 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>matrix multiplication <span class="math inline">\(AxB\)</span></p>
+<p>ODE general equation form <span class="math inline">\(\frac{du}{dt} = pu\)</span></p>
 </div>
 </div>
-<ul>
-<li>Vector</li>
-<li>Matrix</li>
-</ul>
+<section id="problem-compute-the-compound-interest-of-a-bank-account" class="level4">
+<h4 data-anchor-id="problem-compute-the-compound-interest-of-a-bank-account">Problem: compute the compound Interest of a bank account</h4>
+<p>Julia has a DifferentialEquation.jl package <!-- 
+using Pkg; Pkg.add("DifferentialEquations.jl")
+using DifferentialEquations.jl
+Here the general equation of ODE
+$\frac{du}{dt} = pu$ where p is parameter that change the function u
+$f(u,p,t) = pu$  where u is the bank account, p is the interest and t is time 
+using PlutoUI
+define the function f as
+f(u,p,t) = p * u --></p>
+<!-- # value of account at t=0
+# u_begin = 1.0
+# md" begining balance: $(@bind u_begin Slider(1.0:1000.0,1.0,true))"  -->
+<p>p: annual interest rate</p>
+<p>interest rate: $(<span class="citation" data-cites="bind">@bind</span> p Slider(0.10:0.10:1.0,1.0,true))</p>
+<p>t: time in year t_begin = 0.0 $(Years: <span class="citation" data-cites="bind">@bind</span> t_end Slider( 1.0:50.0,1.0,true)) tspan = (t_begin,t_end) <!-- # begin
+#   import Pkg
+#   Pkg.resolve()
+#   # Pkg.add("DifferentialEquations")
+# end --> using DifferentialEquations define ODE problem the differention equation package to solve <!-- # prob = ODEProblem(f,u_begin,tspan,p) --> where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u</p>
+<p>solving ODE problem where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u</p>
+<p>solving ODE problem sol = solve(prob) using Plots interest rate: $(<span class="citation" data-cites="bind">@bind</span> p Slider(0.10:0.10:1.0,1.0,true))</p>
+<p>begining balance: $(<span class="citation" data-cites="bind">@bind</span> u_begin Slider(1.0:1000.0,1.0,true)) Years: $( <span class="citation" data-cites="bind">@bind</span> t_end Slider( 1.0:50.0,1.0,true)) prob = ODEProblem(f,u_begin,tspan,p) lot(sol, lengend=false, linewidth=2, title=“continuous compound interest”, xaxis= “time in year”, yaxis= “account balance in dollars”, formatter = :plain, widen = true, xlims = (0.0,50.0), ylims = (0.0,1_000_000.0) )</p>
+<p>sol(1)</p>
+<p>Euler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation</p>
+<p>e_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate</p>
+
+
 </section>
-<section id="differential-equation-in-machine-learning" class="level2">
-<h2 data-anchor-id="differential-equation-in-machine-learning">Differential Equation In Machine Learning</h2>
-<p>On the other hand, Diffential Equation is used in calculate <strong>back propragation</strong>. It’s used inconjunction with <em>chain-rule</em> to adjust the input in order to getting closer to actual value</p>
-<ul>
-<li><p>Differential Equation</p>
-<p><span class="math display">\[\frac{du}{dt} = pu  \]</span></p></li>
-</ul>
-
-
+</section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">

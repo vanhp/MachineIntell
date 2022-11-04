@@ -340,7 +340,7 @@
     "href": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning",
     "title": "Differential Equation",
     "section": "Differential Equation In Machine Learning",
-    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]\n\nmd” ## Problem statement Compound Interest of a bank account”\nmd” ### Ordinary Differential Equation (ODE) is a Mathematicall branch that use to work with problem that one item change in relation to another item and different from Diffeq that work with more than one items changed with respect to another item\nJulia has a DifferentialEquation.jl package”\nmd”\\(\\frac{du}{dt} = pu\\) where p is parameter that change the function u”\nmd”\\(f(u,p,t) = pu\\) u is the bank account, p is the interest t is time ” using PlutoUI\nmd”define the function f as” f(u,p,t) = p * u"
   },
   {
     "objectID": "tutorial/math/nnMath/nnmath.html#math-use-in-maching-learning",
@@ -530,5 +530,54 @@
     "title": "MachineIntell",
     "section": "Live Python code",
     "text": "Live Python code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning-1",
+    "href": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning-1",
+    "title": "Differential Equation",
+    "section": "Differential Equation In Machine Learning",
+    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html",
+    "href": "tutorial/math/diffEq/diffeq1.html",
+    "title": "Differential Equation",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#problem-statement",
+    "href": "tutorial/math/diffEq/diffeq1.html#problem-statement",
+    "title": "Differential Equation",
+    "section": "Problem statement",
+    "text": "Problem statement\nCompound Interest of a bank account\nmd” ### Ordinary Differential Equation (ODE) is a Mathematicall branch that use to work with problem that one item change in relation to another item and different from Diffeq that work with more than one items changed with respect to another item\nJulia has a DifferentialEquation.jl package”\nmd”\\(\\frac{du}{dt} = pu\\) where p is parameter that change the function u”\nmd”\\(f(u,p,t) = pu\\) u is the bank account, p is the interest t is time ” using PlutoUI\nmd”define the function f as” f(u,p,t) = p * u"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#section",
+    "href": "tutorial/math/diffEq/diffeq1.html#section",
+    "title": "Differential Equation",
+    "section": "",
+    "text": "Compound Interest of a bank account\nmd” ### Ordinary Differential Equation (ODE) is a Mathematicall branch that use to work with problem that one item change in relation to another item and different from Diffeq that work with more than one items changed with respect to another item\nJulia has a DifferentialEquation.jl package”\nmd”\\(\\frac{du}{dt} = pu\\) where p is parameter that change the function u”\nmd”\\(f(u,p,t) = pu\\) u is the bank account, p is the interest t is time ” using PlutoUI\nmd”define the function f as” f(u,p,t) = p * u"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#compound-interest-of-a-bank-account",
+    "href": "tutorial/math/diffEq/diffeq1.html#compound-interest-of-a-bank-account",
+    "title": "Differential Equation",
+    "section": "Compound Interest of a bank account",
+    "text": "Compound Interest of a bank account\nJulia has a DifferentialEquation.jl package\nmd”\\(\\frac{du}{dt} = pu\\) where p is parameter that change the function u”\nmd”\\(f(u,p,t) = pu\\) u is the bank account, p is the interest t is time ” using PlutoUI\nmd”define the function f as” f(u,p,t) = p * u"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#differential-equation",
+    "href": "tutorial/math/diffEq/diffeq1.html#differential-equation",
+    "title": "diffEqs",
+    "section": "Differential Equation",
+    "text": "Differential Equation\nIt is a Mathematical branch that use to work with problem involving one item change in relation to another item.\n\nOrdinary Differential Equation (ODE)\nODE dealing with a single dependent variable(function) changed with respect to an independent variable changed. Here an example of ODE problem figure out the compound interest.\n\n\n\n\n\n\nTip\n\n\n\nODE general equation form \\(\\frac{du}{dt} = pu\\)\n\n\n\nProblem: compute the compound Interest of a bank account\nJulia has a DifferentialEquation.jl package \n\np: annual interest rate\ninterest rate: $(@bind p Slider(0.10:0.10:1.0,1.0,true))\nt: time in year t_begin = 0.0 $(Years: @bind t_end Slider( 1.0:50.0,1.0,true)) tspan = (t_begin,t_end)  using DifferentialEquations define ODE problem the differention equation package to solve  where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u\nsolving ODE problem where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u\nsolving ODE problem sol = solve(prob) using Plots interest rate: $(@bind p Slider(0.10:0.10:1.0,1.0,true))\nbegining balance: $(@bind u_begin Slider(1.0:1000.0,1.0,true)) Years: $( @bind t_end Slider( 1.0:50.0,1.0,true)) prob = ODEProblem(f,u_begin,tspan,p) lot(sol, lengend=false, linewidth=2, title=“continuous compound interest”, xaxis= “time in year”, yaxis= “account balance in dollars”, formatter = :plain, widen = true, xlims = (0.0,50.0), ylims = (0.0,1_000_000.0) )\nsol(1)\nEuler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation\ne_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compint.html",
+    "href": "tutorial/math/diffEq/compint.html",
+    "title": "Compoun Interest of Bank",
+    "section": "",
+    "text": "No matching items"
   }
 ]

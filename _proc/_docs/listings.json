@@ -81,5 +81,9 @@
   {
     "listing": "/resources/resource.html",
     "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/compint.html",
+    "items": []
   }
 ]

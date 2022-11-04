@@ -1,21 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/tutoring.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/linearalgebra/lna1.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/diffEq/diffeq1.html",
-    "items": []
-  },
-  {
     "listing": "/tutorial/math/maths.html",
     "items": []
   },
@@ -61,6 +45,18 @@
   },
   {
     "listing": "/resources/resource.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/diffeq1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/compint.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
     "items": []
   }
 ]

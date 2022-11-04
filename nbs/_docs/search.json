@@ -1,159 +1,5 @@
 [
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "",
-    "text": "Originally posted on the fast.ai blog"
-  },
-  {
-    "objectID": "blog/index.html#our-new-secret-weapon-for-productivity",
-    "href": "blog/index.html#our-new-secret-weapon-for-productivity",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "Our new secret weapon for productivity",
-    "text": "Our new secret weapon for productivity\nToday we’re excited to announce that we’ve teamed up with Quarto to give nbdev superpowers. nbdev offers Python programmers a common set of tools for using Jupyter notebooks to:\n\nWrite & distribute software packages\nTest code, and\nAuthor documentation and technical articles\n\nAlthough notebooks are already widely used for once-off exploratory work, it’s less well-known that they are perfectly capable of writing quality software. In fact, we’ve used nbdev for a wide range of software projects over the last three years, including deep learning libraries, API clients, Python language extensions, terminal user interfaces, and more. We discovered that it is not only capable of writing great software but that it has also increased our productivity by 300% or more. With nbdev, developers simply write notebooks with lightweight markup and get high-quality documentation, tests, continuous integration, and packaging for free! Nbdev has allowed us to maintain and scale manyopen source projects. Pull requests are often accompanied by detailed documentation and tests–contributors simply write notebooks.\nThis is why we’re excited to share nbdev v2. It’s rewritten from the ground up, with much-anticipated features including:\n\nInteroperation with non-nbdev codebases for tasks like documentation\nSupport for any static site generator\nWide variety of output mediums such as blogs, papers, slides, and websites\nA faster Jupyter kernel, which also means faster tests\nCleaner and more extensible API, which supports custom directives, custom module exporters, and more"
-  },
-  {
-    "objectID": "blog/index.html#nbdev-in-industry",
-    "href": "blog/index.html#nbdev-in-industry",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "nbdev in industry",
-    "text": "nbdev in industry\nWe have piloted nbdev at several companies. We were delighted to receive the following feedback, which fits our own experience using and developing nbdev:\n\n\n\nDavid Berg, on using nbdev for internal documentation at Netflix: “Prior to using nbdev, documentation was the most cumbersome aspect of our software development process… Using nbdev allows us to spend more time creating rich prose around the many code snippets guaranteeing the whole experience is robust. nbdev has turned what was once a chore into a natural extension of the notebook-based testing we were already doing.”\n\n\n\n\n\n\n\n\n\n\n\n\n\nErik Gaasedelen, on using nbdev in production at Lyft: “I use this in production at my company. It’s an awesome tool… nbdev streamlines everything so I can write docs, tests, and code all in one place… The packaging is also really well thought out. From my point of view it is close to a Pareto improvement over traditional Python library development.”\n\n\n\n\n\n\n\n\n\n\n\n\n\nHugo Bowne-Anderson, on using nbdev for Outerbounds: “nbdev has transformed the way we write documentation. Gone are the days of worrying about broken code examples when our API changes or [due to] human errors associated with copying & pasting code into markdown files. The authoring experience of nbdev… [allows] us to write prose and live code in a unified interface, which allows more experimentation… On top of this, nbdev allows us to include unit tests in our documentation which mitigates the burden of maintaining the docs over time.”\n\n\n\n\n\n\n\n\n\n\n\n\n\nRoxanna Pourzand, on using nbdev for Transform: “We’re so excited about using nbdev. Our product is technical so our resulting documentation includes a lot of code-based examples. Before nbdev, we had no way of maintaining our code examples and ensuring that it was up-to-date for both command inputs and outputs. It was all manual. With nbdev, we now have this under control in a sustainable way. Since we’ve deployed these docs, we also had a situation where we were able to identify a bug in one of our interfaces, which we found by seeing the error that was output in the documentation.”"
-  },
-  {
-    "objectID": "blog/index.html#whats-nbdev",
-    "href": "blog/index.html#whats-nbdev",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "What’s nbdev?",
-    "text": "What’s nbdev?\nNbdev embraces the dynamic nature of python and REPL-driven development in ways that traditional IDEs and software development workflows cannot. We thoroughly discussed the motivation, history, and goals of nbdev in this initial launch post three years ago. The creator of Jupyter, Fernando Pérez, told us:\n\n[Nbdev] should be celebrated and used a lot more - I have kept a tab with your original nbdev blog post open for months in Chrome because of how often I refer to it and point others to this work\n\nIn short, nbdev embraces ideas from literate programming and exploratory programming. These paradigms have been revisited in platforms like XCode Playgrounds and languages like Smalltalk, LISP, and Mathematica. With nbdev, we sought to push these paradigms even further by enabling it for one of the most popular dynamic programming languages in the world: Python.\n\n\n\nState of the Octoverse 2021, GitHub\n\n\nEven though nbdev is most widely used in scientific computing communities due to its integration with Jupyter Notebooks, we’ve found that nbdev is well suited for a much wider range of software. We have used nbdev to write deep learning libraries, API clients, python language extensions,terminal user interfaces, and more!\nHamel: When I use nbdev, my colleagues are often astounded by how quickly I can create and distribute high-quality python packages. I consider nbdev to be a superpower that allows me to create tests and documentation without any additional friction, which makes all of my projects more maintainable. I also find writing software with nbdev to be more fun and productive as I can iterate very fast on ideas relative to more traditional software engineering workflows. Lastly, with nbdev I can also use traditional text-based IDEs if I want to, so I get the best of both worlds."
-  },
-  {
-    "objectID": "blog/index.html#what-we-learned-after-three-years-of-using-nbdev",
-    "href": "blog/index.html#what-we-learned-after-three-years-of-using-nbdev",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "What we learned after three years of using nbdev",
-    "text": "What we learned after three years of using nbdev\nWhile nbdev was originally developed to simplify the software development workflow for various fast.ai projects, we found that users wanted to extend nbdev to:\n\nWrite and publish blog posts, books, papers, and other types of documents with Jupyter Notebooks\nDocument existing codebases not written in nbdev\nAccommodate traditional Python conventions–for those constrained in how their code is organized and formatted\nPublish content using any static site generator\n\nWhile we created projects such as fastpages and fastdoc to accomplish some of these tasks, we realized that it would be better to have a single set of flexible tools to accomplish all of them. To this end, we were extremely excited to discover Quarto, an open-source technical publishing system built on pandoc.\nHamel: The more I used nbdev for creating Python modules, the more I wanted to use it for writing blogs and documenting existing codebases. The ability to customize the way notebooks are rendered (hiding vs. showing cells, stripping output, etc.), along with the facilities for including unit tests, made it my go-to authoring tool for all technical content. I’m excited that nbdev2 unlocks all of these possibilities for everyone!"
-  },
-  {
-    "objectID": "blog/index.html#enter-quarto-a-pandoc-super-processor",
-    "href": "blog/index.html#enter-quarto-a-pandoc-super-processor",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "Enter Quarto: A pandoc super-processor",
-    "text": "Enter Quarto: A pandoc super-processor\nQuarto is a project that enables technical publishing with support for Jupyter Notebook, VSCode, Observable, and plaintext editors. Furthermore, Quarto enables the publishing of high-quality articles, reports, websites, and blogs in HTML, PDF, ePub, PowerPoint slides, and more. Quarto is maintained by RStudio, a company with a long history of products supporting literate programming, such as RMarkdown and RStudio.\nQuarto is built on top of Pandoc, a universal document converter that supports nearly any format you can think of. Pandoc achieves this seemingly magical feat by representing documents in a common abstract syntax tree (AST) that serves as the medium through which different formats can be translated. By extension, Quarto allows you to generate content in almost any format you wish! You can use pandoc filters to modify the AST and the output format, which allows you to use any static site generator you want, and programmatically modify and generate content.\nQuarto allows you to compose pandoc filters in a processing pipeline and apply them to specific documents or entire projects. You can also distribute filters as Quarto extensions, which makes Quarto extremely customizable.\nWe also find Quarto compelling because user interfaces such as comment directives (comments that start with #|) correlate with nbdev. In fact, we even learned that nbdev inspired Quarto in this regard! In general, Quarto and nbdev share many goals, and the Quarto team has been incredibly responsive to our suggestions. For example, the ability to create notebook filters to modify notebooks before rendering. Below is a screenshot of a Jupyter notebook rendered with Quarto and nbdev.\n\n\n\n\nQuarto rendering a Jupyter notebook written with nbdev\n\n\n\nFinally, Quarto supports more programming languages than just Python and has been adding new features and fixing bugs at an impressive speed. This gives us confidence that we will be able to expand nbdev to support more use cases in the future. We discuss some of these future directions in the closing section."
-  },
-  {
-    "objectID": "blog/index.html#a-blazing-fast-notebook-kernel-execnb",
-    "href": "blog/index.html#a-blazing-fast-notebook-kernel-execnb",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "A blazing fast notebook kernel: execnb",
-    "text": "A blazing fast notebook kernel: execnb\nA core component of nbdev is executing and testing notebooks programmatically. It is important that this notebook runner executes with minimal overhead to maintain our goal of providing a delightful developer experience. This is why we built execnb, a lightweight notebook runner for Python kernels, which executes notebooks blazingly fast. Furthermore, execnb allows parameterized execution of notebooks.\nHamel: I have been an enthusiastic user of tools like papermill that programmatically run notebooks for use-cases like creating dashboards or enabling new kinds of machine learning workflows. I believe execnb unlocks even more possibilities with its ability to inject arbitrary code at any place in a notebook, as well as the ability to pass callbacks that run before and/or after cells are executed. This opens up possibilities to create new types of workflows with notebooks that I am excited about exploring in the near future."
-  },
-  {
-    "objectID": "blog/index.html#towards-a-dialect-of-python-that-embraces-its-dynamic-nature",
-    "href": "blog/index.html#towards-a-dialect-of-python-that-embraces-its-dynamic-nature",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "Towards a dialect of python that embraces its dynamic nature",
-    "text": "Towards a dialect of python that embraces its dynamic nature\nOne way to understand nbdev is part of an ecosystem that is designed to embrace Python’s dynamic properties for REPL-driven software engineering. Similar to Clojure, our goal is to provide tools that remove all friction from using the REPL in your programming workflow. We believe that the REPL enhances developer workflows thanks to context-sensitive auto-completion, signature inspection, and documentation–all based on the actual state of your code, and none of which are available in IDEs that depend solely on static analysis. We have found that for this reason, nbdev, with its Jupyter notebook foundation, makes programming significantly more productive and enjoyable.\nOur efforts to support REPL-driven development and literate programming are not limited to nbdev. We maintain a number of libraries that extend python to bolster this programming experience. The most notable of these libraries is fastcore, which extends Python in terms of testing, documenting code, metaprogramming, attribute helpers, enhanced representations of objects, and notebook-friendly patching. This blog post offers a gentle introduction to fastcore. In addition to literate programming, fastcore encourages conventions such as brevity and efficient use of vertical space so you can accomplish more with significantly less code. For example, below is a simple decorator that enables notebook-friendly patching:\n\n\n\n@patch decorator from fastcore\n\n\nWe believe that this combination of a new developer workflow (nbdev), Python extensions (fastcore), and associated norms form a new dialect of Python that is centered on leveraging its dynamic nature–in contrast to an ever-growing trend toward static analysis. We suspect that this dialect of Python will be more productive for programmers in many scenarios. We are framing this ecosystem as a “dialect” as it is still very much Python and is approachable by anyone who is familiar with the language. Furthermore, despite nbdev’s notebook workflow, our tools generate plaintext modules that can be navigated and edited with text-based IDEs, allowing programmers to experience the best of both worlds, if they desire.\nHamel: I believe this framing of a Python dialect is key to properly understanding what nbdev is. While it may be tempting to get stuck on specific features or technical details of nbdev, it is useful to zoom out to understand the overall intent of creating a better workflow rather than conforming too rigidly to existing ones. A good analogy is TypeScript’s relationship with JavaScript: it is an extension of an existing programming language that supports a new way of programming. I encourage you to treat nbdev in a similar fashion: be willing to try new ways of programming and observe which tradeoffs resonate with you. At the very least, I believe nbdev is a fun way to experience a different way of writing software, which will broaden your horizons about programming in general, all without having to learn an entirely new programming language!"
-  },
-  {
-    "objectID": "blog/index.html#the-future-of-nbdev",
-    "href": "blog/index.html#the-future-of-nbdev",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "The future of nbdev",
-    "text": "The future of nbdev\nWhile we are excited about nbdev2, we believe we have only scratched the surface of what’s possible. We are considering the following features:\n\nSupporting more languages beyond Python, such as Julia, R and JavaScript\nOffering interfaces for executing parameterized notebooks that mimic Python scripts\nExtensions for more static site generators and filters\nSupporting alternate testing backends, such as pytest\nSupporting a greater number of docstring formats, such as Google-style docstrings\nMore options to use plain-text or human readable notebook backends other than JSON\n\nIf you have interesting ideas about how nbdev can be extended, please drop and chat with us on discord or post a message in the forums."
-  },
-  {
-    "objectID": "blog/index.html#how-you-can-get-started-with-nbdev",
-    "href": "blog/index.html#how-you-can-get-started-with-nbdev",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "How you can get started with nbdev",
-    "text": "How you can get started with nbdev\nOur project’s website is at nbdev.fast.ai, where we will be posting tutorials, examples, and more documentation in the coming days."
-  },
-  {
-    "objectID": "blog/index.html#thank-you",
-    "href": "blog/index.html#thank-you",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "Thank You",
-    "text": "Thank You\nThis new version of nbdev was a team effort by many wonderful people. We want to highlight two people who have made outstanding contributions:\n\nWasim Lorgat was instrumental across different areas, including significant contributions to fastcore, execnb, and nbdev, as well as the implementation of the new nbdev home page. With Wasim’s help, we were able to push nbdev to a new level of functionality and quality.\nJJ Allaire is not only the CEO of RStudio but also the steward of Quarto. JJ was incredibly responsive and eager to work with us on nbdev and added many features to Quarto specifically with nbdev in mind, such as notebook filters. We were also astounded by the attention to detail and the pace at which bugs are addressed. This new version of nbdev would not have been possible without JJ’s help, and we are excited to continue to work with him.\n\nWe also want to thank the amazing fastai community, notably Isaac Flath, Benjamin Warner and Zach Mueller for their tireless work on this project."
-  },
-  {
-    "objectID": "blog/index.html#a-conversation-with-jj-allaire",
-    "href": "blog/index.html#a-conversation-with-jj-allaire",
-    "title": "nbdev+Quarto: A new secret weapon for coding productivity",
-    "section": "A conversation with JJ Allaire",
-    "text": "A conversation with JJ Allaire\nTo celebrate the launch of nbdev v2 and Quarto, Jeremy sat down with the CEO of Posit (previously known as RStudio, the company behind Quarto), JJ Allaire, to talk about software development, scientific publishing, R, Python, literate programming, and much more."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Vanh Phomsavanh",
-    "section": "",
-    "text": "I’ve been working as software engineer for two decades."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "Vanh Phomsavanh",
-    "section": "Education",
-    "text": "Education\nSan Jose state University Computer Engineering 1989"
-  },
-  {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "Vanh Phomsavanh",
-    "section": "Experience",
-    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Spet 2012 - April 2018"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Machine intelligence",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "getting_started.html",
-    "href": "getting_started.html",
-    "title": "MachineIntell",
-    "section": "",
-    "text": "import nbdev"
-  },
-  {
-    "objectID": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
-    "href": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
-    "title": "Tutorials",
-    "section": "Linear Algebra for Maching Learning",
-    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
-  },
-  {
-    "objectID": "tutorial/tutoring.html#differential-equation-in-machine-learning",
-    "href": "tutorial/tutoring.html#differential-equation-in-machine-learning",
-    "title": "Tutorials",
-    "section": "Differential Equation In Machine Learning",
-    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
-  },
-  {
-    "objectID": "tutorial/math/linearalgebra/lna1.html#linear-algebra-for-maching-learning",
-    "href": "tutorial/math/linearalgebra/lna1.html#linear-algebra-for-maching-learning",
-    "title": "Linear Algebra",
-    "section": "Linear Algebra for Maching Learning",
-    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nTo ask NN to analyze whetherthe picture is a dog or a cat these pictures must be digitized and feed to the NN. Machine Learning deal with large amount of data for example a picture of a dog taken with smart phone consist of thousand up to many million pixels. To feed this image to NN for analysis is must be transform into array of data that NN can use.\nIn Math the branch that work with array of data is called Linear Algebra and the field is most appropriate is matrices.\nArray of data may have multidimension. Name of array with different dimension:\n\nVector an array with one dimension or rank\nMatrix an array with two dimension or rank\nTensor an array with three or more dimension or rank\n\nOne of the most frequent uses operation in NN is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(C = A \\times B\\)\n\n\n\nFramework Provide tools\nAI framework such as Pytorch, TensorFlow, Flux have many of the math tools build in. Also many programming languages e.g. Python, Julia, R have support for Matrix operations build in to the language."
-  },
-  {
-    "objectID": "tutorial/math/diffEq/diffeq1.html#linear-algebra-for-maching-learning",
-    "href": "tutorial/math/diffEq/diffeq1.html#linear-algebra-for-maching-learning",
-    "title": "Differential Equation",
-    "section": "Linear Algebra for Maching Learning",
-    "text": "Linear Algebra for Maching Learning\nUnderstanding Linear Algebra is essential in Machine Learning. It’s a tool that the main compute that the machine use to calulate the value it finally presented as the result.\nSince input data must be convert to matrices form for the machine to operate on using Matix operation rules. One of the most frequent uses operation is matrix multiplication or MatMul for short and Python event have it own symbol for this “@” e.g. \\[ A@B \\]\n\n\n\n\n\n\nTip\n\n\n\nmatrix multiplication \\(AxB\\)\n\n\n\nVector\nMatrix"
-  },
-  {
-    "objectID": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning",
-    "href": "tutorial/math/diffEq/diffeq1.html#differential-equation-in-machine-learning",
-    "title": "Differential Equation",
-    "section": "Differential Equation In Machine Learning",
-    "text": "Differential Equation In Machine Learning\nOn the other hand, Diffential Equation is used in calculate back propragation. It’s used inconjunction with chain-rule to adjust the input in order to getting closer to actual value\n\nDifferential Equation\n\\[\\frac{du}{dt} = pu  \\]"
-  },
-  {
     "objectID": "tutorial/math/maths.html#linear-algebra-for-maching-learning",
     "href": "tutorial/math/maths.html#linear-algebra-for-maching-learning",
     "title": "Mathematic",
@@ -334,5 +180,33 @@
     "title": "MachineIntell",
     "section": "",
     "text": "The main module for machine learning and deep learning library\n\n::: {.cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nfrom nbdev.showdoc import *\n:::\n::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef foo(): pass\n:::\n::: {.cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nimport nbdev; nbdev.nbdev_export()\n:::"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/diffeq1.html#differential-equation",
+    "href": "tutorial/math/diffEq/diffeq1.html#differential-equation",
+    "title": "diffEqs",
+    "section": "Differential Equation",
+    "text": "Differential Equation\nIt is a Mathematical branch that use to work with problem involving one item change in relation to another item.\n\nOrdinary Differential Equation (ODE)\nODE dealing with a single dependent variable(function) changed with respect to an independent variable changed. Here an example of ODE problem figure out the compound interest.\n\n\n\n\n\n\nTip\n\n\n\nODE general equation form \\(\\frac{du}{dt} = pu\\)\n\n\n\nProblem: compute the compound Interest of a bank account\nJulia has a DifferentialEquation.jl package \n\np: annual interest rate\ninterest rate: $(@bind p Slider(0.10:0.10:1.0,1.0,true))\nt: time in year t_begin = 0.0 $(Years: @bind t_end Slider( 1.0:50.0,1.0,true)) tspan = (t_begin,t_end)  using DifferentialEquations define ODE problem the differention equation package to solve  where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u\nsolving ODE problem where f is the function that have the form f(u,p,t) and intial value, time span from begin to end, p is the parameter that change u\nsolving ODE problem sol = solve(prob) using Plots interest rate: $(@bind p Slider(0.10:0.10:1.0,1.0,true))\nbegining balance: $(@bind u_begin Slider(1.0:1000.0,1.0,true)) Years: $( @bind t_end Slider( 1.0:50.0,1.0,true)) prob = ODEProblem(f,u_begin,tspan,p) lot(sol, lengend=false, linewidth=2, title=“continuous compound interest”, xaxis= “time in year”, yaxis= “account balance in dollars”, formatter = :plain, widen = true, xlims = (0.0,50.0), ylims = (0.0,1_000_000.0) )\nsol(1)\nEuler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation\ne_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compint.html#parametric-plots",
+    "href": "tutorial/math/diffEq/compint.html#parametric-plots",
+    "title": "Compoun Interest of Bank",
+    "section": "Parametric Plots",
+    "text": "Parametric Plots\nPlot function pair (x(u), y(u)). See ?@fig-parametric for an example.\n\n\nCode\nusing DifferentialEquations\nusing PlutoUI\nf(u,p,t) = p * u \n\n\nt_begin = 0.0\n\n\n0.0"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Machine intelligence",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compint.html#ordinary-differential-equation-ode",
+    "href": "tutorial/math/diffEq/compint.html#ordinary-differential-equation-ode",
+    "title": "Compoun Interest of Bank",
+    "section": "Ordinary differential Equation (ODE)",
+    "text": "Ordinary differential Equation (ODE)\nmd”\\(\\frac{du}{dt} = pu = f(u,p,t)\\)”\n\n\nCode\nimport Pkg; Pkg.add(\"Plotly\")\nusing DifferentialEquations\n\nusing Plots\n\n\nf(u,p,t) = p * u \n\ninterest_p = 1.0\nbalance_begin = 1.0\nt_begin = 0.0\nt_end = 1.0\ntspan = (t_begin,t_end)\n\nprob = ODEProblem(f,balance_begin,tspan,interest_p)\nsol = solve(prob)\n\nplot(sol,\n    legend = false,\n    linewidth = 2,\n    title = \"Compound Interest\",\n    xaxis = \"Time in Years\",\n    yaxis = \"Balance in Dollars\",\n    formatter = :plain,\n    widen = true\n)\n\n\n   Resolving package versions...\n\n\n  No Changes to `~/.julia/environments/v1.8/Project.toml`\n  No Changes to `~/.julia/environments/v1.8/Manifest.toml`\n\n\n\n\n\n\nEuler Number\neuler_question = “what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously”\nprint(euler_question)\neuler = sol(1)\nanswer = \"answer is 2.718 dollars\"\nprint(answer)\neuler_num = ℯ\nprint(\"euler_number: $euler_num\")"
   }
 ]

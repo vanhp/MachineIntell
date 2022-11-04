@@ -1,0 +1,45 @@
+---
+title: Compound Interest
+subtitle: Learn the tips and tricks from veterans in Machine Learning
+about:
+  template: marquee
+  image: ../../../images/gradientv12.jpg
+ 
+  image-shape: rounded
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+
+![](/images/ai-pic7cp.jpg)
+
+---
+title: "Compoun Interest of Bank "
+author: "Vanh Phom"
+date: "11/01/2022"
+format:
+  html:
+    code-fold: true
+
+---
+
+
+## Parametric Plots
+
+Plot function pair (x(u), y(u)). 
+See @fig-parametric for an example.
+

@@ -1,0 +1,88 @@
+---
+title: Compound Interest
+subtitle: Learn the tips and tricks from veterans in Machine Learning
+about:
+  template: marquee
+  image: ../../../images/gradientv12.jpg
+ 
+  image-shape: rounded
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+
+![](/images/ai-pic7cp.jpg)
+
+---
+title: "Compoun Interest of Bank "
+author: "Vanh Phom"
+date: "11/01/2022"
+format:
+  html:
+    code-fold: true
+
+---
+
+
+## Ordinary differential Equation (ODE)
+
+
+md"$\frac{du}{dt} = pu = f(u,p,t)$"
+
+```{julia}
+
+import Pkg; Pkg.add("Plotly")
+using DifferentialEquations
+
+using Plots
+
+
+f(u,p,t) = p * u 
+
+interest_p = 1.0
+balance_begin = 1.0
+t_begin = 0.0
+t_end = 1.0
+tspan = (t_begin,t_end)
+
+prob = ODEProblem(f,balance_begin,tspan,interest_p)
+sol = solve(prob)
+
+plot(sol,
+    legend = false,
+    linewidth = 2,
+    title = "Compound Interest",
+    xaxis = "Time in Years",
+    yaxis = "Balance in Dollars",
+    formatter = :plain,
+    widen = true
+)
+
+
+```
+#### Euler Number 
+
+euler_question = "what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously"
+
+```julia
+print(euler_question)
+euler = sol(1)
+answer = "answer is 2.718 dollars"
+print(answer)
+euler_num = ℯ
+print("euler_number: $euler_num")
+```
