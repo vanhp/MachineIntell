@@ -41,7 +41,7 @@ format:
 ## Ordinary differential Equation (ODE)
 
 
-md"$\frac{du}{dt} = pu = f(u,p,t)$"
+$\frac{du}{dt} = pu = f(u,p,t)
 
 ```{julia}
 
@@ -72,17 +72,8 @@ plot(sol,
     widen = true
 )
 
-
 ```
 #### Euler Number 
 
 euler_question = "what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously"
-
-```julia
 print(euler_question)
-euler = sol(1)
-answer = "answer is 2.718 dollars"
-print(answer)
-euler_num = ℯ
-print("euler_number: $euler_num")
-```
