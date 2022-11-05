@@ -45,11 +45,9 @@ $$\frac{du}{dt} = pu = f(u,p,t)$$
 
 ```{julia}
 
-
 using DifferentialEquations
 
 using Plots
-
 
 f(u,p,t) = p * u 
 
@@ -73,7 +71,4 @@ plot(sol,
 )
 
 ```
-#### Euler Number 
 
-euler_question = "what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously"
-print(euler_question)
