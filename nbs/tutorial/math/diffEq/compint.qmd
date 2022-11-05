@@ -45,7 +45,7 @@ $$\frac{du}{dt} = pu = f(u,p,t)$$
 
 ```{julia}
 
-import Pkg; Pkg.add("Plotly")
+
 using DifferentialEquations
 
 using Plots
