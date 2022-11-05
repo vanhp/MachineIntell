@@ -41,7 +41,7 @@ format:
 ## Ordinary differential Equation (ODE)
 
 
-$\frac{du}{dt} = pu = f(u,p,t)
+$$\frac{du}{dt} = pu = f(u,p,t)$$
 
 ```{julia}
 
