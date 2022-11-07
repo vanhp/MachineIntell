@@ -40,6 +40,7 @@ format:
 
 ## Ordinary differential Equation (ODE)
 
+#| output:true
 
 $$\frac{du}{dt} = pu = f(u,p,t)$$
 
