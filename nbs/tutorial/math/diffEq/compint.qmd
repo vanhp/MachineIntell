@@ -48,6 +48,11 @@ See @fig-parametric for an example.
 #| label: fig-parameter
 #| fig-cap: "Parametric Plots"
 
+using Pkg
+Pkg.add("IJulia")
+using IJulia
+notebook()
+
 using Plots
 
 plot(sin, 
