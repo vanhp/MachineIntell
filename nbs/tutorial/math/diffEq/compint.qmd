@@ -58,37 +58,5 @@ plot(sin,
      fill=(0,:lavender))
 ```
 
-## Ordinary differential Equation (ODE)
 
-#| output:true
-
-$$\frac{du}{dt} = pu = f(u,p,t)$$
-
-```{julia}
-
-using DifferentialEquations, Plots; plotly()
-
-
-f(u,p,t) = p * u 
-
-interest_p = 1.0,
-balance_begin = 1.0
-t_begin = 0.0
-t_end = 1.0
-tspan = (t_begin,t_end)
-
-prob = ODEProblem(f,balance_begin,tspan,interest_p)
-sol = solve(prob)
-
-plot(sol,
-    legend = false,
-    linewidth = 2,
-    title = "Compound Interest",
-    xaxis = "Time in Years",
-    yaxis = "Balance in Dollars",
-    formatter = :plain,
-    widen = true
-)
-
-```
 
