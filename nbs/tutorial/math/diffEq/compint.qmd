@@ -66,13 +66,12 @@ $$\frac{du}{dt} = pu = f(u,p,t)$$
 
 ```{julia}
 
-using DifferentialEquations
+using DifferentialEquations, Plots; plotly()
 
-using Plots
 
 f(u,p,t) = p * u 
 
-interest_p = 1.0
+interest_p = 1.0,
 balance_begin = 1.0
 t_begin = 0.0
 t_end = 1.0
