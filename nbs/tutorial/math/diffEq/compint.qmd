@@ -1,6 +1,6 @@
 ---
-title: Compound Interest
-subtitle: Learn the tips and tricks from veterans in Machine Learning
+title: ODE
+subtitle: Learn ODE in Use
 about:
   template: marquee
   image: ../../../images/gradientv12.jpg
@@ -25,10 +25,10 @@ page-layout: full
 ---
 
 
-![](/images/ai-pic7cp.jpg)
-
+<!-- ![](/images/ai-pic7cp.jpg) -->
+![](./image/ode1.jpg)
 ---
-title: "Compoun Interest of Bank "
+title: " Ordinary differential Equation (ODE)"
 author: "Vanh Phom"
 date: "11/01/2022"
 format:
@@ -41,9 +41,9 @@ format:
 ## Ordinary differential Equation (ODE)
 
 
-md"$\frac{du}{dt} = pu = f(u,p,t)$"
+$\frac{du}{dt} = pu = f(u,p,t)$
 
-```{julia}
+```julia
 
 import Pkg; Pkg.add("Plotly")
 using DifferentialEquations
@@ -73,16 +73,23 @@ plot(sol,
 )
 
 
-```
+
 #### Euler Number 
+Euler number is e = 2.718281708...
+Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it's 2.71
+ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation
 
 euler_question = "what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously"
 
-```julia
+
 print(euler_question)
 euler = sol(1)
 answer = "answer is 2.718 dollars"
 print(answer)
 euler_num = ℯ
 print("euler_number: $euler_num")
+
+e_estimate = sol(1)
+real_EULER = ℯ
+diff = real_EULER - e_estimate
 ```
