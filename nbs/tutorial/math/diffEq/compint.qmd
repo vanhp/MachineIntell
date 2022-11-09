@@ -38,41 +38,40 @@ format:
 ---
 
 
-## Ordinary differential Equation (ODE)
 
+## Parametric Plots
 
+<<<<<<< HEAD
 $\frac{du}{dt} = pu = f(u,p,t)$
 
 ```julia
+=======
+Plot function pair (x(u), y(u)). 
+See @fig-parametric for an example.
 
-import Pkg; Pkg.add("Plotly")
-using DifferentialEquations
+```{julia}
+#| label: fig-parameter
+#| fig-cap: "Parametric Plots"
+>>>>>>> main
+
+using Pkg
+Pkg.add("IJulia")
+using IJulia
+notebook()
 
 using Plots
 
-
-f(u,p,t) = p * u 
-
-interest_p = 1.0
-balance_begin = 1.0
-t_begin = 0.0
-t_end = 1.0
-tspan = (t_begin,t_end)
-
-prob = ODEProblem(f,balance_begin,tspan,interest_p)
-sol = solve(prob)
-
-plot(sol,
-    legend = false,
-    linewidth = 2,
-    title = "Compound Interest",
-    xaxis = "Time in Years",
-    yaxis = "Balance in Dollars",
-    formatter = :plain,
-    widen = true
-)
+plot(sin, 
+     x->sin(2x), 
+     0, 
+     2π, 
+     leg=false, 
+     fill=(0,:lavender))
+```
 
 
+
+<<<<<<< HEAD
 
 #### Euler Number 
 Euler number is e = 2.718281708...
@@ -93,3 +92,5 @@ e_estimate = sol(1)
 real_EULER = ℯ
 diff = real_EULER - e_estimate
 ```
+=======
+>>>>>>> main
