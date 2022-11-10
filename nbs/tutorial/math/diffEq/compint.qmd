@@ -41,23 +41,13 @@ format:
 
 ## Parametric Plots
 
-<<<<<<< HEAD
 $\frac{du}{dt} = pu = f(u,p,t)$
 
 ```julia
-=======
-Plot function pair (x(u), y(u)). 
-See @fig-parametric for an example.
-
-```{julia}
-#| label: fig-parameter
-#| fig-cap: "Parametric Plots"
->>>>>>> main
 
 using Pkg
 Pkg.add("IJulia")
 using IJulia
-notebook()
 
 using Plots
 
@@ -71,7 +61,6 @@ plot(sin,
 
 
 
-<<<<<<< HEAD
 
 #### Euler Number 
 Euler number is e = 2.718281708...
@@ -92,5 +81,3 @@ e_estimate = sol(1)
 real_EULER = ℯ
 diff = real_EULER - e_estimate
 ```
-=======
->>>>>>> main
