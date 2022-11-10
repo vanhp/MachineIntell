@@ -451,59 +451,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header> <main class="content column-body" id="quarto-document-content">
 <!-- ![](/images/ai-pic7cp.jpg) -->
 <p><img src="./image/ode1.jpg" class="img-fluid"></p>
-<section id="ordinary-differential-equation-ode" class="level2">
-<h2 data-anchor-id="ordinary-differential-equation-ode">Ordinary differential Equation (ODE)</h2>
+<section id="parametric-plots" class="level2">
+<h2 data-anchor-id="parametric-plots">Parametric Plots</h2>
 <p><span class="math inline">\(\frac{du}{dt} = pu = f(u,p,t)\)</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">Pkg; Pkg</span>.<span class="fu">add</span>(<span class="st">"Plotly"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DifferentialEquations</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"IJulia"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">IJulia</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(u,p,t) <span class="op">=</span> p <span class="op">*</span> u </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>interest_p <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>balance_begin <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>t_begin <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>t_end <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>tspan <span class="op">=</span> (t_begin,t_end)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> <span class="fu">ODEProblem</span>(f,balance_begin,tspan,interest_p)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(prob)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sol,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    legend <span class="op">=</span> <span class="cn">false</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    linewidth <span class="op">=</span> <span class="fl">2</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">"Compound Interest"</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    xaxis <span class="op">=</span> <span class="st">"Time in Years"</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    yaxis <span class="op">=</span> <span class="st">"Balance in Dollars"</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    formatter <span class="op">=</span> <span class="op">:</span>plain,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    widen <span class="op">=</span> <span class="cn">true</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#### Euler Number </span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Euler number is <span class="cn">e</span> <span class="op">=</span> <span class="fl">2.718281708</span><span class="op">...</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Euler number is the answer to the question what is the balance of and account that start with <span class="op">$</span><span class="fl">1</span> and the interest is <span class="fl">100</span><span class="op">%</span> per year compound continuously it<span class="op">'</span>s <span class="fl">2.71</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE <span class="kw">where</span> <span class="im">using</span> <span class="bu">symbol </span>manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution <span class="cf">if</span> given the an initial and <span class="cf">end</span> since it uses time stamp to <span class="cf">do</span> the calculation</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>euler_question <span class="op">=</span> <span class="st">"what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously"</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(euler_question)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>euler <span class="op">=</span> <span class="fu">sol</span>(<span class="fl">1</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>answer <span class="op">=</span> <span class="st">"answer is 2.718 dollars"</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(answer)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>euler_num <span class="op">=</span> <span class="cn">ℯ</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"euler_number: </span><span class="sc">$</span>euler_num<span class="st">"</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>e_estimate <span class="op">=</span> <span class="fu">sol</span>(<span class="fl">1</span>)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>real_EULER <span class="op">=</span> <span class="cn">ℯ</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> real_EULER <span class="op">-</span> e_estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sin, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">x-&gt;sin</span>(<span class="fl">2</span>x), </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="fl">0</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2</span>π, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     leg<span class="op">=</span><span class="cn">false</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     fill<span class="op">=</span>(<span class="fl">0</span>,<span class="op">:</span>lavender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="euler-number" class="level4">
+<h4 data-anchor-id="euler-number">Euler Number</h4>
+<p>Euler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation</p>
+<p>euler_question = “what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously”</p>
+<p>print(euler_question) euler = sol(1) answer = “answer is 2.718 dollars” print(answer) euler_num = ℯ print(“euler_number: $euler_num”)</p>
+<p>e_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate</p>
 
 
+</section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">

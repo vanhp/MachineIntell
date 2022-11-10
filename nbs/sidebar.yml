@@ -35,13 +35,6 @@ website:
             contents:
               - section: diffEq
                 contents:
-                  - tutorial/math/diffEq/compint.ipynb
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
-              - section: diffEq
-                contents:
                   - tutorial/math/diffEq/compint.qmd
       - section: tutorial
         contents:

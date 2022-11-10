@@ -9,7 +9,7 @@
 <meta name="author" content="Vanh Phom">
 <meta name="dcterms.date" content="2022-11-01">
 
-<title>MachineIntell - Compoun Interest of Bank</title>
+<title>MachineIntell - Ordinary differential Equation (ODE)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,11 +157,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
-<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="compint.xml"><meta property="og:title" content="MachineIntell - Compoun Interest of Bank">
-<meta property="og:description" content="Learn the tips and tricks from veterans in Machine Learning">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="compint.xml"><meta property="og:title" content="MachineIntell - Ordinary differential Equation (ODE)">
+<meta property="og:description" content="Learn ODE in Use">
 <meta property="og:site-name" content="MachineIntell">
-<meta name="twitter:title" content="MachineIntell - Compoun Interest of Bank">
-<meta name="twitter:description" content="Learn the tips and tricks from veterans in Machine Learning">
+<meta name="twitter:title" content="MachineIntell - Ordinary differential Equation (ODE)">
+<meta name="twitter:description" content="Learn ODE in Use">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -250,11 +250,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
         <li>
     <a class="dropdown-item" href="../../../tutorial/math/diffEq/diffeq1.html">
- <span class="dropdown-text">diffEqs</span></a>
+ <span class="dropdown-text">Calculus</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../tutorial/math/diffEq/compint.html">
- <span class="dropdown-text">Compoun Interest of Bank</span></a>
+ <span class="dropdown-text">Ordinary differential Equation (ODE)</span></a>
   </li>  
     </ul>
   </li>
@@ -337,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Compoun Interest of Bank</h1>
+      <h1 class="quarto-secondary-nav-title">Ordinary differential Equation (ODE)</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -405,12 +405,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">diffEqs</a>
+  <a href="../../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">Calculus</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../tutorial/math/diffEq/compint.html" class="sidebar-item-text sidebar-link active">Compoun Interest of Bank</a>
+  <a href="../../../tutorial/math/diffEq/compint.html" class="sidebar-item-text sidebar-link active">Ordinary differential Equation (ODE)</a>
   </div>
 </li>
       </ul>
@@ -431,8 +431,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Compoun Interest of Bank</h1>
-<p class="subtitle lead">Learn the tips and tricks from veterans in Machine Learning</p>
+<h1 class="title d-none d-lg-block">Ordinary differential Equation (ODE)</h1>
+<p class="subtitle lead">Learn ODE in Use</p>
 </div>
 <div class="quarto-title-meta">
     <div>
@@ -449,28 +449,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
-<p><img src="../../../images/ai-pic7cp.jpg" class="img-fluid"></p>
+<!-- ![](/images/ai-pic7cp.jpg) -->
+<p><img src="./image/ode1.jpg" class="img-fluid"></p>
 <section id="parametric-plots" class="level2">
 <h2 data-anchor-id="parametric-plots">Parametric Plots</h2>
-<p>Plot function pair (x(u), y(u)). See <a href="#fig-parametric">Figure&nbsp;1</a> for an example.</p>
-<div id="fig-parametric" class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sin, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">x-&gt;sin</span>(<span class="fl">2</span>x), </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     <span class="fl">0</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2</span>π, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     leg<span class="op">=</span><span class="cn">false</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     fill<span class="op">=</span>(<span class="fl">0</span>,<span class="op">:</span>lavender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption><p></p>
-</figure>
-</div>
+<p><span class="math inline">\(\frac{du}{dt} = pu = f(u,p,t)\)</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"IJulia"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">IJulia</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sin, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">x-&gt;sin</span>(<span class="fl">2</span>x), </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="fl">0</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="fl">2</span>π, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     leg<span class="op">=</span><span class="cn">false</span>, </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     fill<span class="op">=</span>(<span class="fl">0</span>,<span class="op">:</span>lavender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="euler-number" class="level4">
+<h4 data-anchor-id="euler-number">Euler Number</h4>
+<p>Euler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation</p>
+<p>euler_question = “what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously”</p>
+<p>print(euler_question) euler = sol(1) answer = “answer is 2.718 dollars” print(answer) euler_num = ℯ print(“euler_number: $euler_num”)</p>
+<p>e_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate</p>
 
 
+</section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">

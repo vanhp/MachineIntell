@@ -80,4 +80,3 @@ print("euler_number: $euler_num")
 e_estimate = sol(1)
 real_EULER = ℯ
 diff = real_EULER - e_estimate
-```
