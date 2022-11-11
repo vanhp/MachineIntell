@@ -1,29 +1,5 @@
 [
   {
-    "listing": "/tutorial/math/maths.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/nnmath.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/loss/loss.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/nlp.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/rnn.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/visions/vision.html",
-    "items": []
-  },
-  {
     "listing": "/tip/tips.html",
     "items": []
   },
@@ -48,15 +24,7 @@
     "items": []
   },
   {
-    "listing": "/tutorial/math/diffEq/diffeq1.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/diffEq/compint.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
+    "listing": "/tutorial/math/diffEq/compoundint.html",
     "items": []
   }
 ]

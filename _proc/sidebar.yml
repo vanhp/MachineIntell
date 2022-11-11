@@ -35,7 +35,7 @@ website:
             contents:
               - section: diffEq
                 contents:
-                  - tutorial/math/diffEq/compint.qmd
+                  - tutorial/math/diffEq/compoundint.qmd
       - section: tutorial
         contents:
           - section: math

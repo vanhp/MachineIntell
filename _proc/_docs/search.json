@@ -576,7 +576,7 @@
   {
     "objectID": "tutorial/math/diffEq/compint.html",
     "href": "tutorial/math/diffEq/compint.html",
-    "title": "Compoun Interest of Bank",
+    "title": "ODE",
     "section": "",
     "text": "No matching items"
   },
@@ -586,5 +586,47 @@
     "title": "Ordinary differential Equation (ODE)",
     "section": "Parametric Plots",
     "text": "Parametric Plots\n\\(\\frac{du}{dt} = pu = f(u,p,t)\\)\n\nusing Pkg\nPkg.add(\"IJulia\")\nusing IJulia\n\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))\n\nEuler Number\nEuler number is e = 2.718281708… Euler number is the answer to the question what is the balance of and account that start with $1 and the interest is 100% per year compound continuously it’s 2.71 ODE with computer is called numerical ODE analysis which is an estimate value since computer use floating point number it will never going to be exact unlike analytic ODE or symbolic ODE where using symbol manipution may come out with a more exact value On the other hand, the numerical ODE always find the solution if given the an initial and end since it uses time stamp to do the calculation\neuler_question = “what is the balance after one year if the begin balance is 1 dollar the the interest rate is 100% compound continously”\nprint(euler_question) euler = sol(1) answer = “answer is 2.718 dollars” print(answer) euler_num = ℯ print(“euler_number: $euler_num”)\ne_estimate = sol(1) real_EULER = ℯ diff = real_EULER - e_estimate"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#quarto-execute-julia-code",
+    "href": "tutorial/math/diffEq/compoundint.html#quarto-execute-julia-code",
+    "title": "Julia Plots",
+    "section": "quarto execute Julia code",
+    "text": "quarto execute Julia code"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#parametric-plots",
+    "href": "tutorial/math/diffEq/compoundint.html#parametric-plots",
+    "title": "ODE Plot",
+    "section": "Parametric Plots",
+    "text": "Parametric Plots"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#ordinary-differential-eq",
+    "href": "tutorial/math/diffEq/compoundint.html#ordinary-differential-eq",
+    "title": "Julia Plots",
+    "section": "Ordinary Differential Eq",
+    "text": "Ordinary Differential Eq"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#ordinary-differential-equation",
+    "href": "tutorial/math/diffEq/compoundint.html#ordinary-differential-equation",
+    "title": "ODE Plot",
+    "section": "Ordinary Differential Equation",
+    "text": "Ordinary Differential Equation"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#parametric-plots-1",
+    "href": "tutorial/math/diffEq/compoundint.html#parametric-plots-1",
+    "title": "ODE Plot",
+    "section": "Parametric Plots",
+    "text": "Parametric Plots"
+  },
+  {
+    "objectID": "tutorial/math/diffEq/compoundint.html#julia-plots",
+    "href": "tutorial/math/diffEq/compoundint.html#julia-plots",
+    "title": "ODE Plot",
+    "section": "Julia Plots",
+    "text": "Julia Plots\nPlot function pair (x(u), y(u)). See ?@fig-parametric for an example.\n#| label: fig-parametric\n#| fig-cap: \"Parametric Plots\"\n\n\nusing IJulia\n\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))"
   }
 ]

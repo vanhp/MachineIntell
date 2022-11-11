@@ -103,7 +103,7 @@ website:
             - ./tutorial/math/nnMath/nnmath.qmd
             - ./tutorial/math/nnMath/loss/loss.qmd
             - ./tutorial/math/diffEq/diffeq1.qmd
-            - ./tutorial/math/diffEq/compint.qmd
+            - ./tutorial/math/diffEq/compoundint.qmd
             # navigation items
 
 
