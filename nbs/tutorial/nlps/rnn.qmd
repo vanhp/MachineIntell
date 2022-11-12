@@ -3,7 +3,7 @@ title: Recurrent Neural Network (RNN)
 subtitle: Looking under the hood of RNN
 about:
   template: marquee
-  image: ../../images/ai-pic7cp.jpg
+  image: ../../images/gradientv12.jpg
   links:
     - icon: twitter
       text: twitter
@@ -24,6 +24,19 @@ page-layout: full
 
 ![](./image/rnn.jpg)
 
+
+---
+title: "Recurrent Neural Network"
+author: "Vanh Phom"
+date: "11/7/2022"
+format:
+  html:
+    code-fold: true
+highlight-style: monokai
+code-block-border-left: true
+---
+
+
 The Markov model weakness is that it's limit to context window(scope) that was choosen.
 Using the info that was stored to predict prior data then feed that info to model while it was considering current tag.
 
@@ -40,7 +53,7 @@ An RNN that has the capability to forget the info that is not relevant to the cu
 
 ![](./image/lstm.jpg)
 
-### LSTM has 
+### LSTM 
 - forget gate to delete info of non relevant from current context
 - add gate to select new info into current context with tanh activation that indicate the direction of info(should care about) and a sigmoid to indicate the scaling(how much should be care about) factor of the info to be add to forget gate to produce state context
 - out gate with sigmoid combine with state context to output result
@@ -67,7 +80,7 @@ The model takes three words as input, and returns a prediction of the probabilit
     - So, a layer does not learn one sequence position; it must learn to handle all positions.
 
 ## The architect of the first model
-![simple linear LM](./image/simpleLinear1.png)
+![](./image/simpleLinear1.png)
 
 Here the figure the model. Where word is the input, FC is fully connected layer and triangular is output prediction
 
@@ -131,14 +144,14 @@ idx, vocab[idx.item()], counts[idx].item()/n
 
 ```
 
+#### Refactor to use loop: 
 
-
-
-#### Refactor to use loop: the RNN
-![refactor2RNN](./image/refac_rnn.png)
+The RNN
+![](./image/refac_rnn.png)
 
 Rewrite the code to use loop this is look closer to RNN
-```
+
+```python
 class LMModel2(Module):
     def __init__(self, vocab_sz, n_hidden):
         self.input2_hidden = nn.Embedding(vocab_sz, n_hidden)  
@@ -162,8 +175,9 @@ learn.fit_one_cycle(4, 1e-3)
 ### Refactor to add memory to RNN
 
 Add the ability to retain previous word instead of start up new every time
-![stack-layer](./image/stacklayer_rnn.png)
-```
+![](./image/stacklayer_rnn.png)
+
+```python
 class LMModel3(Module):
     def __init__(self, vocab_sz, n_hidden):
         self.input2_hidden = nn.Embedding(vocab_sz, n_hidden)  
@@ -189,7 +203,7 @@ class LMModel3(Module):
 ### BPTT Backpropagation through time 
 This model hidden state now can remember previous activation from previous batch and the gradient will be calculate on sequence length token of the past not instead of recalculate with each new stream this is call BPTT
 
-```
+```python
 # rearrange data so model see in particular sequence
 m = len(seqs)//bs
 m,bs,len(seqs)
@@ -218,7 +232,7 @@ Add More signal: keep the output
 
 The model no longer throw away the output from previous run but add them as input to current run
 
-```
+```python
 sl = 16
 seqs = L((tensor(nums[i:i+sl]), tensor(nums[i+1:i+sl+1]))
          for i in range(0,len(nums)-sl-1,sl))
@@ -233,7 +247,7 @@ dls = DataLoaders.from_dsets(group_chunks(seqs[:cut], bs),
 
 Rewrite the model to now output every word instead of every 3 words in order to feed this into next run
 
-```
+```python
 class LMModel4(Module):
     def __init__(self, vocab_sz, n_hidden):
         self.i_h = nn.Embedding(vocab_sz, n_hidden)  
@@ -258,11 +272,12 @@ class LMModel4(Module):
 
 learn = Learner(dls, LMModel4(len(vocab), 64), loss_func=loss_func,
                 metrics=accuracy, cbs=ModelResetter)
-learn.fit_one_cycle(15, 3e-3)       
-```
+learn.fit_one_cycle(15, 3e-3)     
+
+```python
 
 ### Recurrent Neural Network: RNN
-![RNN](./image/rnn-pic1.jpeg)
+![](./image/rnn-pic1.jpeg)
 RNN feed the output activation value back into hidden layer to help the hidden layers retain info about previous run therefore have some *memory* of the past.
 
 ### Multi-Layer RNN
@@ -277,7 +292,7 @@ Refactoring to use PyTorch
 
 The model now has too deep layers this could lead to problem of *vanishing* or *exploding* gradient
 
-```
+```python
 class LMModel5(Module):
     def __init__(self, vocab_sz, n_hidden, n_layers):
         self.i_h = nn.Embedding(vocab_sz, n_hidden)
@@ -296,6 +311,7 @@ learn = Learner(dls, LMModel5(len(vocab), 64, 2),
                 loss_func=CrossEntropyLossFlat(), 
                 metrics=accuracy, cbs=ModelResetter)
 learn.fit_one_cycle(15, 3e-3)
+
 ```
 ### Exploding or Disappearing Activations
 
@@ -308,7 +324,7 @@ As the gradient value travel backward the especially the small value is diminish
 Exploding Gradient:
 
 This the opposite of vanishing gradient. This phenomena happen espcially when the large value get larger with each computation it get exponentially large until it get large closer to infinity and become useless.
-![vanish](./image/vanish1.jpg)
+![](./image/vanish1.jpg)
 
 ### The floating point problem
 One problem with doing floating point math with computer is that computer has limit amount of storage and floating point number is imprecise e.g. 1.0000012 or 1.00000000000000000000000012 is these two numbers are the same value? The answer is it's depend on what do you want to do with it. On some task the first one is good enough but on other the second is what require. To store the second number require more storage. 
@@ -321,55 +337,55 @@ These problems are the main reason why RNN model is hard to train than CNN model
 
 In Machine Learning two approach to handle Explode and Vanishing gradient is to use Neural network that can retain previous activation and also can figure out what value should be retain and which should be removed. The two popular approch are LSTM and GRU. GRU is a simplify version of LSTM
 
-![lstm-gru](./image/rnn_lstm_gru.png)
+![](./image/rnn_lstm_gru.png)
 
 ### Comparison LSTM and GRU
 
-![gru](./image/lstm-gru1.png)
+![](./image/lstm-gru1.png)
 
 ### LSTM architecture 
 
 Internally LSTM comprise with little neural net that decise how much gradient is needed and which one to update or delete.
-![lstm-gru](./image/lstm1.png)
+![](./image/lstm1.png)
 
 
 *sigmoid equation:*
 
-$f(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{e^x + 1} = \frac12 + \frac12 \tanh\left(\frac{x}{2}\right)$
+$\color{orange}{ f(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{e^x + 1} = \frac12 + \frac12 \tanh\left(\frac{x}{2}\right)}$
 
 Sigmoid only let positive value between 0 and 1 pass through
 
 *tanh equation:*
 
-$f(x) = \tanh x = \frac{e^x-e^{-x}}{e^x+e^{-x}}$
+$\color{orange}{ f(x) = \tanh x = \frac{e^x-e^{-x}}{e^x+e^{-x}}}$
 
 Tanh only let value between -1 and 1 pass through
 
 
 
 ### Another look at LSTM internal:
-![lstm-gru](./image/lstm_eq.png)
+![](./image/lstm_eq.png)
 
 The little NN is compose of gates call forget gate,input gate, cell gate, output gate. These gates work together to provide LSTM the capability to remember activation value that is important and forget the unneccessary activation value
 
-#### The forget $f_{t}$ gate:
+#### The forget $\color{orange}{ f_{t}}$ gate:
 
-Take input $x$, hidden state $h_{t-1}$ then gated them via the sigmoid $\sigma$ activation to get only positive value then multiply them with previous cell state(memory) $C_{t-1}$. It decides should the value be kept or discarded. If result from $\sigma$ value closer to 1 the value is kept else the value is discarded.
+Take input $\color{orange}{ x}$, hidden state $\color{orange}{ h_{t-1}}$ then gated them via the sigmoid $\color{orange}{ \sigma}$ activation to get only positive value then multiply them with previous cell state(memory) $\color{orange}{ C_{t-1}}$. It decides should the value be kept or discarded. If result from $\color{orange}{ \sigma}$ value closer to 1 the value is kept else the value is discarded.
 
-#### The input $i_{t}$gate:
+#### The input $\color{orange}{ i_{t}}$gate:
 
 Together with cell gate to update the cell state this gate also decide should the value be kept or discard depend on the value of the sigmoid
 
-#### The cell $\tilde{C_{t}}$ gate:
-Decide what value to update from the range of -1 to 1 output from tanh function the value then add with previou cell state $C_{t-1}$ value to get $C_{t}$ the new value in memeory
+#### The cell $\color{orange}{ \tilde{C_{t}}}$ gate:
+Decide what value to update from the range of -1 to 1 output from tanh function the value then add with previou cell state $\color{orange}{ C_{t-1}}$ value to get $\color{orange}{ C_{t}}$ the new value in memeory
 
-#### The Output $o_{t}$ gate:
+#### The Output $\color{orange}{ o_{t}}$ gate:
 
 Decide which value to output to be multiply with the cell state value that was filter with tanh before output as new hidden state for the next layer.
 
 The code for LSTM cell:
 
-```
+```python
 class LSTMCell(Module):
     def __init__(self, ni, nh):
         self.forget_gate = nn.Linear(ni + nh, nh)
@@ -391,7 +407,7 @@ class LSTMCell(Module):
 ```
 Refactor to take advantage of the GPU by combine all small matrix into one big one to avoid moving too frequence data in and out of GPU and allow GPU to parallelize the task.
 
-```
+```python
 class LSTMCell(Module):
     def __init__(self, ni, nh):
         self.ih = nn.Linear(ni,4*nh)
@@ -411,7 +427,8 @@ class LSTMCell(Module):
 ```
 
 ### Train the LSTM
-```
+
+```python
 class LMModel6(Module):
     def __init__(self, vocab_sz, n_hidden, n_layers):
         self.i_h = nn.Embedding(vocab_sz, n_hidden)
@@ -438,7 +455,7 @@ Although hard to train and prone to overfitting, there some trick such as using 
 
 ### Dropout
 
-![dropout](./image/dropout2.png)
+![](./image/dropout2.png)
 Dropout is one of the regularization technique use to combat overfitting tendency of the model. The method usually apply at training time. This method is to randomly change some activations value to zero which temporary remove the neural nodes from the network. 
 
 It makes the neural less relie on the input from the source that the neural regularly receive the input from since these sources may not be there. 
@@ -446,7 +463,7 @@ It makes sure all neurons actively work toward the general concept rather than t
 
 Dropout has different behavior in training and validation mode which is why the flag training must set to True when traing and False when evaluating.
 
-```
+```python
 class Dropout(Module):
     def __init__(self, p): self.p = p
     def forward(self, x):
@@ -489,7 +506,7 @@ This method uses:
 - Weight dropout (applied to the weights of the LSTM at each training step)
 - Hidden dropout (applied to the hidden state between two layers)
 
-```
+```python
 class LMModel7(Module):
     def __init__(self, vocab_sz, n_hidden, n_layers, p):
         self.i_h = nn.Embedding(vocab_sz, n_hidden)
@@ -509,14 +526,12 @@ class LMModel7(Module):
         for h in self.h: h.zero_()
 
 ```
-Another trick is *weight-tying* [the AWD LSTM paper](https://arxiv.org/abs/1708.02182) 
-by realize that input embedding is a mapping from English words to activation value. And output from hidden layer is a mapping from activations value to English words are the same thing. And assign the same weight matrix to these layers
-
-`self.h_o.weight  self.i_h.weight`
+Another trick is *weight-tying* [](https://arxiv.org/abs/1708.02182) 
+by realize that input embedding is a mapping from English words to activation value. And output from hidden layer is a mapping from activations value to English words are the same thing. And assign the same weight matrix to these layers`self.h_o.weight  self.i_h.weight`
 
 The final code tweak become:
 
-```
+```python
 class LMModel7(Module):
     def __init__(self, vocab_sz, n_hidden, n_layers, p):
         self.i_h = nn.Embedding(vocab_sz, n_hidden)
@@ -545,12 +560,13 @@ learn = TextLearner(dls, LMModel7(len(vocab), 64, 2, 0.4),
                     loss_func=CrossEntropyLossFlat(), metrics=accuracy)                       
 
 learn.fit_one_cycle(15, 1e-2, wd=0.1)
+
 ```        
 
 
 ### GRU: Gate Recurrent Units architecture
 
-![gru](./image/gru1.jpg)
+![](./image/gru1.jpg)
 
 GRU is a simplify version of LSTM and work them same way.
 

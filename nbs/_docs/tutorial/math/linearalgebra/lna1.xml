@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Fri, 11 Nov 2022 12:02:16 GMT</lastBuildDate>
+<lastBuildDate>Sat, 12 Nov 2022 11:28:40 GMT</lastBuildDate>
 </channel>
 </rss>

@@ -3,7 +3,9 @@ project:
 
 format:
   html:
-    theme: quartz
+    theme: 
+      - quartz
+      - custom.scss
     css: styles.css
     toc: true
 

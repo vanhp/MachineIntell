@@ -464,10 +464,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Sometime it is called multi-class logistic regression function. Since it’s used as final output for them. Many Neural Network output value that are not suitable for output so they must be convert using softmax.</p>
 <p><img src="./image/softmax_nn.jpeg" class="img-fluid"></p>
 <p>Softmax equation is defined by:</p>
-<p><span class="math inline">\(\color{brown}{ \sigma : \mathbb{R}^K\to (0,1)^K}\)</span> is defined when <span class="math inline">\(\color{chocolate}{ K \ge 1 }\)</span> by the formula</p>
-<p><span class="math display">\[\color{chocolate}{ \hbox{softmax(x)}_{i} = \sigma(x)_i   = \frac{e^{x_{i}}}{e^{x_{0}} + e^{x_{1}} + \cdots + e^{x_{n-1}}} }\ \text{ for } i = 1, \dotsc , K \text{ and } \mathbf x=(x_1,\dotsc,x_K) \in\R^K  \]</span></p>
+<p><span class="math inline">\(\color{coral}{ \sigma : \mathbb{R}^K\to (0,1)^K}\)</span> is defined when <span class="math inline">\(\color{orange}{ K \ge 1 }\)</span> by the formula</p>
+<p><span class="math display">\[\color{orange}{ \hbox{softmax(x)}_{i} = \sigma(x)_i   = \frac{e^{x_{i}}}{e^{x_{0}} + e^{x_{1}} + \cdots + e^{x_{n-1}}} }\ \text{ for } i = 1, \dotsc , K \text{ and } \mathbf x=(x_1,\dotsc,x_K) \in R^K  \]</span></p>
 <p>or more concisely:</p>
-<p><span class="math display">\[\color{chocolate}{\hbox{softmax(x)}_{i} = \frac{e^{x_{i}}}{\sum_{0 \leq j \leq n-1} e^{x_{j}}} }\]</span> The input vector <span class="math inline">\(\color{chocolate}{x}\)</span> values are normalized by dividing each value in the vector by the sum of all values; this normalization ensures that the sum of all the components of the output vector <span class="math inline">\(\color{chocolate}{ \sigma(x)}\)</span> is <span class="math inline">\(\color{chocolate}{= 1}\)</span>.</p>
+<p><span class="math display">\[\color{orange}{\hbox{softmax(x)}_{i} = \frac{e^{x_{i}}}{\sum_{0 \leq j \leq n-1} e^{x_{j}}} }\]</span> The input vector <span class="math inline">\(\color{orange}{x}\)</span> values are normalized by dividing each value in the vector by the sum of all values; this normalization ensures that the sum of all the components of the output vector <span class="math inline">\(\color{orange}{ \sigma(x)}\)</span> is <span class="math inline">\(\color{orange}{= 1}\)</span>.</p>
 <p><img src="./image/softmax4.png" class="img-fluid"></p>
 <section id="softmax-and-sigmoid" class="level4">
 <h4 data-anchor-id="softmax-and-sigmoid">Softmax and Sigmoid</h4>
@@ -485,7 +485,7 @@ Tip
 <p>softmax is a generalization version of Sigmoid function and the graph is identical</p>
 </div>
 </div>
-<p>Softmax is the generalize version of sigmoid function since softmax take vector as input and output a vector while sigmoid takes a scalar value and output a scalar. <span class="math display">\[\color{chocolate}{\hbox{sigmoid S(x)} = \frac{1}{1 + e^{-x}} }\]</span> Sigmoid can have two possibility that must sum to <span class="math inline">\(\color{chocolate}{1}\)</span>. When softmax has only two possibility then it is equal to sigmoid function.</p>
+<p>Softmax is the generalize version of sigmoid function since softmax take vector as input and output a vector while sigmoid takes a scalar value and output a scalar. <span class="math display">\[\color{orange}{\hbox{sigmoid S(x)} = \frac{1}{1 + e^{-x}} }\]</span> Sigmoid can have two possibility that must sum to <span class="math inline">\(\color{orange}{1}\)</span>. When softmax has only two possibility then it is equal to sigmoid function.</p>
 <p><img src="./image/soft_sig.png" class="img-fluid"></p>
 </section>
 <section id="argmax-function" class="level4">
@@ -495,12 +495,12 @@ Tip
 <p><img src="./image/argmax1.jpg" class="img-fluid"></p>
 <p>The argmax function can be considered as <em>one-hot</em> or <em>look-up table</em> representation of the output (assuming there is a unique maximum arg):</p>
 <p><img src="./image/argonehot.jpg" class="img-fluid"></p>
-<p><span class="math display">\[\color{chocolate}{\operatorname{arg\,max}(x_1, \dots, x_n) = (y_1, \dots, y_n) = (0, \dots, 0, 1, 0, \dots, 0),}\]</span></p>
+<p><span class="math display">\[\color{orange}{\operatorname{arg\,max}(x_1, \dots, x_n) = (y_1, \dots, y_n) = (0, \dots, 0, 1, 0, \dots, 0),}\]</span></p>
 <p><img src="./image/argmax2.jpg" class="img-fluid"></p>
 </section>
 <section id="softmax-vs-argmax" class="level4">
 <h4 data-anchor-id="softmax-vs-argmax">Softmax vs Argmax</h4>
-<p>The softmax can be considered as a <em>smoother</em> version of the arg max where the value in the output vector are either <span class="math inline">\(\color{chocolate}{0}\)</span> or <span class="math inline">\(\color{chocolate}{1}\)</span>.</p>
+<p>The softmax can be considered as a <em>smoother</em> version of the arg max where the value in the output vector are either <span class="math inline">\(\color{orange}{0}\)</span> or <span class="math inline">\(\color{orange}{1}\)</span>.</p>
 <p><img src="./image/argmax3.jpg" class="img-fluid"></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -515,7 +515,7 @@ Tip
 <p>softmax is a smoother verion of argmax</p>
 </div>
 </div>
-<p>Here is both softmax and argmax in one picture. The vector <span class="math inline">\(\color{chocolate}{v}\)</span> is softmax and vector <span class="math inline">\(\color{chocolate}{y}\)</span> is argmax</p>
+<p>Here is both softmax and argmax in one picture. The vector <span class="math inline">\(\color{orange}{v}\)</span> is softmax and vector <span class="math inline">\(\color{orange}{y}\)</span> is argmax</p>
 <section id="code" class="level5">
 <h5 data-anchor-id="code">code</h5>
 <p>code in Python</p>

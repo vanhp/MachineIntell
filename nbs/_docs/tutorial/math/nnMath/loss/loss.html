@@ -463,9 +463,9 @@ Tip
 </section>
 <section id="cross-entropy-loss" class="level3">
 <h3 data-anchor-id="cross-entropy-loss">Cross Entropy Loss</h3>
-<p>The cross entropy loss for some target <span class="math inline">\(\color{chocolate}{ x}\)</span> and some prediction <span class="math inline">\(\color{chocolate}{ p(x)}\)</span> is given by:</p>
-<p><span class="math display">\[ \color{chocolate}{ H(x) = -\sum x\, \log p(x) }\]</span></p>
-<p>But since our <span class="math inline">\(\color{chocolate}{x}\)</span> are <em>1-hot</em> encoded, this can be rewritten as <span class="math inline">\(\color{chocolate}{ -\log(p_{i})}\)</span> where <span class="math inline">\(\color{chocolate}{i}\)</span> is the index of the desired target.</p>
+<p>The cross entropy loss for some target <span class="math inline">\(\color{orange}{ x}\)</span> and some prediction <span class="math inline">\(\color{orange}{ p(x)}\)</span> is given by:</p>
+<p><span class="math display">\[ \color{orange}{ H(x) = -\sum x\, \log p(x) }\]</span></p>
+<p>But since our <span class="math inline">\(\color{orange}{x}\)</span> are <em>1-hot</em> encoded, this can be rewritten as <span class="math inline">\(\color{orange}{ -\log(p_{i})}\)</span> where <span class="math inline">\(\color{orange}{i}\)</span> is the index of the desired target.</p>
 <p>This can be done using numpy-style <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.indexing.html#integer-array-indexing">integer array indexing</a>. Note that PyTorch supports all the tricks in the advanced indexing methods discussed in that link.</p>
 </section>
 <section id="logarithm" class="level3">
@@ -473,14 +473,14 @@ Tip
 <p>Using logarithm is important to get stable compute in practic. Since in actual compute the machine using floating point number to do caculation. And exact precision is depend on the number of bit uses. If the number of bit is too small the value compute is underflow or the carry bit is large the value will be overflow, on the other hand, if the number of bit is too much the bit are waste.</p>
 <p>Log can help speed up the compute by convert the multiplication and division which is slow into addition and substraction which is fast. Not only that in some case it may help avoid the overflow and underflow problem.</p>
 <p>Note that the formula</p>
-<p><span class="math display">\[\color{chocolate}{ \log \left ( \frac{a}{b} \right ) = \log(a) - \log(b)}\]</span></p>
-<p>gives a simplification when we compute the log softmax, which was previously defined as <span class="math inline">\(\color{chocolate}{ (x.exp()/(x.exp().sum(-1,keepdim=True))).log()}\)</span></p>
+<p><span class="math display">\[\color{orange}{ \log \left ( \frac{a}{b} \right ) = \log(a) - \log(b)}\]</span></p>
+<p>gives a simplification when we compute the log softmax, which was previously defined as <span class="math inline">\(\color{orange}{ (x.exp()/(x.exp().sum(-1,keepdim=True))).log()}\)</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_softmax(x): <span class="cf">return</span> (x.exp()<span class="op">/</span>(x.exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>,keepdim<span class="op">=</span><span class="va">True</span>))).log()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_softmax(x): <span class="cf">return</span> x <span class="op">-</span> x.exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>,keepdim<span class="op">=</span><span class="va">True</span>).log()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, there is a way to compute the log of the sum of exponentials in a more stable way, called the <a href="https://en.wikipedia.org/wiki/LogSumExp">LogSumExp trick</a>. The idea is to use the following formula:</p>
-<p><span class="math display">\[\color{chocolate}{ \log \left ( \sum_{j=1}^{n} e^{x_{j}} \right ) = \log \left ( e^{a} \sum_{j=1}^{n} e^{x_{j}-a} \right ) = a + \log \left ( \sum_{j=1}^{n} e^{x_{j}-a} \right )}\]</span></p>
-<p>where <span class="math inline">\(\color{chocolate}{ a }\)</span> is the maximum of the <span class="math inline">\(\color{chocolate}{ x_{j}}\)</span>.</p>
+<p><span class="math display">\[\color{orange}{ \log \left ( \sum_{j=1}^{n} e^{x_{j}} \right ) = \log \left ( e^{a} \sum_{j=1}^{n} e^{x_{j}-a} \right ) = a + \log \left ( \sum_{j=1}^{n} e^{x_{j}-a} \right )}\]</span></p>
+<p>where <span class="math inline">\(\color{orange}{ a }\)</span> is the maximum of the <span class="math inline">\(\color{orange}{ x_{j}}\)</span>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logsumexp(x):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> x.<span class="bu">max</span>(<span class="op">-</span><span class="dv">1</span>)[<span class="dv">0</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> m <span class="op">+</span> (x<span class="op">-</span>m[:,<span class="va">None</span>]).exp().<span class="bu">sum</span>(<span class="op">-</span><span class="dv">1</span>).log()</span>
@@ -495,7 +495,7 @@ Tip
 <li>log .9 = -0.045</li>
 <li>log .1 = -1</li>
 </ul>
-<p><span class="math display">\[\color{chocolate}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }\]</span></p>
+<p><span class="math display">\[\color{orange}{ \log(p_{i}) = -p_{i}\ \ \text{when}\ i \lt 1 }\]</span></p>
 <p>Therefore the minus sign is used to convert it to positive value</p>
 
 

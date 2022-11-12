@@ -35,7 +35,8 @@ date: "5/22/2021"
 format:
   html:
     code-fold: true
-
+highlight-style: espresso
+code-block-border-left: true
 ---
 
 ## Julia Plots
@@ -46,7 +47,6 @@ See @fig-parametric for an example.
 ```julia
 #| label: fig-parametric
 #| fig-cap: "Parametric Plots"
-
 
 using IJulia
 

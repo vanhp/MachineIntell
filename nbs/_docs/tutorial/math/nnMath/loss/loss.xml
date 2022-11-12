@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/index.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/loss/loss.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/loss/loss.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Fri, 11 Nov 2022 12:02:11 GMT</lastBuildDate>
+<lastBuildDate>Sat, 12 Nov 2022 11:31:46 GMT</lastBuildDate>
 </channel>
 </rss>
