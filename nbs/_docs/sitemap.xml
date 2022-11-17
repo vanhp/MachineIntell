@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tip/tips.html</loc>
-    <lastmod>2022-11-11T12:02:47.944Z</lastmod>
+    <lastmod>2022-11-17T11:05:48.491Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tip/sample.html</loc>
-    <lastmod>2022-11-11T12:02:48.360Z</lastmod>
+    <lastmod>2022-11-17T11:31:25.913Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/news/newsall.html</loc>
-    <lastmod>2022-11-11T12:02:48.780Z</lastmod>
+    <lastmod>2022-11-17T11:12:02.809Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/news/news1.html</loc>
-    <lastmod>2022-11-11T12:02:49.165Z</lastmod>
+    <lastmod>2022-11-17T11:09:47.862Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/news/news2.html</loc>
-    <lastmod>2022-11-11T12:02:49.540Z</lastmod>
+    <lastmod>2022-11-17T11:10:50.659Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/help/helps.html</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/resources/resource.html</loc>
-    <lastmod>2022-11-11T12:02:50.302Z</lastmod>
+    <lastmod>2022-11-17T11:27:10.327Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/00_core.html</loc>
@@ -38,15 +38,15 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2022-11-12T10:49:49.758Z</lastmod>
+    <lastmod>2022-11-17T11:04:59.235Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.html</loc>
-    <lastmod>2022-11-12T10:57:05.309Z</lastmod>
+    <lastmod>2022-11-17T11:23:48.617Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/linearalgebra/lna1.html</loc>
-    <lastmod>2022-11-12T11:28:40.247Z</lastmod>
+    <lastmod>2022-11-17T11:25:23.259Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/loss/loss.html</loc>
@@ -59,5 +59,17 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
     <lastmod>2022-11-12T11:35:36.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/visions/vision.html</loc>
+    <lastmod>2022-11-17T11:15:52.060Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/nlp.html</loc>
+    <lastmod>2022-11-17T11:18:00.714Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/math/maths.html</loc>
+    <lastmod>2022-11-17T11:22:12.471Z</lastmod>
   </url>
 </urlset>

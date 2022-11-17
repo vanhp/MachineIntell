@@ -3,7 +3,7 @@ title: Mathematic
 subtitle: Math that are used in Machine Learning
 about:
   template: marquee
-  image: ../../images/ai-pic7cp.jpg
+  image:   ../../images/gradientv12.jpg
   links:
     - icon: twitter
       text: twitter
@@ -22,7 +22,7 @@ listing:
 page-layout: full
 ---
 
-![](/images/gradientv12.jpg)
+ ![]( ../../images/ai-pic7cp.jpg)
 
 ## Linear Algebra for Maching Learning
 Understanding Linear Algebra is essential in Machine Learning. It's a tool that the main compute that the machine use to calulate the value it finally presented as the result.

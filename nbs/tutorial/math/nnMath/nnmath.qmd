@@ -3,7 +3,7 @@ title: Neural Network Math
 subtitle: Linear Algebra in Machine Learning
 about:
   template: marquee
-  image: ../../../images/ai-pic7cp.jpg
+  image: ../../../images/gradientv12.jpg
   links:
     - icon: twitter
       text: twitter
@@ -22,7 +22,7 @@ listing:
 page-layout: full
 ---
 
-![](/images/gradientv12.jpg)
+![](/images/ai-pic7cp.jpg)
 
 ## Math use in Maching Learning
 Here are some  essential math use in Machine Learning. It's important to understand them in order to get insight into the inner working of the Neural Network. And how it come about the result.
