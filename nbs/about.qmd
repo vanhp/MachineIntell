@@ -12,6 +12,8 @@ about:
       href: https://github.com
 ---
 
+![](./images/code1.jpg)
+
 I've been working as software engineer for two decades.
 
 ## Education
@@ -21,6 +23,5 @@ San Jose state University Computer Engineering 1989
 
 ## Experience
 
-Wengo Analytics | Head Data Scientist | April 2018 - present
+futureWei,Geometric,ATT,Siemens | senior Software Engineer 
 
-GeoScynce | Chief Analyst | Spet 2012 - April 2018

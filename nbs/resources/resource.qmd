@@ -3,7 +3,7 @@ title: Resources
 subtitle: Where to find more info
 about:
   template: marquee
-  image: ../../../images/gradientv12.jpg 
+  image: ../images/gradientv12.jpg 
   image-width: 37em
   image-shape: rectangle
   links:

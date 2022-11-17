@@ -3,7 +3,7 @@ title: NLP
 subtitle: Natural Language Process 
 about:
   template: marquee
-  image: ../../../images/gradientv12.jpg 
+  image: ../../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter

@@ -3,7 +3,7 @@ title: Tutorials
 subtitle: Learn the tools (Math) to use for Machine Intelligent
 about:
   template: marquee
-  image: ../images/ai-pic7cp.jpg
+  image: ../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
@@ -22,8 +22,10 @@ listing:
 page-layout: full
 ---
 
+![](/images/ai-pic7cp.jpg)
 
 
+---
 ![](/images/karma1.jpg)
 
 ## Linear Algebra for Maching Learning

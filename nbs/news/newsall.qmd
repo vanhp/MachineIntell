@@ -3,7 +3,7 @@ title: Latest News
 subtitle: News about Machine Intelligent
 about:
   template: marquee
-  image: ../../../images/gradientv12.jpg 
+  image: ../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
