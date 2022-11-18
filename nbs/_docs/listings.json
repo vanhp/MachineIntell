@@ -66,5 +66,81 @@
   {
     "listing": "/tutorial/tutoring.html",
     "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Trees/tree.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/prog.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/dictionary.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/hash.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/list.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/searching.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/sorting.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Trees/graph.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/alg.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/CC++/ccpp.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Java/java.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Csharp/csharp.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/JavaScript/js.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Julia/julia.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Kotlin/kotlin.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Python/python.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Rust/rust.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Swift/swift.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/lang.html",
+    "items": []
   }
 ]

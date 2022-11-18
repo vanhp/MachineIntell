@@ -26,6 +26,10 @@ page-layout: full
 
 ---
 
+Solve age old [differential equations](https://news.mit.edu/2022/solving-brain-dynamics-gives-rise-flexible-machine-learning-models-1115) help improve Machine Learning modeling
+
+---
+
 Stable Diffusion creator Stability AI accelerates open-source AI, raises $101M
 ￼VentureBeat|2 days ago
 Stability AI has raised $101M for its open-source Stable Diffusion model, an AI art generator that enables people to instantly create art.

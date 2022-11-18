@@ -21,8 +21,9 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-       
+
       - sidebar:news
+      - sidebar:prog
       - sidebar:tip
       - sidebar:tutorial
 
@@ -69,7 +70,7 @@ website:
         href: https://twitter.com/fastdotai
         aria-label: Fast.ai Twitter
 
-  sidebar:
+  sidebar:  
     - id: news
 
       style: "docked"      
@@ -82,6 +83,33 @@ website:
         - ./news/newsall.qmd
         - ./news/news1.qmd
         - ./news/news2.qmd
+
+    - id: prog
+      title: "Programming"
+      contents:
+        - text: "Algorithms & Data structure"
+          contents:
+            - ./Programming/Algorithms/alg.qmd
+            - ./Programming/Algorithms/Trees/tree.qmd
+            - ./Programming/Algorithms/Trees/graph.qmd
+            - ./Programming/Algorithms/Bases/dictionary.qmd
+            - ./Programming/Algorithms/Bases/hash.qmd
+            - ./Programming/Algorithms/Bases/list.qmd
+            - ./Programming/Algorithms/Bases/searching.qmd
+            - ./Programming/Algorithms/Bases/sorting.qmd
+       
+        - text: "Languages"
+          contents:
+            - ./Programming/Languages/lang.qmd
+            - ./Programming/Languages/Csharp/csharp.qmd
+            - ./Programming/Languages/CC++/ccpp.qmd
+            - ./Programming/Languages/Java/java.qmd
+            - ./Programming/Languages/JavaScript/js.qmd
+            - ./Programming/Languages/Julia/julia.qmd
+            - ./Programming/Languages/Kotlin/kotlin.qmd
+            - ./Programming/Languages/Python/python.qmd
+            - ./Programming/Languages/Rust/rust.qmd
+            - ./Programming/Languages/Swift/swift.qmd
 
     - id: tip
       title: "Tip & Trick"
@@ -107,6 +135,7 @@ website:
             - ./tutorial/math/diffEq/diffeq1.qmd
             - ./tutorial/math/diffEq/compoundint.qmd
             # navigation items
+      
 
 
    

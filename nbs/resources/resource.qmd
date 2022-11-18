@@ -27,6 +27,6 @@ page-layout: full
 ![](/images/lotus3.jpg)
 
 
-## Help from expert
+## Resources
 
-Here you can find helping hand when you need it
+Solve age old [differential equations](https://news.mit.edu/2022/solving-brain-dynamics-gives-rise-flexible-machine-learning-models-1115) help improve Machine Learning modeling

@@ -32,7 +32,7 @@
     "href": "news/newsall.html",
     "title": "Latest News",
     "section": "",
-    "text": "Stable Diffusion creator Stability AI accelerates open-source AI, raises $101M ￼VentureBeat|2 days ago Stability AI has raised $101M for its open-source Stable Diffusion model, an AI art generator that enables people to instantly create art.\nAI Knows How Much You’re Willing to Pay for Flights Before You Do ￼Bloomberg on MSN.com|2 hours ago Armed with mountains of data, artificial intelligence is emerging as an important tool for airlines to find the ideal fares to charge passengers, helping them squeeze out as much revenue as possible as the industry emerges from its biggest crisis.\nUS court rules, once again, that AI software can’t hold a patent ￼Ars Technica|1 hour ago The legal challenge came from Dr. Stephen Thaler, who filed two patent applications naming an AI program called “DABUS” as the inventor in 2019. The US Patent and Trademark Office (USPTO) denied the patents,\nHow AI Can Improve Pharmaceutical Commercial Operations ￼Forbes|10 hours ago While AI can uncover precious insights, for companies that have not worked with AI previously, this can mean a complete reorganization of their data foundation.\nAI-controlled robotic laser can target and kill cockroaches ￼New Scientist|13 hours ago A laser controlled by two cameras and a small computer running an AI model can be trained to target certain types of insect\nU.S. scientist hits another dead end in patent case over AI ‘inventor’ ￼Reuters|4 hours ago A U.S. computer scientist on Thursday lost his latest bid to have an artificial intelligence program he created be named “inventor” on a pair of patents he is seeking to obtain.\n￼ Generally Intelligent secures cash from OpenAI vets to build capable AI systems ￼TechCrunch|6 hours ago Generally Intelligent, a research startup with backing from OpenAI vets, is aiming to develop general-purpose AI systems."
+    "text": "Solve age old differential equations help improve Machine Learning modeling\nStable Diffusion creator Stability AI accelerates open-source AI, raises $101M ￼VentureBeat|2 days ago Stability AI has raised $101M for its open-source Stable Diffusion model, an AI art generator that enables people to instantly create art.\nAI Knows How Much You’re Willing to Pay for Flights Before You Do ￼Bloomberg on MSN.com|2 hours ago Armed with mountains of data, artificial intelligence is emerging as an important tool for airlines to find the ideal fares to charge passengers, helping them squeeze out as much revenue as possible as the industry emerges from its biggest crisis.\nUS court rules, once again, that AI software can’t hold a patent ￼Ars Technica|1 hour ago The legal challenge came from Dr. Stephen Thaler, who filed two patent applications naming an AI program called “DABUS” as the inventor in 2019. The US Patent and Trademark Office (USPTO) denied the patents,\nHow AI Can Improve Pharmaceutical Commercial Operations ￼Forbes|10 hours ago While AI can uncover precious insights, for companies that have not worked with AI previously, this can mean a complete reorganization of their data foundation.\nAI-controlled robotic laser can target and kill cockroaches ￼New Scientist|13 hours ago A laser controlled by two cameras and a small computer running an AI model can be trained to target certain types of insect\nU.S. scientist hits another dead end in patent case over AI ‘inventor’ ￼Reuters|4 hours ago A U.S. computer scientist on Thursday lost his latest bid to have an artificial intelligence program he created be named “inventor” on a pair of patents he is seeking to obtain.\n￼ Generally Intelligent secures cash from OpenAI vets to build capable AI systems ￼TechCrunch|6 hours ago Generally Intelligent, a research startup with backing from OpenAI vets, is aiming to develop general-purpose AI systems."
   },
   {
     "objectID": "news/newsall.html#deep-learning-from-fastai-library",
@@ -256,7 +256,7 @@
     "href": "resources/resource.html#help-from-expert",
     "title": "Resources",
     "section": "Help from expert",
-    "text": "Help from expert\nHere you can find helping hand when you need it"
+    "text": "Help from expert\nSolve age old differential equations help improve Machine Learning modeling"
   },
   {
     "objectID": "tutorial/tutoring.html#linear-algebra-for-maching-learning",
@@ -383,5 +383,152 @@
     "title": "nbdev+Quarto: A new secret weapon for coding productivity",
     "section": "A conversation with JJ Allaire",
     "text": "A conversation with JJ Allaire\nTo celebrate the launch of nbdev v2 and Quarto, Jeremy sat down with the CEO of Posit (previously known as RStudio, the company behind Quarto), JJ Allaire, to talk about software development, scientific publishing, R, Python, literate programming, and much more."
+  },
+  {
+    "objectID": "getting_started.html",
+    "href": "getting_started.html",
+    "title": "MachineIntell",
+    "section": "",
+    "text": "import nbdev"
+  },
+  {
+    "objectID": "resources/resource.html#resources",
+    "href": "resources/resource.html#resources",
+    "title": "Resources",
+    "section": "Resources",
+    "text": "Resources\nSolve age old differential equations help improve Machine Learning modeling"
+  },
+  {
+    "objectID": "Programming/Algorithms/Trees/tree.html",
+    "href": "Programming/Algorithms/Trees/tree.html",
+    "title": "Tree",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/prog.html",
+    "href": "Programming/prog.html",
+    "title": "Programming",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Bases/dictionary.html",
+    "href": "Programming/Algorithms/Bases/dictionary.html",
+    "title": "Dictionary (map)",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Bases/hash.html",
+    "href": "Programming/Algorithms/Bases/hash.html",
+    "title": "Hash",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Bases/list.html",
+    "href": "Programming/Algorithms/Bases/list.html",
+    "title": "Lists",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Bases/searching.html",
+    "href": "Programming/Algorithms/Bases/searching.html",
+    "title": "Searching",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Bases/sorting.html",
+    "href": "Programming/Algorithms/Bases/sorting.html",
+    "title": "Sorting",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/Trees/graph.html",
+    "href": "Programming/Algorithms/Trees/graph.html",
+    "title": "Graphs",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Algorithms/alg.html",
+    "href": "Programming/Algorithms/alg.html",
+    "title": "Algorithms",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/CC++/ccpp.html",
+    "href": "Programming/Languages/CC++/ccpp.html",
+    "title": "C & C++",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Java/java.html",
+    "href": "Programming/Languages/Java/java.html",
+    "title": "Java",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Csharp/csharp.html",
+    "href": "Programming/Languages/Csharp/csharp.html",
+    "title": "C#",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/JavaScript/js.html",
+    "href": "Programming/Languages/JavaScript/js.html",
+    "title": "JavaScript",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Julia/julia.html",
+    "href": "Programming/Languages/Julia/julia.html",
+    "title": "Julia",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Kotlin/kotlin.html",
+    "href": "Programming/Languages/Kotlin/kotlin.html",
+    "title": "Kotlin",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Python/python.html",
+    "href": "Programming/Languages/Python/python.html",
+    "title": "Python",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Rust/rust.html",
+    "href": "Programming/Languages/Rust/rust.html",
+    "title": "Rust",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/Swift/swift.html",
+    "href": "Programming/Languages/Swift/swift.html",
+    "title": "Swift",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "Programming/Languages/lang.html",
+    "href": "Programming/Languages/lang.html",
+    "title": "Languages",
+    "section": "",
+    "text": "No matching items"
   }
 ]
