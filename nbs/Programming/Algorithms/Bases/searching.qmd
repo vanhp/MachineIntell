@@ -3,7 +3,7 @@ title: Searching
 subtitle: Searching Algorithms
 about:
   template: marquee
-  image: ../../../../images/gradientv12.jpg 
+  image: ./../../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
@@ -23,4 +23,4 @@ page-layout: full
 ---
 
 ## About Searching Algorithm
-![](../../../../images/ai-pic7.jpg)
+![](../../../images/ai-pic7.jpg)
