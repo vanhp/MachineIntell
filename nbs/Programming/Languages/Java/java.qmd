@@ -3,7 +3,7 @@ title: Java
 subtitle: Java language
 about:
   template: marquee
-  image: ../../../../images/gradientv12.jpg 
+  image: ../../../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
@@ -23,4 +23,4 @@ page-layout: full
 ---
 
 ## About Tree and Graph Data structures
-![](../../../../images/ai-pic7.jpg)
+![](../../../images/ai-pic7.jpg)
