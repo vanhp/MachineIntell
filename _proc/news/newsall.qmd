@@ -3,7 +3,7 @@ title: Latest News
 subtitle: News about Machine Intelligent
 about:
   template: marquee
-  image: ../images/light1.jpg
+  image: ../images/gradientv12.jpg 
   links:
     - icon: twitter
       text: twitter
@@ -21,6 +21,12 @@ listing:
 
 page-layout: full
 ---
+
+![](../images/light1.jpg)
+
+---
+
+Solve age old [differential equations](https://news.mit.edu/2022/solving-brain-dynamics-gives-rise-flexible-machine-learning-models-1115) help improve Machine Learning modeling
 
 ---
 

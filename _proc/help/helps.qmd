@@ -3,7 +3,7 @@ title: Helping Hand
 subtitle: Advice from the expert in the field
 about:
   template: marquee
-  image: ../images/karma1.jpg
+  image: ../images/gradientv12.jpg
   image-width: 37em
   image-shape: rectangle
   links:
@@ -24,6 +24,8 @@ listing:
 page-layout: full
 ---
 
+
+![](../images/karma1.jpg)
 ## Help from expert
 
 Here you can find helping hand when you need it

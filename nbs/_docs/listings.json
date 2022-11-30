@@ -1,5 +1,33 @@
 [
   {
+    "listing": "/tutorial/math/diffEq/compoundint.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/maths.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/nnmath.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/nnMath/loss/loss.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/rnn.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/visions/vision.html",
+    "items": []
+  },
+  {
     "listing": "/tip/tips.html",
     "items": []
   },
@@ -24,67 +52,11 @@
     "items": []
   },
   {
-    "listing": "/tutorial/math/diffEq/compoundint.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/nnmath.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/linearalgebra/lna1.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/loss/loss.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/rnn.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/diffEq/diffeq1.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/visions/vision.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/nlp.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/maths.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/tutoring.html",
-    "items": []
-  },
-  {
     "listing": "/Programming/Algorithms/Trees/tree.html",
     "items": []
   },
   {
-    "listing": "/Programming/prog.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Bases/dictionary.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Bases/hash.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Bases/list.html",
+    "listing": "/Programming/Algorithms/Trees/graph.html",
     "items": []
   },
   {
@@ -96,11 +68,31 @@
     "items": []
   },
   {
-    "listing": "/Programming/Algorithms/Trees/graph.html",
+    "listing": "/Programming/Algorithms/Bases/hash.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/dictionary.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Algorithms/Bases/list.html",
     "items": []
   },
   {
     "listing": "/Programming/Algorithms/alg.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/prog.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Julia/julia.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Python/python.html",
     "items": []
   },
   {
@@ -112,23 +104,7 @@
     "items": []
   },
   {
-    "listing": "/Programming/Languages/Csharp/csharp.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Languages/JavaScript/js.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Languages/Julia/julia.html",
-    "items": []
-  },
-  {
     "listing": "/Programming/Languages/Kotlin/kotlin.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Languages/Python/python.html",
     "items": []
   },
   {
@@ -140,7 +116,15 @@
     "items": []
   },
   {
+    "listing": "/Programming/Languages/JavaScript/js.html",
+    "items": []
+  },
+  {
     "listing": "/Programming/Languages/lang.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Csharp/csharp.html",
     "items": []
   }
 ]

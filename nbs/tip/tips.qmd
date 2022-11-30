@@ -43,7 +43,7 @@ format:
 Plot function pair (x(u), y(u)). 
 See @fig-parametric for an example.
 
-```{julia}
+```julia
 #| label: fig-parametric
 #| fig-cap: "Parametric Plots"
 

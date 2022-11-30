@@ -1,0 +1,26 @@
+---
+title: Sorting
+subtitle: Sorting Algorithms
+about:
+  template: marquee
+  image: ../../../images/gradientv12.jpg 
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+## About Sorting Algorithms
+![](../../../images/ai-pic7.jpg)

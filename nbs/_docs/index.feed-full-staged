@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/index.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/index.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
-<generator>quarto-1.1.251</generator>
-<lastBuildDate>Sat, 12 Nov 2022 11:35:36 GMT</lastBuildDate>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Wed, 30 Nov 2022 11:49:59 GMT</lastBuildDate>
 </channel>
 </rss>
