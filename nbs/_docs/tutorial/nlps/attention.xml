@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>MachineIntell</title>
-<link>https://vanhp.github.io/MachineIntell/index.html</link>
-<atom:link href="https://vanhp.github.io/MachineIntell/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://vanhp.github.io/MachineIntell/tutorial/nlps/attention.html</link>
+<atom:link href="https://vanhp.github.io/MachineIntell/tutorial/nlps/attention.xml" rel="self" type="application/rss+xml"/>
 <description>Try to understand machine intelligent</description>
-<generator>quarto-1.2.269</generator>
-<lastBuildDate>Wed, 30 Nov 2022 11:49:59 GMT</lastBuildDate>
+<generator>quarto-1.2.335</generator>
+<lastBuildDate>Mon, 13 Feb 2023 06:51:09 GMT</lastBuildDate>
 </channel>
 </rss>

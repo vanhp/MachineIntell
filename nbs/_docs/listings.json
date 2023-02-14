@@ -126,5 +126,33 @@
   {
     "listing": "/Programming/Languages/Csharp/csharp.html",
     "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/diffEq/diffeq1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/math/linearalgebra/lna1.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/tutoring.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/transformer.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/attention.html",
+    "items": []
+  },
+  {
+    "listing": "/tutorial/nlps/encodedecode.html",
+    "items": []
   }
 ]

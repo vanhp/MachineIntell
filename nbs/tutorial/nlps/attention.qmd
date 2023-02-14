@@ -1,0 +1,74 @@
+---
+title: Attention
+subtitle: Understanding Attention mechanism
+about:
+  template: marquee
+  image: ../../images/gradientv12.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+![](./image/attentionmech.jpg)
+
+
+---
+title: "Attention Mechanism"
+author: "Vanh Phom"
+date: "02/9/2023"
+format:
+  html:
+    code-fold: true
+highlight-style: monokai
+code-block-border-left: true
+---
+
+A technique to help improve the performance of the Encoder-Decoder by increase the flexibility to use the whole set of input data instead of just the data that are closer to it. By a weighted from all the input data vector plus the ability to assigned the most relevant data the higher weight. This allow the model to pick the most appropiate data for the task at hand. 
+
+![](./image/attention2.jpg)
+This method also wisely uses in other discipline e.g. vision, not just in language translation.
+
+What are the components of Attention
+
+Attention is divided into three parts 
+
+1. alignment scores:
+    Take both previously encoded state or hidden state $h_i$ and previously decoded state $S_{t-1}$ as input to calculate the score $e^{t,i}$ that indicate how good the element of the input sequence align with the current output at the position $t$ as represent as $a()$ which implement using feedforward network.
+        $$e_{t,i} = a(S_{t-1},h_i)$$
+2. Weight:
+    The weight $\alpha_{t,i}$ compute by applying softmax operation to the already compute alignment score  
+        $$\alpha_{t,i} = softmax(e_{t,i})$$
+3. Context vector:
+    The context vector $C_t$ is fed into the decoder at each time step is computed by weighted sum of all T
+        $$C_t = \sum_{i=1}^T \alpha_{t,i} h_i$$
+
+
+## Computing attention
+
+![](./image/computeatt2.jpeg)
+The amount of attention that the network should be paying attention to is computed with
+
+$\alpha^{<t,t'>} = \text{amount of attention } y^{t} \text{ should pay to }\alpha^{t'}$
+$\alpha^{<t,t'>} = \frac{exp(e^{t,t'})}{\sum_{t' = 1}^{T_x} exp(e^{<t,t'>}) }$
+
+where $\alpha$ is attention, $S$ is state, $t$ is time step, $t'$ is time step of next input
+
+compute $e^{<t,t'>}$ using a small network.
+
+The drawback of this algorithm is depended on the amount of $T_x$ tokens it could run in quadratic time.
+
+Visualization of attention at work 
+![](./image/vizattn.png)
