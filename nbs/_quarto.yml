@@ -126,7 +126,11 @@ website:
         - text: "NLP"
           contents:
             - ./tutorial/nlps/rnn.qmd
-            
+            - ./tutorial/nlps/attention.qmd
+            - ./tutorial/nlps/encodedecode.qmd
+            - ./tutorial/nlps/transformer.qmd
+
+
         - text: "Math"
           contents:
             - ./tutorial/math/linearalgebra/lna1.qmd

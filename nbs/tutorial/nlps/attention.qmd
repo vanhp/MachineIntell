@@ -72,3 +72,74 @@ The drawback of this algorithm is depended on the amount of $T_x$ tokens it coul
 
 Visualization of attention at work 
 ![](./image/vizattn.png)
+
+
+## General Attention Mechanism with Seq2Seq
+The general task of find item from a sequence to sequence can be compared to attention mechanism that have the three component as query $Q$,keys $K$, and value $V$. As below:
+
+1. $Q$ $\implies$ querying previous state decoder $S_{t-1}$ output
+which each query a dabase of keys to compute the value using dot product
+$$e_{q,k_i} = q\cdot k_i$$
+2. Once the score is found then using softmax to compute the weights $V$ $\implies$ value of encoder input $h_i$
+$$\alpha_{q,k_i} = softmax(e_{q,k_i})$$
+
+3. Compute the attention with weight sum of value vector $V_{k_i}$ $K$ $\implies$ context vector $C_t$
+
+$$attention(q,K,V) = \sum_i^n \alpha_{q,{k_i},V_{k_i}}$$
+
+In essence, when the generalized attention mechanism is presented with a sequence of words, it takes the query vector attributed to some specific word in the sequence and scores it against each key in the database. In doing so, it captures how the word under consideration relates to the others in the sequence. Then it scales the values according to the attention weights (computed from the scores) to retain focus on those words relevant to the query. In doing so, it produces an attention output for the word under consideration. 
+
+Example of calculate attention by hand
+
+1. calculate the attention for the first word in a sequence of four
+
+```python
+from numpy import array
+from numpy import random
+from numpy import dot
+from scipy.special import softmax
+
+# define encoder representations of four different words
+word_1 = array([1, 0, 0])
+word_2 = array([0, 1, 0])
+word_3 = array([1, 1, 0])
+word_4 = array([0, 0, 1])
+
+# stacking the word embeddings into a single array
+Words = array([word_1, word_2, word_3, word_4])
+```
+2. generates the weight matrices to multiply to the word embeddings to generate the queries, keys, and values by hand instead of by training.
+```python
+# generating the weight matrices
+random.seed(42) # to allow us to reproduce the same attention values
+W_Q = random.randint(3, size=(3, 3))
+W_K = random.randint(3, size=(3, 3))
+W_V = random.randint(3, size=(3, 3))
+```
+3. generate query,key, value vectors by multiply each word embedding
+with each weight matrices
+```python
+# generating the queries, keys and values
+Q = Words @ W_Q
+K = Words @ W_K
+V = Words @ W_V
+```
+4. create scores the query vector using dot product
+```python
+# scoring the first query vector against all key vectors
+scores = Q @ K.transpose()
+
+```
+5. Generate the weight by send the scores value through softmax 
+to avoid vanishing/exploding gradient divide the score with square root of dimension of the key vector
+```python
+# computing the weights by a softmax operation
+Weights = softmax(scores / K.shape[1] ** 0.5,axis=1)
+```
+6. Calculate the attention by weighted sum of all value vectors
+```python
+# computing the attention by a weighted sum of the value vectors
+attention = Weights @ V
+ 
+print(attention)
+```
