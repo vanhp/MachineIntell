@@ -154,5 +154,73 @@
   {
     "listing": "/tutorial/nlps/encodedecode.html",
     "items": []
+  },
+  {
+    "listing": "/AI/news1.html",
+    "items": []
+  },
+  {
+    "listing": "/AI/news2.html",
+    "items": []
+  },
+  {
+    "listing": "/AI/newsall.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/tutoring.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/nlps/nlp.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/diffEq/compoundint.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/diffEq/diffeq1.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/linearalgebra/lna1.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/nnMath/loss/loss.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/nnMath/nnmath.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/math/maths.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/nlps/rnn.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/nlps/transformer.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/nlps/attention.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/nlps/encodedecode.html",
+    "items": []
+  },
+  {
+    "listing": "/Tutorial/visions/vision.html",
+    "items": []
+  },
+  {
+    "listing": "/AI/sdiffusion.html",
+    "items": []
   }
 ]

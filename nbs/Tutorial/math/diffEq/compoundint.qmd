@@ -27,7 +27,7 @@ page-layout: full
 ![](../../../images/code1.jpg)
 
 ##  Ordinary Differential Equation
-
+<!-- 
 ---
 title: "ODE Plot"
 author: "Norah Jones"
@@ -38,26 +38,27 @@ format:
 highlight-style: espresso
 code-block-border-left: true
 ---
+ -->
 
 ## Julia Plots
 
-Plot function pair (x(u), y(u)). 
+<!-- Plot function pair (x(u), y(u)). 
 
-See @fig-parametric for an example.
+See @fig-parametric for an example. -->
 
-```julia
-#| label: fig-parametric
-#| fig-cap: "Parametric Plots"
+<!-- # ```julia
+# | label: fig-parametric
+# | fig-cap: "Parametric Plots"
 
 # using IJulia
 
-using Plots
+# using Plots
 
-plot(sin, 
-     x->sin(2x), 
-     0, 
-     2π, 
-     leg=false, 
-     fill=(0,:lavender))
-```
-
+# plot(sin, 
+#      x->sin(2x), 
+#      0, 
+#      2π, 
+#      leg=false, 
+#      fill=(0,:lavender))
+# ```
+ -->

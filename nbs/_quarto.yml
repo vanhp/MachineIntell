@@ -22,10 +22,10 @@ website:
       - text: "Home"
         href: index.qmd
 
-      - sidebar:news
+      - sidebar:AI
       - sidebar:prog
-      - sidebar:tip
-      - sidebar:tutorial
+      - sidebar:Tip
+      - sidebar:Tutorial
 
       - text: "Help"   
         menu:   
@@ -71,18 +71,18 @@ website:
         aria-label: Fast.ai Twitter
 
   sidebar:  
-    - id: news
+    - id: AI
 
       style: "docked"      
       type: "dark"
       background: "#742787"
       foreground: "#b7e087"
 
-      title: "News"
+      title: "AI"
       contents:
-        - ./news/newsall.qmd
-        - ./news/news1.qmd
-        - ./news/news2.qmd
+        - ./AI/newsall.qmd
+        - ./AI/sdiffusion.qmd
+        - ./AI/gpt.qmd
 
     - id: prog
       title: "Programming"
@@ -111,33 +111,33 @@ website:
             - ./Programming/Languages/Rust/rust.qmd
             - ./Programming/Languages/Swift/swift.qmd
 
-    - id: tip
+    - id: Tip
       title: "Tip & Trick"
       contents:
         - ./tip/tips.qmd
         # navigation items
 
-    - id: tutorial
+    - id: Tutorial
       title: "Tutorials"
       contents:
-        - ./tutorial/tutoring.qmd
-        - ./tutorial/visions/vision.qmd
-        - ./tutorial/nlps/nlp.qmd
+        - ./Tutorial/tutoring.qmd
+        - ./Tutorial/visions/vision.qmd
+        - ./Tutorial/nlps/nlp.qmd
         - text: "NLP"
           contents:
-            - ./tutorial/nlps/rnn.qmd
-            - ./tutorial/nlps/attention.qmd
-            - ./tutorial/nlps/encodedecode.qmd
-            - ./tutorial/nlps/transformer.qmd
+            - ./Tutorial/nlps/rnn.qmd
+            - ./Tutorial/nlps/attention.qmd
+            - ./Tutorial/nlps/encodedecode.qmd
+            - ./Tutorial/nlps/transformer.qmd
 
 
         - text: "Math"
           contents:
-            - ./tutorial/math/linearalgebra/lna1.qmd
-            - ./tutorial/math/nnMath/nnmath.qmd
-            - ./tutorial/math/nnMath/loss/loss.qmd
-            - ./tutorial/math/diffEq/diffeq1.qmd
-            - ./tutorial/math/diffEq/compoundint.qmd
+            - ./Tutorial/math/linearalgebra/lna1.qmd
+            - ./Tutorial/math/nnMath/nnmath.qmd
+            - ./Tutorial/math/nnMath/loss/loss.qmd
+            - ./Tutorial/math/diffEq/diffeq1.qmd
+            - ./Tutorial/math/diffEq/compoundint.qmd
             # navigation items
       
 

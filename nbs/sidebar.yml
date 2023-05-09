@@ -2,8 +2,12 @@ website:
   sidebar:
     contents:
       - index.qmd
-
       - getting_started.ipynb
+      - section: AI
+        contents:
+          - AI/sdiffusion.qmd
+          - AI/gpt.qmd
+          - AI/newsall.qmd
       - section: Programming
         contents:
           - Programming/prog.qmd
@@ -64,52 +68,46 @@ website:
         contents:
           - blog/index.qmd
       
-      - section: tip
+      - section: Tip
         contents:
           - tip/sample.ipynb
           - tip/tips.qmd
-      - section: tutorial
+      - section: Tutorial
         contents:
-          - tutorial/tutoring.qmd
+          - Tutorial/tutoring.qmd
           - section: math
             contents:
-              - tutorial/math/maths.qmd
+              - Tutorial/math/maths.qmd
 
               - section: diffEq
                 contents:
-                  - tutorial/math/diffEq/compoundint.ipynb
-                  - tutorial/math/diffEq/compoundint.qmd
-                  - tutorial/math/diffEq/diffeq1.qmd
+                  - Tutorial/math/diffEq/compoundint.ipynb
+                  - Tutorial/math/diffEq/compoundint.qmd
+                  - Tutorial/math/diffEq/diffeq1.qmd
 
               - section: linearalgebra
                 contents:
-                  - tutorial/math/linearalgebra/lna1.qmd
+                  - Tutorial/math/linearalgebra/lna1.qmd
 
               - section: nnMath
                 contents:
-                  - tutorial/math/nnMath/nnmath.qmd
+                  - Tutorial/math/nnMath/nnmath.qmd
 
                   - section: loss
                     contents:
-                      - tutorial/math/nnMath/loss/loss.qmd
+                      - Tutorial/math/nnMath/loss/loss.qmd
 
           - section: nlps
             contents:
-              - tutorial/nlps/nlp.qmd
-
-              - tutorial/nlps/rnn.qmd
-
+              - Tutorial/nlps/nlp.qmd
+              - Tutorial/nlps/rnn.qmd
           - section: visions
             contents:
-              - tutorial/visions/vision.qmd
+              - Tutorial/visions/vision.qmd
       - section: help
         contents:
           - help/helps.qmd
-      - section: news
-        contents:
-          - news/news1.qmd
-          - news/news2.qmd
-          - news/newsall.qmd
+
       - section: resources
         contents:
           - resources/resource.qmd

@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.242">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Vanh Phom">
+
+<title>MachineIntell - Recurrent Neural Network</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="alternate" type="application/rss+xml" title="MachineIntell" href="rnn.xml"><meta property="og:title" content="MachineIntell - Recurrent Neural Network">
+<meta property="og:description" content="Looking under the hood of RNN">
+<meta property="og:site-name" content="MachineIntell">
+<meta name="twitter:title" content="MachineIntell - Recurrent Neural Network">
+<meta name="twitter:description" content="Looking under the hood of RNN">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/gradientv1scale2.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">MachineIntell</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ai" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">AI</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-ai">    
+        <li>
+    <a class="dropdown-item" href="../../AI/newsall.html" rel="" target="">
+ <span class="dropdown-text">Latest News</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../AI/sdiffusion.html" rel="" target="">
+ <span class="dropdown-text">Stable Diffusion</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../AI/gpt.html" rel="" target="">
+ <span class="dropdown-text">GPT</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-programming" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Programming</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-programming">    
+        <li class="dropdown-header">Algorithms &amp; Data structure</li>
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/alg.html" rel="" target="">
+ <span class="dropdown-text">Algorithms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Trees/tree.html" rel="" target="">
+ <span class="dropdown-text">Tree</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Trees/graph.html" rel="" target="">
+ <span class="dropdown-text">Graphs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/dictionary.html" rel="" target="">
+ <span class="dropdown-text">Dictionary (map)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/hash.html" rel="" target="">
+ <span class="dropdown-text">Hash</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/list.html" rel="" target="">
+ <span class="dropdown-text">Lists</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/searching.html" rel="" target="">
+ <span class="dropdown-text">Searching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/sorting.html" rel="" target="">
+ <span class="dropdown-text">Sorting</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Languages</li>
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/lang.html" rel="" target="">
+ <span class="dropdown-text">Coding Languages</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Csharp/csharp.html" rel="" target="">
+ <span class="dropdown-text">C#</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/CC++/ccpp.html" rel="" target="">
+ <span class="dropdown-text">C &amp; C++</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Java/java.html" rel="" target="">
+ <span class="dropdown-text">Java</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/JavaScript/js.html" rel="" target="">
+ <span class="dropdown-text">JavaScript</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Julia/julia.html" rel="" target="">
+ <span class="dropdown-text">Julia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Kotlin/kotlin.html" rel="" target="">
+ <span class="dropdown-text">Kotlin</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Python/python.html" rel="" target="">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Rust/rust.html" rel="" target="">
+ <span class="dropdown-text">Rust</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Programming/Languages/Swift/swift.html" rel="" target="">
+ <span class="dropdown-text">Swift</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tip--trick" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Tip &amp; Trick</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
+        <li>
+    <a class="dropdown-item" href="../../tip/tips.html" rel="" target="">
+ <span class="dropdown-text">Julia Plots</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/tutoring.html" rel="" target="">
+ <span class="dropdown-text">Tutorials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/visions/vision.html" rel="" target="">
+ <span class="dropdown-text">Machine Vision</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/nlps/nlp.html" rel="" target="">
+ <span class="dropdown-text">NLP</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">NLP</li>
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/nlps/rnn.html" rel="" target="">
+ <span class="dropdown-text">Recurrent Neural Network</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/nlps/attention.html" rel="" target="">
+ <span class="dropdown-text">Attention Mechanism</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/nlps/encodedecode.html" rel="" target="">
+ <span class="dropdown-text">Encoder-Decoder pair in NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/nlps/transformer.html" rel="" target="">
+ <span class="dropdown-text">Transformers</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Math</li>
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/math/linearalgebra/lna1.html" rel="" target="">
+ <span class="dropdown-text">Linear Algebra</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/math/nnMath/nnmath.html" rel="" target="">
+ <span class="dropdown-text">Neural Network Math</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/math/nnMath/loss/loss.html" rel="" target="">
+ <span class="dropdown-text">Loss or Cost functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/math/diffEq/diffeq1.html" rel="" target="">
+ <span class="dropdown-text">Calculus</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Tutorial/math/diffEq/compoundint.html" rel="" target="">
+ <span class="dropdown-text">ODE</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-help" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
+        <li>
+    <a class="dropdown-item" href="../../help/helps.html" rel="" target="">
+ <span class="dropdown-text">Helping hand</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/fastai/nbdev/issues" rel="" target=""><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forums.fast.ai/" rel="" target=""><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Fast.ai Forum</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../resources/resource.html" rel="" target="">
+ <span class="dropdown-text">More info</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/fastai/nbdev/issues" rel="" target=""><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report an Issue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://forums.fast.ai/" rel="" target=""><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Fast.ai Forum</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-blog" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Blog</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html" rel="" target="">
+ <span class="dropdown-text">Posts</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/fastai/nbdev" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/fastdotai" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="Fast.ai Twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Tutorial/tutoring.html">Tutorial</a></li><li class="breadcrumb-item"><a href="../../Tutorial/nlps/nlp.html">NLP</a></li><li class="breadcrumb-item"><a href="../../Tutorial/nlps/rnn.html">Recurrent Neural Network</a></li></ol></nav>
+      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine intelligence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner start here</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">AI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../AI/sdiffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stable Diffusion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../AI/gpt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GPT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../AI/newsall.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Latest News</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Algorithms</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/alg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Algorithms</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Data Structures</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Bases/dictionary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dictionary (map)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Bases/hash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hash</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Bases/list.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Bases/searching.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Searching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Bases/sorting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sorting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Trees</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Trees/graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graphs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Algorithms/Trees/tree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tree</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Languages</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/lang.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coding Languages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">CC++</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/CC++/ccpp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C &amp; C++</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Csharp</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Csharp/csharp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C#</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Java</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Java/java.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Java</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">JavaScript</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/JavaScript/js.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JavaScript</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">Julia</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Julia/julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">Kotlin</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Kotlin/kotlin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kotlin</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Python/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">Rust</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Rust/rust.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rust</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+ <span class="menu-text">Swift</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Programming/Languages/Swift/swift.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Swift</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true">
+ <span class="menu-text">Blog</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">nbdev+Quarto: A new secret weapon for coding productivity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="true">
+ <span class="menu-text">Tip</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tip/sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Live Python code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tip/tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia Plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
+ <span class="menu-text">Tutorial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/tutoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+ <span class="menu-text">math</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/maths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mathematic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-expanded="false">
+ <span class="menu-text">diffEq</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/diffEq/compoundint.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ODE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-expanded="false">
+ <span class="menu-text">linearalgebra</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-expanded="false">
+ <span class="menu-text">nnMath</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Network Math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-expanded="false">
+ <span class="menu-text">loss</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/math/nnMath/loss/loss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loss or Cost functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-expanded="true">
+ <span class="menu-text">nlps</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-24" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/nlps/nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NLP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/nlps/rnn.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Recurrent Neural Network</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-expanded="false">
+ <span class="menu-text">visions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Tutorial/visions/vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-expanded="true">
+ <span class="menu-text">help</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-26" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../help/helps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Helping Hand</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-expanded="true">
+ <span class="menu-text">resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-27" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-expanded="true">
+ <span class="menu-text">About</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../00_core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vanh Phomsavanh</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#bidirectional-rnn" id="toc-bidirectional-rnn" class="nav-link active" data-scroll-target="#bidirectional-rnn">Bidirectional RNN</a></li>
+  <li><a href="#long-short-term-memory-lstm" id="toc-long-short-term-memory-lstm" class="nav-link" data-scroll-target="#long-short-term-memory-lstm">Long short term memory (LSTM)</a>
+  <ul class="collapse">
+  <li><a href="#lstm" id="toc-lstm" class="nav-link" data-scroll-target="#lstm">LSTM</a></li>
+  </ul></li>
+  <li><a href="#creating-a-language-model-from-scratch" id="toc-creating-a-language-model-from-scratch" class="nav-link" data-scroll-target="#creating-a-language-model-from-scratch">Creating a Language Model from Scratch</a>
+  <ul class="collapse">
+  <li><a href="#first-language-model" id="toc-first-language-model" class="nav-link" data-scroll-target="#first-language-model">First Language Model</a></li>
+  </ul></li>
+  <li><a href="#the-architect-of-the-first-model" id="toc-the-architect-of-the-first-model" class="nav-link" data-scroll-target="#the-architect-of-the-first-model">The architect of the first model</a>
+  <ul class="collapse">
+  <li><a href="#layers-model-code" id="toc-layers-model-code" class="nav-link" data-scroll-target="#layers-model-code">3 layers model code</a></li>
+  <li><a href="#refactor-to-add-memory-to-rnn" id="toc-refactor-to-add-memory-to-rnn" class="nav-link" data-scroll-target="#refactor-to-add-memory-to-rnn">Refactor to add memory to RNN</a></li>
+  <li><a href="#bptt-backpropagation-through-time" id="toc-bptt-backpropagation-through-time" class="nav-link" data-scroll-target="#bptt-backpropagation-through-time">BPTT Backpropagation through time</a></li>
+  <li><a href="#exploding-or-disappearing-activations" id="toc-exploding-or-disappearing-activations" class="nav-link" data-scroll-target="#exploding-or-disappearing-activations">Exploding or Disappearing Activations</a></li>
+  <li><a href="#the-floating-point-problem" id="toc-the-floating-point-problem" class="nav-link" data-scroll-target="#the-floating-point-problem">The floating point problem</a></li>
+  <li><a href="#neural-network-that-have-memory" id="toc-neural-network-that-have-memory" class="nav-link" data-scroll-target="#neural-network-that-have-memory">Neural Network that have Memory</a></li>
+  <li><a href="#comparison-lstm-and-gru" id="toc-comparison-lstm-and-gru" class="nav-link" data-scroll-target="#comparison-lstm-and-gru">Comparison LSTM and GRU</a></li>
+  <li><a href="#lstm-architecture" id="toc-lstm-architecture" class="nav-link" data-scroll-target="#lstm-architecture">LSTM architecture</a></li>
+  <li><a href="#another-look-at-lstm-internal" id="toc-another-look-at-lstm-internal" class="nav-link" data-scroll-target="#another-look-at-lstm-internal">Another look at LSTM internal:</a></li>
+  <li><a href="#train-the-lstm" id="toc-train-the-lstm" class="nav-link" data-scroll-target="#train-the-lstm">Train the LSTM</a></li>
+  <li><a href="#regularizing-an-lstm" id="toc-regularizing-an-lstm" class="nav-link" data-scroll-target="#regularizing-an-lstm">Regularizing an LSTM</a></li>
+  <li><a href="#dropout" id="toc-dropout" class="nav-link" data-scroll-target="#dropout">Dropout</a></li>
+  <li><a href="#activation-regularization-ar-and-temporal-activation-regularization-tar" id="toc-activation-regularization-ar-and-temporal-activation-regularization-tar" class="nav-link" data-scroll-target="#activation-regularization-ar-and-temporal-activation-regularization-tar">Activation Regularization (AR) and Temporal Activation Regularization (TAR)</a></li>
+  <li><a href="#training-awd-lstm-a-weight-tied-regularized-lstm" id="toc-training-awd-lstm-a-weight-tied-regularized-lstm" class="nav-link" data-scroll-target="#training-awd-lstm-a-weight-tied-regularized-lstm">Training AWD-LSTM: a Weight-Tied Regularized LSTM</a></li>
+  <li><a href="#gru-gate-recurrent-units-architecture" id="toc-gru-gate-recurrent-units-architecture" class="nav-link" data-scroll-target="#gru-gate-recurrent-units-architecture">GRU: Gate Recurrent Units architecture</a></li>
+  </ul></li>
+  <li><a href="#rnn-application" id="toc-rnn-application" class="nav-link" data-scroll-target="#rnn-application">RNN application</a>
+  <ul class="collapse">
+  <li><a href="#jargons" id="toc-jargons" class="nav-link" data-scroll-target="#jargons">Jargons:</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+<!-- main -->
+<div class="quarto-about-marquee column-body">
+  <div class="about-image-container">
+    <img src="../../images/gradientv12.jpg" class="about-image " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Recurrent Neural Network</h1>
+<p class="subtitle lead">Looking under the hood of RNN</p>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vanh Phom </p>
+          </div>
+  </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">11/7/2022</p>
+    </div>
+  </div>
+  </div>
+</header> <main class="content column-body" id="quarto-document-content">
+
+<p><img src="./image/rnn.jpg" class="img-fluid"></p>
+<p>The Markov model weakness is that it’s limit to context window(scope) that was choosen. Using the info that was stored to predict prior data then feed that info to model while it was considering current tag.</p>
+<section id="bidirectional-rnn" class="level2">
+<h2 data-anchor-id="bidirectional-rnn">Bidirectional RNN</h2>
+<p>A technique to train two independent RNN where one process from start to end the other process from end to start then combine the output from both into single one</p>
+<p><img src="./image/birnn.jpg" class="img-fluid"></p>
+</section>
+<section id="long-short-term-memory-lstm" class="level2">
+<h2 data-anchor-id="long-short-term-memory-lstm">Long short term memory (LSTM)</h2>
+<p><img src="./image/rnn-lstm.jpg" class="img-fluid"></p>
+<p>An RNN that has the capability to forget the info that is not relevant to the current task.</p>
+<p><img src="./image/lstm.jpg" class="img-fluid"></p>
+<section id="lstm" class="level3">
+<h3 data-anchor-id="lstm">LSTM</h3>
+<ul>
+<li>forget gate to delete info of non relevant from current context</li>
+<li>add gate to select new info into current context with tanh activation that indicate the direction of info(should care about) and a sigmoid to indicate the scaling(how much should be care about) factor of the info to be add to forget gate to produce state context</li>
+<li>out gate with sigmoid combine with state context to output result</li>
+</ul>
+</section>
+</section>
+<section id="creating-a-language-model-from-scratch" class="level2">
+<h2 data-anchor-id="creating-a-language-model-from-scratch">Creating a Language Model from Scratch</h2>
+<p>A language model is a model that predict the next word in the sentence.</p>
+<section id="first-language-model" class="level3">
+<h3 data-anchor-id="first-language-model">First Language Model</h3>
+<p>Build a model to predict each word based on the previous three words by create a list of every sequence of three words as independent variables, and the next word after each sequence as the dependent variable.</p>
+<p>The model takes three words as input, and returns a prediction of the probability of each possible next word in the vocab. It use the standard three linear layers, but with two tweaks.</p>
+<ol type="1">
+<li>The first linear layer will use only the first word’s embedding as activations,
+<ul>
+<li>The second layer will use the second word’s embedding plus the first layer’s output activations, and</li>
+<li>The third layer will use the third word’s embedding plus the second layer’s output activations.</li>
+<li>The key effect of this is that every word is interpreted in the information context of any words preceding it.</li>
+</ul></li>
+<li>Each of these three layers will use the same weight matrix
+<ul>
+<li>The way that one word impacts the activations from previous words should not change depending on the position of a word.</li>
+<li>Activation values will change as data moves through the layers, but the layer’s weights themselves will not change from layer to layer.</li>
+<li>So, a layer does not learn one sequence position; it must learn to handle all positions.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="the-architect-of-the-first-model" class="level2">
+<h2 data-anchor-id="the-architect-of-the-first-model">The architect of the first model</h2>
+<p><img src="./image/simpleLinear1.png" class="img-fluid"></p>
+<p>Here the figure the model. Where word is the input, FC is fully connected layer and triangular is output prediction</p>
+<section id="layers-model-code" class="level3">
+<h3 data-anchor-id="layers-model-code">3 layers model code</h3>
+<p>The first cut of the code for 3 layers model use:</p>
+<ol type="1">
+<li>The embedding layer (input2_hidden, for input to hidden)</li>
+<li>The linear layer to create the activations for the next word (hidden2_hidden, for hidden to hidden)</li>
+<li>A final linear layer to predict the fourth word (hidden2_output, for hidden to output)</li>
+</ol>
+<p>They all use the same embedding since they come from same data</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel1(Module):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input2_hidden <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_hidden <span class="op">=</span> nn.Linear(n_hidden, n_hidden)     </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_output <span class="op">=</span> nn.Linear(n_hidden,vocab_sz)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># input2_hidden is embedding layer</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># hidden2_hidden is linear layer</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># hidden2_output is linear layer   </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(<span class="va">self</span>.input2_hidden(x[:,<span class="dv">0</span>])))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,<span class="dv">1</span>])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,<span class="dv">2</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.hidden2_output(h)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>L((tokens[i:i<span class="op">+</span><span class="dv">3</span>], tokens[i<span class="op">+</span><span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(tokens)<span class="op">-</span><span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># tensor of numericalized value for model</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>seqs <span class="op">=</span> L((tensor(nums[i:i<span class="op">+</span><span class="dv">3</span>]), nums[i<span class="op">+</span><span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(nums)<span class="op">-</span><span class="dv">4</span>,<span class="dv">3</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>seqs</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>cut <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(seqs) <span class="op">*</span> <span class="fl">0.8</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># create batch</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> DataLoaders.from_dsets(seqs[:cut], seqs[cut:], bs<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel1(<span class="bu">len</span>(vocab), <span class="dv">64</span>), loss_func<span class="op">=</span>F.cross_entropy, metrics<span class="op">=</span>accuracy)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">4</span>, <span class="fl">1e-3</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>compare to the simplest model which always predict the next word which is ‘thousand’ to see how it performs:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a simplest model that always predict 'thousand' on each input sentence</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Counter(tokens[cut:])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> c.most_common(<span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mc</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mc[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="bu">len</span>(tokens[cut:])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>n,counts <span class="op">=</span> <span class="dv">0</span>,torch.zeros(<span class="bu">len</span>(vocab))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x,y <span class="kw">in</span> dls.valid:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> y.shape[<span class="dv">0</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> range_of(vocab): counts[i] <span class="op">+=</span> (y<span class="op">==</span>i).<span class="bu">long</span>().<span class="bu">sum</span>()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#index of the most common words ('thousand')</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> torch.argmax(counts)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>idx, vocab[idx.item()], counts[idx].item()<span class="op">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="refactor-to-use-loop" class="level4">
+<h4 data-anchor-id="refactor-to-use-loop">Refactor to use loop:</h4>
+<p>The RNN <img src="./image/refac_rnn.png" class="img-fluid"></p>
+<p>Rewrite the code to use loop this is look closer to RNN</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel2(Module):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input2_hidden <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_hidden <span class="op">=</span> nn.Linear(n_hidden, n_hidden)     </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_output <span class="op">=</span> nn.Linear(n_hidden,vocab_sz)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># refactor to use for loop the RNN!</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> <span class="fl">0.</span>               <span class="co"># using broascast</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            h <span class="op">=</span> h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,i])</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.hidden2_output(h)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel2(<span class="bu">len</span>(vocab), <span class="dv">64</span>), loss_func<span class="op">=</span>F.cross_entropy, </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">4</span>, <span class="fl">1e-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="refactor-to-add-memory-to-rnn" class="level3">
+<h3 data-anchor-id="refactor-to-add-memory-to-rnn">Refactor to add memory to RNN</h3>
+<p>Add the ability to retain previous word instead of start up new every time <img src="./image/stacklayer_rnn.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel3(Module):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input2_hidden <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_hidden <span class="op">=</span> nn.Linear(n_hidden, n_hidden)     </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hidden2_output <span class="op">=</span> nn.Linear(n_hidden,vocab_sz)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> <span class="fl">0.</span>  <span class="co"># using broascast</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># refactor to use for loop the RNN!</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.h <span class="op">=</span> <span class="va">self</span>.h <span class="op">+</span> <span class="va">self</span>.input2_hidden(x[:,i])</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.h <span class="op">=</span> F.relu(<span class="va">self</span>.hidden2_hidden(h))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="va">self</span>.hidden2_output(<span class="va">self</span>.h)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> <span class="va">self</span>.h.detach() <span class="co"># do bptt</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): <span class="va">self</span>.h <span class="op">=</span> <span class="fl">0.</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bptt-backpropagation-through-time" class="level3">
+<h3 data-anchor-id="bptt-backpropagation-through-time">BPTT Backpropagation through time</h3>
+<p>This model hidden state now can remember previous activation from previous batch and the gradient will be calculate on sequence length token of the past not instead of recalculate with each new stream this is call BPTT</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rearrange data so model see in particular sequence</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="bu">len</span>(seqs)<span class="op">//</span>bs</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>m,bs,<span class="bu">len</span>(seqs)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># reindex model see as contiguous batch with each epoch</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> group_chunks(ds, bs):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">len</span>(ds) <span class="op">//</span> bs</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    new_ds <span class="op">=</span> L()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m): new_ds <span class="op">+=</span> L(ds[i <span class="op">+</span> m<span class="op">*</span>j] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(bs))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_ds</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>cut <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(seqs) <span class="op">*</span> <span class="fl">0.8</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> DataLoaders.from_dsets(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    group_chunks(seqs[:cut], bs), </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    group_chunks(seqs[cut:], bs), </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    bs<span class="op">=</span>bs, drop_last<span class="op">=</span><span class="va">True</span>, <span class="co"># drop last batch that have diff shape</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    shuffle<span class="op">=</span><span class="va">False</span>) <span class="co"># maintain sequence</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel3(<span class="bu">len</span>(vocab), <span class="dv">64</span>), loss_func<span class="op">=</span>F.cross_entropy,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy, </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                cbs<span class="op">=</span>ModelResetter) <span class="co"># callback to reset each epoch</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">10</span>, <span class="fl">3e-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add More signal: keep the output</p>
+<p>The model no longer throw away the output from previous run but add them as input to current run</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sl <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>seqs <span class="op">=</span> L((tensor(nums[i:i<span class="op">+</span>sl]), tensor(nums[i<span class="op">+</span><span class="dv">1</span>:i<span class="op">+</span>sl<span class="op">+</span><span class="dv">1</span>]))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(nums)<span class="op">-</span>sl<span class="op">-</span><span class="dv">1</span>,sl))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cut <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(seqs) <span class="op">*</span> <span class="fl">0.8</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> DataLoaders.from_dsets(group_chunks(seqs[:cut], bs),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                             group_chunks(seqs[cut:], bs),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                             bs<span class="op">=</span>bs, drop_last<span class="op">=</span><span class="va">True</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># check if it still offset by 1</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>[L(vocab[o] <span class="cf">for</span> o <span class="kw">in</span> s) <span class="cf">for</span> s <span class="kw">in</span> seqs[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Rewrite the model to now output every word instead of every 3 words in order to feed this into next run</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel4(Module):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i_h <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_h <span class="op">=</span> nn.Linear(n_hidden, n_hidden)     </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o <span class="op">=</span> nn.Linear(n_hidden,vocab_sz)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        outs <span class="op">=</span> []</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(sl):</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.h <span class="op">=</span> <span class="va">self</span>.h <span class="op">+</span> <span class="va">self</span>.i_h(x[:,i])</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.h <span class="op">=</span> F.relu(<span class="va">self</span>.h_h(<span class="va">self</span>.h))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            outs.append(<span class="va">self</span>.h_o(<span class="va">self</span>.h))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> <span class="va">self</span>.h.detach()</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.stack(outs, dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): <span class="va">self</span>.h <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> loss_func(inp, targ):</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> F.cross_entropy(inp.view(<span class="op">-</span><span class="dv">1</span>, <span class="bu">len</span>(vocab)), <span class="co"># flatten out to match bs x sl x vocab_sz from model</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        targ.view(<span class="op">-</span><span class="dv">1</span>)) <span class="co"># flatten out to match bs x sl x vocab_sz from model</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel4(<span class="bu">len</span>(vocab), <span class="dv">64</span>), loss_func<span class="op">=</span>loss_func,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy, cbs<span class="op">=</span>ModelResetter)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">15</span>, <span class="fl">3e-3</span>)     </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">### Recurrent Neural Network: RNN</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>[](.<span class="op">/</span>image<span class="op">/</span>rnn<span class="op">-</span>pic1.jpeg)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>RNN feed the output activation value back into hidden layer to <span class="bu">help</span> the hidden layers retain info about previous run therefore have some <span class="op">*</span>memory<span class="op">*</span> of the past.</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">### Multi-Layer RNN</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>since the current model use the same weight matrix <span class="cf">for</span> each hidden layer which mean there no new info to be learn <span class="im">from</span>. One way to </span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>To improve the model further <span class="kw">is</span> to stack more layers by feed the output <span class="im">from</span> one layer into the <span class="bu">next</span> layer so on.</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>Look at it <span class="kw">in</span> unrolling way</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>[stack<span class="op">-</span>layer](.<span class="op">/</span>image<span class="op">/</span>stacklayer_rnn2.png)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>Refactoring to use PyTorch</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>The model now has too deep layers this could lead to problem of <span class="op">*</span>vanishing<span class="op">*</span> <span class="kw">or</span> <span class="op">*</span>exploding<span class="op">*</span> gradient</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>```python</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel5(Module):</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden, n_layers):</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i_h <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rnn <span class="op">=</span> nn.RNN(n_hidden, n_hidden, n_layers, batch_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o <span class="op">=</span> nn.Linear(n_hidden, vocab_sz)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> torch.zeros(n_layers, bs, n_hidden)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>        res,h <span class="op">=</span> <span class="va">self</span>.rnn(<span class="va">self</span>.i_h(x), <span class="va">self</span>.h)</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> h.detach()</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.h_o(res)</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): <span class="va">self</span>.h.zero_()</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel5(<span class="bu">len</span>(vocab), <span class="dv">64</span>, <span class="dv">2</span>), </span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>                loss_func<span class="op">=</span>CrossEntropyLossFlat(), </span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy, cbs<span class="op">=</span>ModelResetter)</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">15</span>, <span class="fl">3e-3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exploding-or-disappearing-activations" class="level3">
+<h3 data-anchor-id="exploding-or-disappearing-activations">Exploding or Disappearing Activations</h3>
+<p>The problem stem from the gradient value calcutated from the output layer won’t propagated back to the earlier layer. This is because the network is too deep.</p>
+<p>Vanishing Gradient:</p>
+<p>As the gradient value travel backward the especially the small value is diminishing as the floating point value get computed and recomputed many time each time it get round off closer and closer to 0 and finally become 0.</p>
+<p>Exploding Gradient:</p>
+<p>This the opposite of vanishing gradient. This phenomena happen espcially when the large value get larger with each computation it get exponentially large until it get large closer to infinity and become useless. <img src="./image/vanish1.jpg" class="img-fluid"></p>
+</section>
+<section id="the-floating-point-problem" class="level3">
+<h3 data-anchor-id="the-floating-point-problem">The floating point problem</h3>
+<p>One problem with doing floating point math with computer is that computer has limit amount of storage and floating point number is imprecise e.g.&nbsp;1.0000012 or 1.00000000000000000000000012 is these two numbers are the same value? The answer is it’s depend on what do you want to do with it. On some task the first one is good enough but on other the second is what require. To store the second number require more storage.</p>
+<p>The impreciseness is rather harder to understand. Float number get denser and denser when value get closer and closer to 0. In practice how do you represent this to the computer so it do some useful work. The IEEE organization come up with a standard which require how much storage should be devoted to certain type of floating point value e.g.&nbsp;8-bit folating point,16-bit, 32-bit which mean the storage depend on the precision the user requirement not the actual value it may case the value get round-off read more from <a href="http://www.volkerschatz.com/science/float.html">here</a>. This mean do more calculation may lead less precision. This is what happen when doing lot and lot of gradient calculations the value may end up at 0 which is call vanishing gradient or the value get larger and larger exponentially or explode to infinite.</p>
+<p>These problems are the main reason why RNN model is hard to train than CNN model,however research is very active to try new way to reduce or avoid these problems.</p>
+</section>
+<section id="neural-network-that-have-memory" class="level3">
+<h3 data-anchor-id="neural-network-that-have-memory">Neural Network that have Memory</h3>
+<p>In Machine Learning two approach to handle Explode and Vanishing gradient is to use Neural network that can retain previous activation and also can figure out what value should be retain and which should be removed. The two popular approch are LSTM and GRU. GRU is a simplify version of LSTM</p>
+<p><img src="./image/rnn_lstm_gru.png" class="img-fluid"></p>
+</section>
+<section id="comparison-lstm-and-gru" class="level3">
+<h3 data-anchor-id="comparison-lstm-and-gru">Comparison LSTM and GRU</h3>
+<p><img src="./image/lstm-gru1.png" class="img-fluid"></p>
+</section>
+<section id="lstm-architecture" class="level3">
+<h3 data-anchor-id="lstm-architecture">LSTM architecture</h3>
+<p>Internally LSTM comprise with little neural net that decise how much gradient is needed and which one to update or delete. <img src="./image/lstm1.png" class="img-fluid"></p>
+<p><em>sigmoid equation:</em></p>
+<p><span class="math inline">\(\color{orange}{ f(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{e^x + 1} = \frac12 + \frac12 \tanh\left(\frac{x}{2}\right)}\)</span></p>
+<p>Sigmoid only let positive value between 0 and 1 pass through</p>
+<p><em>tanh equation:</em></p>
+<p><span class="math inline">\(\color{orange}{ f(x) = \tanh x = \frac{e^x-e^{-x}}{e^x+e^{-x}}}\)</span></p>
+<p>Tanh only let value between -1 and 1 pass through</p>
+</section>
+<section id="another-look-at-lstm-internal" class="level3">
+<h3 data-anchor-id="another-look-at-lstm-internal">Another look at LSTM internal:</h3>
+<p><img src="./image/lstm_eq.png" class="img-fluid"></p>
+<p>The little NN is compose of gates call forget gate,input gate, cell gate, output gate. These gates work together to provide LSTM the capability to remember activation value that is important and forget the unneccessary activation value</p>
+<section id="the-forget-colororange-f_t-gate" class="level4">
+<h4 data-anchor-id="the-forget-colororange-f_t-gate">The forget <span class="math inline">\(\color{orange}{ f_{t}}\)</span> gate:</h4>
+<p>Take input <span class="math inline">\(\color{orange}{ x}\)</span>, hidden state <span class="math inline">\(\color{orange}{ h_{t-1}}\)</span> then gated them via the sigmoid <span class="math inline">\(\color{orange}{ \sigma}\)</span> activation to get only positive value then multiply them with previous cell state(memory) <span class="math inline">\(\color{orange}{ C_{t-1}}\)</span>. It decides should the value be kept or discarded. If result from <span class="math inline">\(\color{orange}{ \sigma}\)</span> value closer to 1 the value is kept else the value is discarded.</p>
+</section>
+<section id="the-input-colororange-i_tgate" class="level4">
+<h4 data-anchor-id="the-input-colororange-i_tgate">The input <span class="math inline">\(\color{orange}{ i_{t}}\)</span>gate:</h4>
+<p>Together with cell gate to update the cell state this gate also decide should the value be kept or discard depend on the value of the sigmoid</p>
+</section>
+<section id="the-cell-colororange-tildec_t-gate" class="level4">
+<h4 data-anchor-id="the-cell-colororange-tildec_t-gate">The cell <span class="math inline">\(\color{orange}{ \tilde{C_{t}}}\)</span> gate:</h4>
+<p>Decide what value to update from the range of -1 to 1 output from tanh function the value then add with previou cell state <span class="math inline">\(\color{orange}{ C_{t-1}}\)</span> value to get <span class="math inline">\(\color{orange}{ C_{t}}\)</span> the new value in memeory</p>
+</section>
+<section id="the-output-colororange-o_t-gate" class="level4">
+<h4 data-anchor-id="the-output-colororange-o_t-gate">The Output <span class="math inline">\(\color{orange}{ o_{t}}\)</span> gate:</h4>
+<p>Decide which value to output to be multiply with the cell state value that was filter with tanh before output as new hidden state for the next layer.</p>
+<p>The code for LSTM cell:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LSTMCell(Module):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, ni, nh):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.forget_gate <span class="op">=</span> nn.Linear(ni <span class="op">+</span> nh, nh)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.input_gate  <span class="op">=</span> nn.Linear(ni <span class="op">+</span> nh, nh)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cell_gate   <span class="op">=</span> nn.Linear(ni <span class="op">+</span> nh, nh)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_gate <span class="op">=</span> nn.Linear(ni <span class="op">+</span> nh, nh)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>, state):</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        h,c <span class="op">=</span> state</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> torch.stack([h, <span class="bu">input</span>], dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        forget <span class="op">=</span> torch.sigmoid(<span class="va">self</span>.forget_gate(h))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> c <span class="op">*</span> forget</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        inp <span class="op">=</span> torch.sigmoid(<span class="va">self</span>.input_gate(h))</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        cell <span class="op">=</span> torch.tanh(<span class="va">self</span>.cell_gate(h))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> c <span class="op">+</span> inp <span class="op">*</span> cell</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> torch.sigmoid(<span class="va">self</span>.output_gate(h))</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> outgate <span class="op">*</span> torch.tanh(c)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> h, (h,c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Refactor to take advantage of the GPU by combine all small matrix into one big one to avoid moving too frequence data in and out of GPU and allow GPU to parallelize the task.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LSTMCell(Module):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, ni, nh):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ih <span class="op">=</span> nn.Linear(ni,<span class="dv">4</span><span class="op">*</span>nh)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.hh <span class="op">=</span> nn.Linear(nh,<span class="dv">4</span><span class="op">*</span>nh)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>, state):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        h,c <span class="op">=</span> state</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># One big multiplication for all the gates is better than 4 smaller ones</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        gates <span class="op">=</span> (<span class="va">self</span>.ih(<span class="bu">input</span>) <span class="op">+</span> <span class="va">self</span>.hh(h)).chunk(<span class="dv">4</span>, <span class="dv">1</span>) <span class="co">#split tensor into 4 then combine with input</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        ingate,forgetgate,outgate <span class="op">=</span> <span class="bu">map</span>(torch.sigmoid, gates[:<span class="dv">3</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        cellgate <span class="op">=</span> gates[<span class="dv">3</span>].tanh()</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> (forgetgate<span class="op">*</span>c) <span class="op">+</span> (ingate<span class="op">*</span>cellgate)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> outgate <span class="op">*</span> c.tanh()</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> h, (h,c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="train-the-lstm" class="level3">
+<h3 data-anchor-id="train-the-lstm">Train the LSTM</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel6(Module):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden, n_layers):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i_h <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rnn <span class="op">=</span> nn.LSTM(n_hidden, n_hidden, n_layers, batch_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o <span class="op">=</span> nn.Linear(n_hidden, vocab_sz)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [torch.zeros(n_layers, bs, n_hidden) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        res,h <span class="op">=</span> <span class="va">self</span>.rnn(<span class="va">self</span>.i_h(x), <span class="va">self</span>.h)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [h_.detach() <span class="cf">for</span> h_ <span class="kw">in</span> h]</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.h_o(res)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> h <span class="kw">in</span> <span class="va">self</span>.h: h.zero_()</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel6(<span class="bu">len</span>(vocab), <span class="dv">64</span>, <span class="dv">2</span>), </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                loss_func<span class="op">=</span>CrossEntropyLossFlat(), </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>accuracy, cbs<span class="op">=</span>ModelResetter)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">15</span>, <span class="fl">1e-2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="regularizing-an-lstm" class="level3">
+<h3 data-anchor-id="regularizing-an-lstm">Regularizing an LSTM</h3>
+<p>Although hard to train and prone to overfitting, there some trick such as using data augmentation by translate the same text into different language then retranslate back to generate more variance. And using various regularization method to alleviate the overfitting problem some of the techniques describe here:</p>
+</section>
+<section id="dropout" class="level3">
+<h3 data-anchor-id="dropout">Dropout</h3>
+<p><img src="./image/dropout2.png" class="img-fluid"> Dropout is one of the regularization technique use to combat overfitting tendency of the model. The method usually apply at training time. This method is to randomly change some activations value to zero which temporary remove the neural nodes from the network.</p>
+<p>It makes the neural less relie on the input from the source that the neural regularly receive the input from since these sources may not be there. It makes sure all neurons actively work toward the general concept rather than try to fit specify pattern in the current data.</p>
+<p>Dropout has different behavior in training and validation mode which is why the flag training must set to True when traing and False when evaluating.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dropout(Module):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, p): <span class="va">self</span>.p <span class="op">=</span> p</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.training: <span class="cf">return</span> x</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> x.new(<span class="op">*</span>x.shape).bernoulli_(<span class="dv">1</span><span class="op">-</span>p) <span class="co"># create probability of random value </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x <span class="op">*</span> mask.div_(<span class="dv">1</span><span class="op">-</span>p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="activation-regularization-ar-and-temporal-activation-regularization-tar" class="level3">
+<h3 data-anchor-id="activation-regularization-ar-and-temporal-activation-regularization-tar">Activation Regularization (AR) and Temporal Activation Regularization (TAR)</h3>
+<p>two regularization methods very similar to weight decay.</p>
+<section id="ar" class="level4">
+<h4 data-anchor-id="ar">AR</h4>
+<p>This approach is apply at the final activation from LSTM to reduce its size. AR is often applied on the dropped-out activations. The code is</p>
+<p><code>loss += alpha * activations.pow(2).mean()</code></p>
+</section>
+<section id="tar" class="level4">
+<h4 data-anchor-id="tar">TAR</h4>
+<p>This approach is to encourage the model to output sensible value by adding a penalty to the loss to make the difference between two consecutive activations as small as possible. TAR is applied on the non-dropped-out activations (because those zeros create big differences between two consecutive time steps) with activations tensor has a shape <code>bs x sl x n_hid</code> the code is:</p>
+<p><code>loss += beta * (activations[:,1:] - activations[:,:-1]).pow(2).mean()</code></p>
+<p>To use these is required:</p>
+<ol type="1">
+<li>the proper output,</li>
+<li>the activations of the LSTM pre-dropout, and</li>
+<li>the activations of the LSTM post-dropout</li>
+</ol>
+<p>In practive it’s often used a callback <code>RNNRegularizer</code> to apply the regularization.</p>
+</section>
+</section>
+<section id="training-awd-lstm-a-weight-tied-regularized-lstm" class="level3">
+<h3 data-anchor-id="training-awd-lstm-a-weight-tied-regularized-lstm">Training AWD-LSTM: a Weight-Tied Regularized LSTM</h3>
+<p>Apply regularization can be combined together dropout, AR, TAR This method uses: - Embedding dropout (just after the embedding layer) - Input dropout (after the embedding layer) - Weight dropout (applied to the weights of the LSTM at each training step) - Hidden dropout (applied to the hidden state between two layers)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel7(Module):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden, n_layers, p):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i_h <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rnn <span class="op">=</span> nn.LSTM(n_hidden, n_hidden, n_layers, batch_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.drop <span class="op">=</span> nn.Dropout(p)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o <span class="op">=</span> nn.Linear(n_hidden, vocab_sz)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o.weight <span class="op">=</span> <span class="va">self</span>.i_h.weight</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [torch.zeros(n_layers, bs, n_hidden) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        raw,h <span class="op">=</span> <span class="va">self</span>.rnn(<span class="va">self</span>.i_h(x), <span class="va">self</span>.h)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="va">self</span>.drop(raw)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [h_.detach() <span class="cf">for</span> h_ <span class="kw">in</span> h]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.h_o(out),raw,out</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): </span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> h <span class="kw">in</span> <span class="va">self</span>.h: h.zero_()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another trick is <em>weight-tying</em> <a href="https://arxiv.org/abs/1708.02182"></a> by realize that input embedding is a mapping from English words to activation value. And output from hidden layer is a mapping from activations value to English words are the same thing. And assign the same weight matrix to these layers<code>self.h_o.weight  self.i_h.weight</code></p>
+<p>The final code tweak become:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LMModel7(Module):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, vocab_sz, n_hidden, n_layers, p):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.i_h <span class="op">=</span> nn.Embedding(vocab_sz, n_hidden)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rnn <span class="op">=</span> nn.LSTM(n_hidden, n_hidden, n_layers, batch_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.drop <span class="op">=</span> nn.Dropout(p)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o <span class="op">=</span> nn.Linear(n_hidden, vocab_sz)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h_o.weight <span class="op">=</span> <span class="va">self</span>.i_h.weight</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [torch.zeros(n_layers, bs, n_hidden) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>)]</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        raw,h <span class="op">=</span> <span class="va">self</span>.rnn(<span class="va">self</span>.i_h(x), <span class="va">self</span>.h)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="va">self</span>.drop(raw)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> [h_.detach() <span class="cf">for</span> h_ <span class="kw">in</span> h]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.h_o(out),raw,out</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reset(<span class="va">self</span>): </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> h <span class="kw">in</span> <span class="va">self</span>.h: h.zero_()</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> Learner(dls, LMModel7(<span class="bu">len</span>(vocab), <span class="dv">64</span>, <span class="dv">2</span>, <span class="fl">0.5</span>),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                loss_func<span class="op">=</span>CrossEntropyLossFlat(), metrics<span class="op">=</span>accuracy,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                cbs<span class="op">=</span>[ModelResetter,  <span class="co"># add callback</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>                RNNRegularizer(alpha<span class="op">=</span><span class="dv">2</span>, beta<span class="op">=</span><span class="dv">1</span>)]) <span class="co"># add callback to learner</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># or use the TextLearner that will call add the callback</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> TextLearner(dls, LMModel7(<span class="bu">len</span>(vocab), <span class="dv">64</span>, <span class="dv">2</span>, <span class="fl">0.4</span>),</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>                    loss_func<span class="op">=</span>CrossEntropyLossFlat(), metrics<span class="op">=</span>accuracy)                       </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>learn.fit_one_cycle(<span class="dv">15</span>, <span class="fl">1e-2</span>, wd<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gru-gate-recurrent-units-architecture" class="level3">
+<h3 data-anchor-id="gru-gate-recurrent-units-architecture">GRU: Gate Recurrent Units architecture</h3>
+<p><img src="./image/gru1.jpg" class="img-fluid"></p>
+<p>GRU is a simplify version of LSTM and work them same way.</p>
+</section>
+</section>
+<section id="rnn-application" class="level2">
+<h2 data-anchor-id="rnn-application">RNN application</h2>
+<ul>
+<li>POS</li>
+<li>NER</li>
+<li>Deidentification</li>
+<li>Translation</li>
+<li>sequence-to-sequence</li>
+<li>chatbot</li>
+<li>question-answer</li>
+<li>sequence classification</li>
+<li>sentiment</li>
+</ul>
+<section id="jargons" class="level3">
+<h3 data-anchor-id="jargons">Jargons:</h3>
+<ul>
+<li>hidden state: The activations that are updated at each step of a recurrent neural network.</li>
+<li>A neural network that is defined using a loop like this is called a recurrent neural network (RNN)</li>
+<li>Back propagation through time (BPTT): Treating a neural net with effectively one layer per time step (usually refactored using a loop) as one big model, and calculating gradients on it in the usual way. To avoid running out of memory and time, we usually use truncated BPTT, which “detaches” the history of computation steps in the hidden state every few time steps. In essence calculate the gradient and propagate backward as usual but don’t store them.</li>
+<li>The bernoulli_ method is creating a tensor of random zeros (with probability p) and ones (with probability 1-p)</li>
+<li>alpha and beta are two hyperparameters to tune</li>
+</ul>
+
+
+</section>
+</section>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> 
+    <div class="about-footer"><div class="about-links">
+  <a href="https://twitter.com" class="about-link" rel="" target="">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">twitter</span>
+  </a>
+  <a href="https://github.com" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+</div>
+  </div>
+</div>
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

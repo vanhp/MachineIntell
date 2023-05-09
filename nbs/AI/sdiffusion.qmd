@@ -1,6 +1,6 @@
 ---
-title: News 2
-subtitle: News about Machine Intelligent
+title: Stable Diffusion
+subtitle: Image and language
 about:
   template: marquee
   image: ../images/gradientv12.jpg 
@@ -22,10 +22,8 @@ listing:
 page-layout: full
 ---
 
-![](../images/light1.jpg)
+
 
 ## Deep learning from fastai library
-
-Using fastai library is the fastest way to get your Machine Learning working with less head ache
 
 ## Natural Language Processing 

@@ -150,7 +150,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2023-05-09T07:57:42.831Z</lastmod>
+    <lastmod>2023-05-09T08:02:03.843Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
@@ -179,5 +179,77 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/word2vec.html</loc>
     <lastmod>2023-05-09T00:58:25.193Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/news1.html</loc>
+    <lastmod>2023-05-09T08:17:20.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/news2.html</loc>
+    <lastmod>2023-05-09T08:15:17.228Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/newsall.html</loc>
+    <lastmod>2023-05-09T08:05:12.899Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/tutoring.html</loc>
+    <lastmod>2023-05-09T08:15:46.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/nlp.html</loc>
+    <lastmod>2023-05-09T08:16:27.190Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/diffEq/compoundint.html</loc>
+    <lastmod>2023-05-09T10:20:50.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/diffEq/diffeq1.html</loc>
+    <lastmod>2023-05-09T10:20:51.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/linearalgebra/lna1.html</loc>
+    <lastmod>2023-05-09T10:20:51.465Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/nnMath/loss/loss.html</loc>
+    <lastmod>2023-05-09T10:20:51.687Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/nnMath/nnmath.html</loc>
+    <lastmod>2023-05-09T10:20:51.919Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/math/maths.html</loc>
+    <lastmod>2023-05-09T10:20:52.096Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/rnn.html</loc>
+    <lastmod>2023-05-09T10:20:52.673Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/transformer.html</loc>
+    <lastmod>2023-05-09T10:20:52.848Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/attention.html</loc>
+    <lastmod>2023-05-09T10:20:53.085Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/encodedecode.html</loc>
+    <lastmod>2023-05-09T10:20:53.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/nlps/word2vec.html</loc>
+    <lastmod>2023-05-09T10:20:53.690Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Tutorial/visions/vision.html</loc>
+    <lastmod>2023-05-09T10:20:53.889Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/sdiffusion.html</loc>
+    <lastmod>2023-05-09T10:21:52.739Z</lastmod>
   </url>
 </urlset>
