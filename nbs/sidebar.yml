@@ -2,8 +2,7 @@ website:
   sidebar:
     contents:
       - index.qmd
-      - 00_core.ipynb
-      - about.qmd
+
       - getting_started.ipynb
       - section: Programming
         contents:
@@ -61,20 +60,10 @@ website:
               - section: Swift
                 contents:
                   - Programming/Languages/Swift/swift.qmd
-      - section: blog
+      - section: Blog
         contents:
           - blog/index.qmd
-      - section: help
-        contents:
-          - help/helps.qmd
-      - section: news
-        contents:
-          - news/news1.qmd
-          - news/news2.qmd
-          - news/newsall.qmd
-      - section: resources
-        contents:
-          - resources/resource.qmd
+      
       - section: tip
         contents:
           - tip/sample.ipynb
@@ -113,3 +102,18 @@ website:
           - section: visions
             contents:
               - tutorial/visions/vision.qmd
+      - section: help
+        contents:
+          - help/helps.qmd
+      - section: news
+        contents:
+          - news/news1.qmd
+          - news/news2.qmd
+          - news/newsall.qmd
+      - section: resources
+        contents:
+          - resources/resource.qmd
+      - section: About
+        contents:
+          - 00_core.ipynb
+          - about.qmd
