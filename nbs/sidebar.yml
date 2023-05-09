@@ -5,22 +5,26 @@ website:
       - 00_core.ipynb
       - about.qmd
       - getting_started.ipynb
-      - section: 
-        contents:
-          - Programming/prog.qmd
-          - Programming/Algorithms/alg.qmd
-          - Programming/Algorithms/Bases/dictionary.qmd
-          - Programming/Algorithms/Bases/hash.qmd
-          - Programming/Algorithms/Bases/list.qmd
-          - Programming/Algorithms/Bases/searching.qmd
-          - Programming/Algorithms/Bases/sorting.qmd
-          - section: Trees
-            contents:
-              - Programming/Algorithms/Trees/graph.qmd
-
-              - Programming/Algorithms/Trees/tree.qmd
       - section: Programming
         contents:
+          - Programming/prog.qmd
+          - section: Algorithms
+            contents:
+              - Programming/Algorithms/alg.qmd
+          - section: Data Structures
+            contents:    
+              - Programming/Algorithms/Bases/dictionary.qmd
+              - Programming/Algorithms/Bases/hash.qmd
+              - Programming/Algorithms/Bases/list.qmd
+              - Programming/Algorithms/Bases/searching.qmd
+              - Programming/Algorithms/Bases/sorting.qmd
+              - section: Trees
+                contents:
+                  - Programming/Algorithms/Trees/graph.qmd
+
+                  - Programming/Algorithms/Trees/tree.qmd
+          - section: Languages
+            contents:
               - Programming/Languages/lang.qmd
               - section: CC++
                 contents:

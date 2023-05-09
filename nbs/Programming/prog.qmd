@@ -1,6 +1,6 @@
 ---
-title: Programming
-subtitle: Coding
+title: Coding Tools
+subtitle: Coding sub
 about:
   template: marquee
   image: ../images/gradientv12.jpg 
