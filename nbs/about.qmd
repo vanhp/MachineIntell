@@ -6,22 +6,50 @@ about:
   links:
     - icon: twitter
       text: twitter
-      href: https://twitter.com
+      href: https://twitter.com/vphom
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://www.phomsavanh.com/?fbclid=IwAR3E8FWNq0wNr0d5IjCVARaIr5AFmcO3a-Dm-Uq4A25bB7dwipWkydVkTQM
 ---
-
 ![](./images/code1.jpg)
 
-I've been working as software engineer for two decades.
+#### Programming 
+I've been working as software engineer for two decades. And
+I've been using various programming languages starting from:   
 
-## Education
+C/C++  
+C#  
+Java  
+Kotlin  
+Javascript   
+Rust  
+Julia  
+Swift   
+Python
 
-San Jose state University Computer Engineering 1989
+I'm quite familiar with many OS and Frameworks such as   
+
+#### Operating System  
+  Windows  
+  MacOS  
+  Linux  
+
+#### Frameworks  
+  .Net   
+  Android  
+  PyTorch  
+  TensorFlow
+
 
 
 ## Experience
 
-futureWei,Geometric,ATT,Siemens | senior Software Engineer 
+futureWei as Staff software engineer  
+Geometric as Director of Software and System  
+ATT as Senior Network engineer  
+Siemens as Framework engineer 
 
+
+## Education
+
+San Jose state University Computer Engineering 1989

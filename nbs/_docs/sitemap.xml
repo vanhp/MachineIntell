@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/maths.html</loc>
-    <lastmod>2022-12-28T10:21:35.743Z</lastmod>
+    <lastmod>2023-05-09T02:23:47.195Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/nnMath/nnmath.html</loc>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/rnn.html</loc>
-    <lastmod>2023-02-13T06:59:14.088Z</lastmod>
+    <lastmod>2023-02-23T08:12:25.730Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/visions/vision.html</loc>
@@ -62,15 +62,15 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Trees/tree.html</loc>
-    <lastmod>2022-12-28T10:30:46.026Z</lastmod>
+    <lastmod>2023-05-09T02:05:17.244Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Trees/graph.html</loc>
-    <lastmod>2022-12-28T10:30:44.861Z</lastmod>
+    <lastmod>2023-05-09T02:06:13.752Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Bases/searching.html</loc>
-    <lastmod>2022-11-30T11:51:16.124Z</lastmod>
+    <lastmod>2023-05-09T02:04:41.244Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Bases/sorting.html</loc>
@@ -78,23 +78,23 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Bases/hash.html</loc>
-    <lastmod>2022-12-28T10:30:41.913Z</lastmod>
+    <lastmod>2023-05-09T02:03:13.960Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Bases/dictionary.html</loc>
-    <lastmod>2022-11-30T11:51:17.302Z</lastmod>
+    <lastmod>2023-05-09T02:10:15.713Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/Bases/list.html</loc>
-    <lastmod>2023-02-13T06:55:40.552Z</lastmod>
+    <lastmod>2023-05-09T02:03:30.453Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Algorithms/alg.html</loc>
-    <lastmod>2023-02-13T06:55:31.233Z</lastmod>
+    <lastmod>2023-05-09T02:07:19.199Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/prog.html</loc>
-    <lastmod>2023-02-13T06:55:06.107Z</lastmod>
+    <lastmod>2023-05-09T02:07:27.261Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Julia/julia.html</loc>
@@ -106,7 +106,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/CC++/ccpp.html</loc>
-    <lastmod>2022-11-30T11:51:19.809Z</lastmod>
+    <lastmod>2023-05-09T02:13:38.442Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Java/java.html</loc>
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/lang.html</loc>
-    <lastmod>2022-12-28T10:30:32.475Z</lastmod>
+    <lastmod>2023-05-09T02:10:23.060Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Csharp/csharp.html</loc>
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/about.html</loc>
-    <lastmod>2022-12-28T10:21:32.479Z</lastmod>
+    <lastmod>2023-05-09T01:43:09.529Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/blog/index.html</loc>
@@ -150,7 +150,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2023-02-13T06:54:33.805Z</lastmod>
+    <lastmod>2023-02-23T08:11:28.729Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
@@ -170,10 +170,14 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/attention.html</loc>
-    <lastmod>2023-02-14T11:55:54.631Z</lastmod>
+    <lastmod>2023-02-23T08:12:49.460Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/encodedecode.html</loc>
-    <lastmod>2023-02-10T07:34:00.116Z</lastmod>
+    <lastmod>2023-02-23T08:12:41.788Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/tutorial/nlps/word2vec.html</loc>
+    <lastmod>2023-05-09T00:58:25.193Z</lastmod>
   </url>
 </urlset>

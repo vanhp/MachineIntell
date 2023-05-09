@@ -5,126 +5,55 @@ website:
       - 00_core.ipynb
       - about.qmd
       - getting_started.ipynb
-      - section: Programming
+      - section: Bases
         contents:
           - Programming/prog.qmd
-          - section: Algorithms
+          - Programming/Algorithms/alg.qmd
+          - Programming/Algorithms/Bases/dictionary.qmd
+          - Programming/Algorithms/Bases/hash.qmd
+          - Programming/Algorithms/Bases/list.qmd
+          - Programming/Algorithms/Bases/searching.qmd
+          - Programming/Algorithms/Bases/sorting.qmd
+          - section: Trees
             contents:
-              - Programming/Algorithms/alg.qmd
+              - Programming/Algorithms/Trees/graph.qmd
+
+              - Programming/Algorithms/Trees/tree.qmd
       - section: Programming
         contents:
-          - section: Algorithms
-            contents:
-              - section: Bases
-                contents:
-                  - Programming/Algorithms/Bases/dictionary.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Bases
-                contents:
-                  - Programming/Algorithms/Bases/hash.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Bases
-                contents:
-                  - Programming/Algorithms/Bases/list.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Bases
-                contents:
-                  - Programming/Algorithms/Bases/searching.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Bases
-                contents:
-                  - Programming/Algorithms/Bases/sorting.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Trees
-                contents:
-                  - Programming/Algorithms/Trees/graph.qmd
-      - section: Programming
-        contents:
-          - section: Algorithms
-            contents:
-              - section: Trees
-                contents:
-                  - Programming/Algorithms/Trees/tree.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
               - Programming/Languages/lang.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
               - section: CC++
                 contents:
                   - Programming/Languages/CC++/ccpp.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Csharp
                 contents:
                   - Programming/Languages/Csharp/csharp.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Java
                 contents:
                   - Programming/Languages/Java/java.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: JavaScript
                 contents:
                   - Programming/Languages/JavaScript/js.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Julia
                 contents:
                   - Programming/Languages/Julia/julia.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Kotlin
                 contents:
                   - Programming/Languages/Kotlin/kotlin.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Python
                 contents:
                   - Programming/Languages/Python/python.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Rust
                 contents:
                   - Programming/Languages/Rust/rust.qmd
-      - section: Programming
-        contents:
-          - section: Languages
-            contents:
+
               - section: Swift
                 contents:
                   - Programming/Languages/Swift/swift.qmd
@@ -152,62 +81,31 @@ website:
           - section: math
             contents:
               - tutorial/math/maths.qmd
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
+
               - section: diffEq
                 contents:
                   - tutorial/math/diffEq/compoundint.ipynb
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
-              - section: diffEq
-                contents:
                   - tutorial/math/diffEq/compoundint.qmd
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
-              - section: diffEq
-                contents:
                   - tutorial/math/diffEq/diffeq1.qmd
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
+
               - section: linearalgebra
                 contents:
                   - tutorial/math/linearalgebra/lna1.qmd
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
+
               - section: nnMath
                 contents:
                   - tutorial/math/nnMath/nnmath.qmd
-      - section: tutorial
-        contents:
-          - section: math
-            contents:
-              - section: nnMath
-                contents:
+
                   - section: loss
                     contents:
                       - tutorial/math/nnMath/loss/loss.qmd
-      - section: tutorial
-        contents:
+
           - section: nlps
             contents:
               - tutorial/nlps/nlp.qmd
-      - section: tutorial
-        contents:
-          - section: nlps
-            contents:
+
               - tutorial/nlps/rnn.qmd
-      - section: tutorial
-        contents:
+
           - section: visions
             contents:
               - tutorial/visions/vision.qmd

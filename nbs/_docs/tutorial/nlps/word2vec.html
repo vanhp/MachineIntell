@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MachineIntell - Vanh Phomsavanh</title>
+<title>MachineIntell – word2vec</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,24 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -58,14 +93,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="MachineIntell - Vanh Phomsavanh">
-<meta property="og:description" content="">
-<meta property="og:site-name" content="MachineIntell">
-<meta name="twitter:title" content="MachineIntell - Vanh Phomsavanh">
-<meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -75,10 +105,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/gradientv1scale2.jpg" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/gradientv1scale2.jpg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MachineIntell</span>
     </a>
   </div>
@@ -89,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -98,15 +128,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
         <li>
-    <a class="dropdown-item" href="./news/newsall.html" rel="" target="">
+    <a class="dropdown-item" href="../../news/newsall.html" rel="" target="">
  <span class="dropdown-text">Latest News</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./news/news1.html" rel="" target="">
+    <a class="dropdown-item" href="../../news/news1.html" rel="" target="">
  <span class="dropdown-text">News 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./news/news2.html" rel="" target="">
+    <a class="dropdown-item" href="../../news/news2.html" rel="" target="">
  <span class="dropdown-text">News 2</span></a>
   </li>  
     </ul>
@@ -118,77 +148,77 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-programming">    
         <li class="dropdown-header">Algorithms &amp; Data structure</li>
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/alg.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/alg.html" rel="" target="">
  <span class="dropdown-text">Algorithms</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Trees/tree.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Trees/tree.html" rel="" target="">
  <span class="dropdown-text">Tree</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Trees/graph.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Trees/graph.html" rel="" target="">
  <span class="dropdown-text">Graphs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Bases/dictionary.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/dictionary.html" rel="" target="">
  <span class="dropdown-text">Dictionary (map)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Bases/hash.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/hash.html" rel="" target="">
  <span class="dropdown-text">Hash</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Bases/list.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/list.html" rel="" target="">
  <span class="dropdown-text">Lists</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Bases/searching.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/searching.html" rel="" target="">
  <span class="dropdown-text">Searching</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Algorithms/Bases/sorting.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Algorithms/Bases/sorting.html" rel="" target="">
  <span class="dropdown-text">Sorting</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Languages</li>
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/lang.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/lang.html" rel="" target="">
  <span class="dropdown-text">Languages</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Csharp/csharp.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Csharp/csharp.html" rel="" target="">
  <span class="dropdown-text">C#</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/CC++/ccpp.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/CC++/ccpp.html" rel="" target="">
  <span class="dropdown-text">C &amp; C++</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Java/java.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Java/java.html" rel="" target="">
  <span class="dropdown-text">Java</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/JavaScript/js.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/JavaScript/js.html" rel="" target="">
  <span class="dropdown-text">JavaScript</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Julia/julia.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Julia/julia.html" rel="" target="">
  <span class="dropdown-text">Julia</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Kotlin/kotlin.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Kotlin/kotlin.html" rel="" target="">
  <span class="dropdown-text">Kotlin</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Python/python.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Python/python.html" rel="" target="">
  <span class="dropdown-text">Python</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Rust/rust.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Rust/rust.html" rel="" target="">
  <span class="dropdown-text">Rust</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Programming/Languages/Swift/swift.html" rel="" target="">
+    <a class="dropdown-item" href="../../Programming/Languages/Swift/swift.html" rel="" target="">
  <span class="dropdown-text">Swift</span></a>
   </li>  
     </ul>
@@ -199,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
         <li>
-    <a class="dropdown-item" href="./tip/tips.html" rel="" target="">
+    <a class="dropdown-item" href="../../tip/tips.html" rel="" target="">
  <span class="dropdown-text">Julia Plots</span></a>
   </li>  
     </ul>
@@ -210,55 +240,55 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorials">    
         <li>
-    <a class="dropdown-item" href="./tutorial/tutoring.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/tutoring.html" rel="" target="">
  <span class="dropdown-text">Tutorials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/visions/vision.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/visions/vision.html" rel="" target="">
  <span class="dropdown-text">Machine Vision</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/nlps/nlp.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/nlps/nlp.html" rel="" target="">
  <span class="dropdown-text">NLP</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">NLP</li>
         <li>
-    <a class="dropdown-item" href="./tutorial/nlps/rnn.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/nlps/rnn.html" rel="" target="">
  <span class="dropdown-text">Recurrent Neural Network</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/nlps/attention.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/nlps/attention.html" rel="" target="">
  <span class="dropdown-text">Attention Mechanism</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/nlps/encodedecode.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/nlps/encodedecode.html" rel="" target="">
  <span class="dropdown-text">Encoder-Decoder pair in NLP</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/nlps/transformer.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/nlps/transformer.html" rel="" target="">
  <span class="dropdown-text">Transformers</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Math</li>
         <li>
-    <a class="dropdown-item" href="./tutorial/math/linearalgebra/lna1.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/math/linearalgebra/lna1.html" rel="" target="">
  <span class="dropdown-text">Linear Algebra</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/math/nnMath/nnmath.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/math/nnMath/nnmath.html" rel="" target="">
  <span class="dropdown-text">Neural Network Math</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/math/nnMath/loss/loss.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/math/nnMath/loss/loss.html" rel="" target="">
  <span class="dropdown-text">Loss or Cost functions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/math/diffEq/diffeq1.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/math/diffEq/diffeq1.html" rel="" target="">
  <span class="dropdown-text">Calculus</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tutorial/math/diffEq/compoundint.html" rel="" target="">
+    <a class="dropdown-item" href="../../tutorial/math/diffEq/compoundint.html" rel="" target="">
  <span class="dropdown-text">ODE Plot</span></a>
   </li>  
     </ul>
@@ -269,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-help">    
         <li>
-    <a class="dropdown-item" href="./help/helps.html" rel="" target="">
+    <a class="dropdown-item" href="../../help/helps.html" rel="" target="">
  <span class="dropdown-text">Helping hand</span></a>
   </li>  
         <li>
@@ -283,7 +313,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Fast.ai Forum</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
+    <a class="dropdown-item" href="../../getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
 </i> 
  <span class="dropdown-text">FAQ</span></a>
   </li>  
@@ -297,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="./resources/resource.html" rel="" target="">
+    <a class="dropdown-item" href="../../resources/resource.html" rel="" target="">
  <span class="dropdown-text">More info</span></a>
   </li>  
         <li>
@@ -311,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Fast.ai Forum</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
+    <a class="dropdown-item" href="../../getting_started.html#faq" rel="" target=""><i class="bi bi-question-circle" role="img">
 </i> 
  <span class="dropdown-text">FAQ</span></a>
   </li>  
@@ -323,13 +353,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="./blog/index.html" rel="" target="">
+    <a class="dropdown-item" href="../../blog/index.html" rel="" target="">
  <span class="dropdown-text">Posts</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -353,7 +383,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./about.html">Vanh Phomsavanh</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
       <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -367,25 +397,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Machine intelligence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_core.html" class="sidebar-item-text sidebar-link">
+  <a href="../../00_core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">core</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vanh Phomsavanh</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginner start here</span></a>
   </div>
 </li>
@@ -400,7 +430,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/prog.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/prog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Programming</span></a>
   </div>
 </li>
@@ -415,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/alg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/alg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Algorithms</span></a>
   </div>
 </li>
@@ -452,7 +482,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Bases/dictionary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Bases/dictionary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dictionary (map)</span></a>
   </div>
 </li>
@@ -491,7 +521,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Bases/hash.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Bases/hash.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hash</span></a>
   </div>
 </li>
@@ -530,7 +560,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Bases/list.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Bases/list.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lists</span></a>
   </div>
 </li>
@@ -569,7 +599,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Bases/searching.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Bases/searching.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Searching</span></a>
   </div>
 </li>
@@ -608,7 +638,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Bases/sorting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Bases/sorting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sorting</span></a>
   </div>
 </li>
@@ -647,7 +677,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Trees/graph.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Trees/graph.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Graphs</span></a>
   </div>
 </li>
@@ -686,7 +716,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-23" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Algorithms/Trees/tree.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Algorithms/Trees/tree.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tree</span></a>
   </div>
 </li>
@@ -716,7 +746,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-25" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/lang.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/lang.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Languages</span></a>
   </div>
 </li>
@@ -753,7 +783,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/CC++/ccpp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/CC++/ccpp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">C &amp; C++</span></a>
   </div>
 </li>
@@ -792,7 +822,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-31" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Csharp/csharp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Csharp/csharp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">C#</span></a>
   </div>
 </li>
@@ -831,7 +861,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-34" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Java/java.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Java/java.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Java</span></a>
   </div>
 </li>
@@ -870,7 +900,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-37" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/JavaScript/js.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/JavaScript/js.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">JavaScript</span></a>
   </div>
 </li>
@@ -909,7 +939,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-40" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Julia/julia.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Julia/julia.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia</span></a>
   </div>
 </li>
@@ -948,7 +978,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-43" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Kotlin/kotlin.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Kotlin/kotlin.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kotlin</span></a>
   </div>
 </li>
@@ -987,7 +1017,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-46" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Python/python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Python/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
   </div>
 </li>
@@ -1026,7 +1056,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-49" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Rust/rust.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Rust/rust.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Rust</span></a>
   </div>
 </li>
@@ -1065,7 +1095,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-52" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Programming/Languages/Swift/swift.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Programming/Languages/Swift/swift.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Swift</span></a>
   </div>
 </li>
@@ -1086,7 +1116,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-53" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./blog/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../blog/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">nbdev+Quarto: A new secret weapon for coding productivity</span></a>
   </div>
 </li>
@@ -1103,7 +1133,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-54" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./help/helps.html" class="sidebar-item-text sidebar-link">
+  <a href="../../help/helps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Helping Hand</span></a>
   </div>
 </li>
@@ -1120,19 +1150,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-55" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./news/news1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../news/news1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">News 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./news/news2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../news/news2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">News 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./news/newsall.html" class="sidebar-item-text sidebar-link">
+  <a href="../../news/newsall.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Latest News</span></a>
   </div>
 </li>
@@ -1149,7 +1179,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-56" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources/resource.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/resource.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
@@ -1166,13 +1196,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-57" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tip/sample.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tip/sample.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Live Python code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tip/tips.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tip/tips.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Plots</span></a>
   </div>
 </li>
@@ -1189,7 +1219,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-58" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/tutoring.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/tutoring.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
   </div>
 </li>
@@ -1204,7 +1234,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-59" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/maths.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/maths.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Mathematic</span></a>
   </div>
 </li>
@@ -1274,7 +1304,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-65" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/diffEq/compoundint.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/diffEq/compoundint.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ODE Plot</span></a>
   </div>
 </li>
@@ -1313,7 +1343,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-68" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/diffEq/diffeq1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Calculus</span></a>
   </div>
 </li>
@@ -1352,7 +1382,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-71" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/linearalgebra/lna1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear Algebra</span></a>
   </div>
 </li>
@@ -1391,7 +1421,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-74" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/nnMath/nnmath.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Neural Network Math</span></a>
   </div>
 </li>
@@ -1439,7 +1469,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-78" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/math/nnMath/loss/loss.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/math/nnMath/loss/loss.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loss or Cost functions</span></a>
   </div>
 </li>
@@ -1471,7 +1501,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-80" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/nlps/nlp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/nlps/nlp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">NLP</span></a>
   </div>
 </li>
@@ -1499,7 +1529,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-82" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/nlps/rnn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/nlps/rnn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recurrent Neural Network</span></a>
   </div>
 </li>
@@ -1527,7 +1557,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-84" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial/visions/vision.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorial/visions/vision.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Machine Vision</span></a>
   </div>
 </li>
@@ -1543,79 +1573,314 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
-  <li><a href="#experience" id="toc-experience" class="nav-link active" data-scroll-target="#experience">Experience</a></li>
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
+  <li><a href="#word2vec" id="toc-word2vec" class="nav-link active" data-scroll-target="#word2vec">Word2vec</a>
+  <ul class="collapse">
+  <li><a href="#text-conversion" id="toc-text-conversion" class="nav-link" data-scroll-target="#text-conversion">Text conversion</a></li>
+  <li><a href="#embeddings-meaning" id="toc-embeddings-meaning" class="nav-link" data-scroll-target="#embeddings-meaning">Embeddings (meaning)</a>
+  <ul class="collapse">
+  <li><a href="#onehot-encoding" id="toc-onehot-encoding" class="nav-link" data-scroll-target="#onehot-encoding">OneHot Encoding</a></li>
+  </ul></li>
+  <li><a href="#embedding-layer" id="toc-embedding-layer" class="nav-link" data-scroll-target="#embedding-layer">Embedding Layer</a></li>
+  <li><a href="#cbow-continous-bag-of-words" id="toc-cbow-continous-bag-of-words" class="nav-link" data-scroll-target="#cbow-continous-bag-of-words">CBOW (Continous Bag-of-Words)</a>
+  <ul class="collapse">
+  <li><a href="#implementation-of-cbow" id="toc-implementation-of-cbow" class="nav-link" data-scroll-target="#implementation-of-cbow">Implementation of CBOW</a></li>
+  </ul></li>
+  <li><a href="#skip-gram" id="toc-skip-gram" class="nav-link" data-scroll-target="#skip-gram">Skip-Gram</a></li>
+  <li><a href="#word2vec-1" id="toc-word2vec-1" class="nav-link" data-scroll-target="#word2vec-1">Word2Vec</a></li>
+  <li><a href="#algorithm" id="toc-algorithm" class="nav-link" data-scroll-target="#algorithm">Algorithm</a>
+  <ul class="collapse">
+  <li><a href="#glove-global-vectors-for-word-representation" id="toc-glove-global-vectors-for-word-representation" class="nav-link" data-scroll-target="#glove-global-vectors-for-word-representation">GloVe (Global Vectors for Word Representation)</a></li>
+  <li><a href="#using-embedding" id="toc-using-embedding" class="nav-link" data-scroll-target="#using-embedding">Using Embedding</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="./images/brain.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Vanh Phomsavanh</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header><main class="content" id="quarto-document-content">
-
-<p><img src="./images/code1.jpg" class="img-fluid"></p>
-<section id="programming" class="level4">
-<h4 data-anchor-id="programming">Programming</h4>
-<p>I’ve been working as software engineer for two decades. And I’ve been using various programming languages starting from:</p>
-<p>C/C++<br>
-C#<br>
-Java<br>
-Kotlin<br>
-Javascript<br>
-Rust<br>
-Julia<br>
-Swift<br>
-Python</p>
-<p>I’m quite familiar with many OS and Frameworks such as</p>
-</section>
-<section id="operating-system" class="level4">
-<h4 data-anchor-id="operating-system">Operating System</h4>
-<p>Windows<br>
-MacOS<br>
-Linux</p>
-</section>
-<section id="frameworks" class="level4">
-<h4 data-anchor-id="frameworks">Frameworks</h4>
-<p>.Net<br>
-Android<br>
-PyTorch<br>
-TensorFlow</p>
-</section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
-<p>futureWei as Staff software engineer<br>
-Geometric as Director of Software and System<br>
-ATT as Senior Network engineer<br>
-Siemens as Framework engineer</p>
-</section>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>San Jose state University Computer Engineering 1989</p>
+<main class="content" id="quarto-document-content">
 
 
+
+<section id="word2vec" class="level1">
+<h1>Word2vec</h1>
+<p>a method to efficiently create word embeddings. It’s used to creating recommendation engines and making sense of sequential data even in commercial, non-language tasks.</p>
+<section id="text-conversion" class="level2">
+<h2 class="anchored" data-anchor-id="text-conversion">Text conversion</h2>
+<p>Since the computer is only capable of working on number. Any human language must be translate into number in order for the computer to understand and operated on them using mathematic method. Hence, the text is encoded into numbers after the computer operated on the text it is then decoded back into text that human can understand.</p>
 </section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://twitter.com/vphom" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">twitter</span>
-  </a>
-  <a href="https://www.phomsavanh.com/?fbclid=IwAR3E8FWNq0wNr0d5IjCVARaIr5AFmcO3a-Dm-Uq4A25bB7dwipWkydVkTQM" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+<section id="embeddings-meaning" class="level2">
+<h2 class="anchored" data-anchor-id="embeddings-meaning">Embeddings (meaning)</h2>
+<p>A technique to find the similiarity of meaning of words to have similar representation. feature of the technique: <img src="./image/w-embed.jpg" class="img-fluid"></p>
+<ul>
+<li>The meaning are learn from training from large amount of text</li>
+<li>Use a single learned vector to hold all values A word may have multiple meanings e.g.&nbsp;king mean power,man,… all these meanings are put into a vector represent “king”.</li>
+</ul>
+<p><em>[ 0.50451 , 0.68607 , -0.59517 , -0.022801, 0.60046 , -0.13498 , -0.08813 , 0.47377 , -0.61798 , -0.31012 , -0.076666, 1.493 , -0.034189, -0.98173 , 0.68229 , 0.81722 , -0.51874 , -0.31503 , -0.55809 , 0.66421 , 0.1961 , -0.13495 , -0.11476 , -0.30344 , 0.41177 , -2.223 , -1.0756 , -1.0783 , -0.34354 , 0.33505 , 1.9927 , -0.04234 , -0.64319 , 0.71125 , 0.49159 , 0.16754 , 0.34344 , -0.25663 , -0.8523 , 0.1661 , 0.40102 , 1.1685 , -1.0137 , -0.21585 , -0.15155 , 0.78321 , -0.91241 , -1.6106 , -0.64426 , -0.51042 ]</em></p>
+<ul>
+<li>And different from one-hot encoding technique where mulitple dimensions matricies is required to represent word.</li>
+<li>representation is based on usage e.g.&nbsp;similar way of usage result in similar representation in contrast with bag-of-word method which require explicit managing.</li>
+<li>Back by theory in Linguistic “distributional hypothesis” by Zellig Harris <img src="./image/embed2.jpg" class="img-fluid"></li>
+</ul>
+<section id="onehot-encoding" class="level3">
+<h3 class="anchored" data-anchor-id="onehot-encoding">OneHot Encoding</h3>
+<p>One-Hot Encoding is one of the most widely used encoding methods in ML models. This technique is used to quantify categorical data where it compares each level of the categorical variable to a fixed reference level. It converts a single variable with n observations and x distinct values, to x binary variables with n observations where each observation denotes 1 as present and 0 as absent of the dichotomous binary variable.</p>
+</section>
+</section>
+<section id="embedding-layer" class="level2">
+<h2 class="anchored" data-anchor-id="embedding-layer">Embedding Layer</h2>
+<p>Before a word can add to the vector it must be: - One-hot encodable so it can be mapped to the vector - Vector size is specified - Vector is randomly initialized</p>
+</section>
+<section id="cbow-continous-bag-of-words" class="level2">
+<h2 class="anchored" data-anchor-id="cbow-continous-bag-of-words">CBOW (Continous Bag-of-Words)</h2>
+<p><img src="./image/cbow1.jpg" class="img-fluid"></p>
+<p>An architecture for creating word embeddings that uses <span class="math inline">\(n\)</span> future words as well as <span class="math inline">\(n\)</span> past words to create a word embedding. <span class="math display">\[J_0 = \frac{1}{T}\sum_{t=1}^{T}log\space p(w_t|w_{t-n},...,w_{t-1},w_{t+1},...,w_{t+n})\]</span> The method is using the distributed representations of context (or surrounding words) are combined to predict the word in the middle of the sliding window.</p>
+<p>If we have 4 context words used for predicting one target word the input layer will be in the form of four 1XW input vectors. These input vectors will be passed to the hidden layer where it is multiplied by a WXN matrix. Finally, the 1XN output from the hidden layer enters the sum layer where an element-wise summation is performed on the vectors before a final activation is performed and the output is obtained.</p>
+<p>It’s a simple technique of using a single hidden layer to predict a target word at the output layer from a given context in the input layer. Two matrices, the input matrix I and output matrix O, are used to calculate the hidden layer H = C x I where C is the input vector,w is total words in the corpus,n is the dimension of hidden layer, and target words T = H x O. Finally, the softmax function is used to output the probability value between 0-1.</p>
+<p><span class="math display">\[H_{1\times n} = C_{1\times w} \times M_{w\times n}\]</span> <span class="math display">\[T_{1\times w} = H_{1\times n} \times O_{n\times w}\]</span> <img src="./image/CBOW.jpg" class="img-fluid"></p>
+<p>**The speed of transmission is an important point of difference between the two viruses. Influenza has a shorter median incubation period (the time from infection to appearance of symptoms) and a shorter serial interval (the time between successive cases) than COVID-19 virus. The serial interval for COVID-19 virus is estimated to be 5-6 days, while for influenza virus, the serial interval is 3 days. This means that influenza can spread faster than COVID-19.</p>
+<p>Further, transmission in the first 3-5 days of illness, or potentially pre-symptomatic transmission –transmission of the virus before the appearance of symptoms – is a major driver of transmission for influenza. In contrast, while we are learning that there are people who can shed COVID-19 virus 24-48 hours prior to symptom onset, at present, this does not appear to be a major driver of transmission.</p>
+<p>The reproductive number – the number of secondary infections generated from one infected individual – is understood to be between 2 and 2.5 for COVID-19 virus, higher than for influenza. However, estimates for both COVID-19 and influenza viruses are very context and time-specific, making direct comparisons more difficult.**</p>
+<section id="implementation-of-cbow" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-of-cbow">Implementation of CBOW</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keras.backend <span class="im">as</span> K</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.models <span class="im">import</span> Sequential</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.layers <span class="im">import</span> Dense, Embedding, Lambda</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.utils <span class="im">import</span> np_utils</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.preprocessing <span class="im">import</span> sequence</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.preprocessing.text <span class="im">import</span> Tokenizer</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gensim</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span><span class="bu">open</span>(<span class="st">'/content/gdrive/My Drive/covid.txt'</span>,<span class="st">'r'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>corona_data <span class="op">=</span> [text <span class="cf">for</span> text <span class="kw">in</span> data <span class="cf">if</span> text.count(<span class="st">' '</span>) <span class="op">&gt;=</span> <span class="dv">2</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>vectorize <span class="op">=</span> Tokenizer()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>vectorize.fit_on_texts(corona_data)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>corona_data <span class="op">=</span> vectorize.texts_to_sequences(corona_data)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>total_vocab <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> corona_data)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>word_count <span class="op">=</span> <span class="bu">len</span>(vectorize.word_index) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>window_size <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cbow_model(data, window_size, total_vocab):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    total_length <span class="op">=</span> window_size<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> text <span class="kw">in</span> data:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        text_len <span class="op">=</span> <span class="bu">len</span>(text)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, word <span class="kw">in</span> <span class="bu">enumerate</span>(text):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            context_word <span class="op">=</span> []</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            target   <span class="op">=</span> []            </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            begin <span class="op">=</span> idx <span class="op">-</span> window_size</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            end <span class="op">=</span> idx <span class="op">+</span> window_size <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            context_word.append([text[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(begin, end) <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> i <span class="op">&lt;</span> text_len <span class="kw">and</span> i <span class="op">!=</span> idx])</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            target.append(word)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            contextual <span class="op">=</span> sequence.pad_sequences(context_word, total_length<span class="op">=</span>total_length)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            final_target <span class="op">=</span> np_utils.to_categorical(target, total_vocab)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span>(contextual, final_target) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, it is time to build the neural network model that will train the CBOW on our sample data.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model.add(Embedding(input_dim<span class="op">=</span>total_vocab, output_dim<span class="op">=</span><span class="dv">100</span>, input_length<span class="op">=</span>window_size<span class="op">*</span><span class="dv">2</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>model.add(Lambda(<span class="kw">lambda</span> x: K.mean(x, axis<span class="op">=</span><span class="dv">1</span>), output_shape<span class="op">=</span>(<span class="dv">100</span>,)))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>model.add(Dense(total_vocab, activation<span class="op">=</span><span class="st">'softmax'</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'categorical_crossentropy'</span>, optimizer<span class="op">=</span><span class="st">'adam'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    cost <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x, y <span class="kw">in</span> cbow_model(data, window_size, total_vocab):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        cost <span class="op">+=</span> model.train_on_batch(contextual, final_target)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, cost)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>after training create a file that contains all the vectors.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dimensions<span class="op">=</span><span class="dv">100</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>vect_file <span class="op">=</span> <span class="bu">open</span>(<span class="st">'/content/gdrive/My Drive/vectors.txt'</span> ,<span class="st">'w'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>vect_file.write(<span class="st">'</span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">'</span>.<span class="bu">format</span>(total_vocab,dimensions))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> model.get_weights()[<span class="dv">0</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> text, i <span class="kw">in</span> vectorize.word_index.items():</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    final_vec <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, <span class="bu">list</span>(weights[i, :])))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    vect_file.write(<span class="st">'</span><span class="sc">{}</span><span class="st"> </span><span class="sc">{}</span><span class="ch">\n</span><span class="st">'</span>.<span class="bu">format</span>(text, final_vec))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vect_file.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>use the vectors that were created and use them in the gensim model.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cbow_output <span class="op">=</span> gensim.models.KeyedVectors.load_word2vec_format(<span class="st">'/content/gdrive/My Drive/vectors.txt'</span>, binary<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cbow_output.most_similar(positive<span class="op">=</span>[<span class="st">'virus'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="skip-gram" class="level2">
+<h2 class="anchored" data-anchor-id="skip-gram">Skip-Gram</h2>
+<p><img src="./image/skipgr-arch.jpg" class="img-fluid"> Predict the context word for a given target word the reverse of CBOW algorithm.</p>
+<ul>
+<li>It uses a hidden layer to performs the dot product between the weight matrix and the input vector w(t). <img src="./image/skipgram.jpg" class="img-fluid"></li>
+<li>There normally using 2 layers of neural network</li>
+<li>These outputs is then become input to another dot product operation</li>
+<li>The prediction error is used to modified the weights using backpropagation.</li>
+<li>The final output is input to softmax function to output probability vector</li>
+<li>There is no activation function involve at all.</li>
+</ul>
+<p><img src="./image/skgram2.jpg" class="img-fluid"></p>
+<section id="implementing-skipgram" class="level4">
+<h4 class="anchored" data-anchor-id="implementing-skipgram">Implementing skipgram</h4>
+<p>Let’s define some variables :</p>
+<p>V Number of unique words in our corpus of text ( Vocabulary ) x Input layer nx1 (One hot encoding of our input word ). N Number of neurons in the hidden layer of neural network W Weights matrix vxn between input layer and hidden layer W’ Weights matrix nxv between hidden layer and output layer y A softmax output vx1 layer having probabilities of every word in our vocabulary T the transpose h hidden vector nx1</p>
+<p><span class="math display">\[softmax = \frac{e^{(x_i - max(x_i))}}{\sum_{i=1}^{n} e^{(x_i - max(x_i))}}\]</span> <span class="math display">\[h = W^T\cdot x\]</span> <span class="math display">\[u = W^{\prime T} \cdot h\]</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> softmax(x):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compute softmax values for each sets of scores in x."""</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    e_x <span class="op">=</span> np.exp(x <span class="op">-</span> np.<span class="bu">max</span>(x))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> e_x <span class="op">/</span> e_x.<span class="bu">sum</span>()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> word2vec(<span class="bu">object</span>):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.N <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.X_train <span class="op">=</span> []</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y_train <span class="op">=</span> []</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.window_size <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.alpha <span class="op">=</span> <span class="fl">0.001</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.words <span class="op">=</span> []</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.word_index <span class="op">=</span> {}</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> initialize(<span class="va">self</span>,V,data):</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.V <span class="op">=</span> V</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="fl">0.8</span>, <span class="fl">0.8</span>, (<span class="va">self</span>.V, <span class="va">self</span>.N))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W<span class="st">' = np.random.uniform(-0.8, 0.8, (self.N, self.V))</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="er">        </span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.words <span class="op">=</span> data</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.word_index[data[i]] <span class="op">=</span> i</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> feed_forward(<span class="va">self</span>,X):</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.h <span class="op">=</span> np.dot(<span class="va">self</span>.W.T,X).reshape(<span class="va">self</span>.N,<span class="dv">1</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u <span class="op">=</span> np.dot(<span class="va">self</span>.W<span class="st">'.T,self.h)</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="er">        #print</span>(<span class="va">self</span>.u)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> softmax(<span class="va">self</span>.u)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.y</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backpropagate(<span class="va">self</span>,x,t):</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        e <span class="op">=</span> <span class="va">self</span>.y <span class="op">-</span> np.asarray(t).reshape(<span class="va">self</span>.V,<span class="dv">1</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># e.shape is V x 1</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        dLdW1 <span class="op">=</span> np.dot(<span class="va">self</span>.h,e.T)</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        X <span class="op">=</span> np.array(x).reshape(<span class="va">self</span>.V,<span class="dv">1</span>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        dLdW <span class="op">=</span> np.dot(X, np.dot(<span class="va">self</span>.W<span class="st">',e).T)</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="er">        self.W' = self.W' - self.alpha*dLdW1</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W <span class="op">=</span> <span class="va">self</span>.W <span class="op">-</span> <span class="va">self</span>.alpha<span class="op">*</span>dLdW</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>,epochs):</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,epochs):   </span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.loss <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(<span class="va">self</span>.X_train)):</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.feed_forward(<span class="va">self</span>.X_train[j])</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.backpropagate(<span class="va">self</span>.X_train[j],<span class="va">self</span>.y_train[j])</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>                C <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> m <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.V):</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span>(<span class="va">self</span>.y_train[j][m]):</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>                        <span class="va">self</span>.loss <span class="op">+=</span> <span class="op">-</span><span class="dv">1</span><span class="op">*</span><span class="va">self</span>.u[m][<span class="dv">0</span>]</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>                        C <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.loss <span class="op">+=</span> C<span class="op">*</span>np.log(np.<span class="bu">sum</span>(np.exp(<span class="va">self</span>.u)))</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"epoch "</span>,x, <span class="st">" loss = "</span>,<span class="va">self</span>.loss)</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.alpha <span class="op">*=</span> <span class="dv">1</span><span class="op">/</span>( (<span class="dv">1</span><span class="op">+</span><span class="va">self</span>.alpha<span class="op">*</span>x) )</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>,word,number_of_predictions):</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> word <span class="kw">in</span> <span class="va">self</span>.words:</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>            index <span class="op">=</span> <span class="va">self</span>.word_index[word]</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>            X <span class="op">=</span> [<span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.V)]</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            X[index] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            prediction <span class="op">=</span> <span class="va">self</span>.feed_forward(X)</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            output <span class="op">=</span> {}</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.V):</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>                output[prediction[i][<span class="dv">0</span>]] <span class="op">=</span> i</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>            top_context_words <span class="op">=</span> []</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">sorted</span>(output,reverse<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>                top_context_words.append(<span class="va">self</span>.words[output[k]])</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span>(<span class="bu">len</span>(top_context_words)<span class="op">&gt;=</span>number_of_predictions):</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> top_context_words</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Word not found in dictionary"</span>)</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocessing(corpus):</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    training_data <span class="op">=</span> []</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>    sentences <span class="op">=</span> corpus.split(<span class="st">"."</span>)</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentences)):</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        sentences[i] <span class="op">=</span> sentences[i].strip()</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        sentence <span class="op">=</span> sentences[i].split()</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> [word.strip(string.punctuation) <span class="cf">for</span> word <span class="kw">in</span> sentence</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>                                    <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> [word.lower() <span class="cf">for</span> word <span class="kw">in</span> x]</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        training_data.append(x)</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> training_data</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare_data_for_training(sentences,w2v):</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> {}</span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sentence <span class="kw">in</span> sentences:</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> word <span class="kw">in</span> sentence:</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> data:</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>                data[word] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>                data[word] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span> <span class="bu">len</span>(data)</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">list</span>(data.keys()))</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>    vocab <span class="op">=</span> {}</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>        vocab[data[i]] <span class="op">=</span> i</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>    <span class="co">#for i in range(len(words)):</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sentence <span class="kw">in</span> sentences:</span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sentence)):</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a>            center_word <span class="op">=</span> [<span class="dv">0</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(V)]</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>            center_word[vocab[sentence[i]]] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>            context <span class="op">=</span> [<span class="dv">0</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(V)]</span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">-</span>w2v.window_size,i<span class="op">+</span>w2v.window_size):</span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> i<span class="op">!=</span>j <span class="kw">and</span> j<span class="op">&gt;=</span><span class="dv">0</span> <span class="kw">and</span> j<span class="op">&lt;</span><span class="bu">len</span>(sentence):</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>                    context[vocab[sentence[j]]] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>            w2v.X_train.append(center_word)</span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>            w2v.y_train.append(context)</span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>    w2v.initialize(V,data)</span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> w2v.X_train,w2v.y_train</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">+=</span> <span class="st">"The earth revolves around the sun. The moon revolves around the earth"</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> preprocessing(corpus)</span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>w2v <span class="op">=</span> word2vec()</span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>prepare_data_for_training(training_data,w2v)</span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>w2v.train(epochs)</span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(w2v.predict(<span class="st">"around"</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="word2vec-1" class="level2">
+<h2 class="anchored" data-anchor-id="word2vec-1">Word2Vec</h2>
+<p>A word embedding technique that is used to convert the words in the dataset to vectors so that the machine understands. Each unique word in your data is assigned to a vector and these vectors vary in dimensions depending on the length of the word.</p>
+<p>A statistical method for efficiently learning a standalone word embedding from a text corpus by analyze and math to exploit the “man-ness” from word “King” and “woman-ness” from word “Queen” to come up with “King is to queen as man to woman” to capture the semantic of the language. - The offset, angle between vector represent relationship between word e.g.&nbsp;“King-Man+woman = queen” - Allow others technique that focus on word usage location in predefind context sliding window of neighboring words to be used - Continous Bag-of-Words CBOW model e.g.&nbsp;predict current word based on context - Continous Skip-Gram model e.g.&nbsp;predict surrounding words based on current word</p>
+<p><img src="./image/cbow_skipg.png" class="img-fluid"> - Have high efficiency of both space and time of computation allow the larger data set to be used</p>
+</section>
+<section id="algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm">Algorithm</h2>
+<section id="glove-global-vectors-for-word-representation" class="level3">
+<h3 class="anchored" data-anchor-id="glove-global-vectors-for-word-representation">GloVe (Global Vectors for Word Representation)</h3>
+<p>An approach that combine global statistics of matrix factorization (LSA Latent Semantic Analysis) with local context base learning for use with Word2vec. It uses the method of create explicit word-context matrix using statistic across the whole corpus.</p>
+</section>
+<section id="using-embedding" class="level3">
+<h3 class="anchored" data-anchor-id="using-embedding">Using Embedding</h3>
+<ol type="1">
+<li>Standalone Train the model on embedding alone separately from other task and then use the model as part of other task</li>
+<li>Jointly Train the model to learn embedding as part of other task which later used for only this model. ### Pretrain Embedding There are many freely available pretrained embedding model that can directly plug-in to your model</li>
+<li>Static When a pretrained model has a good fit with your task it can be a direct component of your model</li>
+<li>Updated When the pretrained embedding is seeded as parted of the model that will be updating during model training.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1636,6 +1901,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
