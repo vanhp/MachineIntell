@@ -123,7 +123,7 @@
     "href": "tip/tips.html#parametric-plots",
     "title": "Julia Plots",
     "section": "Parametric Plots",
-    "text": "Parametric Plots\nPlot function pair (x(u), y(u)). See ?@fig-parametric for an example.\n#| label: fig-parametric\n#| fig-cap: \"Parametric Plots\"\n\nusing Plots\n\nplot(sin, \n     x->sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))"
+    "text": "Parametric Plots\nPlot function pair (x(u), y(u)). See ?@fig-parametric for an example.\n#| label: fig-parametric\n#| fig-cap: \"Parametric Plots\"\n\nusing Plots\n\nplot(sin, \n     x-&gt;sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))"
   },
   {
     "objectID": "tip/sample.html",
@@ -191,7 +191,7 @@
   {
     "objectID": "00_core.html",
     "href": "00_core.html",
-    "title": "MachineIntell",
+    "title": "core",
     "section": "",
     "text": "core\n\nThe main module for machine learning and deep learning library\n\n::: {.cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nfrom nbdev.showdoc import *\n:::\n::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}\ndef foo(): pass\n:::\n::: {.cell 0=‘h’ 1=‘i’ 2=‘d’ 3=‘e’}\nimport nbdev; nbdev.nbdev_export()\n:::"
   },
@@ -474,5 +474,12 @@
     "title": "Vanh Phomsavanh",
     "section": "Operating System:",
     "text": "Operating System:\nWindows\nMacOS\nLinux\n## Frameworks:\n.Net\nAndroid"
+  },
+  {
+    "objectID": "getting_started.html#beginner-start-here",
+    "href": "getting_started.html#beginner-start-here",
+    "title": "MachineIntell",
+    "section": "",
+    "text": "import nbdev"
   }
 ]
