@@ -963,6 +963,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#transformer" id="toc-transformer" class="nav-link active" data-scroll-target="#transformer">Transformer</a>
   <ul class="collapse">
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
+  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
+  <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
+  </ul></li>
+  <li><a href="#the-attention" id="toc-the-attention" class="nav-link" data-scroll-target="#the-attention">The Attention</a>
+  <ul class="collapse">
   <li><a href="#how-does-it-work" id="toc-how-does-it-work" class="nav-link" data-scroll-target="#how-does-it-work">How does it work?</a></li>
   </ul></li>
   </ul>
@@ -987,7 +993,27 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="transformer" class="level2">
 <h2 data-anchor-id="transformer">Transformer</h2>
-<p>An Architecture That have attention at the heart of the system.</p>
+<p>An Architecture That have attention at the heart of the system. It consists of the encoder-decoder unit without recurrence or convolution. It requires that the position of the token in the input be provided since its cannot capture this information on its own.</p>
+<p>These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer</p>
+<section id="components" class="level3">
+<h3 data-anchor-id="components">Components</h3>
+<p>Each layer have 2 sublayers with residual connections:<br>
+1. Implement multi-heads attentions for parallel processing<br>
+2. Implement fully connected feed forward network with 2 linear units with ReLU activation functon sandwich in between <span class="math display">\[ffn_{x} = ReLU(W_{1x} + b_1)W_2 + b_2\]</span></p>
+<p>The output from this unit then normalize by the layernorm layer that also take the value directly from the input <span class="math inline">\(x\)</span> <span class="math display">\[layernorm( x + sublayer(x))\]</span></p>
+<p><img src="../AI/images/transformer3.png" class="img-fluid"></p>
+</section>
+<section id="encoder" class="level3">
+<h3 data-anchor-id="encoder">Encoder</h3>
+<p>The encoder unit job is to map the input token to sequence of attented tokens to be later feed to the decoder.</p>
+</section>
+<section id="decoder" class="level3">
+<h3 data-anchor-id="decoder">Decoder</h3>
+<p>The decoder unit combines the input from previous state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
+</section>
+</section>
+<section id="the-attention" class="level2">
+<h2 data-anchor-id="the-attention">The Attention</h2>
 <p>A mechanism that let model extract information about previous tokens from stream of input plus its own state to generate information about the current token.<br>
 - It also assign weight and relevancy to the token so<br>
 - it can assert the priority of the token as how much attention that it should payed to the token.</p>

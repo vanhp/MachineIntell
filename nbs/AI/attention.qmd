@@ -26,9 +26,33 @@ page-layout: full
 
 ---
 ## Transformer  
-An Architecture That have attention at the heart of the system.
+An Architecture That have attention at the heart of the system. It consists of the encoder-decoder unit without recurrence or convolution. It requires that the position of the token in the input be provided since its cannot capture this information on its own.  
+
+These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer
 
 
+### Components
+Each layer have 2 sublayers with residual connections:  
+1. Implement multi-heads attentions for parallel processing  
+2. Implement fully connected feed forward network with 2 linear units with ReLU activation functon sandwich in between
+$$ffn_{x} = ReLU(W_{1x} + b_1)W_2 + b_2$$  
+
+The output from this unit then normalize by the layernorm layer that also take the value directly from the input $x$
+$$layernorm( x + sublayer(x))$$
+
+![](../AI/images/transformer3.png)
+
+### Encoder
+The encoder unit job is to map the input token to sequence of attented tokens to be later feed to the decoder.  
+
+
+### Decoder
+The decoder unit combines the input from previous state with the input from encoder state plus the input from the feed-forward unit then generate the output
+
+
+
+
+## The Attention
 A mechanism that let model extract information about previous tokens from stream of input plus its own state to generate information about the current token.   
 - It also assign weight and relevancy to the token so   
 - it can assert the priority of the token as how much attention that it should payed to the token.
