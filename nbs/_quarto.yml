@@ -80,7 +80,7 @@ website:
 
       title: "AI"
       contents:
-        - ./AI/newsall.qmd
+        - ./AI/attention.qmd
         - ./AI/sdiffusion.qmd
         - ./AI/gpt.qmd
 

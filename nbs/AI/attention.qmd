@@ -1,0 +1,56 @@
+---
+title: Attention
+subtitle: Attention and Transformer
+about:
+  template: marquee
+  image: ../images/gradientv12.jpg 
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: true
+  feed: true
+
+page-layout: full
+---
+
+![](../AI/images/transformer1.svg)
+
+---
+## Transformer  
+An Architecture That have attention at the heart of the system.
+
+
+A mechanism that let model extract information about previous tokens from stream of input plus its own state to generate information about the current token.   
+- It also assign weight and relevancy to the token so   
+- it can assert the priority of the token as how much attention that it should payed to the token.
+
+### How does it work?  
+Each attention unit comprise with three matrices that contains the weight of relevant the query $W_Q$ which represent the query for information, the key $W_K$ the holder of interested information, and the value $W_V$ the actual requested information.  
+
+When a token is looking for information to assess its current state it generate a query vector $q_i = x_iW_Q$ to search for potential relevant information holder vector $k_i = x_iW_K$ of required information $v_i = x_iW_v$ 
+
+To determine if the information match the requested a *dot product*  is perform between the two vectors $q_i$ and $k_j$ if the resultant value is large there is a match otherwise there's no match.
+
+To calculate the attention value of all tokens together use the equation 
+$$ Attention(Q,K,V) = softmax \bigg(\frac{QK^T}{\sqrt{d_k}} \bigg)V$$  
+where Q is the query matrix  
+      K is the key  matrix  
+      V is the value matrix  
+      $\sqrt{d_k}$ is the stability gradient factor to prevent fluctuation during training computation  
+
+
+#### Attention head
+A set of $W_Q,W_K,W_V$ is called a head. Each head may be assigned to process tokens and tasks that are relevant to a token. Each layer of the model may have many heads which's called *multi-head Attention* this increase the capability of the model process many different tokens in parallel.
+
+#### Feed-Forward Unit
+The output from these processing may be passed on to the feed-forward unit for additional process.  
+This unit is another neural network that comprise with normalization unit,and residual unit.

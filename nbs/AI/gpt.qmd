@@ -1,6 +1,6 @@
 ---
-title: GPT
-subtitle: GPT and LLM
+title: Generative AI
+subtitle: GPT (Generative Pretrained Transformer) and LLM
 about:
   template: marquee
   image: ../images/gradientv12.jpg 
@@ -24,8 +24,12 @@ page-layout: full
 
 ![](../images/light1.jpg)
 
-## Deep learning from fastai library
+## Generative AI
 
-Using fastai library is the fastest way to get your Machine Learning working with less head ache
+A term that use to distinquist the Large Language Model from vanilla Language Model that have very large set of parameters. 
 
-## Natural Language Processing 
+GAI has a characteristic of the ability to generate language response similiar to human generate content.
+It's base on Transformer architect ans was trained on very large set unlabelled data set.
+
+
+ 

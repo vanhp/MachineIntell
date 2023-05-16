@@ -222,5 +222,13 @@
   {
     "listing": "/AI/sdiffusion.html",
     "items": []
+  },
+  {
+    "listing": "/AI/gpt.html",
+    "items": []
+  },
+  {
+    "listing": "/AI/attention.html",
+    "items": []
   }
 ]

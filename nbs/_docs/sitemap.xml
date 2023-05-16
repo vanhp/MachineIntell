@@ -150,7 +150,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/index.html</loc>
-    <lastmod>2023-05-09T08:02:03.843Z</lastmod>
+    <lastmod>2023-05-15T21:51:13.594Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/tutorial/math/diffEq/diffeq1.html</loc>
@@ -250,6 +250,14 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/AI/sdiffusion.html</loc>
-    <lastmod>2023-05-09T10:21:52.739Z</lastmod>
+    <lastmod>2023-05-15T20:21:52.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/gpt.html</loc>
+    <lastmod>2023-05-15T20:55:38.236Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/AI/attention.html</loc>
+    <lastmod>2023-05-16T01:33:00.808Z</lastmod>
   </url>
 </urlset>

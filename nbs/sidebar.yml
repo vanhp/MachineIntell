@@ -5,9 +5,10 @@ website:
       - getting_started.ipynb
       - section: AI
         contents:
+          - AI/attention.qmd
           - AI/sdiffusion.qmd
           - AI/gpt.qmd
-          - AI/newsall.qmd
+         
       - section: Programming
         contents:
           - Programming/prog.qmd
