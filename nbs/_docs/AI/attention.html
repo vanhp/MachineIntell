@@ -401,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Machine intelligence</span></a>
+ <span class="menu-text">Machine Intelligence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -963,6 +963,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#transformer" id="toc-transformer" class="nav-link active" data-scroll-target="#transformer">Transformer</a>
   <ul class="collapse">
+  <li><a href="#embeddings-capturing-semantic" id="toc-embeddings-capturing-semantic" class="nav-link" data-scroll-target="#embeddings-capturing-semantic">embeddings (capturing semantic)</a></li>
   <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
   <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
   <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
@@ -995,6 +996,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="transformer">Transformer</h2>
 <p>An Architecture That have attention at the heart of the system. It consists of the encoder-decoder unit without recurrence or convolution. It requires that the position of the token in the input be provided since its cannot capture this information on its own.</p>
 <p>These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer</p>
+<section id="embeddings-capturing-semantic" class="level3">
+<h3 data-anchor-id="embeddings-capturing-semantic">embeddings (capturing semantic)</h3>
+<p>A process that convert the sequence of tokens e.g.&nbsp;text which has low dimension(1D) into higher dimension and store on the vector while also capture the meaning in the input tokens.<br>
+Tokens that have similar meaning are grouping closer to each orther while tokens that have opposite meaning are placing further away.<br>
+These vectors are suitable to be passed on to neural network model to learn on.</p>
+</section>
 <section id="components" class="level3">
 <h3 data-anchor-id="components">Components</h3>
 <p>Each layer have 2 sublayers with residual connections:<br>
@@ -1005,11 +1012,23 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="encoder" class="level3">
 <h3 data-anchor-id="encoder">Encoder</h3>
-<p>The encoder unit job is to map the input token to sequence of attented tokens to be later feed to the decoder.</p>
+<p>The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.<br>
+These inputs tokens has been through embedding process and ready for the layer to extract information from.</p>
 </section>
 <section id="decoder" class="level3">
 <h3 data-anchor-id="decoder">Decoder</h3>
-<p>The decoder unit combines the input from previous state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
+<p>The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn’t know before hand what token(word) it’s supposed to be.</p>
+<p>But it can combines the input from previous token’s state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
+<p>For multi-head attention It’s require a mask to extract only the relevance value and suppress the rest.</p>
+<p><span class="math display">\[mask(QK^T) = mask \bigg(\begin{bmatrix}
+   a_{11} &amp; a_{11} &amp; ... a_{1n} \\
+   a_{21} &amp; a_{22} &amp;... a_{2n} \\
+   a_{n1} &amp; a_{n2} &amp; ... a_{nn}
+\end{bmatrix}\bigg) = \begin{bmatrix}
+   a_{11} &amp; a_{11} &amp; ... a_{1n} \\
+   a_{21} &amp; a_{22} &amp;... a_{2n} \\
+   a_{n1} &amp; a_{n2} &amp; ... a_{nn}
+\end{bmatrix}\]</span></p>
 </section>
 </section>
 <section id="the-attention" class="level2">
@@ -1026,7 +1045,7 @@ ul.task-list li input[type="checkbox"] {
 where Q is the query matrix<br>
 K is the key matrix<br>
 V is the value matrix<br>
-<span class="math inline">\(\sqrt{d_k}\)</span> is the stability gradient factor to prevent fluctuation during training computation</p>
+T is the time step <span class="math inline">\(\sqrt{d_k}\)</span> is the stability gradient factor to prevent fluctuation during training computation</p>
 <section id="attention-head" class="level4">
 <h4 data-anchor-id="attention-head">Attention head</h4>
 <p>A set of <span class="math inline">\(W_Q,W_K,W_V\)</span> is called a head. Each head may be assigned to process tokens and tasks that are relevant to a token. Each layer of the model may have many heads which’s called <em>multi-head Attention</em> this increase the capability of the model process many different tokens in parallel.</p>

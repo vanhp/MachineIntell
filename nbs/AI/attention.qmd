@@ -31,6 +31,12 @@ An Architecture That have attention at the heart of the system. It consists of t
 These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer
 
 
+### embeddings (capturing semantic)
+
+A process that convert the sequence of tokens e.g. text which has low dimension(1D) into higher dimension and store on the vector while also capture the meaning in the input tokens.  
+Tokens that have similar meaning are grouping closer to each orther while tokens that have opposite meaning are placing further away.  
+These vectors are suitable to be passed on to neural network model to learn on.
+
 ### Components
 Each layer have 2 sublayers with residual connections:  
 1. Implement multi-heads attentions for parallel processing  
@@ -43,12 +49,29 @@ $$layernorm( x + sublayer(x))$$
 ![](../AI/images/transformer3.png)
 
 ### Encoder
-The encoder unit job is to map the input token to sequence of attented tokens to be later feed to the decoder.  
+The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.     
+These inputs tokens has been through embedding process and ready for the layer to extract information from.
+
 
 
 ### Decoder
-The decoder unit combines the input from previous state with the input from encoder state plus the input from the feed-forward unit then generate the output
+The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn't know before hand what token(word) it's supposed to be. 
 
+
+But it can combines the input from previous token's state with the input from encoder state plus the input from the feed-forward unit then generate the output
+
+For multi-head attention
+It's require a mask to extract only the relevance value and suppress the rest.
+
+$$mask(QK^T) = mask \bigg(\begin{bmatrix}
+   a_{11} & a_{11} & ... a_{1n} \\
+   a_{21} & a_{22} &... a_{2n} \\
+   a_{n1} & a_{n2} & ... a_{nn} 
+\end{bmatrix}\bigg) = \begin{bmatrix}
+   a_{11} & a_{11} & ... a_{1n} \\
+   a_{21} & a_{22} &... a_{2n} \\
+   a_{n1} & a_{n2} & ... a_{nn} 
+\end{bmatrix}$$
 
 
 
@@ -69,6 +92,7 @@ $$ Attention(Q,K,V) = softmax \bigg(\frac{QK^T}{\sqrt{d_k}} \bigg)V$$
 where Q is the query matrix  
       K is the key  matrix  
       V is the value matrix  
+      T is the time step
       $\sqrt{d_k}$ is the stability gradient factor to prevent fluctuation during training computation  
 
 
