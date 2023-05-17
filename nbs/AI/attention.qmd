@@ -32,11 +32,20 @@ These positions information are crucial to assess the priority or relevancy of a
 
 The task of the transformer as it apply in Language Model is to predict the next word in the sequence.
 
-### embeddings (capturing semantic)
+::: {.callout-tip}
+
+In this context I use the token in the same meaning as a "word" in English. However, the token can also be used to represent a letter e.g. "a","b","c" or digit e.g. "1","2","3" or symbol e.g. "+","-",...
+:::
+
+### Embeddings (capturing semantic)
 
 A process that convert the sequence of tokens e.g. text which has low dimension(1D) into higher dimension and store on the vector while also capture the meaning in the input tokens.  
 Tokens that have similar meaning are grouping closer to each orther while tokens that have opposite meaning are placing further away.  
 These vectors are suitable to be passed on to neural network model to learn on.
+
+::: {.callout-tip}
+A word in this context refers to "A", "a", " ", "-" as well as "sky", "temperature", "multi-head"
+:::
 
 ### Components
 Each layer have 2 sublayers with residual connections:  
@@ -58,13 +67,14 @@ It start search for token that have the closet relevance meaning to what it's th
 - It also assign weight and relevancy to the token so   
 - it can assert the priority of the token as how much attention that it should payed to the token.
 
-Type of Attention
+### Type of Attention
 
   - Self Attention
+    - A layer only focus on the data that being process inside the unit e.g. encoder unit, decoder unit
   - Cross Attention
+    - The layer have access to data from the outside of its own unit e.g. the decoder take input from the encoder
   - Multi-head Attention
-
-
+    - The implementation of single-head unit in parallel to increase the capability of the model and also taking advantage of multicore, multiprocessing capability of modern CPU and GPU
 
 ### How does it work?  
 Each attention unit comprise with three matrices that contains the weight of relevant the query $W_Q$ which represent the query for information, the key $W_K$ the holder of interested information, and the value $W_V$ the actual requested information.  
@@ -82,12 +92,34 @@ where Q is the query matrix
       $\sqrt{d_k}$ is the stability gradient factor to prevent fluctuation during training computation  
 
 
+#### For multi-head attention  
+![](../AI/images/scaldot.png)  
+
+It's require a mask to extract only the relevance value and suppress the rest by convert them to $- \infty$ from the scaled dot-product of $Q$ and $K$ The mask also force the decoder to only search one way backward.
+
+
+
 #### Attention head
 A set of $W_Q,W_K,W_V$ is called a head. Each head may be assigned to process tokens and tasks that are relevant to a token. Each layer of the model may have many heads which's called *multi-head Attention* this increase the capability of the model process many different tokens in parallel.
 
 #### Feed-Forward Unit
 The output from these processing may be passed on to the feed-forward unit for additional process.  
 This unit is another neural network that comprise with normalization unit,and residual unit.
+
+#### Masking
+A technique to force the Attention to search for relevance token from the previouly seen stream of tokens only. Since technically it doesn't know the future word would be since it has not appear yet.
+
+$$mask(QK^T) = mask \Bigg ( \begin{bmatrix}
+   a_{11} & a_{11} & ... & a_{1n} \\
+   a_{21} & a_{22} &... & a_{2n} \\
+  \vdots & \vdots &\ddots & \vdots \\
+   a_{m1} & a_{m2} & ... & a_{mn} 
+\end{bmatrix}\Bigg ) = \begin{bmatrix}
+   a_{11} & - \infty & ... & - \infty \\
+   a_{21} & a_{22} &... & - \infty\\
+  \vdots & \vdots &\ddots & \vdots \\
+   a_{m1} & a_{m2} & ... & a_{mn} 
+\end{bmatrix}$$
 
 
 ### Encoder
@@ -146,22 +178,3 @@ Operation
   - output the prediction as probabilities
 
 But it can combines the input from previous token's state with the input from encoder state plus the input from the feed-forward unit then generate the output
-
-#### For multi-head attention  
-![](../AI/images/scaldot.png)  
-
-It's require a mask to extract only the relevance value and suppress the rest by convert them to $- \infty$ from the scaled dot-product of $Q$ and $K$ The mask also force the decoder to only search one way backward.
-
-$$mask(QK^T) = mask \Bigg ( \begin{bmatrix}
-   a_{11} & a_{11} & ... & a_{1n} \\
-   a_{21} & a_{22} &... & a_{2n} \\
-  \vdots & \vdots &\ddots & \vdots \\
-   a_{m1} & a_{m2} & ... & a_{mn} 
-\end{bmatrix}\Bigg ) = \begin{bmatrix}
-   a_{11} & - \infty & ... & - \infty \\
-   a_{21} & a_{22} &... & - \infty\\
-  \vdots & \vdots &\ddots & \vdots \\
-   a_{m1} & a_{m2} & ... & a_{mn} 
-\end{bmatrix}$$
-
-

@@ -13,8 +13,16 @@ about:
 ---
 ![](./images/code1.jpg)
 
+I'm a professional developer working in Silicon Valley for over 20 years. I've been working with various High tech companies from big and small to startup and estasblihed.
+
+Working with hardware devices such as IC packaging, embedded controllers, GUI frameworks on Windows an Mac.
+I've been fasinating with Linux long before Linus Torvalds show up at one of our  [SVLUG](https://www.socallinuxexpo.org/scale7x/dotorg/silicon-valley-linux-users-group.html) meetup in 1998 at Carl'Jr 
+on First st and Zanker rd in San Jose. 
+
+Linux is my fovorite OS and still is my daily drive today.
+I'm also find Artificial Intelligence quite fasninating along with Quantum Computing.
+
 #### Programming 
-I've been working as software engineer for two decades. And
 I've been using various programming languages starting from:   
 
 C/C++  

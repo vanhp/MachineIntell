@@ -963,11 +963,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#transformer" id="toc-transformer" class="nav-link active" data-scroll-target="#transformer">Transformer</a>
   <ul class="collapse">
-  <li><a href="#embeddings-capturing-semantic" id="toc-embeddings-capturing-semantic" class="nav-link" data-scroll-target="#embeddings-capturing-semantic">embeddings (capturing semantic)</a></li>
+  <li><a href="#embeddings-capturing-semantic" id="toc-embeddings-capturing-semantic" class="nav-link" data-scroll-target="#embeddings-capturing-semantic">Embeddings (capturing semantic)</a></li>
   <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
   </ul></li>
   <li><a href="#the-attention" id="toc-the-attention" class="nav-link" data-scroll-target="#the-attention">The Attention</a>
   <ul class="collapse">
+  <li><a href="#type-of-attention" id="toc-type-of-attention" class="nav-link" data-scroll-target="#type-of-attention">Type of Attention</a></li>
   <li><a href="#how-does-it-work" id="toc-how-does-it-work" class="nav-link" data-scroll-target="#how-does-it-work">How does it work?</a></li>
   <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
   <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
@@ -997,11 +998,37 @@ ul.task-list li input[type="checkbox"] {
 <p>An Architecture That uses attention at the heart of the system. It consists of the encoder-decoder unit without reliant on recurrence (RNN) or convolution (CNN) neural network. However, it requires that the position of the token in the input be provided since its cannot capture this information on its own.</p>
 <p>These positions information are crucial to assess the priority or relevancy of a word in the sequence. It’s usually generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer.</p>
 <p>The task of the transformer as it apply in Language Model is to predict the next word in the sequence.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this context I use the token in the same meaning as a “word” in English. However, the token can also be used to represent a letter e.g.&nbsp;“a”,“b”,“c” or digit e.g.&nbsp;“1”,“2”,“3” or symbol e.g.&nbsp;“+”,“-”,…</p>
+</div>
+</div>
 <section id="embeddings-capturing-semantic" class="level3">
-<h3 data-anchor-id="embeddings-capturing-semantic">embeddings (capturing semantic)</h3>
+<h3 data-anchor-id="embeddings-capturing-semantic">Embeddings (capturing semantic)</h3>
 <p>A process that convert the sequence of tokens e.g.&nbsp;text which has low dimension(1D) into higher dimension and store on the vector while also capture the meaning in the input tokens.<br>
 Tokens that have similar meaning are grouping closer to each orther while tokens that have opposite meaning are placing further away.<br>
 These vectors are suitable to be passed on to neural network model to learn on.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A word in this context refers to “A”, “a”, ” “,”-” as well as “sky”, “temperature”, “multi-head”</p>
+</div>
+</div>
 </section>
 <section id="components" class="level3">
 <h3 data-anchor-id="components">Components</h3>
@@ -1023,12 +1050,23 @@ These vectors are suitable to be passed on to neural network model to learn on.<
 </li>
 <li>it can assert the priority of the token as how much attention that it should payed to the token.</li>
 </ul>
-<p>Type of Attention</p>
+<section id="type-of-attention" class="level3">
+<h3 data-anchor-id="type-of-attention">Type of Attention</h3>
 <ul>
-<li>Self Attention</li>
-<li>Cross Attention</li>
-<li>Multi-head Attention</li>
+<li>Self Attention
+<ul>
+<li>A layer only focus on the data that being process inside the unit e.g.&nbsp;encoder unit, decoder unit</li>
+</ul></li>
+<li>Cross Attention
+<ul>
+<li>The layer have access to data from the outside of its own unit e.g.&nbsp;the decoder take input from the encoder</li>
+</ul></li>
+<li>Multi-head Attention
+<ul>
+<li>The implementation of single-head unit in parallel to increase the capability of the model and also taking advantage of multicore, multiprocessing capability of modern CPU and GPU</li>
+</ul></li>
 </ul>
+</section>
 <section id="how-does-it-work" class="level3">
 <h3 data-anchor-id="how-does-it-work">How does it work?</h3>
 <p>Each attention unit comprise with three matrices that contains the weight of relevant the query <span class="math inline">\(W_Q\)</span> which represent the query for information, the key <span class="math inline">\(W_K\)</span> the holder of interested information, and the value <span class="math inline">\(W_V\)</span> the actual requested information.</p>
@@ -1039,6 +1077,11 @@ where Q is the query matrix<br>
 K is the key matrix<br>
 V is the value matrix<br>
 T is the time step <span class="math inline">\(\sqrt{d_k}\)</span> is the stability gradient factor to prevent fluctuation during training computation</p>
+<section id="for-multi-head-attention" class="level4">
+<h4 data-anchor-id="for-multi-head-attention">For multi-head attention</h4>
+<p><img src="../AI/images/scaldot.png" class="img-fluid"></p>
+<p>It’s require a mask to extract only the relevance value and suppress the rest by convert them to <span class="math inline">\(- \infty\)</span> from the scaled dot-product of <span class="math inline">\(Q\)</span> and <span class="math inline">\(K\)</span> The mask also force the decoder to only search one way backward.</p>
+</section>
 <section id="attention-head" class="level4">
 <h4 data-anchor-id="attention-head">Attention head</h4>
 <p>A set of <span class="math inline">\(W_Q,W_K,W_V\)</span> is called a head. Each head may be assigned to process tokens and tasks that are relevant to a token. Each layer of the model may have many heads which’s called <em>multi-head Attention</em> this increase the capability of the model process many different tokens in parallel.</p>
@@ -1047,6 +1090,21 @@ T is the time step <span class="math inline">\(\sqrt{d_k}\)</span> is the stabil
 <h4 data-anchor-id="feed-forward-unit">Feed-Forward Unit</h4>
 <p>The output from these processing may be passed on to the feed-forward unit for additional process.<br>
 This unit is another neural network that comprise with normalization unit,and residual unit.</p>
+</section>
+<section id="masking" class="level4">
+<h4 data-anchor-id="masking">Masking</h4>
+<p>A technique to force the Attention to search for relevance token from the previouly seen stream of tokens only. Since technically it doesn’t know the future word would be since it has not appear yet.</p>
+<p><span class="math display">\[mask(QK^T) = mask \Bigg ( \begin{bmatrix}
+   a_{11} &amp; a_{11} &amp; ... &amp; a_{1n} \\
+   a_{21} &amp; a_{22} &amp;... &amp; a_{2n} \\
+  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
+   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
+\end{bmatrix}\Bigg ) = \begin{bmatrix}
+   a_{11} &amp; - \infty &amp; ... &amp; - \infty \\
+   a_{21} &amp; a_{22} &amp;... &amp; - \infty\\
+  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
+   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
+\end{bmatrix}\]</span></p>
 </section>
 </section>
 <section id="encoder" class="level3">
@@ -1134,24 +1192,8 @@ These inputs tokens has been through embedding process and ready for the layer t
 </ul></li>
 </ul>
 <p>But it can combines the input from previous token’s state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
-<section id="for-multi-head-attention" class="level4">
-<h4 data-anchor-id="for-multi-head-attention">For multi-head attention</h4>
-<p><img src="../AI/images/scaldot.png" class="img-fluid"></p>
-<p>It’s require a mask to extract only the relevance value and suppress the rest by convert them to <span class="math inline">\(- \infty\)</span> from the scaled dot-product of <span class="math inline">\(Q\)</span> and <span class="math inline">\(K\)</span> The mask also force the decoder to only search one way backward.</p>
-<p><span class="math display">\[mask(QK^T) = mask \Bigg ( \begin{bmatrix}
-   a_{11} &amp; a_{11} &amp; ... &amp; a_{1n} \\
-   a_{21} &amp; a_{22} &amp;... &amp; a_{2n} \\
-  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
-   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
-\end{bmatrix}\Bigg ) = \begin{bmatrix}
-   a_{11} &amp; - \infty &amp; ... &amp; - \infty \\
-   a_{21} &amp; a_{22} &amp;... &amp; - \infty\\
-  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
-   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
-\end{bmatrix}\]</span></p>
 
 
-</section>
 </section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
