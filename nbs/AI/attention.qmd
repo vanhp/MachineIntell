@@ -22,14 +22,15 @@ listing:
 page-layout: full
 ---
 
-![](../AI/images/Transformer1.webp)
+![](../AI/images/transformer4.png)
 
 ---
 ## Transformer  
-An Architecture That have attention at the heart of the system. It consists of the encoder-decoder unit without recurrence or convolution. It requires that the position of the token in the input be provided since its cannot capture this information on its own.  
+An Architecture That uses attention at the heart of the system. It consists of the encoder-decoder unit without reliant on recurrence (RNN) or convolution (CNN) neural network. However, it requires that the position of the token in the input be provided since its cannot capture this information on its own. 
 
-These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer
+These positions information are crucial to assess the priority or relevancy of a word in the sequence. It's usually generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer.
 
+The task of the transformer as it apply in Language Model is to predict the next word in the sequence.
 
 ### embeddings (capturing semantic)
 
@@ -39,6 +40,7 @@ These vectors are suitable to be passed on to neural network model to learn on.
 
 ### Components
 Each layer have 2 sublayers with residual connections:  
+
 1. Implement multi-heads attentions for parallel processing  
 2. Implement fully connected feed forward network with 2 linear units with ReLU activation functon sandwich in between
 $$ffn_{x} = ReLU(W_{1x} + b_1)W_2 + b_2$$  
@@ -48,37 +50,21 @@ $$layernorm( x + sublayer(x))$$
 
 ![](../AI/images/transformer3.png)
 
-### Encoder
-The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.     
-These inputs tokens has been through embedding process and ready for the layer to extract information from.
-
-
-
-### Decoder
-The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn't know before hand what token(word) it's supposed to be. 
-
-
-But it can combines the input from previous token's state with the input from encoder state plus the input from the feed-forward unit then generate the output
-
-For multi-head attention
-It's require a mask to extract only the relevance value and suppress the rest.
-
-$$mask(QK^T) = mask \bigg(\begin{bmatrix}
-   a_{11} & a_{11} & ... a_{1n} \\
-   a_{21} & a_{22} &... a_{2n} \\
-   a_{n1} & a_{n2} & ... a_{nn} 
-\end{bmatrix}\bigg) = \begin{bmatrix}
-   a_{11} & a_{11} & ... a_{1n} \\
-   a_{21} & a_{22} &... a_{2n} \\
-   a_{n1} & a_{n2} & ... a_{nn} 
-\end{bmatrix}$$
-
-
 
 ## The Attention
-A mechanism that let model extract information about previous tokens from stream of input plus its own state to generate information about the current token.   
+A mechanism that let model search and extract information from stream of input and use it to predict the next word.
+It start search for token that have the closet relevance meaning to what it's think the next word should be from input sequence. Once it found the match it's then incorporate this data as part of the predict of the next word.
+
 - It also assign weight and relevancy to the token so   
 - it can assert the priority of the token as how much attention that it should payed to the token.
+
+Type of Attention
+
+  - Self Attention
+  - Cross Attention
+  - Multi-head Attention
+
+
 
 ### How does it work?  
 Each attention unit comprise with three matrices that contains the weight of relevant the query $W_Q$ which represent the query for information, the key $W_K$ the holder of interested information, and the value $W_V$ the actual requested information.  
@@ -102,3 +88,80 @@ A set of $W_Q,W_K,W_V$ is called a head. Each head may be assigned to process to
 #### Feed-Forward Unit
 The output from these processing may be passed on to the feed-forward unit for additional process.  
 This unit is another neural network that comprise with normalization unit,and residual unit.
+
+
+### Encoder
+The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.     
+These inputs tokens has been through embedding process and ready for the layer to extract information from.
+
+
+### Decoder
+The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn't know before hand what token(word) it's supposed to be.   
+
+Operation  
+
+- First layer
+  - Sublayer 1 
+    - implement muli-head attention then take input from:
+      - embedding with position info
+      - previous decoder if available
+    - implement mask to extract relevance info
+    - pass data on to sublayer 2 
+  - Sublayer 2 
+    - implement normalizaton using layernorm then take input from:
+      - sublayer 1
+      - directly from input (residual)
+    - combine info from both sources
+    - do normalization
+    - pass data on to Layer 2 
+
+- Second layer
+  - Sublayer 1 
+    - implement muli-head attention then take input from:
+      - Query from first layer
+      - Key and value from encoder if implement
+    - pass data on to sublayer 2 
+  - Sublayer 2 
+    - implement normalizaton using layernorm then take input from:
+      - sublayer 1
+      - directly from Layer 1 (residual)
+    - combine info from both sources
+    - do normalization
+    - pass data on to Layer 3
+
+- Third layer
+  - Sublayer 1 
+    - implement fully connected feed forward network then take input from:
+      - Layer 2
+    - pass data on to sublayer 2 
+  - Sublayer 2 
+    - implement normalizaton using layernorm then take input from:
+      - sublayer 1
+      - directly from Layer 2 (residual)
+    - pass data on to Output layer
+
+- Output layer
+  - implement Linear layer
+  - implement softmax
+  - output the prediction as probabilities
+
+But it can combines the input from previous token's state with the input from encoder state plus the input from the feed-forward unit then generate the output
+
+#### For multi-head attention  
+![](../AI/images/scaldot.png)  
+
+It's require a mask to extract only the relevance value and suppress the rest by convert them to $- \infty$ from the scaled dot-product of $Q$ and $K$ The mask also force the decoder to only search one way backward.
+
+$$mask(QK^T) = mask \Bigg ( \begin{bmatrix}
+   a_{11} & a_{11} & ... & a_{1n} \\
+   a_{21} & a_{22} &... & a_{2n} \\
+  \vdots & \vdots &\ddots & \vdots \\
+   a_{m1} & a_{m2} & ... & a_{mn} 
+\end{bmatrix}\Bigg ) = \begin{bmatrix}
+   a_{11} & - \infty & ... & - \infty \\
+   a_{21} & a_{22} &... & - \infty\\
+  \vdots & \vdots &\ddots & \vdots \\
+   a_{m1} & a_{m2} & ... & a_{mn} 
+\end{bmatrix}$$
+
+

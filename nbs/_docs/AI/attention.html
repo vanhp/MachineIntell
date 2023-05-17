@@ -965,12 +965,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#embeddings-capturing-semantic" id="toc-embeddings-capturing-semantic" class="nav-link" data-scroll-target="#embeddings-capturing-semantic">embeddings (capturing semantic)</a></li>
   <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
-  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
-  <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
   </ul></li>
   <li><a href="#the-attention" id="toc-the-attention" class="nav-link" data-scroll-target="#the-attention">The Attention</a>
   <ul class="collapse">
   <li><a href="#how-does-it-work" id="toc-how-does-it-work" class="nav-link" data-scroll-target="#how-does-it-work">How does it work?</a></li>
+  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
+  <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -990,12 +990,13 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
 
-<p><img src="../AI/images/Transformer1.webp" class="img-fluid"></p>
+<p><img src="../AI/images/transformer4.png" class="img-fluid"></p>
 <hr>
 <section id="transformer" class="level2">
 <h2 data-anchor-id="transformer">Transformer</h2>
-<p>An Architecture That have attention at the heart of the system. It consists of the encoder-decoder unit without recurrence or convolution. It requires that the position of the token in the input be provided since its cannot capture this information on its own.</p>
-<p>These positions information are generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer</p>
+<p>An Architecture That uses attention at the heart of the system. It consists of the encoder-decoder unit without reliant on recurrence (RNN) or convolution (CNN) neural network. However, it requires that the position of the token in the input be provided since its cannot capture this information on its own.</p>
+<p>These positions information are crucial to assess the priority or relevancy of a word in the sequence. It’s usually generated with the sine and cosine function with different frequencies then sum with the embedding vector before pass on as the input to the Attention layer.</p>
+<p>The task of the transformer as it apply in Language Model is to predict the next word in the sequence.</p>
 <section id="embeddings-capturing-semantic" class="level3">
 <h3 data-anchor-id="embeddings-capturing-semantic">embeddings (capturing semantic)</h3>
 <p>A process that convert the sequence of tokens e.g.&nbsp;text which has low dimension(1D) into higher dimension and store on the vector while also capture the meaning in the input tokens.<br>
@@ -1004,38 +1005,30 @@ These vectors are suitable to be passed on to neural network model to learn on.<
 </section>
 <section id="components" class="level3">
 <h3 data-anchor-id="components">Components</h3>
-<p>Each layer have 2 sublayers with residual connections:<br>
-1. Implement multi-heads attentions for parallel processing<br>
-2. Implement fully connected feed forward network with 2 linear units with ReLU activation functon sandwich in between <span class="math display">\[ffn_{x} = ReLU(W_{1x} + b_1)W_2 + b_2\]</span></p>
+<p>Each layer have 2 sublayers with residual connections:</p>
+<ol type="1">
+<li>Implement multi-heads attentions for parallel processing<br>
+</li>
+<li>Implement fully connected feed forward network with 2 linear units with ReLU activation functon sandwich in between <span class="math display">\[ffn_{x} = ReLU(W_{1x} + b_1)W_2 + b_2\]</span></li>
+</ol>
 <p>The output from this unit then normalize by the layernorm layer that also take the value directly from the input <span class="math inline">\(x\)</span> <span class="math display">\[layernorm( x + sublayer(x))\]</span></p>
 <p><img src="../AI/images/transformer3.png" class="img-fluid"></p>
-</section>
-<section id="encoder" class="level3">
-<h3 data-anchor-id="encoder">Encoder</h3>
-<p>The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.<br>
-These inputs tokens has been through embedding process and ready for the layer to extract information from.</p>
-</section>
-<section id="decoder" class="level3">
-<h3 data-anchor-id="decoder">Decoder</h3>
-<p>The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn’t know before hand what token(word) it’s supposed to be.</p>
-<p>But it can combines the input from previous token’s state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
-<p>For multi-head attention It’s require a mask to extract only the relevance value and suppress the rest.</p>
-<p><span class="math display">\[mask(QK^T) = mask \bigg(\begin{bmatrix}
-   a_{11} &amp; a_{11} &amp; ... a_{1n} \\
-   a_{21} &amp; a_{22} &amp;... a_{2n} \\
-   a_{n1} &amp; a_{n2} &amp; ... a_{nn}
-\end{bmatrix}\bigg) = \begin{bmatrix}
-   a_{11} &amp; a_{11} &amp; ... a_{1n} \\
-   a_{21} &amp; a_{22} &amp;... a_{2n} \\
-   a_{n1} &amp; a_{n2} &amp; ... a_{nn}
-\end{bmatrix}\]</span></p>
 </section>
 </section>
 <section id="the-attention" class="level2">
 <h2 data-anchor-id="the-attention">The Attention</h2>
-<p>A mechanism that let model extract information about previous tokens from stream of input plus its own state to generate information about the current token.<br>
-- It also assign weight and relevancy to the token so<br>
-- it can assert the priority of the token as how much attention that it should payed to the token.</p>
+<p>A mechanism that let model search and extract information from stream of input and use it to predict the next word. It start search for token that have the closet relevance meaning to what it’s think the next word should be from input sequence. Once it found the match it’s then incorporate this data as part of the predict of the next word.</p>
+<ul>
+<li>It also assign weight and relevancy to the token so<br>
+</li>
+<li>it can assert the priority of the token as how much attention that it should payed to the token.</li>
+</ul>
+<p>Type of Attention</p>
+<ul>
+<li>Self Attention</li>
+<li>Cross Attention</li>
+<li>Multi-head Attention</li>
+</ul>
 <section id="how-does-it-work" class="level3">
 <h3 data-anchor-id="how-does-it-work">How does it work?</h3>
 <p>Each attention unit comprise with three matrices that contains the weight of relevant the query <span class="math inline">\(W_Q\)</span> which represent the query for information, the key <span class="math inline">\(W_K\)</span> the holder of interested information, and the value <span class="math inline">\(W_V\)</span> the actual requested information.</p>
@@ -1054,6 +1047,108 @@ T is the time step <span class="math inline">\(\sqrt{d_k}\)</span> is the stabil
 <h4 data-anchor-id="feed-forward-unit">Feed-Forward Unit</h4>
 <p>The output from these processing may be passed on to the feed-forward unit for additional process.<br>
 This unit is another neural network that comprise with normalization unit,and residual unit.</p>
+</section>
+</section>
+<section id="encoder" class="level3">
+<h3 data-anchor-id="encoder">Encoder</h3>
+<p>The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.<br>
+These inputs tokens has been through embedding process and ready for the layer to extract information from.</p>
+</section>
+<section id="decoder" class="level3">
+<h3 data-anchor-id="decoder">Decoder</h3>
+<p>The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn’t know before hand what token(word) it’s supposed to be.</p>
+<p>Operation</p>
+<ul>
+<li>First layer
+<ul>
+<li>Sublayer 1
+<ul>
+<li>implement muli-head attention then take input from:
+<ul>
+<li>embedding with position info</li>
+<li>previous decoder if available</li>
+</ul></li>
+<li>implement mask to extract relevance info</li>
+<li>pass data on to sublayer 2</li>
+</ul></li>
+<li>Sublayer 2
+<ul>
+<li>implement normalizaton using layernorm then take input from:
+<ul>
+<li>sublayer 1</li>
+<li>directly from input (residual)</li>
+</ul></li>
+<li>combine info from both sources</li>
+<li>do normalization</li>
+<li>pass data on to Layer 2</li>
+</ul></li>
+</ul></li>
+<li>Second layer
+<ul>
+<li>Sublayer 1
+<ul>
+<li>implement muli-head attention then take input from:
+<ul>
+<li>Query from first layer</li>
+<li>Key and value from encoder if implement</li>
+</ul></li>
+<li>pass data on to sublayer 2</li>
+</ul></li>
+<li>Sublayer 2
+<ul>
+<li>implement normalizaton using layernorm then take input from:
+<ul>
+<li>sublayer 1</li>
+<li>directly from Layer 1 (residual)</li>
+</ul></li>
+<li>combine info from both sources</li>
+<li>do normalization</li>
+<li>pass data on to Layer 3</li>
+</ul></li>
+</ul></li>
+<li>Third layer
+<ul>
+<li>Sublayer 1
+<ul>
+<li>implement fully connected feed forward network then take input from:
+<ul>
+<li>Layer 2</li>
+</ul></li>
+<li>pass data on to sublayer 2</li>
+</ul></li>
+<li>Sublayer 2
+<ul>
+<li>implement normalizaton using layernorm then take input from:
+<ul>
+<li>sublayer 1</li>
+<li>directly from Layer 2 (residual)</li>
+</ul></li>
+<li>pass data on to Output layer</li>
+</ul></li>
+</ul></li>
+<li>Output layer
+<ul>
+<li>implement Linear layer</li>
+<li>implement softmax</li>
+<li>output the prediction as probabilities</li>
+</ul></li>
+</ul>
+<p>But it can combines the input from previous token’s state with the input from encoder state plus the input from the feed-forward unit then generate the output</p>
+<section id="for-multi-head-attention" class="level4">
+<h4 data-anchor-id="for-multi-head-attention">For multi-head attention</h4>
+<p><img src="../AI/images/scaldot.png" class="img-fluid"></p>
+<p>It’s require a mask to extract only the relevance value and suppress the rest by convert them to <span class="math inline">\(- \infty\)</span> from the scaled dot-product of <span class="math inline">\(Q\)</span> and <span class="math inline">\(K\)</span> The mask also force the decoder to only search one way backward.</p>
+<p><span class="math display">\[mask(QK^T) = mask \Bigg ( \begin{bmatrix}
+   a_{11} &amp; a_{11} &amp; ... &amp; a_{1n} \\
+   a_{21} &amp; a_{22} &amp;... &amp; a_{2n} \\
+  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
+   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
+\end{bmatrix}\Bigg ) = \begin{bmatrix}
+   a_{11} &amp; - \infty &amp; ... &amp; - \infty \\
+   a_{21} &amp; a_{22} &amp;... &amp; - \infty\\
+  \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
+   a_{m1} &amp; a_{m2} &amp; ... &amp; a_{mn}
+\end{bmatrix}\]</span></p>
 
 
 </section>
