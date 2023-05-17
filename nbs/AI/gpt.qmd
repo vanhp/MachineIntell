@@ -31,5 +31,6 @@ A term that use to distinquist the Large Language Model from vanilla Language Mo
 GAI has a characteristic of the ability to generate language response similiar to human generate content.
 It's base on Transformer architect ans was trained on very large set unlabelled data set.
 
+It unique ability is to response to input prompt to regenerate content. It may be response to only text to generate text output *unimodel* or able to response to more than text e.g. text and image then generate either text or image or both
 
  

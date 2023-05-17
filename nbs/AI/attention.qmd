@@ -126,9 +126,13 @@ $$mask(QK^T) = mask \Bigg ( \begin{bmatrix}
 The encoder unit job is to map all the input tokens (word) to sequence of attented tokens to be later feed to the decoder.     
 These inputs tokens has been through embedding process and ready for the layer to extract information from.
 
+The encoder is a bidirectional search method since it perform both forward (suceeding) and backward (preceeding) search the input sequence for the token 
+
 
 ### Decoder
-The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn't know before hand what token(word) it's supposed to be.   
+The decoder unit role is to extract information only from all the tokens that preceeding the token that the model is expect to predict. Hence, the model doesn't know before hand what token(word) it's supposed to be. 
+
+The decoder start out with unidirectional of backward (preceeding) search due to the restriction of the masking that force it to only able to search the token sequence that already presented. However, subsequence layer namely the second layer may be able to perform bidirectional search since it has access to data from encoder which is an unrestic data.
 
 Operation  
 
