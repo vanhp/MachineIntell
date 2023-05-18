@@ -22,5 +22,29 @@ listing:
 page-layout: full
 ---
 
-## About Tree and Graph Data structures
 ![](../../../images/code3.png)
+
+## Einsum in Python
+
+[Einsum](https://en.wikipedia.org/wiki/Einstein_notation) stand for  Einstein summation convention with was invented by Albert Einstein.
+The convention help simplify the calculation of Tensor indices thus speedup the computation. Write more concise and efficient code especially in Python which not known for speed. It has more impact on Framework such as Pytorch that also generate GPU code.
+
+
+1. Transpose
+$$A_{ij} = A_{ji}$$
+
+2. Summation
+
+$$a = \sum_i{}\sum_j{A_{ij}} = A_{ij}$$
+
+3. Comlumn summation
+
+$$a_j = \sum_i{A_{ij}}$$
+
+4. Row summation
+
+$$a_i = \sum_{ij}{Aij}$$
+
+5. Matrix vector multiplication
+
+$$c_i = \sum_k{A_{ik}}b_k$$

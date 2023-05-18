@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Python/python.html</loc>
-    <lastmod>2023-05-18T08:01:02.359Z</lastmod>
+    <lastmod>2023-05-18T11:34:17.530Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/CC++/ccpp.html</loc>
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/about.html</loc>
-    <lastmod>2023-05-18T07:54:43.947Z</lastmod>
+    <lastmod>2023-05-18T08:14:14.086Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/blog/index.html</loc>
@@ -259,5 +259,9 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/AI/attention.html</loc>
     <lastmod>2023-05-17T11:21:00.597Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Python/einsum.html</loc>
+    <lastmod>2023-05-18T11:28:12.572Z</lastmod>
   </url>
 </urlset>
