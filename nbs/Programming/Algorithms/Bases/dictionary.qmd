@@ -23,4 +23,4 @@ page-layout: full
 ---
 
 ## About Dictionary Data structures
-![](../../../images/ai-pic7.jpg)
+![](../../../images/code3.png)

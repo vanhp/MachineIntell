@@ -11,7 +11,7 @@ about:
       text: Github
       href: https://www.phomsavanh.com/?fbclid=IwAR3E8FWNq0wNr0d5IjCVARaIr5AFmcO3a-Dm-Uq4A25bB7dwipWkydVkTQM
 ---
-![](./images/code1.jpg)
+![](./images/code3.png)
 
 I'm a professional developer working in Silicon Valley for over 20 years. I've been working with various High tech companies from big and small to startup and estasblihed.
 

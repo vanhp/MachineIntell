@@ -22,4 +22,4 @@ listing:
 page-layout: full
 ---
 
-![](../../images/code1.jpg)
+![](../../images/code3.png)
