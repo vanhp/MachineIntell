@@ -1029,15 +1029,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="mat-transpose" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
-<pre><code>numpy: tensor([[0.70, 0.45],
-        [0.80, 0.17],
-        [0.61, 0.65]]) 
-pytorch: tensor([[0.70, 0.45],
-        [0.80, 0.17],
-        [0.61, 0.65]])
-einsum: tensor([[0.70, 0.45],
-        [0.80, 0.17],
-        [0.61, 0.65]])</code></pre>
+<pre><code>numpy: tensor([[0.79, 1.00],
+        [0.54, 0.18],
+        [0.79, 0.81]]) 
+pytorch: tensor([[0.79, 1.00],
+        [0.54, 0.18],
+        [0.79, 0.81]])
+einsum: tensor([[0.79, 1.00],
+        [0.54, 0.18],
+        [0.79, 0.81]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-1" href="einsum.ipynb.html#mat-transpose">Source: einsum.ipynb</a></div>
@@ -1052,40 +1052,40 @@ einsum: tensor([[0.70, 0.45],
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="matrix-sum" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: 3.374739646911621 
-einsum: 3.374739646911621</code></pre>
+<pre><code>regular: 4.116492748260498 
+einsum: 4.116492748260498</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-2" href="einsum.ipynb.html#matrix-sum">Source: einsum.ipynb</a></div>
 </section>
-<section id="row-summation" class="level5">
-<h5 data-anchor-id="row-summation">3. Row summation</h5>
+<section id="row-summation-1xn" class="level5">
+<h5 data-anchor-id="row-summation-1xn">3. Row summation (1xn)</h5>
 <p><span class="math display">\[b_i = \sum_{j}{Aij}\]</span></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> torch.<span class="bu">sum</span>(X,dim<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;j'</span>,X)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;i'</span>,X)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>rows<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="row-summation" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([1.14, 0.97, 1.26]) 
-einsum: tensor([1.14, 0.97, 1.26])</code></pre>
+<pre><code>regular: tensor([1.79, 0.72, 1.61]) 
+einsum: tensor([2.12, 2.00])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-3" href="einsum.ipynb.html#row-summation">Source: einsum.ipynb</a></div>
 </section>
-<section id="comlumn-summation" class="level5">
-<h5 data-anchor-id="comlumn-summation">4. Comlumn summation</h5>
+<section id="comlumn-summation-mx1" class="level5">
+<h5 data-anchor-id="comlumn-summation-mx1">4. Comlumn summation (mx1)</h5>
 <p><span class="math display">\[b_j = \sum_i{A_{ij}}\]</span></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c_col <span class="op">=</span> torch.<span class="bu">sum</span>(X,dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;i'</span>,X)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;j'</span>,X)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_col<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="column-summation" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([2.11, 1.27]) 
-einsum: tensor([2.11, 1.27])</code></pre>
+<pre><code>regular: tensor([2.12, 2.00]) 
+einsum: tensor([1.79, 0.72, 1.61])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-4" href="einsum.ipynb.html#column-summation">Source: einsum.ipynb</a></div>
@@ -1102,8 +1102,8 @@ einsum: tensor([2.11, 1.27])</code></pre>
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="matrix-vector" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([0.45]) 
-einsum: tensor([0.45])</code></pre>
+<pre><code>regular: tensor([0.55]) 
+einsum: tensor([0.55])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-5" href="einsum.ipynb.html#matrix-vector">Source: einsum.ipynb</a></div>
@@ -1144,10 +1144,10 @@ einsum: tensor([[2., 2., 2.],
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="dot-product" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
-<pre><code>c: tensor([0.43, 0.15, 0.87]), c: torch.Size([3])
-c_dot: 0.47965747117996216
-regular: 0.47965747117996216 
-  einsum: 0.47965747117996216</code></pre>
+<pre><code>c: tensor([0.86, 0.45, 0.15]), c: torch.Size([3])
+c_dot: 0.3098883330821991
+regular: 0.3098883330821991 
+  einsum: 0.3098883330821991</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-7" href="einsum.ipynb.html#dot-product">Source: einsum.ipynb</a></div>
@@ -1163,12 +1163,12 @@ regular: 0.47965747117996216
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="hadamard-product" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([[ 0.10,  0.67],
-        [-0.81,  0.05],
-        [-0.75, -0.17]]) 
-  einsum: tensor([[ 0.10,  0.67],
-        [-0.81,  0.05],
-        [-0.75, -0.17]])</code></pre>
+<pre><code>regular: tensor([[ 1.19, -1.25],
+        [-0.24, -0.40],
+        [ 0.41,  0.26]]) 
+  einsum: tensor([[ 1.19, -1.25],
+        [-0.24, -0.40],
+        [ 0.41,  0.26]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-8" href="einsum.ipynb.html#hadamard-product">Source: einsum.ipynb</a></div>
@@ -1187,14 +1187,14 @@ regular: 0.47965747117996216
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="outer-product" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-stdout">
-<pre><code>x: tensor([0.43, 0.57, 0.64]), x: torch.Size([3])
-y: tensor([0.28, 0.29, 0.36, 0.29, 0.80]), y: torch.Size([5])
-regular: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
-        [0.16, 0.16, 0.21, 0.16, 0.45],
-        [0.18, 0.19, 0.23, 0.18, 0.51]]) 
-  einsum: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
-        [0.16, 0.16, 0.21, 0.16, 0.45],
-        [0.18, 0.19, 0.23, 0.18, 0.51]])</code></pre>
+<pre><code>x: tensor([0.46, 0.59, 0.35]), x: torch.Size([3])
+y: tensor([0.44, 0.14, 0.54, 0.87, 0.98]), y: torch.Size([5])
+regular: tensor([[0.20, 0.06, 0.25, 0.40, 0.45],
+        [0.26, 0.08, 0.32, 0.51, 0.58],
+        [0.15, 0.05, 0.19, 0.30, 0.34]]) 
+  einsum: tensor([[0.20, 0.06, 0.25, 0.40, 0.45],
+        [0.26, 0.08, 0.32, 0.51, 0.58],
+        [0.15, 0.05, 0.19, 0.30, 0.34]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-9" href="einsum.ipynb.html#outer-product">Source: einsum.ipynb</a></div>
@@ -1213,24 +1213,24 @@ regular: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="batch-matrix" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([[[1.50, 2.31, 2.54],
-         [0.58, 0.66, 0.85]],
-        [[1.78, 2.65, 1.25],
-         [0.62, 1.06, 0.59]],
-        [[0.84, 1.63, 1.22],
-         [0.75, 1.63, 1.19]]])
- numpy: tensor([[[1.50, 2.31, 2.54],
-         [0.58, 0.66, 0.85]],
-        [[1.78, 2.65, 1.25],
-         [0.62, 1.06, 0.59]],
-        [[0.84, 1.63, 1.22],
-         [0.75, 1.63, 1.19]]]) 
-  einsum: tensor([[[1.50, 2.31, 2.54],
-         [0.58, 0.66, 0.85]],
-        [[1.78, 2.65, 1.25],
-         [0.62, 1.06, 0.59]],
-        [[0.84, 1.63, 1.22],
-         [0.75, 1.63, 1.19]]])</code></pre>
+<pre><code>regular: tensor([[[1.26, 1.00, 0.96],
+         [1.26, 1.06, 1.14]],
+        [[2.02, 1.92, 1.71],
+         [2.51, 3.09, 2.58]],
+        [[0.92, 1.33, 0.85],
+         [1.07, 1.06, 1.05]]])
+ numpy: tensor([[[1.26, 1.00, 0.96],
+         [1.26, 1.06, 1.14]],
+        [[2.02, 1.92, 1.71],
+         [2.51, 3.09, 2.58]],
+        [[0.92, 1.33, 0.85],
+         [1.07, 1.06, 1.05]]]) 
+  einsum: tensor([[[1.26, 1.00, 0.96],
+         [1.26, 1.06, 1.14]],
+        [[2.02, 1.92, 1.71],
+         [2.51, 3.09, 2.58]],
+        [[0.92, 1.33, 0.85],
+         [1.07, 1.06, 1.05]]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-10" href="einsum.ipynb.html#batch-matrix">Source: einsum.ipynb</a></div>
@@ -1250,12 +1250,12 @@ regular: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="diag-mat" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-stdout">
-<pre><code>T: tensor([[0.53, 0.41, 0.31],
-        [0.07, 0.23, 0.83],
-        [0.98, 0.96, 0.52]]) 
+<pre><code>T: tensor([[0.93, 0.96, 0.02],
+        [0.80, 0.28, 0.04],
+        [0.70, 0.90, 0.31]]) 
 T shape: torch.Size([3, 3])
-regular: tensor([0.53, 0.23, 0.52]) 
-  einsum: tensor([0.53, 0.23, 0.52])</code></pre>
+regular: tensor([0.93, 0.28, 0.31]) 
+  einsum: tensor([0.93, 0.28, 0.31])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-11" href="einsum.ipynb.html#diag-mat">Source: einsum.ipynb</a></div>
@@ -1270,11 +1270,11 @@ regular: tensor([0.53, 0.23, 0.52])
 <div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
 <div id="trace" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-stdout">
-<pre><code>T: tensor([[0.53, 0.41, 0.31],
-        [0.07, 0.23, 0.83],
-        [0.98, 0.96, 0.52]])
-regular: 1.275879144668579 
-  einsum: 1.275879144668579</code></pre>
+<pre><code>T: tensor([[0.93, 0.96, 0.02],
+        [0.80, 0.28, 0.04],
+        [0.70, 0.90, 0.31]])
+regular: 1.5217688083648682 
+  einsum: 1.5217686891555786</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-12" href="einsum.ipynb.html#trace">Source: einsum.ipynb</a></div>
@@ -1293,10 +1293,10 @@ regular: 1.275879144668579
 <div id="contraction" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-stdout">
 <pre><code>value: torch.Size([3, 4, 2]) value2: torch.Size([4, 3, 6])
-regular: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
-        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]]) 
-  einsum: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
-        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]])</code></pre>
+regular: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
+        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]]) 
+  einsum: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
+        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-13" href="einsum.ipynb.html#contraction">Source: einsum.ipynb</a></div>
@@ -1313,10 +1313,10 @@ regular: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
 <div id="contraction" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-stdout">
 <pre><code>value: torch.Size([3, 4, 2]) value2: torch.Size([4, 3, 6])
-regular: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
-        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]]) 
-  einsum: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
-        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]])</code></pre>
+regular: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
+        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]]) 
+  einsum: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
+        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]])</code></pre>
 </div>
 </div>
 <a class="quarto-notebook-link" id="nblink-14" href="einsum.ipynb.html#contraction">Source: einsum.ipynb</a></div>

@@ -56,23 +56,23 @@ print(f'regular: {cma} \neinsum: {cein}')
 ```
 {{< embed einsum.ipynb#matrix-sum echo=true >}}
 
-##### 3. Row summation
+##### 3. Row summation (1xn)
 
 $$b_i = \sum_{j}{Aij}$$
 ```python
 rows = torch.sum(X,dim=0)
-cein = torch.einsum('ij->j',X)
+cein = torch.einsum('ij->i',X)
 
 print(f'regular: {rows} \neinsum: {cein}')
 ```
 {{< embed einsum.ipynb#row-summation echo=true >}}
 
-##### 4. Comlumn summation
+##### 4. Comlumn summation (mx1)
 
 $$b_j = \sum_i{A_{ij}}$$
 ```python
 c_col = torch.sum(X,dim=1)
-cein = torch.einsum('ij->i',X)
+cein = torch.einsum('ij->j',X)
 
 print(f'regular: {c_col} \neinsum: {cein}')
 ```
