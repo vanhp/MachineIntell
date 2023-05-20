@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -963,7 +997,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#einsum-in-python" id="toc-einsum-in-python" class="nav-link active" data-scroll-target="#einsum-in-python">Einsum in Python</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="einsum.ipynb.html"><i class="bi bi-journal-code"></i>einsum.ipynb</a></li></ul></div></nav>
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
 <div class="quarto-about-marquee column-body">
@@ -983,26 +1017,310 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="../../../images/code3.png" class="img-fluid"></p>
 <section id="einsum-in-python" class="level2">
 <h2 data-anchor-id="einsum-in-python">Einsum in Python</h2>
-<p><a href="https://en.wikipedia.org/wiki/Einstein_notation">Einsum</a> stand for Einstein summation convention with was invented by Albert Einstein. The convention help simplify the calculation of Tensor indices thus speedup the computation. Write more concise and efficient code especially in Python which not known for speed. It has more impact on Framework such as Pytorch that also generate GPU code.</p>
-<ol type="1">
-<li><p>Transpose <span class="math display">\[A_{ij} = A_{ji}\]</span></p></li>
-<li><p>Summation</p></li>
-</ol>
-<p><span class="math display">\[a = \sum_i{}\sum_j{A_{ij}} = A_{ij}\]</span></p>
-<ol start="3" type="1">
-<li>Comlumn summation</li>
-</ol>
-<p><span class="math display">\[a_j = \sum_i{A_{ij}}\]</span></p>
-<ol start="4" type="1">
-<li>Row summation</li>
-</ol>
-<p><span class="math display">\[a_i = \sum_{ij}{Aij}\]</span></p>
-<ol start="5" type="1">
-<li>Matrix vector multiplication</li>
-</ol>
+<p><a href="https://en.wikipedia.org/wiki/Einstein_notation">Einsum</a> stand for Einstein summation convention with was invented by Albert Einstein. The convention help simplify the calculation of Tensor indices thus speedup the computation. Write more concise and efficient code especially in Python which not known for speed. It has more impact on Framework such as Pytorch that also generate GPU code. as describe by <a href="https://rockt.github.io/2018/04/30/einsum">Tim Rocktaschel</a></p>
+<p>Here sample code for Tensor calculation using Numpy, Pytorch, einsum where available</p>
+<section id="transpose" class="level5">
+<h5 data-anchor-id="transpose">1. Transpose</h5>
+<p><span class="math display">\[A_{ij} = B_{ji}\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>c_ntp <span class="op">=</span> np.transpose(X)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>c_tp <span class="op">=</span> torch.transpose(X,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;ji'</span>,X)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'numpy: </span><span class="sc">{</span>c_ntp<span class="sc">}</span><span class="ch">\n</span><span class="ss"> pytorch: </span><span class="sc">{</span>c_tp<span class="sc">}</span><span class="ch">\n</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="mat-transpose" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-stdout">
+<pre><code>numpy: tensor([[0.70, 0.45],
+        [0.80, 0.17],
+        [0.61, 0.65]]) 
+pytorch: tensor([[0.70, 0.45],
+        [0.80, 0.17],
+        [0.61, 0.65]])
+einsum: tensor([[0.70, 0.45],
+        [0.80, 0.17],
+        [0.61, 0.65]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="einsum.ipynb.html#mat-transpose">Source: einsum.ipynb</a></div>
+</section>
+<section id="summation-of-matrix" class="level5">
+<h5 data-anchor-id="summation-of-matrix">2. Summation of matrix</h5>
+<p><span class="math display">\[b = \sum_i{}\sum_j{A_{ij}} = A_{ij}\]</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cma <span class="op">=</span> torch.<span class="bu">sum</span>(X)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;'</span>,X)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cma<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="matrix-sum" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: 3.374739646911621 
+einsum: 3.374739646911621</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-2" href="einsum.ipynb.html#matrix-sum">Source: einsum.ipynb</a></div>
+</section>
+<section id="row-summation" class="level5">
+<h5 data-anchor-id="row-summation">3. Row summation</h5>
+<p><span class="math display">\[b_i = \sum_{j}{Aij}\]</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> torch.<span class="bu">sum</span>(X,dim<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;j'</span>,X)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>rows<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="row-summation" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([1.14, 0.97, 1.26]) 
+einsum: tensor([1.14, 0.97, 1.26])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-3" href="einsum.ipynb.html#row-summation">Source: einsum.ipynb</a></div>
+</section>
+<section id="comlumn-summation" class="level5">
+<h5 data-anchor-id="comlumn-summation">4. Comlumn summation</h5>
+<p><span class="math display">\[b_j = \sum_i{A_{ij}}\]</span></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c_col <span class="op">=</span> torch.<span class="bu">sum</span>(X,dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij-&gt;i'</span>,X)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_col<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="column-summation" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([2.11, 1.27]) 
+einsum: tensor([2.11, 1.27])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-4" href="einsum.ipynb.html#column-summation">Source: einsum.ipynb</a></div>
+</section>
+<section id="matrix-vector-multiplication" class="level5">
+<h5 data-anchor-id="matrix-vector-multiplication">5. Matrix-vector multiplication</h5>
 <p><span class="math display">\[c_i = \sum_k{A_{ik}}b_k\]</span></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> torch.rand((<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> torch.rand((<span class="dv">3</span>,))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>cmm <span class="op">=</span> torch.matmul(L,M)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij,j-&gt;i'</span>,L,M)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="matrix-vector" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([0.45]) 
+einsum: tensor([0.45])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-5" href="einsum.ipynb.html#matrix-vector">Source: einsum.ipynb</a></div>
+</section>
+<section id="matrix-matrix-multiplication" class="level5">
+<h5 data-anchor-id="matrix-matrix-multiplication">6. Matrix-Matrix multiplication</h5>
+<p><span class="math display">\[C_{ij}= \sum_k{}A_{ik}{B_{kj}}\]</span></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.ones((<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.ones((<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cmm <span class="op">=</span> torch.matmul(a,b)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij,jl-&gt;il'</span>,a,b)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="matrix-matrix" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([[2., 2., 2.],
+        [2., 2., 2.],
+        [2., 2., 2.]]) 
+einsum: tensor([[2., 2., 2.],
+        [2., 2., 2.],
+        [2., 2., 2.]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-6" href="einsum.ipynb.html#matrix-matrix">Source: einsum.ipynb</a></div>
+</section>
+<section id="dot-product-inner-product" class="level5">
+<h5 data-anchor-id="dot-product-inner-product">7. Dot product (inner product)</h5>
+<p>vector: <span class="math display">\[c = \sum_{i}{a_i}{b_i}\]</span> matrix: <span class="math display">\[d = \sum_i{}\sum_j{A_{ij} B_{ij}}\]</span></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> torch.rand((<span class="dv">3</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> torch.rand((<span class="dv">3</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>c_dot <span class="op">=</span> torch.dot(c,d)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'i,i-&gt;'</span>,c,d)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'c: </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">, c: </span><span class="sc">{</span>c<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'c_dot: </span><span class="sc">{</span>c_dot<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_dot<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="dot-product" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>c: tensor([0.43, 0.15, 0.87]), c: torch.Size([3])
+c_dot: 0.47965747117996216
+regular: 0.47965747117996216 
+  einsum: 0.47965747117996216</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-7" href="einsum.ipynb.html#dot-product">Source: einsum.ipynb</a></div>
+</section>
+<section id="hadamard-product-elementwise-multiplication-without-add" class="level5">
+<h5 data-anchor-id="hadamard-product-elementwise-multiplication-without-add">8. Hadamard Product (elementwise multiplication without add)</h5>
+<p><span class="math display">\[C_{ij} = A_{ij}B_{ij}\]</span></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> torch.randn((<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> torch.randn((<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>cmm <span class="op">=</span> c <span class="op">*</span> d</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij,ij-&gt;ij'</span>,c,d)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="hadamard-product" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([[ 0.10,  0.67],
+        [-0.81,  0.05],
+        [-0.75, -0.17]]) 
+  einsum: tensor([[ 0.10,  0.67],
+        [-0.81,  0.05],
+        [-0.75, -0.17]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-8" href="einsum.ipynb.html#hadamard-product">Source: einsum.ipynb</a></div>
+</section>
+<section id="outer-product-vector-multiply-vector" class="level5">
+<h5 data-anchor-id="outer-product-vector-multiply-vector">9. Outer Product (vector multiply vector)</h5>
+<p><span class="math display">\[C_{ij} = a_{i}b_{j}\]</span></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand(<span class="dv">3</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.rand(<span class="dv">5</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'x: </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">, x: </span><span class="sc">{</span>x<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'y: </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">, y: </span><span class="sc">{</span>y<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>c_outer <span class="op">=</span> torch.outer(x,y)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'i,j-&gt;ij'</span>,x,y)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_outer<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="outer-product" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>x: tensor([0.43, 0.57, 0.64]), x: torch.Size([3])
+y: tensor([0.28, 0.29, 0.36, 0.29, 0.80]), y: torch.Size([5])
+regular: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
+        [0.16, 0.16, 0.21, 0.16, 0.45],
+        [0.18, 0.19, 0.23, 0.18, 0.51]]) 
+  einsum: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
+        [0.16, 0.16, 0.21, 0.16, 0.45],
+        [0.18, 0.19, 0.23, 0.18, 0.51]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-9" href="einsum.ipynb.html#outer-product">Source: einsum.ipynb</a></div>
+</section>
+<section id="batch-matrix-multiplication" class="level5">
+<h5 data-anchor-id="batch-matrix-multiplication">10. batch matrix multiplication</h5>
+<p><span class="math display">\[C_{ijl}= \sum_k{}A_{ijk}{B_{ikl}}\]</span></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cmn <span class="op">=</span> np.matmul(R,S)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>cmm <span class="op">=</span> torch.matmul(R,S)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ijk,ikl-&gt;ijl'</span>,R,S)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ch">\n</span><span class="ss"> numpy: </span><span class="sc">{</span>cmn<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="batch-matrix" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-stdout">
+<pre><code>regular: tensor([[[1.50, 2.31, 2.54],
+         [0.58, 0.66, 0.85]],
+        [[1.78, 2.65, 1.25],
+         [0.62, 1.06, 0.59]],
+        [[0.84, 1.63, 1.22],
+         [0.75, 1.63, 1.19]]])
+ numpy: tensor([[[1.50, 2.31, 2.54],
+         [0.58, 0.66, 0.85]],
+        [[1.78, 2.65, 1.25],
+         [0.62, 1.06, 0.59]],
+        [[0.84, 1.63, 1.22],
+         [0.75, 1.63, 1.19]]]) 
+  einsum: tensor([[[1.50, 2.31, 2.54],
+         [0.58, 0.66, 0.85]],
+        [[1.78, 2.65, 1.25],
+         [0.62, 1.06, 0.59]],
+        [[0.84, 1.63, 1.22],
+         [0.75, 1.63, 1.19]]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-10" href="einsum.ipynb.html#batch-matrix">Source: einsum.ipynb</a></div>
+</section>
+<section id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix" class="level5">
+<h5 data-anchor-id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix">11. Diagonal Matrix (return only the diagonal value of a matrix)</h5>
+<p><span class="math display">\[A_{e_j} = \sum_i{}a_{i,j}e_i\]</span></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ii-&gt;i'</span>,T)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'T: </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">T shape: </span><span class="sc">{</span>T<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>c_diag <span class="op">=</span> torch.diag(T)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_diag<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="diag-mat" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-stdout">
+<pre><code>T: tensor([[0.53, 0.41, 0.31],
+        [0.07, 0.23, 0.83],
+        [0.98, 0.96, 0.52]]) 
+T shape: torch.Size([3, 3])
+regular: tensor([0.53, 0.23, 0.52]) 
+  einsum: tensor([0.53, 0.23, 0.52])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-11" href="einsum.ipynb.html#diag-mat">Source: einsum.ipynb</a></div>
+</section>
+<section id="trace-take-sum-along-diagonal-axis-square-matrix-only" class="level5">
+<h5 data-anchor-id="trace-take-sum-along-diagonal-axis-square-matrix-only">12. Trace (take sum along diagonal axis; square matrix only)</h5>
+<p><span class="math display">\[tr(A)= \sum_i{a_{ii}}\]</span></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>c_trace <span class="op">=</span> torch.trace(T)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ii-&gt;'</span>,T)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'T: </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_trace<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="trace" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-stdout">
+<pre><code>T: tensor([[0.53, 0.41, 0.31],
+        [0.07, 0.23, 0.83],
+        [0.98, 0.96, 0.52]])
+regular: 1.275879144668579 
+  einsum: 1.275879144668579</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-12" href="einsum.ipynb.html#trace">Source: einsum.ipynb</a></div>
+</section>
+<section id="tensor-contraction" class="level5">
+<h5 data-anchor-id="tensor-contraction">13. Tensor contraction</h5>
+<p><span class="math display">\[C_{ilmno} = \sum_j{}\sum_k{A_{ijkl}{B_{mnjok}}}\]</span></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> torch.rand((<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> torch.rand((<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'value: </span><span class="sc">{</span>o<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> value2: </span><span class="sc">{</span>p<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>c_tdot <span class="op">=</span> torch.tensordot(o,p,dims<span class="op">=</span>([<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ijk,jil-&gt;kl'</span>,o,p)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_tdot<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="contraction" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-stdout">
+<pre><code>value: torch.Size([3, 4, 2]) value2: torch.Size([4, 3, 6])
+regular: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
+        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]]) 
+  einsum: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
+        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-13" href="einsum.ipynb.html#contraction">Source: einsum.ipynb</a></div>
+</section>
+<section id="bilinear-transformation" class="level5">
+<h5 data-anchor-id="bilinear-transformation">14. Bilinear Transformation</h5>
+<p><span class="math display">\[C_{im} = \sum_j{}\sum_o{A_{ij}{B_{mjo}}C_{io}}\]</span></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.rand(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.rand(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> torch.rand(<span class="dv">2</span>,<span class="dv">7</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'ik,jkl,il-&gt;ij'</span>,[a,b,c])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div data-notebook="einsum.ipynb" data-notebook-title="My Notes">
+<div id="contraction" class="cell" data-execution_count="27">
+<div class="cell-output cell-output-stdout">
+<pre><code>value: torch.Size([3, 4, 2]) value2: torch.Size([4, 3, 6])
+regular: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
+        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]]) 
+  einsum: tensor([[3.03, 3.33, 3.06, 2.75, 4.21, 2.40],
+        [3.15, 2.79, 2.38, 2.85, 3.71, 2.13]])</code></pre>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-14" href="einsum.ipynb.html#contraction">Source: einsum.ipynb</a></div>
 
 
+</section>
 </section>
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
