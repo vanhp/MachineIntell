@@ -161,8 +161,10 @@ print(f'regular: {cmm}\n numpy: {cmn} \n  einsum: {cein}')
 ```
 {{< embed einsum.ipynb#batch-matrix echo=true >}}
 
-##### 11. Diagonal Matrix (return only the diagonal value of a matrix)
-$$A_{e_j} = \sum_i{}a_{i,j}e_i$$
+##### 11. Diagonal Matrix (return only the diagonal value of a matrix where all other value are 0)
+$$
+\forall i,j \in \{1, 2, \ldots, n\}, i \ne j \implies d_{i,j} = 0
+$$
 
 ```python
 T = torch.rand(3,3)

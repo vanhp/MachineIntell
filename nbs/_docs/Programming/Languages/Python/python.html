@@ -1235,9 +1235,11 @@ regular: tensor([[0.12, 0.13, 0.16, 0.13, 0.35],
 </div>
 <a class="quarto-notebook-link" id="nblink-10" href="einsum.ipynb.html#batch-matrix">Source: einsum.ipynb</a></div>
 </section>
-<section id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix" class="level5">
-<h5 data-anchor-id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix">11. Diagonal Matrix (return only the diagonal value of a matrix)</h5>
-<p><span class="math display">\[A_{e_j} = \sum_i{}a_{i,j}e_i\]</span></p>
+<section id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix-where-all-other-value-are-0" class="level5">
+<h5 data-anchor-id="diagonal-matrix-return-only-the-diagonal-value-of-a-matrix-where-all-other-value-are-0">11. Diagonal Matrix (return only the diagonal value of a matrix where all other value are 0)</h5>
+<p><span class="math display">\[
+\forall i,j \in \{1, 2, \ldots, n\}, i \ne j \implies d_{i,j} = 0
+\]</span></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ii-&gt;i'</span>,T)</span>
