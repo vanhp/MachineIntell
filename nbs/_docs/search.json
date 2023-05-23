@@ -977,7 +977,7 @@
     "href": "Programming/Languages/Julia/julia.html",
     "title": "Julia",
     "section": "",
-    "text": "Einsum in Julia\n\n\nCode\nusing Plots, OMEinsum, LinearAlgebra\n\nplot(sin, \n     x-&gt;sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))\n\n\n\n\n\nFigure 1: Parametric Plots\n\n\n\n\n\n\nCode\nusing Plots, OMEinsum, LinearAlgebra\n\nOMEinsum.asarray(a::Number, ::Diagonal) = fill(a,())\nein\"ij -&gt; \"(Diagonal([1,2,3]))\n\nfunction OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{&lt;:Diagonal}, size_dict::Dict)\n    length(iy) == 1 && return diag(xs[1])\n    return sum(diag(xs[1]))\nend\n\nein\"ij -&gt; i\"(Diagonal([1,2,3]))\n\n\n3-element Vector{Int64}:\n 1\n 2\n 3"
+    "text": "Here is the newest einsum call OMEinsum.jl package in Julia. It’s implement using about 20 lines of Julia code! Amazing."
   },
   {
     "objectID": "Programming/Languages/Julia/julia.html#about-tree-and-graph-data-structures",
@@ -1005,6 +1005,13 @@
     "href": "Programming/Languages/Julia/julia.html#einsum-in-julia",
     "title": "Julia",
     "section": "Einsum in Julia",
-    "text": "Einsum in Julia\n\n\nCode\nusing Plots, OMEinsum, LinearAlgebra, SymEngine\n\nplot(sin, \n     x-&gt;sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))\n\n\n\n\n\nFigure 1: Parametric Plots\n\n\n\n\n\n\nCode\nusing OMEinsum, LinearAlgebra\n\nOMEinsum.asarray(a::Number, ::Diagonal) = fill(a,())\nein\"ij -&gt; \"(Diagonal([1,2,3]))\n\nfunction OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{&lt;:Diagonal}, size_dict::Dict)\n    length(iy) == 1 && return diag(xs[1])\n    return sum(diag(xs[1]))\nend\n\nein\"ij -&gt; i\"(Diagonal([1,2,3]))\n\ncatty = fill(Basic(:🐱), 2, 2)\nfish = fill(Basic(:🐟), 2, 3, 2)\nsnake = fill(Basic(:🐍), 3, 3)\nmedicine = ein\"ij,jki,kk-&gt;k\"(catty, fish, snake)\n\n\n3-element Vector{Basic}:\n 4*🐱*🐍*🐟\n 4*🐱*🐍*🐟\n 4*🐱*🐍*🐟"
+    "text": "Einsum in Julia\n\n\nCode\nusing Plots, OMEinsum, LinearAlgebra, SymEngine\n\nplot(sin, \n     x-&gt;sin(2x), \n     0, \n     2π, \n     leg=false, \n     fill=(0,:lavender))\n\n\n\n\n\nFigure 1: Parametric Plots\n\n\n\n\n\n\nCode\nusing OMEinsum, LinearAlgebra\n\nOMEinsum.asarray(a::Number, ::Diagonal) = fill(a,())\nein\"ij -&gt; \"(Diagonal([1,2,3]))\n\nfunction OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{&lt;:Diagonal}, size_dict::Dict)\n    length(iy) == 1 && return diag(xs[1])\n    return sum(diag(xs[1]))\nend\n\n\n\n\nCode\nein\"ij -&gt; i\"(Diagonal([1,2,3]))\n\n\n3-element Vector{Int64}:\n 1\n 2\n 3\n\n\n\n\nCode\ncatty = fill(Basic(:🐱), 2, 2)\n\n\n2×2 Matrix{Basic}:\n 🐱  🐱\n 🐱  🐱\n\n\n\n\nCode\nfish = fill(Basic(:🐟), 2, 3, 2)\n\n\n2×3×2 Array{Basic, 3}:\n[:, :, 1] =\n 🐟  🐟  🐟\n 🐟  🐟  🐟\n[:, :, 2] =\n 🐟  🐟  🐟\n 🐟  🐟  🐟\n\n\n\n\nCode\nsnake = fill(Basic(:🐍), 3, 3)\n\n\n3×3 Matrix{Basic}:\n 🐍  🐍  🐍\n 🐍  🐍  🐍\n 🐍  🐍  🐍\n\n\n\n\nCode\nmedicine = ein\"ij,jki,kk-&gt;k\"(catty, fish, snake)\n\n\n3-element Vector{Basic}:\n 4*🐱*🐍*🐟\n 4*🐱*🐍*🐟\n 4*🐱*🐍*🐟\n\n\n\n\nCode\nein\"ik,kj -&gt; ij\"(catty, catty) # multiply two matrices `a` and `b`\n\n\n2×2 Matrix{Basic}:\n 2*🐱^2  2*🐱^2\n 2*🐱^2  2*🐱^2\n\n\n\n\nCode\nein\"-&gt;ii\"(asarray(snake[1,1]), size_info=Dict('i'=&gt;5)) # get 5 x 5 identity matrix\n\n\n5×5 Matrix{Basic}:\n 🐍   0   0   0   0\n  0  🐍   0   0   0\n  0   0  🐍   0   0\n  0   0   0  🐍   0\n  0   0   0   0  🐍"
+  },
+  {
+    "objectID": "Programming/Languages/Julia/julia.html#einstein-summation-in-julia",
+    "href": "Programming/Languages/Julia/julia.html#einstein-summation-in-julia",
+    "title": "Julia",
+    "section": "",
+    "text": "Here is the newest einsum call OMEinsum.jl package in Julia. It’s implement using about 20 lines of Julia code! Amazing."
   }
 ]

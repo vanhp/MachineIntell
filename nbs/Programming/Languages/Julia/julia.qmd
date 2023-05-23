@@ -21,14 +21,19 @@ listing:
 format:
   html:
     code-fold: true
-
+execute: 
+  cache: true
+  
 jupyter: julia-1.9
 
 page-layout: full
 ---
 
-## About Tree and Graph Data structures
+## Einstein Summation in Julia
 ![](../../../images/code3.png)
+
+Here is the newest einsum call [OMEinsum.jl](https://github.com/under-Peter/OMEinsum.jl) package in Julia. It's implement using about 20 lines of Julia code! Amazing.
+
 
 ## Einsum in Julia
 
@@ -58,15 +63,41 @@ function OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{<:Diagonal}, size_di
     length(iy) == 1 && return diag(xs[1])
     return sum(diag(xs[1]))
 end
+```
+```{julia}
+
 
 ein"ij -> i"(Diagonal([1,2,3]))
 
+```
+```{julia}
+
+
+```
+
+```{julia}
 catty = fill(Basic(:🐱), 2, 2)
+```
+
+```{julia}
 fish = fill(Basic(:🐟), 2, 3, 2)
+```
+
+```{julia}
 snake = fill(Basic(:🐍), 3, 3)
+```
+
+```{julia}
+
 medicine = ein"ij,jki,kk->k"(catty, fish, snake)
+```
 
+```{julia}
+ein"ik,kj -> ij"(catty, catty) # multiply two matrices `a` and `b`
+```
 
+```{julia}
 
+ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
 
 ```
