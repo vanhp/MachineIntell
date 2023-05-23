@@ -23,7 +23,7 @@ format:
     code-fold: true
 execute: 
   cache: true
-  
+
 jupyter: julia-1.9
 
 page-layout: full
@@ -35,7 +35,7 @@ page-layout: full
 Here is the newest einsum call [OMEinsum.jl](https://github.com/under-Peter/OMEinsum.jl) package in Julia. It's implement using about 20 lines of Julia code! Amazing.
 
 
-## Einsum in Julia
+## Einsum 
 
 
 ```{julia}
@@ -101,3 +101,4 @@ ein"ik,kj -> ij"(catty, catty) # multiply two matrices `a` and `b`
 ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
 
 ```
+
