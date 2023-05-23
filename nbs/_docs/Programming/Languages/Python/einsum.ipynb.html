@@ -1038,17 +1038,20 @@
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A,B,M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>(array([[0.27694249, 0.03753468, 0.16941665, 0.41728865, 0.43369869],
-        [0.4551329 , 0.66864497, 0.73754665, 0.24471807, 0.54335339],
-        [0.5047892 , 0.14020222, 0.2570132 , 0.26095409, 0.45562167]]),
- array([[0.16552844, 0.30523156],
-        [0.36920557, 0.96746229],
-        [0.795069  , 0.27568949],
-        [0.85025972, 0.27588196],
-        [0.5204543 , 0.71868638]]),
- array([[1.14010898e-313, 0.00000000e+000],
-        [2.22809558e-312, 2.14321575e-312],
-        [2.46151512e-312, 2.41907520e-312]]))</code></pre>
+<pre><code>(array([[6.82759644e-01, 3.32325362e-01, 5.10214353e-01, 8.76891766e-01,
+         1.72299180e-01],
+        [5.33438050e-01, 7.25523710e-01, 8.54886776e-01, 3.96140734e-01,
+         3.56604238e-01],
+        [5.45349948e-05, 8.97919640e-01, 1.86133084e-01, 8.73382052e-01,
+         1.11479305e-01]]),
+ array([[0.18449366, 0.69112411],
+        [0.68456084, 0.92427429],
+        [0.39745901, 0.59819685],
+        [0.53124429, 0.82624474],
+        [0.37620928, 0.55749668]]),
+ array([[1.13621302e-313, 0.00000000e+000],
+        [6.92770534e-310, 6.92770729e-310],
+        [6.92770292e-310, 6.92770291e-310]]))</code></pre>
 </div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell" data-execution_count="4">
@@ -1068,9 +1071,9 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matrix is: </span><span class="sc">{</span>M<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>the matrix is: [[0.77 0.59]
- [1.4  1.45]
- [0.8  0.76]]</code></pre>
+<pre><code>the matrix is: [[1.09 1.9 ]
+ [1.28 2.08]
+ [1.19 1.73]]</code></pre>
 </div>
 </div></div>
 <p>Using the Eisum method</p>
@@ -1082,9 +1085,9 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matix is : </span><span class="sc">{</span>M1<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>the matix is : [[0.77 0.59]
- [1.4  1.45]
- [0.8  0.76]]</code></pre>
+<pre><code>the matix is : [[1.09 1.9 ]
+ [1.28 2.08]
+ [1.19 1.73]]</code></pre>
 </div>
 </div></div>
 </section>
@@ -1105,11 +1108,11 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matrix is: </span><span class="ch">\n</span><span class="sc">{</span>out<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>the matrix is: 
-[[0.15 0.25 0.21]
- [0.24 0.4  0.33]
- [0.22 0.35 0.29]
- [0.16 0.26 0.21]
- [0.44 0.73 0.61]]</code></pre>
+[[0.32 0.69 0.7 ]
+ [0.37 0.8  0.8 ]
+ [0.28 0.61 0.61]
+ [0.37 0.79 0.79]
+ [0.17 0.36 0.36]]</code></pre>
 </div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell" data-execution_count="8">
@@ -1123,11 +1126,11 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matrix is: </span><span class="ch">\n</span><span class="sc">{</span>out<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>the matrix is: 
-[[0.15 0.25 0.21]
- [0.24 0.4  0.33]
- [0.22 0.35 0.29]
- [0.16 0.26 0.21]
- [0.44 0.73 0.61]]</code></pre>
+[[0.32 0.69 0.7 ]
+ [0.37 0.8  0.8 ]
+ [0.28 0.61 0.61]
+ [0.37 0.79 0.79]
+ [0.17 0.36 0.36]]</code></pre>
 </div>
 </div></div>
 </section>
@@ -1150,7 +1153,10 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> np.ones((<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    E <span class="op">=</span> np.einsum(<span class="st">'ijk-&gt;kji'</span>,D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Operation that benefit from Einsum 1. Permutation of Tensors 2. Summation 3. Column sum 4. Row sum 5. Matrix-Vector multiplication 6. Matrix-Matrix multiplication 7. Dot Product the first row with first row of a matrix 8. Dot product with matrix (multiplication and add) 9. Element-wise multiplication (Hadamard Product) (multiplication no add) 10. Outer Product 11. Batch matrix multiplicaton e.g.&nbsp;a = 3,2,6 and b = 3,6,3 - want to multiply the matrix of 2x6 with 6x3 matrix - these matrix must follow the multiplication rule - the first number is the batch size they must match, but not count as index - the torch.bmm function will do the same thing 12. Matrix diagonal<br>
-- return the only the diagonal value of the matrix 13. Matrix Trace - summing the value of the diagonal of a matrix</p>
+- return the only the diagonal value of the matrix 13. Matrix Trace - summing the value of the diagonal of a matrix<br>
+14. Tensor contration<br>
+- shrinking the dimension of tensor<br>
+15. Bilinear transformation</p>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install torch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
@@ -1163,12 +1169,12 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.rand((<span class="dv">2</span>,<span class="dv">3</span>))</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>tensor([[0.79, 0.54, 0.79],
-        [1.00, 0.18, 0.81]])</code></pre>
+<pre><code>tensor([[0.25, 0.74, 0.66],
+        [0.96, 0.80, 0.44]])</code></pre>
 </div>
 </div></div>
 <ol type="1">
-<li>Transpose Switching the index of a matrix</li>
+<li>Transpose Flipping the matrix or vector by switching the index of a matrix or vector</li>
 </ol>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="mat-transpose" class="cell" data-execution_count="11">
 <details>
@@ -1179,16 +1185,16 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'numpy: </span><span class="sc">{</span>c_ntp<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">pytorch: </span><span class="sc">{</span>c_tp<span class="sc">}</span><span class="ch">\n</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>numpy: tensor([[0.79, 1.00],
-        [0.54, 0.18],
-        [0.79, 0.81]]) 
-pytorch: tensor([[0.79, 1.00],
-        [0.54, 0.18],
-        [0.79, 0.81]])
+<pre><code>numpy: tensor([[0.25, 0.96],
+        [0.74, 0.80],
+        [0.66, 0.44]]) 
+pytorch: tensor([[0.25, 0.96],
+        [0.74, 0.80],
+        [0.66, 0.44]])
  
-einsum: tensor([[0.79, 1.00],
-        [0.54, 0.18],
-        [0.79, 0.81]])</code></pre>
+einsum: tensor([[0.25, 0.96],
+        [0.74, 0.80],
+        [0.66, 0.44]])</code></pre>
 </div>
 </div></div>
 <ol start="2" type="1">
@@ -1202,15 +1208,15 @@ Summing all value in the matrix that result in a scalar value</li>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cma<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: 4.116492748260498 
-einsum: 4.116492748260498</code></pre>
+<pre><code>regular: 3.8526394367218018 
+einsum: 3.8526394367218018</code></pre>
 </div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>tensor([[0.79, 0.54, 0.79],
-        [1.00, 0.18, 0.81]])</code></pre>
+<pre><code>tensor([[0.25, 0.74, 0.66],
+        [0.96, 0.80, 0.44]])</code></pre>
 </div>
 </div></div>
 <p>Row sum (Left to right)</p>
@@ -1223,8 +1229,8 @@ einsum: 4.116492748260498</code></pre>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>rows<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([1.79, 0.72, 1.61]) 
-einsum: tensor([2.12, 2.00])</code></pre>
+<pre><code>regular: tensor([1.21, 1.54, 1.10]) 
+einsum: tensor([1.65, 2.20])</code></pre>
 </div>
 </div></div>
 <p>Column sum (Top down)</p>
@@ -1237,12 +1243,12 @@ einsum: tensor([2.12, 2.00])</code></pre>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_col<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([2.12, 2.00]) 
-einsum: tensor([1.79, 0.72, 1.61])</code></pre>
+<pre><code>regular: tensor([1.65, 2.20]) 
+einsum: tensor([1.21, 1.54, 1.10])</code></pre>
 </div>
 </div></div>
 <p>5 matrix-vector multiplication<br>
-This a non equal dimension multiplication which in Python use broadcasting to padded (duplicate) the vector to have equal size with the matrix before do multiplication</p>
+This a non equal dimension multiplication which in Python use broadcasting to padded (duplicate) the smaller vector to have equal size with the larger matrix before do multiplication</p>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="matrix-vector" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#5 matrix-vector multiplication</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> torch.rand((<span class="dv">1</span>,<span class="dv">3</span>))</span>
@@ -1252,8 +1258,8 @@ This a non equal dimension multiplication which in Python use broadcasting to pa
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij,j-&gt;i'</span>,L,M)</span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([0.55]) 
-einsum: tensor([0.55])</code></pre>
+<pre><code>regular: tensor([0.76]) 
+einsum: tensor([0.76])</code></pre>
 </div>
 </div></div>
 <p>6 matrix-matrix multiplication<br>
@@ -1281,14 +1287,14 @@ einsum: tensor([[2., 2., 2.],
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> torch.rand((<span class="dv">2</span>,<span class="dv">3</span>))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'ij,kj-&gt;ik'</span>,N,M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>tensor([[0.60, 1.02],
-        [0.22, 0.26],
-        [0.70, 1.09]])</code></pre>
+<pre><code>tensor([[0.98, 0.72],
+        [0.64, 0.60],
+        [1.58, 1.42]])</code></pre>
 </div>
 </div></div>
 <p>Dot product</p>
 <p>This a matrix multiplication that result in a scalar value. It’s usually called multiply add.<br>
-since after multiply the row to the column then the sum operation is carry out result as a scalar</p>
+since after multiply the row to the column then the sum operation is carry out resulting as a scalar value</p>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="dot-product" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product of a matrix (multiply + add)</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#torch.einsum('ij,ij-&gt;',N,N)</span></span>
@@ -1305,17 +1311,17 @@ since after multiply the row to the column then the sum operation is carry out r
 <span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'c_dot: </span><span class="sc">{</span>c_dot<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_dot<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>c: tensor([0.86, 0.45, 0.15]), c: torch.Size([3])
-c_dot: 0.3098883330821991
-regular: 0.3098883330821991 
-  einsum: 0.3098883330821991</code></pre>
+<pre><code>c: tensor([0.38, 0.88, 0.10]), c: torch.Size([3])
+c_dot: 0.3021569550037384
+regular: 0.3021569550037384 
+  einsum: 0.3021569550037384</code></pre>
 </div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [20]:</pre></div><div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product of only the first row of a matrix with first row of a matrix</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'i,i-&gt;'</span>,N[<span class="dv">0</span>],N[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>tensor(1.67)</code></pre>
+<pre><code>tensor(0.89)</code></pre>
 </div>
 </div></div>
 <p>Hadamard Product Element wise multiplication (multiply only)<br>
@@ -1330,16 +1336,16 @@ This is a normal matrix multiplication which different from multiply add or dot 
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'ij,ij-&gt;ij'</span>,c,d)</span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([[ 1.19, -1.25],
-        [-0.24, -0.40],
-        [ 0.41,  0.26]]) 
-  einsum: tensor([[ 1.19, -1.25],
-        [-0.24, -0.40],
-        [ 0.41,  0.26]])</code></pre>
+<pre><code>regular: tensor([[ 1.20,  0.97],
+        [ 0.14, -0.19],
+        [-0.17, -0.11]]) 
+  einsum: tensor([[ 1.20,  0.97],
+        [ 0.14, -0.19],
+        [-0.17, -0.11]])</code></pre>
 </div>
 </div></div>
 <p>Outer Product</p>
-<p>Multiply vector of different size to get a matrix as output In eisum must use different letter to represent size different</p>
+<p>Multiply vector of different size to get a matrix as output In eisum must use different letter for index to represent size different</p>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="outer-product" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outer product (inner product)</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand(<span class="dv">3</span>)</span>
@@ -1351,24 +1357,24 @@ This is a normal matrix multiplication which different from multiply add or dot 
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>cein <span class="op">=</span> torch.einsum(<span class="st">'i,j-&gt;ij'</span>,x,y)</span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_outer<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>x: tensor([0.46, 0.59, 0.35]), x: torch.Size([3])
-y: tensor([0.44, 0.14, 0.54, 0.87, 0.98]), y: torch.Size([5])
-regular: tensor([[0.20, 0.06, 0.25, 0.40, 0.45],
-        [0.26, 0.08, 0.32, 0.51, 0.58],
-        [0.15, 0.05, 0.19, 0.30, 0.34]]) 
-  einsum: tensor([[0.20, 0.06, 0.25, 0.40, 0.45],
-        [0.26, 0.08, 0.32, 0.51, 0.58],
-        [0.15, 0.05, 0.19, 0.30, 0.34]])</code></pre>
+<pre><code>x: tensor([0.91, 0.93, 0.21]), x: torch.Size([3])
+y: tensor([0.98, 0.62, 0.25, 0.90, 0.21]), y: torch.Size([5])
+regular: tensor([[0.89, 0.56, 0.23, 0.81, 0.19],
+        [0.91, 0.57, 0.23, 0.83, 0.19],
+        [0.20, 0.13, 0.05, 0.18, 0.04]]) 
+  einsum: tensor([[0.89, 0.56, 0.23, 0.81, 0.19],
+        [0.91, 0.57, 0.23, 0.83, 0.19],
+        [0.20, 0.13, 0.05, 0.18, 0.04]])</code></pre>
 </div>
 </div></div>
 <p>Batch matrix multiplication<br>
 Multiply matrix by the set of n, where n is batch size</p>
-<p>want to multiply the matrix of 2x6 with 6x3 matrix<br>
+<p>want to multiply 3 set of the matrix of 2x6 with 6x3 matrix<br>
 the first number is the batch size must match but not count as index so i is ignore<br>
 the mxn * nxp must match with n</p>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="batch-matrix" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># batch matrix multiplicaton</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># want to multiply the matrix of 2x6 with 6x3 matrix</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># want to multiply 3 set of the matrix of 2x6 with 6x3 matrix</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the first number is the batch size must match but not count as index so i is ignore</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the mxn * nxp must match with n</span></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">6</span>)</span>
@@ -1380,30 +1386,30 @@ the mxn * nxp must match with n</p>
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>cmm<span class="sc">}</span><span class="ch">\n</span><span class="ss"> numpy: </span><span class="sc">{</span>cmn<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>regular: tensor([[[1.26, 1.00, 0.96],
-         [1.26, 1.06, 1.14]],
+<pre><code>regular: tensor([[[1.55, 1.48, 1.68],
+         [1.26, 1.02, 1.42]],
 
-        [[2.02, 1.92, 1.71],
-         [2.51, 3.09, 2.58]],
+        [[1.81, 1.20, 1.37],
+         [1.91, 0.71, 0.93]],
 
-        [[0.92, 1.33, 0.85],
-         [1.07, 1.06, 1.05]]])
- numpy: tensor([[[1.26, 1.00, 0.96],
-         [1.26, 1.06, 1.14]],
+        [[0.75, 0.92, 1.20],
+         [1.32, 1.29, 1.85]]])
+ numpy: tensor([[[1.55, 1.48, 1.68],
+         [1.26, 1.02, 1.42]],
 
-        [[2.02, 1.92, 1.71],
-         [2.51, 3.09, 2.58]],
+        [[1.81, 1.20, 1.37],
+         [1.91, 0.71, 0.93]],
 
-        [[0.92, 1.33, 0.85],
-         [1.07, 1.06, 1.05]]]) 
-  einsum: tensor([[[1.26, 1.00, 0.96],
-         [1.26, 1.06, 1.14]],
+        [[0.75, 0.92, 1.20],
+         [1.32, 1.29, 1.85]]]) 
+  einsum: tensor([[[1.55, 1.48, 1.68],
+         [1.26, 1.02, 1.42]],
 
-        [[2.02, 1.92, 1.71],
-         [2.51, 3.09, 2.58]],
+        [[1.81, 1.20, 1.37],
+         [1.91, 0.71, 0.93]],
 
-        [[0.92, 1.33, 0.85],
-         [1.07, 1.06, 1.05]]])</code></pre>
+        [[0.75, 0.92, 1.20],
+         [1.32, 1.29, 1.85]]])</code></pre>
 </div>
 </div></div>
 <p>Diagonal Matrix return the vector of value along the diagonal of a matrix</p>
@@ -1418,12 +1424,12 @@ the mxn * nxp must match with n</p>
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_diag<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>T: tensor([[0.93, 0.96, 0.02],
-        [0.80, 0.28, 0.04],
-        [0.70, 0.90, 0.31]]) 
+<pre><code>T: tensor([[0.33, 0.11, 0.63],
+        [0.60, 0.82, 0.28],
+        [0.08, 0.99, 0.18]]) 
 T shape: torch.Size([3, 3])
-regular: tensor([0.93, 0.28, 0.31]) 
-  einsum: tensor([0.93, 0.28, 0.31])</code></pre>
+regular: tensor([0.33, 0.82, 0.18]) 
+  einsum: tensor([0.33, 0.82, 0.18])</code></pre>
 </div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [25]:</pre></div><div class="cell" data-execution_count="25">
@@ -1439,11 +1445,11 @@ regular: tensor([0.93, 0.28, 0.31])
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'T: </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_trace<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>T: tensor([[0.93, 0.96, 0.02],
-        [0.80, 0.28, 0.04],
-        [0.70, 0.90, 0.31]])
-regular: 1.5217688083648682 
-  einsum: 1.5217686891555786</code></pre>
+<pre><code>T: tensor([[0.33, 0.11, 0.63],
+        [0.60, 0.82, 0.28],
+        [0.08, 0.99, 0.18]])
+regular: 1.3291736841201782 
+  einsum: 1.3291736841201782</code></pre>
 </div>
 </div></div>
 <p>Tensor Contraction<br>
@@ -1459,10 +1465,10 @@ must provide the dimension to be ignored</p>
 <span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'regular: </span><span class="sc">{</span>c_tdot<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">  einsum: </span><span class="sc">{</span>cein<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>value: torch.Size([3, 4, 2]) value2: torch.Size([4, 3, 6])
-regular: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
-        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]]) 
-  einsum: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
-        [3.24, 3.03, 2.78, 2.32, 3.32, 2.80]])</code></pre>
+regular: tensor([[3.72, 2.19, 3.15, 3.26, 2.88, 1.90],
+        [5.16, 3.22, 4.84, 4.64, 4.52, 3.33]]) 
+  einsum: tensor([[3.72, 2.19, 3.15, 3.26, 2.88, 1.90],
+        [5.16, 3.22, 4.84, 4.64, 4.52, 3.33]])</code></pre>
 </div>
 </div></div>
 <p>Bilinear transformation</p>
@@ -1473,8 +1479,8 @@ regular: tensor([[3.46, 3.77, 4.15, 3.44, 4.38, 3.51],
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'ik,jkl,il-&gt;ij'</span>,[a,b,c])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>tensor([[5.39, 5.18, 5.16, 5.60, 3.51],
-        [4.70, 4.20, 4.48, 4.85, 3.48]])</code></pre>
+<pre><code>tensor([[3.12, 3.11, 2.71, 3.34, 2.55],
+        [3.39, 2.72, 2.68, 3.09, 2.96]])</code></pre>
 </div>
 </div></div>
 
