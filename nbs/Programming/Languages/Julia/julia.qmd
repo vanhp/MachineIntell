@@ -18,9 +18,55 @@ listing:
   filter-ui: false
   categories: true
   feed: true
+format:
+  html:
+    code-fold: true
+
+jupyter: julia-1.9
 
 page-layout: full
 ---
 
 ## About Tree and Graph Data structures
 ![](../../../images/code3.png)
+
+## Einsum in Julia
+
+
+```{julia}
+#| label: fig-parametric
+#| fig-cap: "Parametric Plots"
+
+using Plots, OMEinsum, LinearAlgebra, SymEngine
+
+plot(sin, 
+     x->sin(2x), 
+     0, 
+     2π, 
+     leg=false, 
+     fill=(0,:lavender))
+
+```
+```{julia}
+
+using OMEinsum, LinearAlgebra
+
+OMEinsum.asarray(a::Number, ::Diagonal) = fill(a,())
+ein"ij -> "(Diagonal([1,2,3]))
+
+function OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{<:Diagonal}, size_dict::Dict)
+    length(iy) == 1 && return diag(xs[1])
+    return sum(diag(xs[1]))
+end
+
+ein"ij -> i"(Diagonal([1,2,3]))
+
+catty = fill(Basic(:🐱), 2, 2)
+fish = fill(Basic(:🐟), 2, 3, 2)
+snake = fill(Basic(:🐍), 3, 3)
+medicine = ein"ij,jki,kk->k"(catty, fish, snake)
+
+
+
+
+```
