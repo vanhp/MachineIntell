@@ -66,15 +66,9 @@ end
 ```
 ```{julia}
 
-
 ein"ij -> i"(Diagonal([1,2,3]))
 
 ```
-```{julia}
-
-
-```
-
 ```{julia}
 catty = fill(Basic(:🐱), 2, 2)
 ```
@@ -101,4 +95,11 @@ ein"ik,kj -> ij"(catty, catty) # multiply two matrices `a` and `b`
 ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
 
 ```
+
+```julia
+
+ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
+```
+{{< embed julia_einsum.ipynb#diagonal_mat >}}
+
 

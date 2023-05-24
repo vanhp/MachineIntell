@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Julia/julia.html</loc>
-    <lastmod>2023-05-23T11:23:24.007Z</lastmod>
+    <lastmod>2023-05-24T03:43:53.991Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Python/python.html</loc>
@@ -271,5 +271,13 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Python/Untitled1.html</loc>
     <lastmod>2023-05-23T06:33:27.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Python/julia_einsum.html</loc>
+    <lastmod>2023-05-24T03:35:39.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Julia/julia_einsum.html</loc>
+    <lastmod>2023-05-24T03:43:54.172Z</lastmod>
   </url>
 </urlset>
