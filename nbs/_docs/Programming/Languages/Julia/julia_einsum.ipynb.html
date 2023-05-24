@@ -979,81 +979,46 @@
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">    <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell" data-execution_count="6">
+<main class="content page-columns page-full" id="quarto-document-content">    <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">OMEinsum</span>, <span class="bu">LinearAlgebra</span>,<span class="bu">SymEngine</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>OMEinsum.<span class="fu">asarray</span>(a<span class="op">::</span><span class="dt">Number</span>, <span class="op">::</span><span class="dt">Diagonal</span>) <span class="op">=</span> <span class="fu">fill</span>(a,())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OMEinsum.asarray(a::Number, ::Diagonal) = fill(a,())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ein"ij -&gt; "(Diagonal([1,2,3]))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function OMEinsum.einsum(::OMEinsum.Sum, ixs, iy, xs::Tuple{&lt;:Diagonal}, size_dict::Dict)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     length(iy) == 1 &amp;&amp; return diag(xs[1])</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     return sum(diag(xs[1]))</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ein"ij -&gt; i"(Diagonal([1,2,3]))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fish = fill(Basic(:🐟), 2, 3, 2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># catty = fill(Basic(:🐱), 2, 2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ein<span class="st">"ij -&gt; "</span>(<span class="fu">Diagonal</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>6</code></pre>
-</div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> OMEinsum.<span class="fu">einsum</span>(<span class="op">::</span><span class="dt">OMEinsum.Sum</span>, ixs, iy, xs<span class="op">::</span><span class="dt">Tuple{&lt;:Diagonal}</span>, size_dict<span class="op">::</span><span class="dt">Dict</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">length</span>(iy) <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="cf">return</span> <span class="fu">diag</span>(xs[<span class="fl">1</span>])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">sum</span>(<span class="fu">diag</span>(xs[<span class="fl">1</span>]))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ein<span class="st">"ij -&gt; i"</span>(<span class="fu">Diagonal</span>([<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>3-element Vector{Int64}:
- 1
- 2
- 3</code></pre>
-</div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [11]:</pre></div><div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fish <span class="op">=</span> <span class="fu">fill</span>(<span class="fu">Basic</span>(<span class="op">:</span>🐟), <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2×3×2 Array{Basic, 3}:
-[:, :, 1] =
- 🐟  🐟  🐟
- 🐟  🐟  🐟
-
-[:, :, 2] =
- 🐟  🐟  🐟
- 🐟  🐟  🐟</code></pre>
-</div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [12]:</pre></div><div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>catty <span class="op">=</span> <span class="fu">fill</span>(<span class="fu">Basic</span>(<span class="op">:</span>🐱), <span class="fl">2</span>, <span class="fl">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2×2 Matrix{Basic}:
- 🐱  🐱
- 🐱  🐱</code></pre>
-</div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>snake <span class="op">=</span> <span class="fu">fill</span>(<span class="fu">Basic</span>(<span class="op">:</span>🐍), <span class="fl">3</span>, <span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>snake <span class="op">=</span> <span class="fu">fill</span>(<span class="fu">Basic</span>(<span class="op">:</span>🐍), <span class="fl">3</span>, <span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="snake" class="cell-output cell-output-display">
 <pre><code>3×3 Matrix{Basic}:
  🐍  🐍  🐍
  🐍  🐍  🐍
  🐍  🐍  🐍</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>medicine <span class="op">=</span> ein<span class="st">"ij,jki,kk-&gt;k"</span>(catty, fish, snake)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>3-element Vector{Basic}:
- 4*🐱*🐍*🐟
- 4*🐱*🐍*🐟
- 4*🐱*🐍*🐟</code></pre>
-</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># medicine = ein"ij,jki,kk-&gt;k"(catty, fish, snake)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [15]:</pre></div><div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ein<span class="st">"ik,kj -&gt; ij"</span>(catty, catty) <span class="co"># multiply two matrices `a` and `b`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2×2 Matrix{Basic}:
- 2*🐱^2  2*🐱^2
- 2*🐱^2  2*🐱^2</code></pre>
-</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ein"ik,kj -&gt; ij"(catty, catty) # multiply two matrices `a` and `b`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [16]:</pre></div><div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ein<span class="st">"-&gt;ii"</span>(<span class="fu">asarray</span>(snake[<span class="fl">1</span>,<span class="fl">1</span>]), size_info<span class="op">=</span><span class="fu">Dict</span>(<span class="ch">'i'</span><span class="op">=&gt;</span><span class="fl">5</span>)) <span class="co"># get 5 x 5 identity matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ein<span class="st">"-&gt;ii"</span>(<span class="fu">asarray</span>(snake[<span class="fl">1</span>,<span class="fl">1</span>]), size_info<span class="op">=</span><span class="fu">Dict</span>(<span class="ch">'i'</span><span class="op">=&gt;</span><span class="fl">5</span>)) <span class="co"># get 5 x 5 identity matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="diagonal_mat" class="cell-output cell-output-display">
 <pre><code>5×5 Matrix{Basic}:
  🐍   0   0   0   0
