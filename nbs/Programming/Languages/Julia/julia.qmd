@@ -34,20 +34,13 @@ page-layout: full
 
 Here is the newest einsum call [OMEinsum.jl](https://github.com/under-Peter/OMEinsum.jl) package in Julia. It's implement using about 20 lines of Julia code! Amazing.
 
-```{julia}
+
 
 ## Einsum 
 
 
-```{julia}```{julia}
 ```{julia}
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-#| label: fig-parametric
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-#| fig-cap: "Parametric Plots"
+
 
 using Plots, OMEinsum, LinearAlgebra, SymEngine
 
@@ -76,7 +69,7 @@ end
 ein"ij -> i"(Diagonal([1,2,3]))
 
 ```
-```juliadiagonal_matdiagonal_mat
+
 ```{julia}
 catty = fill(Basic(:🐱), 2, 2)
 ```
@@ -94,47 +87,20 @@ snake = fill(Basic(:🐍), 3, 3)
 medicine = ein"ij,jki,kk->k"(catty, fish, snake)
 ```
 
-```juliadiagonal_matdiagonal_mat
 ```{julia}
 ein"ik,kj -> ij"(catty, catty) # multiply two matrices `a` and `b`
-```juliadiagonal_matdiagonal_mat
+
 ```
 
 ```{julia}
-```juliadiagonal_matdiagonal_mat
+
 
 ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
 
-```
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
 
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
 #link to julia ipynb
 ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5)) # get 5 x 5 identity matrix
 ```
 {{< embed julia_einsum.ipynb#diagonal_mat >}}
 
-
-diagonal_matdiagonal_matdiagonal_matdiagonal_mat
 ```
-
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-
-```juliadiagonal_matdiagonal_mat
-#link to julia ipynb
-```
-
-```juliadiagonal_matdiagonal_mat
-```juliadiagonal_matdiagonal_mat
-#link to julia ipynb
-```
-```juliadiagonal_matdiagonal_mat
-
-```juliadiagonal_matdiagonal_mat
-#link to julia ipynb
