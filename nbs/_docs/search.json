@@ -1019,7 +1019,7 @@
     "href": "Programming/Languages/Julia/julia.html#einsum",
     "title": "Julia",
     "section": "Einsum",
-    "text": "Einsum\n\nDiagonal matrix\nreturn only the diagonal value of a square matrix and all other values in the matrix are 0 \\[\n\\forall i,j \\in \\{1, 2, \\ldots, n\\}, i \\ne j \\implies d_{i,j} = 0\n\\]\nusing OMEinsum, LinearAlgebra,SymEngine\n\nsnake = fill(Basic(:🐍), 3, 3)\n\n\n\n3×3 Matrix{Basic}:\n 🐍  🐍  🐍\n 🐍  🐍  🐍\n 🐍  🐍  🐍\n\n\nSource: julia_einsum.ipynb\n\nein\"-&gt;ii\"(asarray(snake[1,1]), size_info=Dict('i'=&gt;5))\n\n\n\n5×5 Matrix{Basic}:\n 🐍   0   0   0   0\n  0  🐍   0   0   0\n  0   0  🐍   0   0\n  0   0   0  🐍   0\n  0   0   0   0  🐍\n\n\nSource: julia_einsum.ipynb"
+    "text": "Einsum\n\nDiagonal matrix\nreturn only the diagonal value of a square matrix and all other values in the matrix are 0 \\[\n\\forall i,j \\in \\{1, 2, \\ldots, n\\}, i \\ne j \\implies d_{i,j} = 0\n\\]"
   },
   {
     "objectID": "Programming/Languages/Python/julia_einsum.html",
