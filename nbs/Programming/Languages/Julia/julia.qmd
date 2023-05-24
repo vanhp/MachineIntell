@@ -45,17 +45,3 @@ and all other values in the matrix are 0
 $$
 \forall i,j \in \{1, 2, \ldots, n\}, i \ne j \implies d_{i,j} = 0
 $$
-<!-- 
-```julia
-using OMEinsum, LinearAlgebra,SymEngine
-
-snake = fill(Basic(:🐍), 3, 3)
-```
-{{< embed julia_einsum.ipynb#snake echo=true >}}
-
-```julia
-
-ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5))
-
-```
-{{< embed julia_einsum.ipynb#diagonal_mat echo=true >}} -->
