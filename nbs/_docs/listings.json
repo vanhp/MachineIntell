@@ -1,62 +1,14 @@
 [
   {
-    "listing": "/tutorial/math/diffEq/compoundint.html",
+    "listing": "/Programming/Algorithms/Bases/dictionary.html",
     "items": []
   },
   {
-    "listing": "/tutorial/math/maths.html",
+    "listing": "/Programming/Algorithms/Bases/hash.html",
     "items": []
   },
   {
-    "listing": "/tutorial/math/nnMath/nnmath.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/math/nnMath/loss/loss.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/nlp.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/rnn.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/visions/vision.html",
-    "items": []
-  },
-  {
-    "listing": "/tip/tips.html",
-    "items": []
-  },
-  {
-    "listing": "/news/newsall.html",
-    "items": []
-  },
-  {
-    "listing": "/news/news1.html",
-    "items": []
-  },
-  {
-    "listing": "/news/news2.html",
-    "items": []
-  },
-  {
-    "listing": "/help/helps.html",
-    "items": []
-  },
-  {
-    "listing": "/resources/resource.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Trees/tree.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Trees/graph.html",
+    "listing": "/Programming/Algorithms/Bases/list.html",
     "items": []
   },
   {
@@ -68,15 +20,11 @@
     "items": []
   },
   {
-    "listing": "/Programming/Algorithms/Bases/hash.html",
+    "listing": "/Programming/Algorithms/Trees/graph.html",
     "items": []
   },
   {
-    "listing": "/Programming/Algorithms/Bases/dictionary.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Algorithms/Bases/list.html",
+    "listing": "/Programming/Algorithms/Trees/tree.html",
     "items": []
   },
   {
@@ -84,19 +32,11 @@
     "items": []
   },
   {
-    "listing": "/Programming/prog.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Languages/Julia/julia.html",
-    "items": []
-  },
-  {
-    "listing": "/Programming/Languages/Python/python.html",
-    "items": []
-  },
-  {
     "listing": "/Programming/Languages/CC++/ccpp.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Csharp/csharp.html",
     "items": []
   },
   {
@@ -104,7 +44,19 @@
     "items": []
   },
   {
+    "listing": "/Programming/Languages/JavaScript/js.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Julia/julia.html",
+    "items": []
+  },
+  {
     "listing": "/Programming/Languages/Kotlin/kotlin.html",
+    "items": []
+  },
+  {
+    "listing": "/Programming/Languages/Python/python.html",
     "items": []
   },
   {
@@ -116,15 +68,23 @@
     "items": []
   },
   {
-    "listing": "/Programming/Languages/JavaScript/js.html",
-    "items": []
-  },
-  {
     "listing": "/Programming/Languages/lang.html",
     "items": []
   },
   {
-    "listing": "/Programming/Languages/Csharp/csharp.html",
+    "listing": "/Programming/prog.html",
+    "items": []
+  },
+  {
+    "listing": "/help/helps.html",
+    "items": []
+  },
+  {
+    "listing": "/resources/resource.html",
+    "items": []
+  },
+  {
+    "listing": "/tip/tips.html",
     "items": []
   },
   {
@@ -132,47 +92,15 @@
     "items": []
   },
   {
-    "listing": "/tutorial/math/diffEq/diffeq1.html",
+    "listing": "/AI/sdiffusion.html",
     "items": []
   },
   {
-    "listing": "/tutorial/math/linearalgebra/lna1.html",
+    "listing": "/AI/gpt.html",
     "items": []
   },
   {
-    "listing": "/tutorial/tutoring.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/transformer.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/attention.html",
-    "items": []
-  },
-  {
-    "listing": "/tutorial/nlps/encodedecode.html",
-    "items": []
-  },
-  {
-    "listing": "/AI/news1.html",
-    "items": []
-  },
-  {
-    "listing": "/AI/news2.html",
-    "items": []
-  },
-  {
-    "listing": "/AI/newsall.html",
-    "items": []
-  },
-  {
-    "listing": "/Tutorial/tutoring.html",
-    "items": []
-  },
-  {
-    "listing": "/Tutorial/nlps/nlp.html",
+    "listing": "/AI/attention.html",
     "items": []
   },
   {
@@ -200,6 +128,10 @@
     "items": []
   },
   {
+    "listing": "/Tutorial/nlps/nlp.html",
+    "items": []
+  },
+  {
     "listing": "/Tutorial/nlps/rnn.html",
     "items": []
   },
@@ -220,15 +152,7 @@
     "items": []
   },
   {
-    "listing": "/AI/sdiffusion.html",
-    "items": []
-  },
-  {
-    "listing": "/AI/gpt.html",
-    "items": []
-  },
-  {
-    "listing": "/AI/attention.html",
+    "listing": "/Tutorial/tutoring.html",
     "items": []
   }
 ]

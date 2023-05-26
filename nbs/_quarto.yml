@@ -141,7 +141,8 @@ website:
             # navigation items
       
 
-
+execute: 
+  freeze: auto
    
 
 metadata-files: [nbdev.yml, sidebar.yml]
