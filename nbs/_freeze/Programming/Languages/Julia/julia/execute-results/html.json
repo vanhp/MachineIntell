@@ -1,0 +1,11 @@
+{
+  "hash": "56543241a285ea1fd9e3ae9fa7fcc02e",
+  "result": {
+    "markdown": "---\ntitle: Julia\nsubtitle: Julia language\nabout:\n  template: marquee\n  image: ../../../images/gradientv12.jpg\n  links:\n    - icon: twitter\n      text: twitter\n      href: 'https://twitter.com'\n    - icon: github\n      text: Github\n      href: 'https://github.com'\nlisting:\n  sort: date desc\n  contents: posts\n  sort-ui: false\n  filter-ui: false\n  categories: true\n  feed: true\nformat:\n  html:\n    code-fold: true\nexecute:\n  cache: true\nfreeze: true\npage-layout: full\n---\n\n## Einstein Summation in Julia\n![](../../../images/code3.png)\n\nHere is the newest einsum call [OMEinsum.jl](https://github.com/under-Peter/OMEinsum.jl) package in Julia. It's implement using about 20 lines of Julia code! Amazing.\n\n\n\n## Einsum \n\n\n### Diagonal matrix\nreturn only the diagonal value of a square matrix \nand all other values in the matrix are 0\n$$\n\\forall i,j \\in \\{1, 2, \\ldots, n\\}, i \\ne j \\implies d_{i,j} = 0\n$$\n\n::: {.cell execution_count=2}\n``` {.julia .cell-code}\nusing OMEinsum, LinearAlgebra,SymEngine\nfish = fill(Basic(:🐟), 2, 3, 2)\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```\n2×3×2 Array{Basic, 3}:\n[:, :, 1] =\n 🐟  🐟  🐟\n 🐟  🐟  🐟\n\n[:, :, 2] =\n 🐟  🐟  🐟\n 🐟  🐟  🐟\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "julia_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

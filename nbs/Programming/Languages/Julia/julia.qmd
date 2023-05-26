@@ -24,7 +24,9 @@ format:
 execute: 
   cache: true
 
+freeze: true
 
+jupyter: julia-1.9
 
 page-layout: full
 ---
@@ -45,3 +47,8 @@ and all other values in the matrix are 0
 $$
 \forall i,j \in \{1, 2, \ldots, n\}, i \ne j \implies d_{i,j} = 0
 $$
+
+```{julia}
+using OMEinsum, LinearAlgebra,SymEngine
+fish = fill(Basic(:🐟), 2, 3, 2)
+```
