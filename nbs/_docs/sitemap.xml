@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Julia/julia.html</loc>
-    <lastmod>2023-05-26T04:53:19.218Z</lastmod>
+    <lastmod>2023-05-26T05:21:20.956Z</lastmod>
   </url>
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Kotlin/kotlin.html</loc>
@@ -183,5 +183,9 @@
   <url>
     <loc>https://vanhp.github.io/MachineIntell/Tutorial/tutoring.html</loc>
     <lastmod>2023-05-26T04:53:26.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanhp.github.io/MachineIntell/Programming/Languages/Julia/julia_einsum.html</loc>
+    <lastmod>2023-05-26T05:19:35.473Z</lastmod>
   </url>
 </urlset>

@@ -47,7 +47,16 @@ $$
 \forall i,j \in \{1, 2, \ldots, n\}, i \ne j \implies d_{i,j} = 0
 $$
 
-```{julia}
+<!-- ```{julia}
 using OMEinsum, LinearAlgebra,SymEngine
 fish = fill(Basic(:🐟), 2, 3, 2)
+``` -->
+
+```julia
+ein"->ii"(asarray(snake[1,1]), size_info=Dict('i'=>5))
+
 ```
+{{< embed julia_einsum.ipynb#diagonal_mat >}}
+
+
+
