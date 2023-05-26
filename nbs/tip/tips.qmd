@@ -21,6 +21,9 @@ listing:
   categories: true
   feed: true
 
+format: html
+from: markdown+emoji
+
 page-layout: full
 ---
 
@@ -51,6 +54,11 @@ Tensor is multi-dimension arrays
 - Tensor is nD array
 
 Since tensor is core operation of Neural Network. Understand how to manipulate Tensor efficiently is the diffenrence between success and failure. The majority of the tasks are transforming different shape and size of these arrays to match the expected shape and size of the API.
+
+:bulb: Tip
+
+learn about linear Algebra especially matrix rule
+
 
 :::{.callout-tip}
 Many of these operations involve:  
