@@ -204,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../../../Programming/Languages/Julia/julia.html" rel="" target="">
- <span class="dropdown-text">Julia</span></a>
+ <span class="dropdown-text">Einstein Summation in Julia</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../Programming/Languages/Kotlin/kotlin.html" rel="" target="">
@@ -628,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../Programming/Languages/Julia/julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia</span></a>
+ <span class="menu-text">Einstein Summation in Julia</span></a>
   </div>
 </li>
       </ul>
@@ -963,13 +963,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#my-notes" id="toc-my-notes" class="nav-link active" data-scroll-target="#my-notes">My Notes</a>
   <ul class="collapse">
   <li><a href="#research-papers-of-interest" id="toc-research-papers-of-interest" class="nav-link" data-scroll-target="#research-papers-of-interest">Research papers of interest</a></li>
-  <li><a href="#eistein-summation" id="toc-eistein-summation" class="nav-link" data-scroll-target="#eistein-summation">Eistein Summation</a>
+  <li><a href="#einstein-summation" id="toc-einstein-summation" class="nav-link" data-scroll-target="#einstein-summation">Einstein Summation</a>
   <ul class="collapse">
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code:</a></li>
   <li><a href="#dot-product" id="toc-dot-product" class="nav-link" data-scroll-target="#dot-product">Dot product</a></li>
   <li><a href="#outer-product" id="toc-outer-product" class="nav-link" data-scroll-target="#outer-product">Outer product</a></li>
   </ul></li>
-  <li><a href="#the-eisum-rules" id="toc-the-eisum-rules" class="nav-link" data-scroll-target="#the-eisum-rules">The Eisum Rules</a></li>
+  <li><a href="#the-einsum-rules" id="toc-the-einsum-rules" class="nav-link" data-scroll-target="#the-einsum-rules">The Einsum Rules</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -989,8 +989,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="https://arxiv.org/abs/2210.03142">On Distillation of Guided Diffusion Models</a><br>
 <a href="https://arxiv.org/abs/2210.09276">Imagic: Text-Based Real Image Editing with Diffusion Models</a></p>
 </section>
-<section id="eistein-summation" class="level2">
-<h2 class="anchored" data-anchor-id="eistein-summation">Eistein Summation</h2>
+<section id="einstein-summation" class="level2">
+<h2 class="anchored" data-anchor-id="einstein-summation">Einstein Summation</h2>
 <p>A technique for convenient and simplify the writing of syntax for many operation in linear algebra</p>
 <ul>
 <li>Matrix multiplication</li>
@@ -1119,8 +1119,8 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 </div>
 </section>
 </section>
-<section id="the-eisum-rules" class="level2">
-<h2 class="anchored" data-anchor-id="the-eisum-rules">The Eisum Rules</h2>
+<section id="the-einsum-rules" class="level2">
+<h2 class="anchored" data-anchor-id="the-einsum-rules">The Einsum Rules</h2>
 <p>The free indices: - The index that specify the output</p>
 <p>The Summation index<br>
 - All other indices that appear in the input argument but not show up in the output</p>
@@ -1279,6 +1279,7 @@ einsum: tensor([[2., 2., 2.],
 <p>Dot product</p>
 <p>This a matrix multiplication that result in a scalar value. It’s usually called multiply add.<br>
 since after multiply the row to the column then the sum operation is carry out resulting as a scalar value</p>
+<p>:bulb:</p>
 <div id="dot-product" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product of a matrix (multiply + add)</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#torch.einsum('ij,ij-&gt;',N,N)</span></span>

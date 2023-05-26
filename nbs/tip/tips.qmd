@@ -26,33 +26,81 @@ page-layout: full
 
 ![](/images/code1.jpg)
 
-##  quarto execute Julia code
+---
+
 
 ---
-title: "Julia Plots"
-author: "Norah Jones"
-date: "5/22/2021"
+title: "Working with Tensors"
+author: "Vanh Phom"
+date: "5/25/2023"
 format:
   html:
     code-fold: true
 
 ---
 
-## Parametric Plots
 
-Plot function pair (x(u), y(u)). 
-See @fig-parametric for an example.
+### Working with Tensors
 
-```julia
-#| label: fig-parametric
-#| fig-cap: "Parametric Plots"
 
-using Plots
 
-plot(sin, 
-     x->sin(2x), 
-     0, 
-     2π, 
-     leg=false, 
-     fill=(0,:lavender))
-```
+Tensor is multi-dimension arrays
+
+- Vector is 1D array
+- Matrix is 2D array
+- Tensor is nD array
+
+Since tensor is core operation of Neural Network. Understand how to manipulate Tensor efficiently is the diffenrence between success and failure. The majority of the tasks are transforming different shape and size of these arrays to match the expected shape and size of the API.
+
+:::{.callout-tip}
+Many of these operations involve:  
+
+- Squeezing matrix into vector  
+- Add dimension to vector to transform it into matrix  
+- Convert tensor into matrix or vice versa  
+- Convert tensor into vector or vice versa  
+:::
+
+Most often use math rule that govern these operation are:
+
+- Dot-product  
+- Matrix multiplication
+- Multiply scalar value to matrix
+- Matrix addition
+
+Python has its own specific tools for these operation:  
+
+- Vectorization  
+- Element-wise multiplication
+- Matrix multiplication
+
+Pytorch or Numpy specific tools:
+
+- Einstein summation  
+
+:::{.callout-tip}
+
+When working with these tensors always check the shape and size:  
+
+- don't forget to peek into the tensor as often as possible
+  - check the shape 
+  - check the size
+  - check the content of the tensor
+  - verify that they are what they should be
+
+:::
+
+
+##  Statistics
+Another useful field to know is statistic it's one of the essential tool to analyze the behavior of these matrices and model that you're working with.
+
+Here are some of th most often use:
+
+- Probability  
+- Mean  
+- Variance  
+- Standard deviation
+
+:::{.callout-tip}
+- Mean and variance are crucial to understand many tasks
+:::
