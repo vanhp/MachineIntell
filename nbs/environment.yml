@@ -1,0 +1,5 @@
+name: website
+channels:
+  - conda-forge
+  - defaults
+prefix: /home/vanh/anaconda3/envs/website
