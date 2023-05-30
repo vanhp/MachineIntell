@@ -27,16 +27,11 @@ page-layout: full
 
 ![](../../../images/code3.png)
 
-## Einsum in Python
-
-[Einsum](https://en.wikipedia.org/wiki/Einstein_notation) stand for  Einstein summation convention with was invented by Albert Einstein. A hidden gem that less popular but would be an asset for those who discovers it. It's especially useful in Machine learning field where Tensor operation is at the core of Neural Network.
-
-The convention help simplify the calculation of Tensor indices thus speedup the computation. Write more concise and efficient code especially in Python which not known for speed. It has more impact on Framework such as Pytorch that also generate GPU code.
-as describe by [Tim Rocktaschel](https://rockt.github.io/2018/04/30/einsum)
-
 ## Einstein Summation
 
-A technique for convenient and simplify the writing of syntax for many operation in linear algebra
+A technique discovered by Einstein while he was working on Tensors. It's convenient and simplify the writing of syntax for many operation in linear algebra.
+
+The convention help simplify, write more concise and efficient code. The calculation of Tensor indices thus make it easy to understand and has side benefit of speedup the computation for computer. Especially, in Python which not known for speed. 
 
 - Matrix multiplication
 - Element-wise matrix operation
@@ -49,6 +44,17 @@ A technique for convenient and simplify the writing of syntax for many operation
 It's also speedup some of the above operation especially operation that can be combined into single call
 
 The eisum is a build-in feature of most Machine learning frameworks, e.g. Pytorch, Tensorflow, Flux...
+
+[Einsum](https://en.wikipedia.org/wiki/Einstein_notation) stand for  Einstein summation convention with was invented by Albert Einstein. A hidden gem that less popular but would be an asset for those who discovers it. It's especially useful in Machine learning field where Tensor operation is at the core of Neural Network.
+
+
+### Einsum in Python
+
+Python fully support einsum operation in Numpy, in addition to Many Machine Learning Frameworks such as Pytorch, Tensorflow.
+
+It has more impact on Framework such as Pytorch that also generate GPU code.
+as describe by [Tim Rocktaschel](https://rockt.github.io/2018/04/30/einsum)
+
 
 
 
@@ -63,6 +69,7 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 for i in range(3):
     for j in range(2):
         total = 0
+
         for k in range(5):
             total += A[i,k] * B[k,j]
         M[i,j] = total

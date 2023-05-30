@@ -962,7 +962,7 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#working-with-tensors" id="toc-working-with-tensors" class="nav-link active" data-scroll-target="#working-with-tensors">Working with Tensors</a></li>
+  <li><a href="#tensors" id="toc-tensors" class="nav-link active" data-scroll-target="#tensors">Tensors</a></li>
   <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -977,22 +977,20 @@ ul.task-list li input[type="checkbox"] {
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Working with Tensors</h1>
-<p class="subtitle lead">Learn the tips and tricks from veterans in Machine Learning</p>
 </div>
 <div class="quarto-title-meta">
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5/25/2023</p>
+      <p class="date">5/26/2023</p>
     </div>
   </div>
   </div>
 </header> <main class="content column-body" id="quarto-document-content">
 
-<p><img src="../images/code1.jpg" class="img-fluid"></p>
-<hr>
-<section id="working-with-tensors" class="level3">
-<h3 data-anchor-id="working-with-tensors">Working with Tensors</h3>
+<p><img src="../images/code3.png" class="img-fluid"></p>
+<section id="tensors" class="level3">
+<h3 data-anchor-id="tensors">Tensors</h3>
 <p>Tensor is multi-dimension arrays</p>
 <ul>
 <li>Vector is 1D array</li>
@@ -1002,17 +1000,18 @@ ul.task-list li input[type="checkbox"] {
 <p>Since tensor is core operation of Neural Network. Understand how to manipulate Tensor efficiently is the diffenrence between success and failure. The majority of the tasks are transforming different shape and size of these arrays to match the expected shape and size of the API.</p>
 <p><span class="emoji" data-emoji="bulb">💡</span> Tip</p>
 <p>learn about linear Algebra especially matrix rule</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Many of these operations involve:
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Many of these operations involve:</p>
 <ul>
 <li>Squeezing matrix into vector<br>
 </li>
@@ -1023,6 +1022,7 @@ Tip
 <li>Convert tensor into vector or vice versa<br>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <p>Most often use math rule that govern these operation are:</p>

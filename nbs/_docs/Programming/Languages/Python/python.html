@@ -995,9 +995,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#einsum-in-python" id="toc-einsum-in-python" class="nav-link active" data-scroll-target="#einsum-in-python">Einsum in Python</a></li>
-  <li><a href="#einstein-summation" id="toc-einstein-summation" class="nav-link" data-scroll-target="#einstein-summation">Einstein Summation</a>
+  <li><a href="#einstein-summation" id="toc-einstein-summation" class="nav-link active" data-scroll-target="#einstein-summation">Einstein Summation</a>
   <ul class="collapse">
+  <li><a href="#einsum-in-python" id="toc-einsum-in-python" class="nav-link" data-scroll-target="#einsum-in-python">Einsum in Python</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code:</a></li>
   <li><a href="#the-eisum-rules" id="toc-the-eisum-rules" class="nav-link" data-scroll-target="#the-eisum-rules">The Eisum Rules</a></li>
   <li><a href="#operations-that-benefit-from-einsum" id="toc-operations-that-benefit-from-einsum" class="nav-link" data-scroll-target="#operations-that-benefit-from-einsum">Operations that benefit from Einsum</a></li>
@@ -1022,14 +1022,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header> <main class="content column-body" id="quarto-document-content">
 
 <p><img src="../../../images/code3.png" class="img-fluid"></p>
-<section id="einsum-in-python" class="level2">
-<h2 data-anchor-id="einsum-in-python">Einsum in Python</h2>
-<p><a href="https://en.wikipedia.org/wiki/Einstein_notation">Einsum</a> stand for Einstein summation convention with was invented by Albert Einstein. A hidden gem that less popular but would be an asset for those who discovers it. It’s especially useful in Machine learning field where Tensor operation is at the core of Neural Network.</p>
-<p>The convention help simplify the calculation of Tensor indices thus speedup the computation. Write more concise and efficient code especially in Python which not known for speed. It has more impact on Framework such as Pytorch that also generate GPU code. as describe by <a href="https://rockt.github.io/2018/04/30/einsum">Tim Rocktaschel</a></p>
-</section>
 <section id="einstein-summation" class="level2">
 <h2 data-anchor-id="einstein-summation">Einstein Summation</h2>
-<p>A technique for convenient and simplify the writing of syntax for many operation in linear algebra</p>
+<p>A technique discovered by Einstein while he was working on Tensors. It’s convenient and simplify the writing of syntax for many operation in linear algebra.</p>
+<p>The convention help simplify, write more concise and efficient code. The calculation of Tensor indices thus make it easy to understand and has side benefit of speedup the computation for computer. Especially, in Python which not known for speed.</p>
 <ul>
 <li>Matrix multiplication</li>
 <li>Element-wise matrix operation</li>
@@ -1041,19 +1037,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>It’s also speedup some of the above operation especially operation that can be combined into single call</p>
 <p>The eisum is a build-in feature of most Machine learning frameworks, e.g.&nbsp;Pytorch, Tensorflow, Flux…</p>
+<p><a href="https://en.wikipedia.org/wiki/Einstein_notation">Einsum</a> stand for Einstein summation convention with was invented by Albert Einstein. A hidden gem that less popular but would be an asset for those who discovers it. It’s especially useful in Machine learning field where Tensor operation is at the core of Neural Network.</p>
+<section id="einsum-in-python" class="level3">
+<h3 data-anchor-id="einsum-in-python">Einsum in Python</h3>
+<p>Python fully support einsum operation in Numpy, in addition to Many Machine Learning Frameworks such as Pytorch, Tensorflow.</p>
+<p>It has more impact on Framework such as Pytorch that also generate GPU code. as describe by <a href="https://rockt.github.io/2018/04/30/einsum">Tim Rocktaschel</a></p>
 <p>Here is the matrix multiplication<br>
 <span class="math display">\[ M_{ij} = \sum{A_{ik}B_{kj}} = A_{ik}B_{kj}\]</span></p>
+</section>
 <section id="code" class="level3">
 <h3 data-anchor-id="code">Code:</h3>
 <p>The standard way to code the matrix multiplication is using a loop although this is simple but very inefficient with <span class="math inline">\(O(n^2)\)</span> where the row is i and column is j, and k is the inner dimension of both matrix that must be equal and this index will be summed and disappeared by the operation of matrix rule</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            total <span class="op">+=</span> A[i,k] <span class="op">*</span> B[k,j]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        M[i,j] <span class="op">=</span> total</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matrix is: </span><span class="sc">{</span>M<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            total <span class="op">+=</span> A[i,k] <span class="op">*</span> B[k,j]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        M[i,j] <span class="op">=</span> total</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'the matrix is: </span><span class="sc">{</span>M<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here the einsum version just as simple but much more efficient in term of memory usage and computation speed up.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.ones((<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.ones((<span class="dv">2</span>,<span class="dv">3</span>))</span>

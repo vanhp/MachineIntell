@@ -20,30 +20,35 @@ listing:
   filter-ui: false
   categories: true
   feed: true
-
+tiitle-block-banner: true
 format: html
 from: markdown+emoji
-
 page-layout: full
----
-
-![](/images/code1.jpg)
 
 ---
+
+![](/images/code3.png)
+
 
 
 ---
 title: "Working with Tensors"
+subtitle: " "
 author: "Vanh Phom"
-date: "5/25/2023"
+date: "5/26/2023"
 format:
   html:
     code-fold: true
+    theme: united
+
 
 ---
 
 
-### Working with Tensors
+
+
+
+### Tensors
 
 
 
@@ -60,8 +65,10 @@ Since tensor is core operation of Neural Network. Understand how to manipulate T
 learn about linear Algebra especially matrix rule
 
 
-:::{.callout-tip}
-Many of these operations involve:  
+
+:::{.callout-note icon="true" appearance="default" collapse="true"}
+
+# Many of these operations involve:  
 
 - Squeezing matrix into vector  
 - Add dimension to vector to transform it into matrix  
