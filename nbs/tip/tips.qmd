@@ -32,16 +32,17 @@ page-layout: full
 
 
 ---
-title: "Working with Tensors"
-subtitle: " "
-author: "Vanh Phom"
+title-block-banner: true
+title-block-banner: ../images/gradientv12.jpg
+title-block-banner-color: "blue"
+title: "Working with Tensors"  
+subtitle: ""  
+author: "Vanh Phom"  
 date: "5/26/2023"
-format:
-  html:
-    code-fold: true
-    theme: united
-
-
+format:  
+  html:  
+    code-fold: true  
+    theme: united  
 ---
 
 
