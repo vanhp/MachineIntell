@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.3.242">
+    <meta name="generator" content="quarto-1.4.163">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>MachineIntell – einsum</title>    <style>
+    <title>MachineIntell - My Notes</title>
+    <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -53,7 +54,12 @@
       pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
       }
     </style>
+
     <style>
+      body.hypothesis-enabled .quarto-embed-header {
+        padding-right: 36px;
+      }
+
       .quarto-embed-header {
         height: 3em;
         width: 100%;
@@ -62,21 +68,30 @@
         align-items: center;
         border-bottom: solid 1px;
       }
+
       .quarto-embed-header h6 {
-        font-size: 1em;
+        font-size: 1.1em;
         padding-top: 0.6em;
         margin-left: 1em;
         margin-right: 1em;
-        font-weight: 300;
+        font-weight: 400;
       }
+
+      .quarto-embed-header a.quarto-back-link,
       .quarto-embed-header a.quarto-download-embed {
-        font-size: 0.7em;
+        font-size: 0.8em;
         margin-top: 1em;
         margin-bottom: 1em;
         margin-left: 1em;
         margin-right: 1em;
       }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
     </style>
+
     
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -101,6 +116,11 @@
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -110,22 +130,30 @@
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
         <link rel="stylesheet" href="../../../styles.css">
-      </head>
+      <meta property="og:title" content="MachineIntell - My Notes">
+<meta property="og:site_name" content="MachineIntell">
+<meta name="twitter:title" content="MachineIntell - My Notes">
+<meta name="twitter:card" content="summary">
+</head>
+
   <body class="nav-sidebar docked nav-fixed quarto-notebook">
     <div class="quarto-embed-header">
-      <h6><i class="bi bi-journal-code"></i> einsum.ipynb</h6>
-      <a href="../../../Programming/Languages/Python/einsum.html" class="btn btn-primary quarto-download-embed" download="einsum.ipynb">Download Notebook</a>
-    </div>
-     
-<div id="quarto-search-results"></div>
+      
+      <h6><i class="bi bi-journal-code"></i> My Notes</h6>
+
+            <a href="../../../Programming/Languages/Python/einsum.ipynb" class="btn btn-primary quarto-download-embed" download="einsum.ipynb">Download Notebook</a>
+          </div>
+
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../../images/gradientv1scale2.jpg" alt="" class="navbar-logo">
     </a>
@@ -224,7 +252,7 @@
   </li>  
         <li>
     <a class="dropdown-item" href="../../../Programming/Languages/Julia/julia.html" rel="" target="">
- <span class="dropdown-text">Julia</span></a>
+ <span class="dropdown-text">Einstein Summation in Julia</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../../Programming/Languages/Kotlin/kotlin.html" rel="" target="">
@@ -251,7 +279,7 @@
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tip--trick">    
         <li>
     <a class="dropdown-item" href="../../../tip/tips.html" rel="" target="">
- <span class="dropdown-text">Tips and Tricks</span></a>
+ <span class="dropdown-text">Working with Tensors</span></a>
   </li>  
     </ul>
   </li>
@@ -394,9 +422,9 @@
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
@@ -404,8 +432,8 @@
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-      <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">My Notes</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
   </nav>
@@ -432,7 +460,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">AI</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -461,7 +489,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Programming</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -476,7 +504,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Algorithms</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -493,7 +521,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Data Structures</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -532,7 +560,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Trees</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -557,7 +585,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Languages</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -572,7 +600,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">CC++</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -589,7 +617,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Csharp</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -606,7 +634,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Java</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -623,7 +651,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">JavaScript</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -640,7 +668,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">Julia</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -648,7 +676,7 @@
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../Programming/Languages/Julia/julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia</span></a>
+ <span class="menu-text">Einstein Summation in Julia</span></a>
   </div>
 </li>
       </ul>
@@ -657,7 +685,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
  <span class="menu-text">Kotlin</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -674,7 +702,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
  <span class="menu-text">Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -691,7 +719,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
  <span class="menu-text">Rust</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -708,7 +736,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
  <span class="menu-text">Swift</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -729,7 +757,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true">
  <span class="menu-text">Blog</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -746,7 +774,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="true">
  <span class="menu-text">Tip</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -760,7 +788,7 @@
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../tip/tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tips and Tricks</span></a>
+ <span class="menu-text">Working with Tensors</span></a>
   </div>
 </li>
       </ul>
@@ -769,7 +797,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
  <span class="menu-text">Tutorial</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -784,7 +812,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
  <span class="menu-text">math</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -799,7 +827,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-expanded="false">
  <span class="menu-text">diffEq</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -822,7 +850,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-expanded="false">
  <span class="menu-text">linearalgebra</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -839,7 +867,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-expanded="false">
  <span class="menu-text">nnMath</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -854,7 +882,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-expanded="false">
  <span class="menu-text">loss</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-23" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -875,7 +903,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-expanded="false">
  <span class="menu-text">nlps</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-24" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -898,7 +926,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-expanded="false">
  <span class="menu-text">visions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-25" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -917,7 +945,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-expanded="true">
  <span class="menu-text">help</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -934,7 +962,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-expanded="true">
  <span class="menu-text">resources</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -951,7 +979,7 @@
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-expanded="true">
  <span class="menu-text">About</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -980,23 +1008,38 @@
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#my-notes" id="toc-my-notes" class="nav-link active" data-scroll-target="#my-notes">My Notes</a>
-  <ul class="collapse">
-  <li><a href="#research-papers-of-interest" id="toc-research-papers-of-interest" class="nav-link" data-scroll-target="#research-papers-of-interest">Research papers of interest</a></li>
-  <li><a href="#einstein-summation" id="toc-einstein-summation" class="nav-link" data-scroll-target="#einstein-summation">Einstein Summation</a>
-  <ul class="collapse">
+  <li><a href="#research-papers-of-interest" id="toc-research-papers-of-interest" class="nav-link active" data-scroll-target="#research-papers-of-interest">Research papers of interest</a></li>
+  <li><a href="#einstein-summation" id="toc-einstein-summation" class="nav-link" data-scroll-target="#einstein-summation">Einstein Summation</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code:</a></li>
   <li><a href="#dot-product" id="toc-dot-product" class="nav-link" data-scroll-target="#dot-product">Dot product</a></li>
   <li><a href="#outer-product" id="toc-outer-product" class="nav-link" data-scroll-target="#outer-product">Outer product</a></li>
-  </ul></li>
   <li><a href="#the-einsum-rules" id="toc-the-einsum-rules" class="nav-link" data-scroll-target="#the-einsum-rules">The Einsum Rules</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/vanhp/MachineIntell/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">      <section id="my-notes" class="level1 page-columns page-full">
-<h1>My Notes</h1>
+<main class="content page-columns page-full" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>     <div id="cell-0" class="cell markdown">
+
+</div>
+<div id="cell-1" class="cell markdown">
+
+</div>
+<div id="cell-2" class="cell markdown">
 <section id="research-papers-of-interest" class="level2">
 <h2 class="anchored" data-anchor-id="research-papers-of-interest">Research papers of interest</h2>
 <p>These papers are stored at the Arxiv website, they are mostly have not been through peer reviews because they are so new. On the other hand, they are follow up and performed by others researchers and interested users on the internet, if there are problems these will be report almost instantly on the social network.</p>
@@ -1005,7 +1048,9 @@
 <a href="https://arxiv.org/abs/2210.03142">On Distillation of Guided Diffusion Models</a><br>
 <a href="https://arxiv.org/abs/2210.09276">Imagic: Text-Based Real Image Editing with Diffusion Models</a></p>
 </section>
-<section id="einstein-summation" class="level2 page-columns page-full">
+</div>
+<div id="cell-3" class="cell markdown">
+<section id="einstein-summation" class="level2">
 <h2 class="anchored" data-anchor-id="einstein-summation">Einstein Summation</h2>
 <p>A technique for convenient and simplify the writing of syntax for many operation in linear algebra</p>
 <ul>
@@ -1019,13 +1064,17 @@
 </ul>
 <p>It’s also speedup some of the above operation especially operation that can be combined into single call</p>
 <p>The eisum is a build-in feature of most Machine learning frameworks, e.g.&nbsp;Pytorch, Tensorflow, Flux…</p>
+</section>
+</div>
+<div id="cell-4" class="cell markdown">
 <p>How does it work?</p>
 <p>Here is the matrix multiplication<br>
 <span class="math display">\[ M_{ij} = \sum{A_{ik}B_{kj}} = A_{ik}B_{kj}\]</span></p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell" data-execution_count="1">
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell" data-execution_count="2">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.rand(<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.rand(<span class="dv">5</span>,<span class="dv">2</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.empty((<span class="dv">3</span>,<span class="dv">2</span>))</span>
@@ -1035,7 +1084,7 @@
 <pre><code>((3, 5), (5, 2), (3, 2))</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell" data-execution_count="3">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A,B,M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(array([[6.82759644e-01, 3.32325362e-01, 5.10214353e-01, 8.76891766e-01,
@@ -1054,14 +1103,17 @@
         [6.92770292e-310, 6.92770291e-310]]))</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell" data-execution_count="4">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="dv">140</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<section id="code" class="level3 page-columns page-full">
+<div id="cell-9" class="cell markdown">
+<section id="code" class="level3">
 <h3 class="anchored" data-anchor-id="code">Code:</h3>
 <p>Coding as loop of the matrix multiplication above<br>
 where the row is i and column is j, and k is the inner dimension of both matrix that must be equal and this index will be summed and disappeared by the operation of matrix rule</p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell" data-execution_count="5">
+</section>
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-10" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> <span class="dv">0</span></span>
@@ -1076,8 +1128,10 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
  [1.19 1.73]]</code></pre>
 </div>
 </div></div>
+<div id="cell-12" class="cell markdown">
 <p>Using the Eisum method</p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell" data-execution_count="6">
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-13" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the i and j are free index</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the k is sum index since it will be summed away after the operation</span></span>
@@ -1090,17 +1144,21 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
  [1.19 1.73]]</code></pre>
 </div>
 </div></div>
-</section>
+<div id="cell-14" class="cell markdown">
 <section id="dot-product" class="level3">
 <h3 class="anchored" data-anchor-id="dot-product">Dot product</h3>
 <p>Vector or matrix multiplicaton <span class="math inline">\(u \cdot v\)</span> that result of scalar value</p>
 </section>
-<section id="outer-product" class="level3 page-columns page-full">
+</div>
+<div id="cell-15" class="cell markdown">
+<section id="outer-product" class="level3">
 <h3 class="anchored" data-anchor-id="outer-product">Outer product</h3>
 <p>vector multiply by vector that result in a matrix <span class="math inline">\(u \otimes v\)</span></p>
 <p>Example 2 - Using the free index in the output<br>
 - No summation index</p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-execution_count="7">
+</section>
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-16" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.random.rand(<span class="dv">5</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> np.random.rand(<span class="dv">3</span>)</span>
@@ -1115,7 +1173,7 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
  [0.17 0.36 0.36]]</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell" data-execution_count="8">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-17" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop version</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
@@ -1133,9 +1191,8 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
  [0.17 0.36 0.36]]</code></pre>
 </div>
 </div></div>
-</section>
-</section>
-<section id="the-einsum-rules" class="level2 page-columns page-full">
+<div id="cell-18" class="cell markdown">
+<section id="the-einsum-rules" class="level2">
 <h2 class="anchored" data-anchor-id="the-einsum-rules">The Einsum Rules</h2>
 <p>The free indices: - The index that specify the output</p>
 <p>The Summation index<br>
@@ -1152,15 +1209,19 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
 </ol>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> np.ones((<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    E <span class="op">=</span> np.einsum(<span class="st">'ijk-&gt;kji'</span>,D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</div>
+<div id="cell-19" class="cell markdown">
 <p>Operation that benefit from Einsum 1. Permutation of Tensors 2. Summation 3. Column sum 4. Row sum 5. Matrix-Vector multiplication 6. Matrix-Matrix multiplication 7. Dot Product the first row with first row of a matrix 8. Dot product with matrix (multiplication and add) 9. Element-wise multiplication (Hadamard Product) (multiplication no add) 10. Outer Product 11. Batch matrix multiplicaton e.g.&nbsp;a = 3,2,6 and b = 3,6,3 - want to multiply the matrix of 2x6 with 6x3 matrix - these matrix must follow the multiplication rule - the first number is the batch size they must match, but not count as index - the torch.bmm function will do the same thing 12. Matrix diagonal<br>
 - return the only the diagonal value of the matrix 13. Matrix Trace - summing the value of the diagonal of a matrix<br>
 14. Tensor contration<br>
 - shrinking the dimension of tensor<br>
 15. Bilinear transformation</p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell" data-execution_count="9">
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-20" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install torch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell" data-execution_count="10">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-21" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1173,9 +1234,11 @@ where the row is i and column is j, and k is the inner dimension of both matrix 
         [0.96, 0.80, 0.44]])</code></pre>
 </div>
 </div></div>
+<div id="cell-22" class="cell markdown">
 <ol type="1">
 <li>Transpose Flipping the matrix or vector by switching the index of a matrix or vector</li>
 </ol>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="mat-transpose" class="cell" data-execution_count="11">
 <details>
 <summary>Code</summary>
@@ -1197,10 +1260,12 @@ einsum: tensor([[0.25, 0.96],
         [0.66, 0.44]])</code></pre>
 </div>
 </div></div>
+<div id="cell-24" class="cell markdown">
 <ol start="2" type="1">
 <li>Matrix summation<br>
 Summing all value in the matrix that result in a scalar value</li>
 </ol>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="matrix-sum" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Summation</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cma <span class="op">=</span> torch.<span class="bu">sum</span>(X)</span>
@@ -1212,15 +1277,17 @@ Summing all value in the matrix that result in a scalar value</li>
 einsum: 3.8526394367218018</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell" data-execution_count="13">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-26" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor([[0.25, 0.74, 0.66],
         [0.96, 0.80, 0.44]])</code></pre>
 </div>
 </div></div>
+<div id="cell-27" class="cell markdown">
 <p>Row sum (Left to right)</p>
 <p>Add all values from each column together along the row</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="row-summation" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#4 row summation</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sum by columns</span></span>
@@ -1233,8 +1300,10 @@ einsum: 3.8526394367218018</code></pre>
 einsum: tensor([1.65, 2.20])</code></pre>
 </div>
 </div></div>
+<div id="cell-29" class="cell markdown">
 <p>Column sum (Top down)</p>
 <p>Add all value from each row together along the column</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="column-summation" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#3 Column summation</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sum by rows</span></span>
@@ -1247,8 +1316,10 @@ einsum: tensor([1.65, 2.20])</code></pre>
 einsum: tensor([1.21, 1.54, 1.10])</code></pre>
 </div>
 </div></div>
+<div id="cell-31" class="cell markdown">
 <p>5 matrix-vector multiplication<br>
 This a non equal dimension multiplication which in Python use broadcasting to padded (duplicate) the smaller vector to have equal size with the larger matrix before do multiplication</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="matrix-vector" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#5 matrix-vector multiplication</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> torch.rand((<span class="dv">1</span>,<span class="dv">3</span>))</span>
@@ -1262,8 +1333,10 @@ This a non equal dimension multiplication which in Python use broadcasting to pa
 einsum: tensor([0.76])</code></pre>
 </div>
 </div></div>
+<div id="cell-33" class="cell markdown">
 <p>6 matrix-matrix multiplication<br>
 This standard matrix to matrix multiplication which result in another matrix</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="matrix-matrix" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#6 matrix-matrix multiplication</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># torch.einsum('ij,kj-&gt;ik',M,M)</span></span>
@@ -1282,7 +1355,7 @@ einsum: tensor([[2., 2., 2.],
         [2., 2., 2.]])</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [18]:</pre></div><div class="cell" data-execution_count="18">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="cell-35" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> torch.rand((<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> torch.rand((<span class="dv">2</span>,<span class="dv">3</span>))</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'ij,kj-&gt;ik'</span>,N,M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1292,10 +1365,12 @@ einsum: tensor([[2., 2., 2.],
         [1.58, 1.42]])</code></pre>
 </div>
 </div></div>
+<div id="cell-36" class="cell markdown">
 <p>Dot product</p>
 <p>This a matrix multiplication that result in a scalar value. It’s usually called multiply add.<br>
 since after multiply the row to the column then the sum operation is carry out resulting as a scalar value</p>
 <p>:bulb:</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="dot-product" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product of a matrix (multiply + add)</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#torch.einsum('ij,ij-&gt;',N,N)</span></span>
@@ -1318,15 +1393,17 @@ regular: 0.3021569550037384
   einsum: 0.3021569550037384</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [20]:</pre></div><div class="cell" data-execution_count="20">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="cell-38" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product of only the first row of a matrix with first row of a matrix</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>torch.einsum(<span class="st">'i,i-&gt;'</span>,N[<span class="dv">0</span>],N[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>tensor(0.89)</code></pre>
 </div>
 </div></div>
+<div id="cell-39" class="cell markdown">
 <p>Hadamard Product Element wise multiplication (multiply only)<br>
 This is a normal matrix multiplication which different from multiply add or dot product</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="hadamard-product" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># element wise multiplication (multiply only)</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># torch.einsum('ij,ij-&gt;ij',N,N)</span></span>
@@ -1345,8 +1422,10 @@ This is a normal matrix multiplication which different from multiply add or dot 
         [-0.17, -0.11]])</code></pre>
 </div>
 </div></div>
+<div id="cell-41" class="cell markdown">
 <p>Outer Product</p>
 <p>Multiply vector of different size to get a matrix as output In eisum must use different letter for index to represent size different</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="outer-product" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outer product (inner product)</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand(<span class="dv">3</span>)</span>
@@ -1368,11 +1447,13 @@ regular: tensor([[0.89, 0.56, 0.23, 0.81, 0.19],
         [0.20, 0.13, 0.05, 0.18, 0.04]])</code></pre>
 </div>
 </div></div>
+<div id="cell-43" class="cell markdown">
 <p>Batch matrix multiplication<br>
 Multiply matrix by the set of n, where n is batch size</p>
 <p>want to multiply 3 set of the matrix of 2x6 with 6x3 matrix<br>
 the first number is the batch size must match but not count as index so i is ignore<br>
 the mxn * nxp must match with n</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="batch-matrix" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># batch matrix multiplicaton</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># want to multiply 3 set of the matrix of 2x6 with 6x3 matrix</span></span>
@@ -1413,7 +1494,9 @@ the mxn * nxp must match with n</p>
          [1.32, 1.29, 1.85]]])</code></pre>
 </div>
 </div></div>
+<div id="cell-45" class="cell markdown">
 <p>Diagonal Matrix return the vector of value along the diagonal of a matrix</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="diag-mat" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagonal matrix return only the diagonal value of a matrix</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1433,11 +1516,13 @@ regular: tensor([0.33, 0.82, 0.18])
   einsum: tensor([0.33, 0.82, 0.18])</code></pre>
 </div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [25]:</pre></div><div class="cell" data-execution_count="25">
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [25]:</pre></div><div id="cell-47" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># torch.einsum('ii-&gt;i',T)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+<div id="cell-48" class="cell markdown">
 <p>Trace</p>
 <p>Take the sum of all values along the diagonal axix of a matrix</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="trace" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix trace</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1453,9 +1538,11 @@ regular: 1.3291736841201782
   einsum: 1.3291736841201782</code></pre>
 </div>
 </div></div>
+<div id="cell-50" class="cell markdown">
 <p>Tensor Contraction<br>
 Shrinking the dimension of the tensor<br>
 must provide the dimension to be ignored</p>
+</div>
 <div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [27]:</pre></div><div id="contraction" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> torch.rand((<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> torch.rand((<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>))</span>
@@ -1472,8 +1559,10 @@ regular: tensor([[3.72, 2.19, 3.15, 3.26, 2.88, 1.90],
         [5.16, 3.22, 4.84, 4.64, 4.52, 3.33]])</code></pre>
 </div>
 </div></div>
+<div id="cell-52" class="cell markdown">
 <p>Bilinear transformation</p>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [28]:</pre></div><div class="cell" data-execution_count="28">
+</div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [28]:</pre></div><div id="cell-53" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.rand(<span class="dv">2</span>,<span class="dv">3</span>)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.rand(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">7</span>)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> torch.rand(<span class="dv">2</span>,<span class="dv">7</span>)</span>
@@ -1486,8 +1575,6 @@ regular: tensor([[3.72, 2.19, 3.15, 3.26, 2.88, 1.90],
 </div></div>
 
 
-</section>
-</section>
      </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1567,10 +1654,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1580,8 +1666,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1594,6 +1689,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1637,6 +1786,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1722,5 +1872,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>  </div> <!-- /content --> 
   
-
 </body></html>
